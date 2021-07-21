@@ -6,6 +6,7 @@ before_script:
 test:
   stage: test
   script:
+  - sed -i 's,%%url%%,https://hpc-projects.pages.git-ce.rwth-aachen.de/nec-rwth/sx-aurora-offloading,g' mkdocs.yml
   - mkdocs build --strict --verbose --site-dir test
   artifacts:
     paths:
@@ -16,6 +17,7 @@ test:
 pages:
   stage: deploy
   script:
+  - sed -i 's,%%url%%,https://hpc-projects.pages.git-ce.rwth-aachen.de/nec-rwth/sx-aurora-offloading,g' mkdocs.yml
   - mkdocs build --strict --verbose
   artifacts:
     paths:
