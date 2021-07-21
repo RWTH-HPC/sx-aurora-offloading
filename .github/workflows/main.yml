@@ -25,8 +25,8 @@ jobs:
         uses: datamonsters/replace-action@v2
         with:
               # Files, comma-separated. Supposed PLACEHOLDER in them
-          files: mkdocs.yml
+          files: 'mkdocs.yml'
              # Comma-separated pairs PLACEHOLDER=value
-          replacements: %%url%%=https://rwth-hpc.github.io/sx-aurora-offloading
+          replacements: '%%url%%=https://rwth-hpc.github.io/sx-aurora-offloading'
       - name: Deploy Page
         uses: mhausenblas/mkdocs-deploy-gh-pages@1.21
