@@ -14,7 +14,7 @@ architecture with ncc as target compiler, compile the source code with
 this project's clang and set the openmp target triple to
 `aurora-nec-veort-unknown` e.g.
 
-``` {.sourceCode .console}
+``` console
 $ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown input.c
 ```
 

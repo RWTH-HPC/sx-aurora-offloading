@@ -8,7 +8,7 @@ The source transformation tool `sotoc` is part of the projects [Clang](https://g
 
 The tool can be invoked (both by the wrapper tools and during testing) by the following command line:
 
-``` {.sourceCode .console}
+``` console
 $ sotoc input.c -- <clang command line>
 ```
 
@@ -16,17 +16,15 @@ where `<clang command line>` contains all command line options that clang uses t
 
 When invoked, `sotoc` searches for all variables, function and type declarations in the input file that are either annotated by a directive `#pragma omp declare target`, or are referenced in a target region or another function required on the target, and copies them into the output source file. It also searches for all target regions in the input file and transforms them into functions, so the region's code can be called independently from its original context. During this transformation, sotoc generates function arguments for all variables captured by the region and generates code to copy those variables into the scope of the new function.
 
-> **note**
->
-> To work around limitations of the LLVM/Clang offloading  
-> infrastructure, global static variables which are copied into the output source file, have their `static`-keyword removed. This will probably break some code, but there is currently no better workaround available.
->
+!!! note
+To work around limitations of the LLVM/Clang offloading
+infrastructure, global static variables which are copied into the output source file, have their `static`-keyword removed. This will probably break some code, but there is currently no better workaround available.
 
 ## Testing
 
 The tool comes with a regression test suite using llvm-lit. If the CMake option `SOTOC_ENABLE_TESTS` is set to `ON`, The tests can be run with:
 
-``` {.sourceCode .console}
+``` console
 $ make check-sotoc
 ```
 

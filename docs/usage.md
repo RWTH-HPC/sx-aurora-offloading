@@ -1,13 +1,12 @@
 # Usage
 
 The project's Clang compiler can be used to compile OpenMP code with offloading
-to SX-Aurora VE cards using ``aurora-nec-veort-unknown`` as target triple for
+to SX-Aurora VE cards using `aurora-nec-veort-unknown` as target triple for
 offloading.
 
 For example:
-
-``` {.sourceCode .console}
-  $ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown input.c
+``` console
+$ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown input.c
 ```
 
 will apply source transformation for target regions and `declare target`
@@ -54,7 +53,7 @@ the project with the **NECAURORA_TARGET_COMPILER_\*** CMake flags.
 The default preset can be configured with CMake at build time with the CMake
 flag  **NECAURORA_DEFAULT_TARGET_OPTION** which defaults to `ncc`.
 
-See the section 'CMake Options' in :ref:`building_project`.
+See the section 'CMake Options' in [Building the Project](building.md).
 
 
 ## Passing Arguments to the Target Compiler
@@ -67,7 +66,7 @@ the argument `-Xopenmp-target`.
 For example, to pass the argument `-fno-fast-math` to the target compiler,
 use the command line:
 
-``` {.sourceCode .console}
+``` console
 $ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target "-fno-fast-math" input.c -o program
 ```
 Any option passd via `-Xopenmp-target` is not used for parsing and source
@@ -80,15 +79,13 @@ To link your target image statically, pass the option
 `-Xlinker -fopenmp-static` to the wrapper/target compiler via `-Xopenmp-target`,
 For example:
 
-``` {.sourceCode .console}
-   $ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target "-Xlinker -fopenmp-static" input.c -o program
+``` console
+$ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target "-Xlinker -fopenmp-static" input.c -o program
 ```
 
-> **warning**
->
-> Static linking is currently experimental and the wrapper tool will
-> not forward arguments to the linker from Clang.
->
+!!! warning
+Static linking is currently experimental and the wrapper tool will
+not forward arguments to the linker from Clang.
 
 ## Debugging
 
@@ -96,6 +93,8 @@ To be able to attach a debugger to the target code more easily the `NEC_TARGET_D
 When compiling an application with `NEC_TARGET_DELAY`, code is injected into the target executable,
 which, at runtime, applies the value of this variable to the C sleep function,
 as to delay the start of execution by that number of seconds.
+
+!!! note
 If `NEC_TARGET_DELAY` is not set at runtime, then its value will default to zero.
 
 ## Note on User Code and Performance
