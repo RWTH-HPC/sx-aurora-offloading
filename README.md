@@ -1,57 +1,44 @@
-![Build Status](https://gitlab.com/pages/gitbook/badges/master/build.svg)
+![Build Status](https://gitlab.com/pages/mkdocs/badges/master/build.svg)
 
 ---
 
-Example [GitBook] website using GitLab Pages.
+Example [MkDocs] website using GitLab Pages.
 
 Learn more about GitLab Pages at https://pages.gitlab.io and the official
 documentation https://docs.gitlab.com/ce/user/project/pages/.
 
 ---
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
-- [GitLab CI](#gitlab-ci)
-- [Building locally](#building-locally)
-- [GitLab User or Group Pages](#gitlab-user-or-group-pages)
-- [Did you fork this project?](#did-you-fork-this-project)
-- [Troubleshooting](#troubleshooting)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ## GitLab CI
 
 This project's static Pages are built by [GitLab CI][ci], following the steps
 defined in [`.gitlab-ci.yml`](.gitlab-ci.yml):
 
-```yaml
-# requiring the environment of NodeJS 8.9.x LTS (carbon)
-image: node:8.9
-
-# add 'node_modules' to cache for speeding up builds
-cache:
-  paths:
-    - node_modules/ # Node modules and dependencies
+```
+image: python:3.8-buster
 
 before_script:
-  - npm install gitbook-cli -g # install gitbook
-  - gitbook fetch latest # fetch latest stable version
-  - gitbook install # add any requested plugins in book.json
-  #- gitbook fetch pre # fetch latest pre-release version
-  #- gitbook fetch 2.6.7 # fetch specific version
+  - pip install -r requirements.txt
 
-# the 'pages' job will deploy and build your site to the 'public' path
+test:
+  stage: test
+  script:
+  - mkdocs build --strict --verbose --site-dir test
+  artifacts:
+    paths:
+    - test
+  except:
+  - master
+
 pages:
   stage: deploy
   script:
-    - gitbook build . public # build to public path
+  - mkdocs build --strict --verbose
   artifacts:
     paths:
-      - public
+    - public
   only:
-    - master # this job will affect only the 'master' branch
+  - master
 ```
 
 ## Building locally
@@ -59,14 +46,13 @@ pages:
 To work locally with this project, you'll have to follow the steps below:
 
 1. Fork, clone or download this project
-1. [Install][] GitBook `npm install gitbook-cli -g`
-1. Fetch GitBook's latest stable version `gitbook fetch latest`
-1. Preview your project: `gitbook serve`
+1. [Install][] MkDocs
+1. Preview your project: `mkdocs serve`,
+   your site can be accessed under `localhost:8000`
 1. Add content
-1. Generate the website: `gitbook build` (optional)
-1. Push your changes to the master branch: `git push`
+1. Generate the website: `mkdocs build` (optional)
 
-Read more at GitBook's [documentation][].
+Read more at MkDocs [documentation][].
 
 ## GitLab User or Group Pages
 
@@ -74,6 +60,10 @@ To use this project as your user/group website, you will need one additional
 step: just rename your project to `namespace.gitlab.io`, where `namespace` is
 your `username` or `groupname`. This can be done by navigating to your
 project's **Settings**.
+
+You'll need to configure your site too: change this line
+in your `mkdocs.yml`, from `"https://pages.gitlab.io/mkdocs/"` to
+`site_url = "https://namespace.gitlab.io"`.
 
 Read more about [user/group Pages][userpages] and [project Pages][projpages].
 
@@ -91,14 +81,13 @@ unless you want to contribute back to the upstream project.
     your static generator has a configuration option that needs to be explicitly
     set in order to serve static assets under a relative URL.
 
-----
-
-Forked from @virtuacreative
-
 [ci]: https://about.gitlab.com/gitlab-ci/
-[GitBook]: https://www.gitbook.com/
-[host the book]: https://gitlab.com/pages/gitbook/tree/pages
-[install]: http://toolchain.gitbook.com/setup.html
-[documentation]: http://toolchain.gitbook.com
+[mkdocs]: http://www.mkdocs.org
+[install]: http://www.mkdocs.org/#installation
+[documentation]: http://www.mkdocs.org
 [userpages]: https://docs.gitlab.com/ce/user/project/pages/introduction.html#user-or-group-pages
 [projpages]: https://docs.gitlab.com/ce/user/project/pages/introduction.html#project-pages
+
+---
+
+Forked from https://gitlab.com/morph027/mkdocs
