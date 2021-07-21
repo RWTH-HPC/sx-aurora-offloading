@@ -29,6 +29,6 @@ jobs:
              # Comma-separated pairs PLACEHOLDER=value
           replacements: '%%url%%=https://rwth-hpc.github.io/sx-aurora-offloading'
       - name: Deploy Page
-        uses: mhausenblas/mkdocs-deploy-gh-pages@1.21
+        uses: mhausenblas/mkdocs-deploy-gh-pages@nomaterial
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
