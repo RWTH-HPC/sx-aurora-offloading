@@ -62,16 +62,15 @@ See the section 'CMake Options' in :ref:`building_project`.
 **Not all** arguments from the host compilation are  automatically converted or
 passed on to the target compiler (allthough some are).
 To explicitly pass an argument to the wrapper and target compiler, Clang offers
-the argument ``-Xopenmp-target``.
+the argument `-Xopenmp-target`.
 
-For example, to pass the argument ``-fno-fast-math`` to the target compiler,
+For example, to pass the argument `-fno-fast-math` to the target compiler,
 use the command line:
 
-.. code-block:: console
-
-  $ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target "-fno-fast-math" input.c -o program
-
-Any option passd via ``-Xopenmp-target`` is not used for parsing and source
+``` {.sourceCode .console}
+$ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target "-fno-fast-math" input.c -o program
+```
+Any option passd via `-Xopenmp-target` is not used for parsing and source
 transformation.
 
 
@@ -85,9 +84,11 @@ For example:
    $ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target "-Xlinker -fopenmp-static" input.c -o program
 ```
 
-.. warning:: Static linking is currently experimental and the wrapper tool will
-             not forward arguments to the linker from Clang.
-
+> **warning**
+>
+> Static linking is currently experimental and the wrapper tool will
+> not forward arguments to the linker from Clang.
+>
 
 ## Debugging
 
