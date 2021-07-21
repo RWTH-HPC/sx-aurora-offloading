@@ -84,8 +84,7 @@ $ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target "-Xli
 ```
 
 !!! warning
-Static linking is currently experimental and the wrapper tool will
-not forward arguments to the linker from Clang.
+    Static linking is currently experimental and the wrapper tool will not forward arguments to the linker from Clang.
 
 ## Debugging
 
@@ -95,7 +94,7 @@ which, at runtime, applies the value of this variable to the C sleep function,
 as to delay the start of execution by that number of seconds.
 
 !!! note
-If `NEC_TARGET_DELAY` is not set at runtime, then its value will default to zero.
+    If `NEC_TARGET_DELAY` is not set at runtime, then its value will default to zero.
 
 ## Note on User Code and Performance
 
