@@ -23,7 +23,6 @@ jobs:
       - uses: enricomarino/actions@v2
       - name: Set URL
         uses: bluwy/substitute-string-action@v1
-        id: sub
         with:
           _input-file: './mkdocs.yml'
           _format-key: '%%key%%'
