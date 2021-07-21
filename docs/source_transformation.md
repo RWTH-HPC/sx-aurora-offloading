@@ -4,7 +4,7 @@ The source transformation tool `sotoc` is part of the projects [Clang](https://g
 
 ## Overview
 
-`sotoc` itself is invoked during compilation by the wrapper tool (see [build-wrapper](build_wrapper.md)), which itself is called by the clang driver instead of the actual target compiler. `sotoc` itself only needs to be invoked directly during development and testing.
+`sotoc` itself is invoked during compilation by the wrapper tool (see [build-wrapper](build_wrappers.md)), which itself is called by the clang driver instead of the actual target compiler. `sotoc` itself only needs to be invoked directly during development and testing.
 
 The tool can be invoked (both by the wrapper tools and during testing) by the following command line:
 
