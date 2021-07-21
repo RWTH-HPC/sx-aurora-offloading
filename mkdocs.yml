@@ -3,7 +3,8 @@ site_url: %%url%%
 site_dir: public
 theme:
     name: readthedocs
-extra_css: [extra.css]
+markdown_extensions:
+    admonition: {}
 nav:
     - Introduction: 'index.md'
     - Building the Project: 'building.md'
