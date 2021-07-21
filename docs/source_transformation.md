@@ -1,6 +1,6 @@
 # Source Transformation with `sotoc`
 
-The source transformation tool `sotoc` is part of the projects [Clang](https://git.rwth-aachen.de/NEC-RWTH-Projects/clang) repository (under tools/sotoc) and is build automatically with clang. Please see [building\_project](building.md)for build instructions.
+The source transformation tool `sotoc` is part of the projects [Clang](https://git.rwth-aachen.de/NEC-RWTH-Projects/clang) repository (under tools/sotoc) and is build automatically with clang. Please see [Building the Project](building.md) for build instructions.
 
 ## Overview
 

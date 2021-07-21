@@ -3,3 +3,9 @@ site_url: %%url%%
 site_dir: public
 theme:
     name: readthedocs
+nav:
+    - Introduction: 'index.md'
+    - Building the Project: 'building.md'
+    - Source Transformation: 'source_transformation.md'
+    - Build Wrapper: 'build_wrapper.md'
+    - Usage: 'usage.md'
