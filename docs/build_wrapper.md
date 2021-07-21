@@ -1,6 +1,6 @@
 # Build Wrapper
 
-The project comes with a wrapper tool, necaurora-ofld-wrapper, which helps integrating the target compiler and the source transformation tool (see [Source Transformation](source_transforation.md)) and static linking into the build process of the Clang driver.
+The project comes with a wrapper tool, necaurora-ofld-wrapper, which helps integrating the target compiler and the source transformation tool (see [Source Transformation](source_transformation.md)) and static linking into the build process of the Clang driver.
 
 When the Clang driver compiles a \*.c file for a target, it calls the wrapper tool instead of a compiler. The wrapper tool then applies the source transformation tool to the input .c file and saves the ouput in a temporary file. Then the wrapper tool forwards the compiler arguments it got from the Clang driver to the real target compiler, substituting the real input .c file with the output of the source transformation.
 
