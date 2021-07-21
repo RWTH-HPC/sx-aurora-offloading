@@ -22,10 +22,11 @@ jobs:
         uses: actions/checkout@v2
       - uses: enricomarino/actions@v2
       - name: Set URL
-        uses: bluwy/substitute-string-action@v1
+        uses: datamonsters/replace-action@v2
         with:
-          _input-file: './mkdocs.yml'
-          _format-key: '%%key%%'
-          url: 'https://rwth-hpc.github.io/sx-aurora-offloading'
+              # Files, comma-separated. Supposed PLACEHOLDER in them
+          files: mkdocs.yml
+             # Comma-separated pairs PLACEHOLDER=value
+          replacements: %%url%%=https://rwth-hpc.github.io/sx-aurora-offloading
       - name: Deploy Page
         uses: mhausenblas/mkdocs-deploy-gh-pages@1.21
