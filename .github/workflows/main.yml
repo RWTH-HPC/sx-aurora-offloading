@@ -22,19 +22,9 @@ jobs:
         uses: actions/checkout@v2
       - uses: enricomarino/actions@v2
       - name: Set URL
-        uses: datamonsters/replace-action@v2
-        with:
-              # Files, comma-separated. Supposed PLACEHOLDER in them
-          files: 'mkdocs.yml'
-             # Comma-separated pairs PLACEHOLDER=value
-          replacements: '%%url%%=https://rwth-hpc.github.io/sx-aurora-offloading'
+        run: "sed -i 's,%%url%%,https://rwth-hpc.github.io/sx-aurora-offloading,g' mkdocs.yml"
       - name: Replace LLVM link
-        uses: datamonsters/replace-action@v2
-        with:
-              # Files, comma-separated. Supposed PLACEHOLDER in them
-          files: 'docs/build_wrapper.md,docs/building.md,docs/debugging.md,docs/index.md,docs/source_transformation.md,docs/usage.md'
-             # Comma-separated pairs PLACEHOLDER=value
-          replacements: '%%llvm%%=https://github.com/rwth-hpc/llvm-project'
+        run: "for i in docs/*.md; do sed -i 's,%%llvm%%,https://github.com/rwth-hpc/llvm-project,g' $i; done"
       - name: Deploy Page
         uses: mhausenblas/mkdocs-deploy-gh-pages@nomaterial
         env:
