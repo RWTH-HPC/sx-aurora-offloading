@@ -25,9 +25,16 @@ jobs:
         uses: datamonsters/replace-action@v2
         with:
               # Files, comma-separated. Supposed PLACEHOLDER in them
-          files: 'mkdocs.yml,docs/build_wrapper.md,docs/building.md,docs/debugging.md,docs/index.md,docs/source_transformation.md,docs/usage.md'
+          files: 'mkdocs.yml'
              # Comma-separated pairs PLACEHOLDER=value
-          replacements: '%%url%%=https://rwth-hpc.github.io/sx-aurora-offloading,%%llvm%%=https://github.com/rwth-hpc/llvm-project'
+          replacements: '%%url%%=https://rwth-hpc.github.io/sx-aurora-offloading'
+      - name: Replace LLVM link
+        uses: datamonsters/replace-action@v2
+        with:
+              # Files, comma-separated. Supposed PLACEHOLDER in them
+          files: 'docs/build_wrapper.md,docs/building.md,docs/debugging.md,docs/index.md,docs/source_transformation.md,docs/usage.md'
+             # Comma-separated pairs PLACEHOLDER=value
+          replacements: '%%llvm%%=https://github.com/rwth-hpc/llvm-project'
       - name: Deploy Page
         uses: mhausenblas/mkdocs-deploy-gh-pages@nomaterial
         env:
