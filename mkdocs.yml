@@ -8,6 +8,7 @@ markdown_extensions:
 nav:
     - Introduction: 'index.md'
     - Building the Project: 'building.md'
-    - Source Transformation: 'source_transformation.md'
     - Build Wrapper: 'build_wrapper.md'
+    - Source Transformation: 'source_transformation.md'
     - Usage: 'usage.md'
+    - Debugging: 'debugging.md'

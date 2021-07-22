@@ -5,7 +5,8 @@ to SX-Aurora VE cards using `aurora-nec-veort-unknown` as target triple for
 offloading.
 
 For example:
-``` console
+
+```console
 $ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown input.c
 ```
 
@@ -22,7 +23,6 @@ The VE card used to execution can be controlled by the `OMP_DEFAULT_DEVICE`
 environment variable during runtime, or with OpenMP's `device` clause in the
 program.
 
-
 ## Selecting a Target Compiler
 
 When using the project's Clang compiler to compile OpenMP code with offloading,
@@ -32,46 +32,45 @@ This flag supports compilers configured as presets at build time, and compilers
 set at run time by full path.
 
 - `--fopenmp-nec-compiler=clang` (default) will use the preset for Clang with
-  the LLVM backend for VE. The path to the Clang compiler for this preset can
+  the LLVM back-end for VE. The path to the Clang compiler for this preset can
   be configured with CMake at build time and defaults to the installation path
   of the `clang` compiler built with this project.
 - `--fopenmp-nec-compiler=rvclang` will use the preset for Clang with region
-  vectorizer (rvclang) and an LLVM backend for VE. The path to the compiler for
+  vectorizer (rvclang) and an LLVM back-end for VE. The path to the compiler for
   this preset can be configured with CMake at build time and defaults to the
   installation path of the `rvclang` compiler built with this project.
 - `--fopenmp-nec-compiler=ncc` will use the `ncc` compiler. The path to the
   `ncc` compiler can be configured with CMake at build time and defaults to the
   standard `ncc` install location.
 - A target compiler can also be set with a full path using the syntax
-  `--fopenmp-nec-compiler=path:$PATH_TO_COMPILER`. If this is  a clang
+  `--fopenmp-nec-compiler=path:$PATH_TO_COMPILER`. If this is a clang
   compiler you may also need to manually pass the compiler target to it, for
   example with `-Xopenmp-target "--target=ve-linux"`. This is NOT necessary
   when using one of the compiler presets above.
 
 The path for the compiler presets can be configured with CMake at build time of
-the project with the **NECAURORA_TARGET_COMPILER_\*** CMake flags.
+the project with the **NECAURORA*TARGET_COMPILER*\*** CMake flags.
 The default preset can be configured with CMake at build time with the CMake
-flag  **NECAURORA_DEFAULT_TARGET_OPTION** which defaults to `ncc`.
+flag **NECAURORA_DEFAULT_TARGET_OPTION** which defaults to `ncc`.
 
 See the section 'CMake Options' in [Building the Project](building.md).
 
-
 ## Passing Arguments to the Target Compiler
 
-**Not all** arguments from the host compilation are  automatically converted or
-passed on to the target compiler (allthough some are).
+**Not all** arguments from the host compilation are automatically converted or
+passed on to the target compiler (although some are).
 To explicitly pass an argument to the wrapper and target compiler, Clang offers
 the argument `-Xopenmp-target`.
 
 For example, to pass the argument `-fno-fast-math` to the target compiler,
 use the command line:
 
-``` console
+```console
 $ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target "-fno-fast-math" input.c -o program
 ```
-Any option passd via `-Xopenmp-target` is not used for parsing and source
-transformation.
 
+Any option passed via `-Xopenmp-target` is not used for parsing and source
+transformation.
 
 ## Static Linking
 
@@ -79,26 +78,16 @@ To link your target image statically, pass the option
 `-Xlinker -fopenmp-static` to the wrapper/target compiler via `-Xopenmp-target`,
 For example:
 
-``` console
+```console
 $ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target "-Xlinker -fopenmp-static" input.c -o program
 ```
 
 !!! warning
     Static linking is currently experimental and the wrapper tool will not forward arguments to the linker from Clang.
 
-## Debugging
-
-To be able to attach a debugger to the target code more easily the `NEC_TARGET_DELAY` environment variable is provided.
-When compiling an application with `NEC_TARGET_DELAY`, code is injected into the target executable,
-which, at runtime, applies the value of this variable to the C sleep function,
-as to delay the start of execution by that number of seconds.
-
-!!! note
-    If `NEC_TARGET_DELAY` is not set at runtime, then its value will default to zero.
-
 ## Note on User Code and Performance
 
 Due to limitations with the VEO API, target regions which are nested in a
-parallel region are not executed in parralle but one after the other (with the
+parallel region are not executed in parallel but one after the other (with the
 order being determined by which thread in the parallel region calls
 libomptarget first, and thus non-deterministic).

@@ -2,7 +2,7 @@
 
 This Project's aim is, to create a prototype infrastructure to offload
 OpenMP target code written in C to NEC's new SX-Aurora VE architecture.
-It uses Clang as driver and host compiler, libomptarget, NEC's `VEO`
+It uses Clang as driver and host compiler, libomptarget, NEC's `AVEO`
 interface to run the code on the VE. As compiler the target code, the
 project can work with NEC's ncc compiler or with a Clang compiler which
 supports VE as a target for LLVM.
@@ -24,7 +24,7 @@ To provide OpenMP offloading to SX-Aurora VE devices with Clang as host
 compiler, this project provides the following components:
 
 -   A version of LLVM, modified so that Clang can recognize a new target
-    triple for the VE architecture (Wether or not Clang/LLVM is actually
+    triple for the VE architecture (Whether or not Clang/LLVM is actually
     used as target compiler).
 -   A modified version of Clang that can invoke the projects source
     transformation tool and a target compiler for offloading. As part of
@@ -35,7 +35,7 @@ compiler, this project provides the following components:
         transform and compile the input code with the selected target
         compiler.
 -   A plugin for LLVM's libomptarget which offloads the target code at
-    runtime using NEC's VEO api.
+    runtime using NEC's AVEO api.
 
-all these components are provided within a single
-[llvm-project](https://github.com/rwth-hpc/llvm-project)-repository.
+All these components are provided within a single
+[llvm-project](%%llvm%%)-repository.
