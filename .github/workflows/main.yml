@@ -20,7 +20,6 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-      - uses: enricomarino/actions@v2
       - name: Set URL
         run: "sed -i 's,%%url%%,https://rwth-hpc.github.io/sx-aurora-offloading,g' mkdocs.yml"
       - name: Replace LLVM link
