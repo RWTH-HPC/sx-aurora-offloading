@@ -1,14 +1,15 @@
 site_name: SX-Aurora Offloading
 site_url: %%url%%
+repo_url: %%llvm%%
 site_dir: public
 theme:
-    name: readthedocs
+  name: readthedocs
 markdown_extensions:
-    admonition: {}
+  admonition: {}
 nav:
-    - Introduction: 'index.md'
-    - Building the Project: 'building.md'
-    - Build Wrapper: 'build_wrapper.md'
-    - Source Transformation: 'source_transformation.md'
-    - Usage: 'usage.md'
-    - Debugging: 'debugging.md'
+  - Introduction: "index.md"
+  - Building the Project: "building.md"
+  - Build Wrapper: "build_wrapper.md"
+  - Source Transformation: "source_transformation.md"
+  - Usage: "usage.md"
+  - Debugging: "debugging.md"
