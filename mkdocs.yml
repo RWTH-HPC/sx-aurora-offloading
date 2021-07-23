@@ -1,7 +1,7 @@
 site_name: SX-Aurora Offloading
 site_url: %%url%%
 repo_url: %%llvm%%
-edit_uri: null
+edit_uri: ""
 site_dir: public
 theme:
   name: material
