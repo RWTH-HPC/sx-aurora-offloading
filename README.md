@@ -34,21 +34,21 @@ Admonitions are coloured blocks of text:
 
 ```markdown
 !!! note
-Your Text
+    Your Text
 ```
 
 Notes will be coloured blue.
 
 ```markdown
 !!! warning
-Your Text
+    Your Text
 ```
 
 Warnings are orange.
 
 ```markdown
 !!! danger
-Your Text
+    Your Text
 ```
 
 And danger is coloured red.
@@ -58,7 +58,7 @@ And danger is coloured red.
 To add a code block use the following syntax.
 
 ````markdown
-```<Language Name>
+``` <Language Name>
 Your Code goes here
 ```
 ````
