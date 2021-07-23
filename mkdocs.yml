@@ -1,9 +1,10 @@
 site_name: SX-Aurora Offloading
 site_url: %%url%%
 repo_url: %%llvm%%
+edit_uri: null
 site_dir: public
 theme:
-  name: readthedocs
+  name: material
 markdown_extensions:
   admonition: {}
 nav:
