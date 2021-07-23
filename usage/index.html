@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://rwth-hpc.github.io/sx-aurora-offloading/usage/">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Usage - SX-Aurora Offloading</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Usage";
+    var mkdocs_page_input_path = "usage.md";
+    var mkdocs_page_url = "/sx-aurora-offloading/usage/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> SX-Aurora Offloading</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Introduction</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../building/">Building the Project</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../build_wrapper/">Build Wrapper</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../source_transformation/">Source Transformation</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Usage</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#selecting-a-target-compiler">Selecting a Target Compiler</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#passing-arguments-to-the-target-compiler">Passing Arguments to the Target Compiler</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#static-linking">Static Linking</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#note-on-user-code-and-performance">Note on User Code and Performance</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../debugging/">Debugging</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">SX-Aurora Offloading</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Usage</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/rwth-hpc/llvm-project/edit/master/docs/usage.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="usage">Usage</h1>
+<p>The project's Clang compiler can be used to compile OpenMP code with offloading
+to SX-Aurora VE cards using <code>aurora-nec-veort-unknown</code> as target triple for
+offloading.</p>
+<p>For example:</p>
+<pre><code class="language-console">$ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown input.c
+</code></pre>
+<p>will apply source transformation for target regions and <code>declare target</code>
+functions in <code>input.c</code> and compile an offloading binary for the VE
+architecture from it using the target compiler (by default this is clang).
+Clang embeds this binary into the host executable as it would any other
+offloading binary.</p>
+<p>The host executable generated by Clang can then be executed and will try to
+use the <code>libomptarget</code> plugin for SX-Aurora VE to offload target regions onto
+the VE cards.
+The VE card used to execution can be controlled by the <code>OMP_DEFAULT_DEVICE</code>
+environment variable during runtime, or with OpenMP's <code>device</code> clause in the
+program.</p>
+<h2 id="selecting-a-target-compiler">Selecting a Target Compiler</h2>
+<p>When using the project's Clang compiler to compile OpenMP code with offloading,
+you can choose which compiler will be used for the target code with the
+compiler flag <code>--fopenmp-nec-compiler=</code>.
+This flag supports compilers configured as presets at build time, and compilers
+set at run time by full path.</p>
+<ul>
+<li><code>--fopenmp-nec-compiler=clang</code> (default) will use the preset for Clang with
+  the LLVM back-end for VE. The path to the Clang compiler for this preset can
+  be configured with CMake at build time and defaults to the installation path
+  of the <code>clang</code> compiler built with this project.</li>
+<li><code>--fopenmp-nec-compiler=rvclang</code> will use the preset for Clang with region
+  vectorizer (rvclang) and an LLVM back-end for VE. The path to the compiler for
+  this preset can be configured with CMake at build time and defaults to the
+  installation path of the <code>rvclang</code> compiler built with this project.</li>
+<li><code>--fopenmp-nec-compiler=ncc</code> will use the <code>ncc</code> compiler. The path to the
+  <code>ncc</code> compiler can be configured with CMake at build time and defaults to the
+  standard <code>ncc</code> install location.</li>
+<li>A target compiler can also be set with a full path using the syntax
+  <code>--fopenmp-nec-compiler=path:$PATH_TO_COMPILER</code>. If this is a clang
+  compiler you may also need to manually pass the compiler target to it, for
+  example with <code>-Xopenmp-target "--target=ve-linux"</code>. This is NOT necessary
+  when using one of the compiler presets above.</li>
+</ul>
+<p>The path for the compiler presets can be configured with CMake at build time of
+the project with the <strong>NECAURORA<em>TARGET_COMPILER</em>*</strong> CMake flags.
+The default preset can be configured with CMake at build time with the CMake
+flag <strong>NECAURORA_DEFAULT_TARGET_OPTION</strong> which defaults to <code>ncc</code>.</p>
+<p>See the section 'CMake Options' in <a href="../building/">Building the Project</a>.</p>
+<h2 id="passing-arguments-to-the-target-compiler">Passing Arguments to the Target Compiler</h2>
+<p><strong>Not all</strong> arguments from the host compilation are automatically converted or
+passed on to the target compiler (although some are).
+To explicitly pass an argument to the wrapper and target compiler, Clang offers
+the argument <code>-Xopenmp-target</code>.</p>
+<p>For example, to pass the argument <code>-fno-fast-math</code> to the target compiler,
+use the command line:</p>
+<pre><code class="language-console">$ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target &quot;-fno-fast-math&quot; input.c -o program
+</code></pre>
+<p>Any option passed via <code>-Xopenmp-target</code> is not used for parsing and source
+transformation.</p>
+<h2 id="static-linking">Static Linking</h2>
+<p>To link your target image statically, pass the option
+<code>-Xlinker -fopenmp-static</code> to the wrapper/target compiler via <code>-Xopenmp-target</code>,
+For example:</p>
+<pre><code class="language-console">$ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target &quot;-Xlinker -fopenmp-static&quot; input.c -o program
+</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Static linking is currently experimental and the wrapper tool will not forward arguments to the linker from Clang.</p>
+</div>
+<h2 id="note-on-user-code-and-performance">Note on User Code and Performance</h2>
+<p>Due to limitations with the VEO API, target regions which are nested in a
+parallel region are not executed in parallel but one after the other (with the
+order being determined by which thread in the parallel region calls
+libomptarget first, and thus non-deterministic).</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../debugging/" class="btn btn-neutral float-right" title="Debugging">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../source_transformation/" class="btn btn-neutral" title="Source Transformation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/rwth-hpc/llvm-project/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../source_transformation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../debugging/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

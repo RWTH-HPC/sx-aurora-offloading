@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://rwth-hpc.github.io/sx-aurora-offloading/</loc>
+         <lastmod>2021-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://rwth-hpc.github.io/sx-aurora-offloading/build_wrapper/</loc>
+         <lastmod>2021-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://rwth-hpc.github.io/sx-aurora-offloading/building/</loc>
+         <lastmod>2021-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://rwth-hpc.github.io/sx-aurora-offloading/debugging/</loc>
+         <lastmod>2021-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://rwth-hpc.github.io/sx-aurora-offloading/source_transformation/</loc>
+         <lastmod>2021-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://rwth-hpc.github.io/sx-aurora-offloading/usage/</loc>
+         <lastmod>2021-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+</urlset>
