@@ -6,11 +6,8 @@ repo_url: %%llvm%%
 repo_name: "llvm-project"
 edit_uri: ""
 site_dir: public
-[data-md-color-scheme="rwth"] {
-  --md-primary-fg-color:        #00549f;
-  --md-primary-fg-color--light: #00549f;
-  --md-primary-fg-color--dark:  #00549f;
-}
+extra_css:
+  - extra.css
 theme:
   name: material
   features:
@@ -19,7 +16,7 @@ theme:
    - navigation.top
   palette:
     - media: "(prefers-color-scheme: light)"
-      scheme: rwth
+      scheme: default
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
