@@ -15,7 +15,7 @@ this project's clang and set the openmp target triple to
 `aurora-nec-veort-unknown` e.g.
 
 ``` console
-$ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown input.c
+clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown input.c
 ```
 
 ## Overview

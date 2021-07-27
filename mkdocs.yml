@@ -1,12 +1,20 @@
 site_name: SX-Aurora Offloading
+copyright: Copyright © 2021 High Performance Computing at RWTH Aachen
+site_author: High Performance Computing at RWTH Aachen
 site_url: %%url%%
 repo_url: %%llvm%%
+repo_name: "llvm-project"
 edit_uri: ""
 site_dir: public
 theme:
   name: material
+  palette:
+    primary: blue
+    accent: blue
 markdown_extensions:
   admonition: {}
+plugins:
+  - git-revision-date
 nav:
   - Introduction: "index.md"
   - Building the Project: "building.md"

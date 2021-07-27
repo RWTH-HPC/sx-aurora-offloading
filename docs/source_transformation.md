@@ -13,7 +13,7 @@ which itself is called by the clang driver instead of the actual target compiler
 The tool can be invoked (both by the wrapper tools and during testing) by the following command line:
 
 ```console
-$ sotoc input.c -- <clang command line>
+sotoc input.c -- <clang command line>
 ```
 
 where `<clang command line>` contains all command line options that clang uses to compile the target code.
@@ -38,7 +38,7 @@ The tool comes with a regression test suite using llvm-lit.
 If the CMake option `SOTOC_ENABLE_TESTS` is set to `ON`, The tests can be run with:
 
 ```console
-$ make check-sotoc
+make check-sotoc
 ```
 
 Make sure that LLVM's `FileCheck` tool is in the path, then the test suite can be run with `$ make check-sotoc`

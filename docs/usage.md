@@ -7,7 +7,7 @@ offloading.
 For example:
 
 ```console
-$ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown input.c
+clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown input.c
 ```
 
 will apply source transformation for target regions and `declare target`
@@ -66,7 +66,7 @@ For example, to pass the argument `-fno-fast-math` to the target compiler,
 use the command line:
 
 ```console
-$ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target "-fno-fast-math" input.c -o program
+clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target "-fno-fast-math" input.c -o program
 ```
 
 Any option passed via `-Xopenmp-target` is not used for parsing and source
@@ -79,7 +79,7 @@ To link your target image statically, pass the option
 For example:
 
 ```console
-$ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target "-Xlinker -fopenmp-static" input.c -o program
+clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target "-Xlinker -fopenmp-static" input.c -o program
 ```
 
 !!! warning
