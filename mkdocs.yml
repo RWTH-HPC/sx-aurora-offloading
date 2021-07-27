@@ -8,6 +8,10 @@ edit_uri: ""
 site_dir: public
 theme:
   name: material
+  features:
+   - search.suggest
+   - search.highlight
+   - navigation.top
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default

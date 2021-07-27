@@ -1,4 +1,4 @@
-# Welcome to Aurora OpenMP Offloading Documentation!
+# Welcome to the Aurora OpenMP Offloading Documentation!
 
 This Project's aim is, to create a prototype infrastructure to offload
 OpenMP target code written in C to NEC's new SX-Aurora VE architecture.
