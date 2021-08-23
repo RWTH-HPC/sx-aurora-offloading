@@ -25,7 +25,7 @@ jobs:
       - name: Replace LLVM link in config
         run: "sed -i 's,%%llvm%%,https://github.com/rwth-hpc/llvm-project,g' mkdocs.yml"
       - name: Replace edit link in config
-        run: "sed -i 's,%%edit%%,https://github.com/rwth-hpc/sx-aurora-offloading,g' mkdocs.yml"
+        run: "sed -i 's,%%edit%%,https://github.com/RWTH-HPC/sx-aurora-offloading/edit/master/docs,g' mkdocs.yml"
       - name: Replace LLVM link
         run: "for i in docs/*.md; do sed -i 's,%%llvm%%,https://github.com/rwth-hpc/llvm-project,g' $i; done"
       - name: Deploy Page
