@@ -16,7 +16,7 @@ After checking out the aurora-offloading-prototype branch,
 change the working directory to llvm-project/llvm and run CMake with, at least,
 the following CMake variables:
 
-- Set **LLVM_ENABLE_PROJECTS** to `clang;openmp;libcxx;libcxxabi` to enable at least _clang_, _openmp_, _libcxx_ and _libcxxabi_.
+- Set **LLVM_ENABLE_PROJECTS** to `clang;openmp;libcxx;libcxxabi` to enable at least *clang*, *openmp*, *libcxx* and *libcxxabi*.
 - Set **OPENMP_LIBOMPTARGET** to `ON` to enable libomptarget
 
 Additionally, make sure that:
@@ -33,7 +33,7 @@ To be able to statically link the target image, please make sure that, additiona
 - **NECAURORA_LIBURPCVE_STATIC**, pointing to liburpcVE_omp.a
 - **NECAURORA_LIBVEIO**, pointing to libveio.so
 
-Usually these libraries are installed at /opt/nec/ve/lib.
+Usually these libraries are installed at `/opt/nec/ve/lib`.
 
 ### Enable Testing
 

@@ -10,7 +10,7 @@ The general process to the target code generation is as follows:
 3. The fragments are then 'reconstituted' into valid target code.
 
 This transforms C code like
-``` c
+``` c linenums="1"
 int main(void) {
   int x = 0;
   int y = 1;
@@ -23,7 +23,7 @@ int main(void) {
 }
 ```
 into
-``` c
+``` c linenums="1"
 void __omp_offloading_38_272a6c6b_main_l7(int *__sotoc_var_x, int y, int z)
 {
    int x = *__sotoc_var_x;
