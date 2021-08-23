@@ -29,6 +29,8 @@ markdown_extensions:
   - admonition
   - pymdownx.highlight
   - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.smartsymbols
 plugins:
   - search
   - git-revision-date

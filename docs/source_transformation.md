@@ -12,7 +12,7 @@ which itself is called by the clang driver instead of the actual target compiler
 
 The tool can be invoked (both by the wrapper tools and during testing) by the following command line:
 
-``` shell
+``` console
 sotoc input.c -- <clang command line>
 ```
 
@@ -37,7 +37,7 @@ During this transformation, sotoc generates function arguments for all variables
 The tool comes with a regression test suite using llvm-lit.
 If the CMake option `SOTOC_ENABLE_TESTS` is set to `ON`, The tests can be run with:
 
-``` shell
+``` console
 make check-sotoc
 ```
 

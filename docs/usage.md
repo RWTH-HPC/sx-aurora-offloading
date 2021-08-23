@@ -6,7 +6,7 @@ offloading.
 
 For example:
 
-``` shell
+``` console
 clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown input.c
 ```
 
@@ -65,7 +65,7 @@ the argument `-Xopenmp-target`.
 For example, to pass the argument `-fno-fast-math` to the target compiler,
 use the command line:
 
-``` shell
+``` console
 clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target "-fno-fast-math" input.c -o program
 ```
 
@@ -78,7 +78,7 @@ To link your target image statically, pass the option
 `-Xlinker -fopenmp-static` to the wrapper/target compiler via `-Xopenmp-target`,
 For example:
 
-``` shell
+``` console
 clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target "-Xlinker -fopenmp-static" input.c -o program
 ```
 

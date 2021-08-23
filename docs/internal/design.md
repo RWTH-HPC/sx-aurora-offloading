@@ -28,7 +28,7 @@ The libomptarget plugin function `__tgt_rtl_load_binary` passes the target table
 `veo_get_sym` is used to resolve all the symbols in the table.
 
 To examine the target table of a host binary, the following command can be used:
-``` shell
+``` console
 objdump -s -j omp_offloading_entries a.out
 ```
 
