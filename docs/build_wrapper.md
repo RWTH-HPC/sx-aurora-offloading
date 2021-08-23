@@ -35,3 +35,5 @@ When the environment variable `NECAURORA_KEEP_FILES_DIR` is set, the specified p
 
 **NECAURORA_KEEP_FILES_DIR**
 If this environment variable is set, the wrapper tools will store its temporary files in the specified directory and will NOT delete them after the tool is done.
+
+--8<-- "abbreviations.md"

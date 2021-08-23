@@ -6,3 +6,5 @@
 ## Installation Script
 
 ## Module File
+
+--8<-- "../abbreviations.md"

@@ -15,3 +15,5 @@ as to delay the start of execution by that number of seconds.
 
 !!! note
     If `NEC_TARGET_DELAY` is not set at runtime, then its value will default to zero.
+
+--8<-- "abbreviations.md"

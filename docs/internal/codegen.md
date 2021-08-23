@@ -5,7 +5,7 @@
 
 The general process to the target code generation is as follows:
 
-1. The code's AST (Abstract Syntax Tree) is processed with `RecursiveASTVisitor`s (`clang/tools/sotoc/Visitors.{h,cpp}`)
+1. The code's AST is processed with `RecursiveASTVisitor`s (`clang/tools/sotoc/Visitors.{h,cpp}`)
 2. The found target code is recorded in `TargetCodeFragment` (`clang/tools/sotoc/TargetCode.{h,pp}` and `clang/tools/sotoc/TargetCodeFragment.{h,cpp}`)
 3. The fragments are then 'reconstituted' into valid target code.
 
@@ -100,3 +100,5 @@ We still have to generate functions for regions with mapped variables and clause
 
 !!! bug
     Mappings with missing elements in the middle are currently not completely mapped by libomptarget/the OpenMP runtime.
+
+--8<-- "../abbreviations.md"
