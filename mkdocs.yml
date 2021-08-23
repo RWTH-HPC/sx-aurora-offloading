@@ -37,3 +37,6 @@ nav:
   - Source Transformation: "source_transformation.md"
   - Usage: "usage.md"
   - Debugging: "debugging.md"
+  - Technical and Internal Documentation:
+    - Design: "internal/design.md"
+    # - Install Script: "internal/installing.md"

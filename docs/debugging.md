@@ -2,8 +2,10 @@
 
 For debugging purposes NEC provides a number of helpful tools.
 
-## Helpers
+## Libomptarget
+If the debug-version of libomptarget was build, `LIBOMPTARGET_DEBUG=1` can be used to show additional debugging information at runtime.
 
+## Helpers
 ### NEC_TARGET_DELAY
 
 To be able to attach a debugger to the target code more easily the `NEC_TARGET_DELAY` environment variable is provided.
