@@ -92,4 +92,4 @@ parallel region are not executed in parallel but one after the other (with the
 order being determined by which thread in the parallel region calls
 libomptarget first, and thus non-deterministic).
 
---8<-- "abbreviations.md"
+--8<-- "includes/abbreviations.md"

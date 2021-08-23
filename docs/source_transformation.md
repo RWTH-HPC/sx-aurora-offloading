@@ -43,4 +43,4 @@ make check-sotoc
 
 Make sure that LLVM's `FileCheck` tool is in the path, then the test suite can be run with `#!shell make check-sotoc`
 
---8<-- "abbreviations.md"
+--8<-- "includes/abbreviations.md"

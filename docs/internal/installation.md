@@ -7,4 +7,4 @@
 
 ## Module File
 
---8<-- "../abbreviations.md"
+--8<-- "includes/abbreviations.md"

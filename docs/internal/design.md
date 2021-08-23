@@ -47,4 +47,4 @@ Some additional code is located in `clang/lib/Driver/Driver.cpp` and `clang/lib/
 Because `#!shell ncc` is the host compiler for the VE, the code received by clang has to be split up in the host and target sections. This is done with the source transformation tool `#!shell sotoc`.
 For that the toolchain calls `clang/tools/nec-aurora-build`.
 
---8<-- "../abbreviations.md"
+--8<-- "includes/abbreviations.md"

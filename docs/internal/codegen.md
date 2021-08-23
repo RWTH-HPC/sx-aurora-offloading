@@ -101,4 +101,4 @@ We still have to generate functions for regions with mapped variables and clause
 !!! bug
     Mappings with missing elements in the middle are currently not completely mapped by libomptarget/the OpenMP runtime.
 
---8<-- "../abbreviations.md"
+--8<-- "includes/abbreviations.md"

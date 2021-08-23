@@ -40,4 +40,4 @@ compiler, this project provides the following components:
 All these components are provided within a single
 [llvm-project](%%llvm%%)-repository.
 
---8<-- "abbreviations.md"
+--8<-- "includes/abbreviations.md"

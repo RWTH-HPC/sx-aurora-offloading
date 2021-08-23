@@ -93,4 +93,4 @@ Points to the include directory containing the headers for libelf (required for 
 - **LIBOMPTARGET_DEP_VEO_LIBRARIES**
   Path to libveo.so/libaveo.so.
 
---8<-- "abbreviations.md"
+--8<-- "includes/abbreviations.md"
