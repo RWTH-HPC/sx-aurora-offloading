@@ -49,3 +49,4 @@ nav:
     - Install Script: "internal/installation.md"
     - Design: "internal/design.md"
     - Target Code Generation: "internal/codegen.md"
+  - Publications: "publications.md"
