@@ -19,18 +19,30 @@ The target image can be either linked dynamically as a normal shared library or 
 
 ## Target Table
 In addition to the *target image*, a *target table* is inserted by the compiler into the host-binary.
-This table has entries for every target region and global variable in the form of an array of `struct __tgt_offload_entry`(openmp/libomptarget/include/omptarget.h).
+This table has entries for every target region and global variable in the form of an array of `#!c struct __tgt_offload_entry` (`openmp/libomptarget/include/omptarget.h`).
 
 !!! note
-    The Table does not include functions marked by `#pragma omp declare target`.
+    The Table does not include functions marked by `#!c #pragma omp declare target`.
 
 The libomptarget plugin function `__tgt_rtl_load_binary` passes the target table of the host binary to the plugin and expects a target table with the host addresses of all the symbols in return.
 `veo_get_sym` is used to resolve all the symbols in the table.
 
 To examine the target table of a host binary, the following command can be used:
-``` console
+``` shell
 objdump -s -j omp_offloading_entries a.out
 ```
 
 ## Clang integration
+The compilation pipeline is scheduled by the clang driver (`lang/lib/Driver/`).
+The toolchains for the different architectures can be found in `clang/lib/Driver/ToolChains`.
+For the offloading pipeline, additional compile and link jobs are added to the usual compilation pipeline. Those will produce the target image.
+Afterwards the `clang-offload-wrapper` is used to wrap the image into the LLVM bitcode file, so it can be linked into the host binary.
 
+!!! note
+    In case the user splits the compilation and linking (e.g. `#!shell clang -c`), the `clang-offload-bundler` is used to combine the files to one.
+
+The Aurora pipeline is defined in `clang/lib/Driver/ToolChains/NECAuroraOffload.{h,cpp}`, which, in the end, calls `#!shell ncc`.
+Some additional code is located in `clang/lib/Driver/Driver.cpp` and `clang/lib/Driver/Compilation.cpp`.
+
+Because `#!shell ncc` is the host compiler for the VE, the code received by clang has to be split up in the host and target sections. This is done with the source transformation tool `#!shell sotoc`.
+For that the toolchain calls `clang/tools/nec-aurora-build`.

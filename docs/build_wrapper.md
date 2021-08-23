@@ -9,7 +9,7 @@ The wrapper tool then applies the source transformation tool to the input .c fil
 Then the wrapper tool forwards the compiler arguments it got from the Clang driver to the real target compiler,
 substituting the real input .c file with the output of the source transformation.
 
-When the Clang driver tries to statically link object files into a static target image (with -Xlinker -fopenmp-static),
+When the Clang driver tries to statically link object files into a static target image (with `-Xlinker -fopenmp-static`),
 then the wrapper tool intercepts that call to the linker,
 creates a .c file with a symbol table required by the VEO api and constructs a correct command line to call ncc for static linking.
 
@@ -27,11 +27,11 @@ The wrapper tool tries forwards all input arguments to the target compiler (exce
 
 The behaviour of the wrapper can be influenced by the following environment variables
 
-**TMPDIR**, **TEMP**, **TMP**  
+**TMPDIR**, **TEMP**, **TMP**
 Like Clang, the wrapper tool checks each of these environment variables in that order,
 to find the place to store its temporary files (for the source transformation and the static linking symbol table).
 When none of these exist, it falls back to `/tmp`.
 When the environment variable `NECAURORA_KEEP_FILES_DIR` is set, the specified path is used instead.
 
-**NECAURORA_KEEP_FILES_DIR**  
+**NECAURORA_KEEP_FILES_DIR**
 If this environment variable is set, the wrapper tools will store its temporary files in the specified directory and will NOT delete them after the tool is done.

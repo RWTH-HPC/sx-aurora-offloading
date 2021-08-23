@@ -14,6 +14,7 @@ theme:
    - search.suggest
    - search.highlight
    - navigation.top
+   - navigation.instant
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -44,4 +45,4 @@ nav:
   - Technical and Internal Documentation:
     # - Install Script: "internal/installation.md"
     - Design: "internal/design.md"
-    # - Code Generation: "internal/codegen.md"
+    # - Target Code Generation: "internal/codegen.md"
