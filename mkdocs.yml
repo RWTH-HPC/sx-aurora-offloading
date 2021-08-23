@@ -35,6 +35,7 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.inlinehilite
   - pymdownx.smartsymbols
+  - pymdownx.details
 plugins:
   - search
   - git-revision-date
