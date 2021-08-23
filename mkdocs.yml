@@ -26,7 +26,9 @@ theme:
         icon: material/toggle-switch
         name: Switch to light mode
 markdown_extensions:
-  admonition: {}
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
 plugins:
   - search
   - git-revision-date
@@ -38,5 +40,6 @@ nav:
   - Usage: "usage.md"
   - Debugging: "debugging.md"
   - Technical and Internal Documentation:
+    # - Install Script: "internal/installation.md"
     - Design: "internal/design.md"
-    # - Install Script: "internal/installing.md"
+    # - Code Generation: "internal/codegen.md"
