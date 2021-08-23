@@ -43,6 +43,6 @@ nav:
   - Usage: "usage.md"
   - Debugging: "debugging.md"
   - Technical and Internal Documentation:
-    # - Install Script: "internal/installation.md"
+    - Install Script: "internal/installation.md"
     - Design: "internal/design.md"
     - Target Code Generation: "internal/codegen.md"

@@ -93,7 +93,7 @@ We try to generate as little code as possible ourselves and let clangs `PrettyPr
 !!! note
     We extended the `PrettyPrinter` to handle `Decl`s.
 
-We still have to generate functions for regions with mapped variables and clause parameters as arguments and local declarations to bring variables into scope as mentioned [above](#Analysing-and-Recording-the-Target-Code).
+We still have to generate functions for regions with mapped variables and clause parameters as arguments and local declarations to bring variables into scope as mentioned [above](##Analysing-and-Recording-the-Target-Code).
 
 !!! todo
     Redo array and pointer section.
