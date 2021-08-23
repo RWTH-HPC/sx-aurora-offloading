@@ -14,7 +14,7 @@ and `openmp/libomptarget/plugins*` directories respectively.
 The Aurora VE plugin (`openmp/libomptarget/plugins/ve`) is based on the generic x64 offloading plugin
 `generic-elf-64bit` (`openmp/libomptarget/plugins/generic-elf-64bit/`).
 The AVEO library is used to implement the plugin functions and NECs `libveosinfo` provides with `veo_node_info` additional information about the nodes.
-These are used to provide the number of present devices in the `__tgt_rtl_number_of_devices` plugin function.
+These are used to provide the number of present devices in the `#!c __tgt_rtl_number_of_devices` plugin function.
 The target image can be either linked dynamically as a normal shared library or as statically linked executable (ELF).
 
 ## Target Table
@@ -24,8 +24,8 @@ This table has entries for every target region and global variable in the form o
 !!! note
     The Table does not include functions marked by `#!c #pragma omp declare target`.
 
-The libomptarget plugin function `__tgt_rtl_load_binary` passes the target table of the host binary to the plugin and expects a target table with the host addresses of all the symbols in return.
-`veo_get_sym` is used to resolve all the symbols in the table.
+The libomptarget plugin function `#!c __tgt_rtl_load_binary` passes the target table of the host binary to the plugin and expects a target table with the host addresses of all the symbols in return.
+`#!c veo_get_sym` is used to resolve all the symbols in the table.
 
 To examine the target table of a host binary, the following command can be used:
 ``` shell

@@ -1,7 +1,7 @@
 # Source Transformation with `#!shell sotoc`
 
 The source transformation tool `#!shell sotoc` is now part of the [llvm-project](%%llvm%%)
-repository (under clang/tools/sotoc) and is build automatically with clang.
+repository (under `clang/tools/sotoc`) and is build automatically with clang.
 Please see [Building the Project](building.md) for build instructions.
 
 ## Overview

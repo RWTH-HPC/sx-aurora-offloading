@@ -45,4 +45,4 @@ nav:
   - Technical and Internal Documentation:
     # - Install Script: "internal/installation.md"
     - Design: "internal/design.md"
-    # - Target Code Generation: "internal/codegen.md"
+    - Target Code Generation: "internal/codegen.md"
