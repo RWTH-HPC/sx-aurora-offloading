@@ -8,6 +8,7 @@ test:
   script:
     - sed -i 's,%%url%%,https://hpc-projects.pages.git-ce.rwth-aachen.de/nec-rwth/sx-aurora-offloading,g' mkdocs.yml
     - sed -i 's,%%llvm%%,https://git-ce.rwth-aachen.de/hpc-projects/nec-rwth/llvm-project,g' mkdocs.yml
+    - sed -i 's,%%edit%%,https://git-ce.rwth-aachen.de/hpc-projects/nec-rwth/sx-aurora-offloading,g' mkdocs.yml
     - for i in docs/*.md; do sed -i 's,%%llvm%%,https://git-ce.rwth-aachen.de/hpc-projects/nec-rwth/llvm-project,g' $i; done
     - mkdocs build --strict --verbose --site-dir test
   artifacts:
@@ -21,6 +22,7 @@ pages:
   script:
     - sed -i 's,%%url%%,https://hpc-projects.pages.git-ce.rwth-aachen.de/nec-rwth/sx-aurora-offloading,g' mkdocs.yml
     - sed -i 's,%%llvm%%,https://git-ce.rwth-aachen.de/hpc-projects/nec-rwth/llvm-project,g' mkdocs.yml
+    - sed -i 's,%%edit%%,https://git-ce.rwth-aachen.de/hpc-projects/nec-rwth/sx-aurora-offloading,g' mkdocs.yml
     - for i in docs/*.md; do sed -i 's,%%llvm%%,https://git-ce.rwth-aachen.de/hpc-projects/nec-rwth/llvm-project,g' $i; done
     - mkdocs build --strict --verbose
   artifacts:

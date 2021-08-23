@@ -4,7 +4,7 @@ site_author: High Performance Computing at RWTH Aachen University
 site_url: %%url%%
 repo_url: %%llvm%%
 repo_name: "llvm-project"
-edit_uri: ""
+edit_uri: %%edit%%
 site_dir: public
 extra_css:
   - extra.css
