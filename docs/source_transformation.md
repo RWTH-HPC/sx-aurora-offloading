@@ -1,13 +1,13 @@
 # Source Transformation with `#!shell sotoc`
 
 The source transformation tool `#!shell sotoc` is now part of the [llvm-project](%%llvm%%)
-repository (under `clang/tools/sotoc`) and is build automatically with clang.
+repository (under `clang/tools/sotoc`) and is build automatically with Clang.
 Please see [Building the Project](building.md) for build instructions.
 
 ## Overview
 
 `#!shell sotoc` itself is invoked during compilation by the wrapper tool (see [Build Wrapper](build_wrapper.md)),
-which itself is called by the clang driver instead of the actual target compiler.
+which itself is called by the Clang driver instead of the actual target compiler.
 `#!shell sotoc` itself only needs to be invoked directly during development and testing.
 
 The tool can be invoked (both by the wrapper tools and during testing) by the following command line:
@@ -16,7 +16,7 @@ The tool can be invoked (both by the wrapper tools and during testing) by the fo
 sotoc input.c -- <clang command line>
 ```
 
-Where `<clang command line>` contains all command line options that clang uses to compile the target code.
+Where `<clang command line>` contains all command line options that Clang uses to compile the target code.
 This has, at least, to include -fopenmp but **does not include** the -fopenmp-targets option (passing the -fopenmp-targets option will result in an error).
 
 When invoked, `#!shell sotoc` searches for all variables, function and type declarations in the input file that are either annotated by a directive `#!c #pragma omp declare target`,

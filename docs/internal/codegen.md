@@ -40,14 +40,14 @@ The target code is thereby transformed into a function with the mapped variables
 
 ## Extracting Target Code from the AST
 
-The clang AST of a source file can be viewed using the following command:
+The Clang AST of a source file can be viewed using the following command:
 
 ``` shell
-clang -Xclang -ast-dump -fsyntax-only undeclared.c -fopenmp
+Clang -Xclang -ast-dump -fsyntax-only undeclared.c -fopenmp
 ```
 
 !!! info
-    Without the `-fopenmp` flag clang ignores `#!c #pragma omp`.
+    Without the `-fopenmp` flag Clang ignores `#!c #pragma omp`.
 
 Target regions are seperate statements in the AST and functions and variables declared with `#!c #pragma omp declare target` get a special attribute added to their AST node.
 The `FindTargetCodeVisitor` in `Visitors.{h,cpp}` is used for that.
@@ -89,7 +89,7 @@ Parameters to clauses are also transferred as function arguments of the target f
 
 An Object of the `TargetCode` class, serves as a collection of `TargetCodeFragment`s and generates the code.
 When adding code fragments, `TargetCode` sorts them according to their position in the original source file.
-We try to generate as little code as possible ourselves and let clangs `PrettyPrinter` do most of the work, like functions and global variables.
+We try to generate as little code as possible ourselves and let Clangs `PrettyPrinter` do most of the work, like functions and global variables.
 
 !!! bug
     Clangs `PrettyPrinter` is designed for compiler diagnostics and can not do e.g. anonymous `#!c struct`s and `#!c enum`s.

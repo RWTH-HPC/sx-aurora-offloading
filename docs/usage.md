@@ -42,7 +42,7 @@ set at run time by full path.
   `ncc` compiler can be configured with CMake at build time and defaults to the
   standard `ncc` install location.
 - A target compiler can also be set with a full path using the syntax
-  `--fopenmp-nec-compiler=path:$PATH_TO_COMPILER`. If this is a clang
+  `--fopenmp-nec-compiler=path:$PATH_TO_COMPILER`. If this is a Clang
   compiler you may also need to manually pass the compiler target to it, for
   example with `-Xopenmp-target "--target=ve-linux"`. This is NOT necessary
   when using one of the compiler presets above.

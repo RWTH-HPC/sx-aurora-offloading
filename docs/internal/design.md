@@ -33,7 +33,7 @@ objdump -s -j omp_offloading_entries a.out
 ```
 
 ## Clang integration
-The compilation pipeline is scheduled by the clang driver (`lang/lib/Driver/`).
+The compilation pipeline is scheduled by the Clang driver (`lang/lib/Driver/`).
 The toolchains for the different architectures can be found in `clang/lib/Driver/ToolChains`.
 For the offloading pipeline, additional compile and link jobs are added to the usual compilation pipeline. Those will produce the target image.
 Afterwards the `clang-offload-wrapper` is used to wrap the image into the LLVM bitcode file, so it can be linked into the host binary.
@@ -44,7 +44,7 @@ Afterwards the `clang-offload-wrapper` is used to wrap the image into the LLVM b
 The Aurora pipeline is defined in `clang/lib/Driver/ToolChains/NECAuroraOffload.{h,cpp}`, which, in the end, calls `#!shell ncc`.
 Some additional code is located in `clang/lib/Driver/Driver.cpp` and `clang/lib/Driver/Compilation.cpp`.
 
-Because `#!shell ncc` is the host compiler for the VE, the code received by clang has to be split up in the host and target sections. This is done with the source transformation tool `#!shell sotoc`.
+Because `#!shell ncc` is the host compiler for the VE, the code received by Clang has to be split up in the host and target sections. This is done with the source transformation tool `#!shell sotoc`.
 For that the toolchain calls `clang/tools/nec-aurora-build`.
 
 --8<-- "includes/abbreviations.md"

@@ -5,14 +5,13 @@ This page details, how to build all components for SX-Aurora offloading.
 This project now comes as a single [llvm-project](%%llvm%%) repository,
 forked from LLVM's upstream repository.
 All components can be checked out from a single source and built,
-closely following the [Clang build instructions](https://clang.llvm.org/get_started.html).
+closely following the [Clang build instructions](https://Clang.llvm.org/get_started.html).
 
 To build the project, first check out the [llvm-project](%%llvm%%) repository and
-switch to the aurora-offloading-prototype branch before configuring the project with CMake.
+switch to the `aurora-offloading-prototype` branch before configuring the project with CMake.
 
 ## Configure with CMake
-
-After checking out the aurora-offloading-prototype branch,
+After checking out the `aurora-offloading-prototype` branch,
 change the working directory to `llvm-project/llvm` and run CMake with, at least,
 the following CMake variables:
 
@@ -26,23 +25,20 @@ Additionally, make sure that:
 - `NECAURORA_TARGET_COMPILER_NCC` points to your installation of `ncc` (usually found under `/opt/nec/ve/bin`).
 
 ### Static Linking
-
 To be able to statically link the target image, please make sure that, additionally, the following CMake variables are set
 
-- `NECAURORA_LIBAVEOVE_STATIC`, pointing to libaveoVE.a
-- `NECAURORA_LIBURPCVE_STATIC`, pointing to liburpcVE_omp.a
-- `NECAURORA_LIBVEIO`, pointing to libveio.so
+- `NECAURORA_LIBAVEOVE_STATIC`, pointing to `libaveoVE.a`
+- `NECAURORA_LIBURPCVE_STATIC`, pointing to `liburpcVE_omp.a`
+- `NECAURORA_LIBVEIO`, pointing to `libveio.so`
 
 Usually these libraries are installed at `/opt/nec/ve/lib`.
 
 ### Enable Testing
-
 To enable the test suite for the source transformation, simply set `SOTOC_ENABLE_TESTS` to `ON`.
 
 The test suite uses the `llvm-lit` and `FileCheck` tool build together with the project and uses the project's Clang as test compiler.
 
 ## CMake Options
-
 - `NECAURORA_LIBELF_INCLUDE_DIR`
 Points to the include directory containing the headers for `libelf.so` (required for static linking).
 
@@ -59,7 +55,7 @@ Points to the include directory containing the headers for `libelf.so` (required
   Points to `libveio.so` (required for static linking).
 
 - `NECAURORA_TARGET_COMPILER_CLANG`
-  The path to the clang compiler used for target compilations with the option `-fopenmp-nec-compiler=clang`.
+  The path to the Clang compiler used for target compilations with the option `-fopenmp-nec-compiler=clang`.
 
 - `NECAURORA_TARGET_COMPILER_RVCLANG`
   The path to the target compiler used for target compilations with the option `-fopenmp-nec-compiler=rclang` preset.
