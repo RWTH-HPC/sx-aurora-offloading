@@ -64,11 +64,15 @@ those dependencies have to be resolved using the `DeclResolver` (in `clang/tools
 ## Analysing and Recording the Target Code
 
 Before target code can be generated, additional information about variable mappings have to be collected.
+
 - Private variables are not mapped.
   For those we have to create a declaration in the target region using the `FindPrivateVariablesVisitor`.
+
 - First-private variables (which is the default) are passed by value into the target region.
+
 - Variables mapped using `from` or `tofrom`, are passed by pointer.
   For `ncc` to process them, we bring the variable into scope by copying its pointee into a local variable and afterwards back.
+
 - Arrays are mapped as pointer.
   If only an array slice (e.g. `#!c map(to:array[10:])`) is mapped, we have to detect the bounds with the `FindArraySectionVisitor`
   and move the returned pointer (`#!c array[10]`) in the target region.
