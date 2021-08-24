@@ -26,14 +26,12 @@ The wrapper tool tries forwards all input arguments to the target compiler (exce
 The behaviour of the wrapper can be influenced by the following environment variables
 
 - `TMPDIR`, `TEMP`, `TMP`
-
   Like Clang, the wrapper tool checks each of these environment variables in that order,
   to find the place to store its temporary files (for the source transformation and the static linking symbol table).
   When none of these exist, it falls back to `/tmp`.
   When the environment variable `NECAURORA_KEEP_FILES_DIR` is set, the specified path is used instead.
 
 - `NECAURORA_KEEP_FILES_DIR`
-
   If this environment variable is set, the wrapper tools will store its temporary files in the specified directory and will **not** delete them after the tool is done.
 
 --8<-- "includes/abbreviations.md"
