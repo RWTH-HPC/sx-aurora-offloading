@@ -48,7 +48,7 @@ set at run time by full path.
   when using one of the compiler presets above.
 
 The path for the compiler presets can be configured with CMake at build time of
-the project with the `NECAURORA_TARGET_COMPILER` CMake flags.
+the project with the `NECAURORA_TARGET_COMPILER_`* CMake flags.
 The default preset can be configured with CMake at build time with the CMake
 flag `NECAURORA_DEFAULT_TARGET_OPTION` which defaults to `ncc`.
 
