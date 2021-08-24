@@ -22,7 +22,7 @@ To provide OpenMP offloading to SX-Aurora VE devices with Clang as host
 compiler, this project provides the following components:
 
 - A version of LLVM, modified so that Clang can recognize a new target
-  triple for the VE architecture (Whether or not Clang/LLVM is actually
+  triple for the VE architecture (Regardless of whether Clang/LLVM is actually
   used as target compiler).
 - A modified version of Clang that can invoke the projects source
   transformation tool and a target compiler for offloading. As part of

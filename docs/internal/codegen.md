@@ -42,7 +42,7 @@ The target code is thereby transformed into a function with the mapped variables
 The Clang AST of a source file can be viewed using the following command:
 
 ``` shell
-Clang -Xclang -ast-dump -fsyntax-only undeclared.c -fopenmp
+clang -Xclang -ast-dump -fsyntax-only undeclared.c -fopenmp
 ```
 
 !!! info
@@ -52,7 +52,7 @@ Target regions are separate statements in the AST and functions and variables de
 The `FindTargetCodeVisitor` in `Visitors.{h,cpp}` is used for that.
 
 !!! warning
-    This does not apply the type declarations and there is no guaranty that all functions used in the target region are declared in `#!c #pragma omp declare target`
+    This does not apply the type declarations and there is no guaranty that all functions used in the target region are declared in `#!c #pragma omp declare target`.
 
 To solve the issue we search all target regions, declared functions and variables to additional types, functions, and variables.
 This is done by the `DiscoverTypesInDeclVisitor` and `DiscoverFunctionsInDeclVisitor`.
@@ -69,7 +69,7 @@ Before target code can be generated, additional information about variable mappi
 - First-private variables (which is the default) are passed by value into the target region.
 
 - Variables mapped using `from` or `tofrom`, are passed by pointer.
-  For `ncc` to process them, we bring the variable into scope by copying its pointee into a local variable and afterwards back.
+  For `ncc` to process them, we bring the variable into scope by copying them into a local variable and afterwards back.
 
 - Arrays are mapped as pointer.
   If only an array slice (e.g., `#!c map(to:array[10:])`) is mapped, we have to detect the bounds with the `FindArraySectionVisitor`
@@ -78,7 +78,7 @@ Before target code can be generated, additional information about variable mappi
 
 To recognize the variable form we use the `TargetRegionVariable` class in `clang/tools/sotoc/TargetRegionVariable.{h,cpp}`.
 
-In addition, we have to rewrite the OpenMP pragma and add the appropriate clauses (`OmpPragma.{h,cpp}`).
+In addition, we have to rewrite the OpenMP pragma directive and add the appropriate clauses (`OmpPragma.{h,cpp}`).
 For example if a `#!c #pragma omp target parallel` is encountered, an additional `parallel` region has to be added.
 Some clauses are not supported by the reduced `#!c #pragma`. Those are filtered out or replaced.
 Parameters to clauses are also transferred as function arguments of the target function.

@@ -76,13 +76,13 @@ Points to the include directory containing the headers for `libelf.so` (required
   The `llvm-lit` executable required for testing.
 
 - `LIBOMPTARGET_DEP_LIBFFI_INCLUDE_DIR`
-  The include directory for a `libffi` installation (required for Run-On-Host).
+  The include-directory for a `libffi` installation (required for Run-On-Host).
 
 - `LIBOMPTARGET_DEP_LIBFFI_LIBRARIES`
   The path to a `libffi.so` (required for Run-On-Host).
 
 - `LIBOMPTARGET_DEP_VEO_INCLUDE_DIR`
-  The include directory for `ve_offload.h`.
+  The include-directory for `ve_offload.h`.
 
 - `LIBOMPTARGET_DEP_VEO_LIBRARIES`
   Path to `libveo.so`/`libaveo.so`.

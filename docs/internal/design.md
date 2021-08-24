@@ -9,7 +9,7 @@ Libomptarget and the plugins can be found in the [llvm repository](%%llvm%%) in 
 and `openmp/libomptarget/plugins*` directories respectively.
 
 !!! note
-    The plugin API is in `openmp/libomptarget/include/omptargetplugin.h`
+    The plugin API is in `openmp/libomptarget/include/omptargetplugin.h`.
 
 The Aurora VE plugin (`openmp/libomptarget/plugins/ve`) is based on the generic x64 offloading plugin
 `generic-elf-64bit` (`openmp/libomptarget/plugins/generic-elf-64bit/`).

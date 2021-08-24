@@ -10,7 +10,7 @@ For example:
 clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown input.c
 ```
 
-will apply source transformation for target regions and `declare target`
+Will apply source transformation for target regions and `declare target`
 functions in `input.c` and compile an offloading binary for the VE
 architecture from it using the target compiler (by default this is Clang).
 Clang embeds this binary into the host executable as it would any other
