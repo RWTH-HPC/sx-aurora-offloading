@@ -52,7 +52,7 @@ the project with the **NECAURORA*TARGET_COMPILER*\*** CMake flags.
 The default preset can be configured with CMake at build time with the CMake
 flag **NECAURORA_DEFAULT_TARGET_OPTION** which defaults to `ncc`.
 
-See the section [CMake Options in Building the Project](building.md##CMake-Options).
+See the section [CMake Options in Building the Project](building.md#CMake-Options).
 
 ## Passing Arguments to the Target Compiler
 **Not all** arguments from the host compilation are automatically converted or

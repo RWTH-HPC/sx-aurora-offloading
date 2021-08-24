@@ -37,28 +37,26 @@ Usually these libraries are installed at `/opt/nec/ve/lib`.
 
 ### Enable Testing
 
-To enable the test suite for the source transformation, simply:
+To enable the test suite for the source transformation, simply set **SOTOC_ENABLE_TESTS** to `ON`.
 
-- Set **SOTOC_ENABLE_TESTS** to `ON`.
-
-the test suite uses the `llvm-lit` and `FileCheck` tool build together with the project and uses the project's Clang as test compiler.
+The test suite uses the `llvm-lit` and `FileCheck` tool build together with the project and uses the project's Clang as test compiler.
 
 ## CMake Options
 
 - **NECAURORA_LIBELF_INCLUDE_DIR**
-Points to the include directory containing the headers for libelf (required for static linking).
+Points to the include directory containing the headers for `libelf.so` (required for static linking).
 
 - **NECAURORA_LIBELF_LIBRARIES**
-  Points to a libelf.so (required for static linking).
+  Points to a `libelf.so` (required for static linking).
 
 - **NECAURORA_LIBAVEOVE_STATIC**
-  Points to libaveoVE.a (required for static linking).
+  Points to `libaveoVE.a` (required for static linking).
 
 - **NECAURORA_LIBURPCVE_STATIC**
-  Points to liburpcVE_omp.a (required for static linking).
+  Points to `liburpcVE_omp.a` (required for static linking).
 
 - **NECAURORA_LIBVEIO**
-  Points to libveio.so (required for static linking).
+  Points to `libveio.so` (required for static linking).
 
 - **NECAURORA_TARGET_COMPILER_CLANG**
   The path to the clang compiler used for target compilations with the option `-fopenmp-nec-compiler=clang`.
@@ -73,24 +71,24 @@ Points to the include directory containing the headers for libelf (required for 
   The default option for `-fopenmp-nec-compiler=` (defaults to `ncc`).
 
 - **SOTOC_DEBUG_OUTPUT**
-  Enables debug output for sotoc (when the env-var `SOTOC_DEBUG=1` is set).
+  Enables debug output for `sotoc` (when the env-var `SOTOC_DEBUG=1` is set).
 
 - **SOTOC_ENABLE_TESTS**
-  Enables the test suite for sotoc (can be called with make check-sotoc).
+  Enables the test suite for `sotoc` (can be called with make `check-sotoc`).
 
 - **SOTOC_LLVM_LIT_EXECUTABLE**
-  The llvm-lit executable required for testing.
+  The `llvm-lit` executable required for testing.
 
 - **LIBOMPTARGET_DEP_LIBFFI_INCLUDE_DIR**
-  The include directory for a libffi installation (required for Run-On-Host).
+  The include directory for a `libffi` installation (required for Run-On-Host).
 
 - **LIBOMPTARGET_DEP_LIBFFI_LIBRARIES**
-  The path to a libffi.so (required for Run-On-Host).
+  The path to a `libffi.so` (required for Run-On-Host).
 
 - **LIBOMPTARGET_DEP_VEO_INCLUDE_DIR**
-  The include directory for ve_offload.h.
+  The include directory for `ve_offload.h`.
 
 - **LIBOMPTARGET_DEP_VEO_LIBRARIES**
-  Path to libveo.so/libaveo.so.
+  Path to `libveo.so`/`libaveo.so`.
 
 --8<-- "includes/abbreviations.md"
