@@ -39,7 +39,7 @@ For the offloading pipeline, additional compile and link jobs are added to the u
 Afterwards the `clang-offload-wrapper` is used to wrap the image into the LLVM bitcode file, so it can be linked into the host binary.
 
 !!! note
-    In case the user splits the compilation and linking (e.g. `#!shell clang -c`), the `clang-offload-bundler` is used to combine the files to one.
+    In case the user splits the compilation and linking (e.g., `#!shell clang -c`), the `clang-offload-bundler` is used to combine the files to one.
 
 The Aurora pipeline is defined in `clang/lib/Driver/ToolChains/NECAuroraOffload.{h,cpp}`, which, in the end, calls `#!shell ncc`.
 Some additional code is located in `clang/lib/Driver/Driver.cpp` and `clang/lib/Driver/Compilation.cpp`.

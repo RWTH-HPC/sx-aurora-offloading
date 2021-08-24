@@ -5,13 +5,13 @@ which helps to integrate the target compiler and the source transformation tool
 (see [Source Transformation](source_transformation.md)) and static linking into the build process of the Clang driver.
 
 When the Clang driver compiles a \*.c file for a target, it calls the wrapper tool instead of a compiler.
-The wrapper tool then applies the source transformation tool to the input .c file and saves the output in a temporary file.
+The wrapper tool then applies the source transformation tool to the input \*.c file and saves the output in a temporary file.
 Then the wrapper tool forwards the compiler arguments it got from the Clang driver to the real target compiler,
-substituting the real input .c file with the output of the source transformation.
+substituting the real input \*.c file with the output of the source transformation.
 
 When the Clang driver tries to statically link object files into a static target image (with `-Xlinker -fopenmp-static`),
 then the wrapper tool intercepts that call to the linker,
-creates a .c file with a symbol table required by the VEO API and constructs a correct command line to call `ncc` for static linking.
+creates a \*.c file with a symbol table required by the VEO API and constructs a correct command line to call `ncc` for static linking.
 
 In all other cases, the wrapper tool just passes on its command line to the target compiler.
 

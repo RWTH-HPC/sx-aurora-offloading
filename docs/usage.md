@@ -12,7 +12,7 @@ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown input.c
 
 will apply source transformation for target regions and `declare target`
 functions in `input.c` and compile an offloading binary for the VE
-architecture from it using the target compiler (by default this is clang).
+architecture from it using the target compiler (by default this is Clang).
 Clang embeds this binary into the host executable as it would any other
 offloading binary.
 
@@ -80,7 +80,7 @@ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target "-Xlink
 ```
 
 !!! danger
-    Static linking is currently experimental and the wrapper tool will not forward arguments to the linker from Clang.
+    Static linking is currently experimental, and the wrapper tool will not forward arguments to the linker from Clang.
 
 !!! warning
     Due to limitations with the VEO/AVEO API, target regions which are nested in a

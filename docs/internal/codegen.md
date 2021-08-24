@@ -48,15 +48,15 @@ Clang -Xclang -ast-dump -fsyntax-only undeclared.c -fopenmp
 !!! info
     Without the `-fopenmp` flag Clang ignores `#!c #pragma omp`.
 
-Target regions are seperate statements in the AST and functions and variables declared with `#!c #pragma omp declare target` get a special attribute added to their AST node.
+Target regions are separate statements in the AST and functions and variables declared with `#!c #pragma omp declare target` get a special attribute added to their AST node.
 The `FindTargetCodeVisitor` in `Visitors.{h,cpp}` is used for that.
 
 !!! warning
     This does not apply the type declarations and there is no guaranty that all functions used in the target region are declared in `#!c #pragma omp declare target`
 
-To solve the issue we search all target regions, declared functions and variables to additional types, functions and variables.
+To solve the issue we search all target regions, declared functions and variables to additional types, functions, and variables.
 This is done by the `DiscoverTypesInDeclVisitor` and `DiscoverFunctionsInDeclVisitor`.
-As types can be derived from other types (e.g. `#!c struct`s or `#!c typedef`-chains) and
+As types can be derived from other types (e.g., `#!c struct`s or `#!c typedef`-chains) and
 functions can depend on other functions and additional types,
 those dependencies have to be resolved using the `DeclResolver` (in `clang/tools/sotoc/DeclResolver.{h,cpp}`).
 
@@ -72,14 +72,14 @@ Before target code can be generated, additional information about variable mappi
   For `ncc` to process them, we bring the variable into scope by copying its pointee into a local variable and afterwards back.
 
 - Arrays are mapped as pointer.
-  If only an array slice (e.g. `#!c map(to:array[10:])`) is mapped, we have to detect the bounds with the `FindArraySectionVisitor`
+  If only an array slice (e.g., `#!c map(to:array[10:])`) is mapped, we have to detect the bounds with the `FindArraySectionVisitor`
   and move the returned pointer (`#!c array[10]`) in the target region.
-  Multi-dimensional arrays have to be cast so they can be accessed using the `#!c array[x]` notation.
+  Multi-dimensional arrays have to be cast, so they can be accessed using the `#!c array[x]` notation.
 
 To recognize the variable form we use the `TargetRegionVariable` class in `clang/tools/sotoc/TargetRegionVariable.{h,cpp}`.
 
 In addition, we have to rewrite the OpenMP pragma and add the appropriate clauses (`OmpPragma.{h,cpp}`).
-For example if a `#!c #pragma omp target parallel` is encounted, an additional `parallel` region has to be added.
+For example if a `#!c #pragma omp target parallel` is encountered, an additional `parallel` region has to be added.
 Some clauses are not supported by the reduced `#!c #pragma`. Those are filtered out or replaced.
 Parameters to clauses are also transferred as function arguments of the target function.
 
@@ -89,7 +89,7 @@ When adding code fragments, `TargetCode` sorts them according to their position 
 We try to generate as little code as possible ourselves and let Clangs `PrettyPrinter` do most of the work, like functions and global variables.
 
 !!! bug
-    Clangs `PrettyPrinter` is designed for compiler diagnostics and can not do e.g. anonymous `#!c struct`s and `#!c enum`s.
+    Clangs `PrettyPrinter` is designed for compiler diagnostics and can not do e.g., anonymous `#!c struct`s and `#!c enum`s.
 
 !!! note
     We extended the `PrettyPrinter` to handle `Decl`s.
