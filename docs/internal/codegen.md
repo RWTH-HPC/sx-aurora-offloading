@@ -46,7 +46,7 @@ The clang AST of a source file can be viewed using the following command:
 clang -Xclang -ast-dump -fsyntax-only undeclared.c -fopenmp
 ```
 
-!!! note
+!!! info
     Without the `-fopenmp` flag clang ignores `#!c #pragma omp`.
 
 Target regions are seperate statements in the AST and functions and variables declared with `#!c #pragma omp declare target` get a special attribute added to their AST node.

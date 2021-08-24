@@ -82,14 +82,13 @@ For example:
 clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown -Xopenmp-target "-Xlinker -fopenmp-static" input.c -o program
 ```
 
-!!! warning
+!!! danger
     Static linking is currently experimental and the wrapper tool will not forward arguments to the linker from Clang.
 
-## Note on User Code and Performance
-
-Due to limitations with the VEO API, target regions which are nested in a
-parallel region are not executed in parallel but one after the other (with the
-order being determined by which thread in the parallel region calls
-libomptarget first, and thus non-deterministic).
+!!! warning
+    Due to limitations with the VEO API, target regions which are nested in a
+    parallel region are not executed in parallel but one after the other (with the
+    order being determined by which thread in the parallel region calls
+    libomptarget first, and thus non-deterministic).
 
 --8<-- "includes/abbreviations.md"

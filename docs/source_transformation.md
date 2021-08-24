@@ -26,7 +26,7 @@ It also searches for all target regions in the input file and transforms them in
 so the region's code can be called independently of its original context.
 During this transformation, sotoc generates function arguments for all variables captured by the region and generates code to copy those variables into the scope of the new function.
 
-!!! note
+!!! warning
     To work around limitations of the LLVM/Clang offloading infrastructure,
     global static variables which are copied into the output source file,
     have their `static`-keyword removed.

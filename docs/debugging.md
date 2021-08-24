@@ -5,6 +5,9 @@ For debugging purposes NEC provides a number of helpful tools.
 ## Libomptarget
 If the debug-version of libomptarget was build, `LIBOMPTARGET_DEBUG=1` can be used to show additional debugging information at runtime.
 
+!!! tip
+    Use `LIBOMPTARGET_DEBUG=4` to dump host-target pointer mappings.
+
 ## Helpers
 ### NEC_TARGET_DELAY
 
