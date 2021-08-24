@@ -39,7 +39,6 @@ void __omp_offloading_38_272a6c6b_main_l7(int *__sotoc_var_x, int y, int z)
 The target code is thereby transformed into a function with the mapped variables as arguments.
 
 ## Extracting Target Code from the AST
-
 The Clang AST of a source file can be viewed using the following command:
 
 ``` shell
@@ -62,7 +61,6 @@ functions can depend on other functions and additional types,
 those dependencies have to be resolved using the `DeclResolver` (in `clang/tools/sotoc/DeclResolver.{h,cpp}`).
 
 ## Analysing and Recording the Target Code
-
 Before target code can be generated, additional information about variable mappings have to be collected.
 
 - Private variables are not mapped.
@@ -86,7 +84,6 @@ Some clauses are not supported by the reduced `#!c #pragma`. Those are filtered 
 Parameters to clauses are also transferred as function arguments of the target function.
 
 ## Code Generation
-
 An Object of the `TargetCode` class, serves as a collection of `TargetCodeFragment`s and generates the code.
 When adding code fragments, `TargetCode` sorts them according to their position in the original source file.
 We try to generate as little code as possible ourselves and let Clangs `PrettyPrinter` do most of the work, like functions and global variables.

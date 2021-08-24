@@ -8,7 +8,6 @@ project can work with NEC's `ncc` compiler or with a Clang compiler which
 supports VE as a target for LLVM.
 
 ## Usage
-
 To compile a source file which contains target code for the VE
 architecture with `ncc` as target compiler, compile the source code with
 this project's Clang and set the OpenMP target triple to
@@ -19,7 +18,6 @@ clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown input.c
 ```
 
 ## Overview
-
 To provide OpenMP offloading to SX-Aurora VE devices with Clang as host
 compiler, this project provides the following components:
 
