@@ -8,9 +8,11 @@ If the debug-version of libomptarget was build, `LIBOMPTARGET_DEBUG=1` can be us
 !!! tip
     Use `LIBOMPTARGET_DEBUG=4` to dump host-target pointer mappings.
 
+## log4crc
+See (Debugging with log4crc)[https://sx-aurora.github.io/posts/Debugging-with-log4crc/] by Erich Focht
+
 ## Helpers
 ### NEC_TARGET_DELAY
-
 To be able to attach a debugger to the target code more easily the `NEC_TARGET_DELAY` environment variable is provided.
 When compiling an application with `NEC_TARGET_DELAY`, code is injected into the target executable,
 which, at runtime, applies the value of this variable to the C sleep function,
