@@ -38,8 +38,8 @@ markdown_extensions:
   - pymdownx.details
 plugins:
   - search
-  - macros
   - git-revision-date
+  - macros
 nav:
   - Introduction: "index.md"
   - Installation: "install.md"
