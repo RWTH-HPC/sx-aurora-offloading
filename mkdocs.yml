@@ -3,7 +3,7 @@ copyright: © 2021 High Performance Computing at RWTH Aachen University
 site_author: High Performance Computing at RWTH Aachen University
 site_url: %%url%%
 repo_url: %%llvm%%
-repo_name: "llvm-project"
+# repo_name: "llvm-project"
 edit_uri: %%edit%%
 site_dir: public
 extra_css:
