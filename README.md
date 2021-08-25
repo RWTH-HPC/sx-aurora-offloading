@@ -23,6 +23,20 @@ nav:
 
 After pushing the changes to git the documentation page will be automatically deployed.
 
+## How to update variables (e.g., version numbers etc.)?
+Version numbers and such should be defined as variables (macros).
+This can be done in `mkdocs.yml` in:
+
+``` yaml
+extra:
+  link:
+    llvm: %%llvm%%
+  version:
+    rpm: 1.8.0
+```
+
+In the documents variables are inserted by adding e.g., `{{ link.llvm }}` or `{{ version.rpm }}`.
+
 ## Special syntax
 ### Admonitions
 Admonitions are coloured blocks of text:
