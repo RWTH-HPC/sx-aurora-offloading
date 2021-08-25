@@ -17,6 +17,8 @@ The AVEO library is used to implement the plugin functions and NECs `libveosinfo
 These are used to provide the number of present devices in the `#!c __tgt_rtl_number_of_devices` plugin function.
 The target image can be either linked dynamically as a normal shared library or as statically linked executable (ELF).
 
+![Libomptarget](libomptarget-crop.png)
+
 ## Target Table
 In addition to the *target image*, a *target table* is inserted by the compiler into the host-binary.
 This table has entries for every target region and global variable in the form of an array of `#!c struct __tgt_offload_entry` (`openmp/libomptarget/include/omptarget.h`).
@@ -46,5 +48,7 @@ Some additional code is located in `clang/lib/Driver/Driver.cpp` and `clang/lib/
 
 Because `#!shell ncc` is the host compiler for the VE, the code received by Clang has to be split up in the host and target sections. This is done with the source transformation tool `#!shell sotoc`.
 For that the toolchain calls `clang/tools/nec-aurora-build`.
+
+![Toolchain](toolchain-crop.png)
 
 --8<-- "includes/abbreviations.md"
