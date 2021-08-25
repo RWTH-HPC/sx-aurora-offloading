@@ -3,7 +3,7 @@
 This page details, how to install or build all components for SX-Aurora offloading.
 
 ## Installing the Package
-NEC provides LLVM including our OpenMP offloading implementation as package in a Yum repository.
+NEC provides LLVM including our OpenMP offloading implementation as package in a YUM repository.
 
 === "Install from RPM"
     1. Download `llvm-ve-rv-1.8.0-1.8.0-1.x86_64.rpm`
@@ -15,7 +15,7 @@ NEC provides LLVM including our OpenMP offloading implementation as package in a
       sudo yum install ./llvm-ve-rv-1.8.0-1.8.0-1.x86_64.rpm
       ```
 
-=== "Install from Repo"
+=== "Install from YUM Repository"
     1. Add the `https://sx-aurora.com/repos/llvm/x86_64/` yum repository to your `/etc/yum.repo.d` (consult [How to add a Yum repository](https://www.redhat.com/sysadmin/add-yum-repository#manually-set-up-a-respository) by Red Hat)
     2. Install `llvm-ve-rv-1.8.0`
       ``` shell
