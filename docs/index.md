@@ -38,6 +38,6 @@ compiler, this project provides the following components:
   runtime using NEC's AVEO API.
 
 All these components are provided within a single
-[llvm-project](%%llvm%%) repository.
+[llvm-project]({{ link.llvm }}) repository.
 
 --8<-- "includes/abbreviations.md"

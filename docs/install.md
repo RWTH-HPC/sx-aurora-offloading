@@ -6,29 +6,29 @@ This page details, how to install or build all components for SX-Aurora offloadi
 NEC provides LLVM including our OpenMP offloading implementation as package in a YUM repository.
 
 === "Install from RPM"
-    1. Download `llvm-ve-rv-1.8.0-1.8.0-1.x86_64.rpm`
+    1. Download `llvm-ve-rv-{{ version.rpm }}-{{ version.rpm }}-1.x86_64.rpm`
       ``` shell
-      wget https://sx-aurora.com/repos/llvm/x86_64/llvm-ve-rv-1.8.0-1.8.0-1.x86_64.rpm
+      wget https://sx-aurora.com/repos/llvm/x86_64/llvm-ve-rv-{{ version.rpm }}-{{ version.rpm }}-1.x86_64.rpm
       ```
     2. Install RPM
       ``` shell
-      sudo yum install ./llvm-ve-rv-1.8.0-1.8.0-1.x86_64.rpm
+      sudo yum install ./llvm-ve-rv-{{ version.rpm }}-{{ version.rpm }}-1.x86_64.rpm
       ```
 
 === "Install from YUM Repository"
     1. Add the `https://sx-aurora.com/repos/llvm/x86_64/` yum repository to your `/etc/yum.repo.d` (consult [How to add a Yum repository](https://www.redhat.com/sysadmin/add-yum-repository#manually-set-up-a-respository) by Red Hat)
-    2. Install `llvm-ve-rv-1.8.0`
+    2. Install `llvm-ve-rv-{{ version.rpm }}`
       ``` shell
-      sudo yum install llvm-ve-rv-1.8.0
+      sudo yum install llvm-ve-rv-{{ version.rpm }}
       ```
 
 ## Building the Project
-This project now comes as a single [llvm-project](%%llvm%%) repository,
+This project now comes as a single [llvm-project]({{ link.llvm }}) repository,
 forked from LLVM's upstream repository.
 All components can be checked out from a single source and built,
 closely following the [Clang build instructions](https://Clang.llvm.org/get_started.html).
 
-To build the project, first check out the [llvm-project](%%llvm%%) repository and
+To build the project, first check out the [llvm-project]({{ link.llvm }}) repository and
 switch to the `aurora-offloading-prototype` branch before configuring the project with CMake.
 
 ### Configure with CMake

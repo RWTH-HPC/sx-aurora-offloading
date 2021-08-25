@@ -38,6 +38,7 @@ markdown_extensions:
   - pymdownx.details
 plugins:
   - search
+  - macros
   - git-revision-date
 nav:
   - Introduction: "index.md"
@@ -51,3 +52,8 @@ nav:
     - Design: "internal/design.md"
     - Target Code Generation: "internal/codegen.md"
   - Publications: "publications.md"
+extra:
+  link:
+    llvm: %%llvm%%
+  version:
+    rpm: 1.8.0

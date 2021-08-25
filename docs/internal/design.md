@@ -5,7 +5,7 @@
 
 ## Libomptarget
 Libomptarget provides the offloading implementation for the target devices via plugins.
-Libomptarget and the plugins can be found in the [llvm repository](%%llvm%%) in the `openmp/libomptarget`
+Libomptarget and the plugins can be found in the [llvm repository]({{ link.llvm }}) in the `openmp/libomptarget`
 and `openmp/libomptarget/plugins*` directories respectively.
 
 !!! note
