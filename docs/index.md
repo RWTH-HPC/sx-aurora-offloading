@@ -17,6 +17,8 @@ this project's Clang and set the OpenMP target triple to
 clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown input.c
 ```
 
+More information can be found in the [Usage](usage.md) section.
+
 ## Overview
 To provide OpenMP offloading to SX-Aurora VE devices with Clang as host
 compiler, this project provides the following components:

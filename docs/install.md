@@ -1,7 +1,14 @@
-# Building the Project
+# Installation
 
-This page details, how to build all components for SX-Aurora offloading.
+This page details, how to install or build all components for SX-Aurora offloading.
 
+## Installing the Package
+NEC provides LLVM including our OpenMP offloading implementation as package in a Yum repository.
+
+1. Add the `https://sx-aurora.com/repos/llvm/x86_64/` yum repository to your `/etc/yum.repo.d` (consult [How to add a Yum repository](https://www.redhat.com/sysadmin/add-yum-repository#manually-set-up-a-respository) by Red Hat)
+2. Install `llvm-ve-rv-1.8.0-1.8.0-1.x86_64.rpm`
+
+## Building the Project
 This project now comes as a single [llvm-project](%%llvm%%) repository,
 forked from LLVM's upstream repository.
 All components can be checked out from a single source and built,
@@ -10,7 +17,7 @@ closely following the [Clang build instructions](https://Clang.llvm.org/get_star
 To build the project, first check out the [llvm-project](%%llvm%%) repository and
 switch to the `aurora-offloading-prototype` branch before configuring the project with CMake.
 
-## Configure with CMake
+### Configure with CMake
 After checking out the `aurora-offloading-prototype` branch,
 change the working directory to `llvm-project/llvm` and run CMake with, at least,
 the following CMake variables:
@@ -24,7 +31,7 @@ Additionally, make sure that:
 - `LIBOMPTARGET_DEP_VEOSINFO_LIBRARIES` Points to an installation of `libveosinfo.so` (usually found under `/opt/nec/ve/veos/lib64/`)
 - `NECAURORA_TARGET_COMPILER_NCC` points to your installation of `ncc` (usually found under `/opt/nec/ve/bin`).
 
-### Static Linking
+#### Static Linking
 To be able to statically link the target image, please make sure that, additionally, the following CMake variables are set
 
 - `NECAURORA_LIBAVEOVE_STATIC`, pointing to `libaveoVE.a`
@@ -33,12 +40,12 @@ To be able to statically link the target image, please make sure that, additiona
 
 Usually these libraries are installed at `/opt/nec/ve/lib`.
 
-### Enable Testing
+#### Enable Testing
 To enable the test suite for the source transformation, simply set `SOTOC_ENABLE_TESTS` to `ON`.
 
 The test suite uses the `llvm-lit` and `FileCheck` tool build together with the project and uses the project's Clang as test compiler.
 
-## CMake Options
+### CMake Options
 - `NECAURORA_LIBELF_INCLUDE_DIR`
 Points to the include directory containing the headers for `libelf.so` (required for static linking).
 

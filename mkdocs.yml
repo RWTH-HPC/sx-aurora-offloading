@@ -41,13 +41,13 @@ plugins:
   - git-revision-date
 nav:
   - Introduction: "index.md"
-  - Building the Project: "building.md"
-  - Build Wrapper: "build_wrapper.md"
-  - Source Transformation: "source_transformation.md"
+  - Installation: "install.md"
   - Usage: "usage.md"
   - Debugging: "debugging.md"
+  - Source Transformation: "source_transformation.md"
+  - Build Wrapper: "build_wrapper.md"
   - Technical and Internal Documentation:
-    - Install Script: "internal/installation.md"
+    - Install Helpers: "internal/install_helpers.md"
     - Design: "internal/design.md"
     - Target Code Generation: "internal/codegen.md"
   - Publications: "publications.md"

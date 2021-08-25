@@ -7,4 +7,21 @@
 ??? cite
     Cramer T., Römmer M., Kosmynin B., Focht E., Müller M.S. (2020) OpenMP Target Device Offloading for the SX-Aurora TSUBASA Vector Engine. In: Wyrzykowski R., Deelman E., Dongarra J., Karczewski K. (eds) Parallel Processing and Applied Mathematics. PPAM 2019. Lecture Notes in Computer Science, vol 12043. Springer, Cham. https://doi.org/10.1007/978-3-030-43229-4_21
 
+??? cite "BibTeX"
+    ``` bibtex
+    @inproceedings{ref:Cramer2019,
+    title        = {{O}pen{MP} {T}arget {D}evice {O}ffloading for the {SX}-{A}urora {TSUBASA} {V}ector {E}ngine},
+    author       = {Cramer, Tim and Römmer, Manoel and Kosmynin, Boris and Focht, Erich and Müller, Matthias S.},
+    year         = 2020,
+    booktitle    = {Parallel Processing and Applied Mathematics : 13th International Conference, PPAM 2019, Bialystok, Poland, September 8-11, 2019, Revised Selected Papers, edited by Roman Wyrzykowski, Ewa Deelman, Jack Dongarra, Konrad Karczewski},
+    publisher    = {Springer International Publishing [2020.] ; Cham : Imprint:	Springer [2020.]},
+    address      = {Cham},
+    series       = {Theoretical Computer Science and General Issues},
+    volume       = 12043,
+    pages        = {237--249},
+    reportid     = {RWTH-2020-04830},
+    comment      = {Parallel Processing and Applied Mathematics : 13th International Conference, PPAM 2019, Bialystok, Poland, September 8-11, 2019, Revised Selected Papers, Part I / edited by Roman Wyrzykowski, Ewa Deelman, Jack Dongarra, Konrad Karczewski},
+    organization = {13th International Conference on Parallel Processing and Applied Mathematics}
+    }
+    ```
 --8<-- "includes/abbreviations.md"

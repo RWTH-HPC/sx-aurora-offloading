@@ -2,7 +2,7 @@
 
 The source transformation tool `sotoc` is now part of the [llvm-project](%%llvm%%)
 repository (under `clang/tools/sotoc`) and is build automatically with Clang.
-Please see [Building the Project](building.md) for build instructions.
+Please see [Installation](install.md) for installation or build instructions.
 
 ## Overview
 `sotoc` itself is invoked during compilation by the wrapper tool (see [Build Wrapper](build_wrapper.md)),
