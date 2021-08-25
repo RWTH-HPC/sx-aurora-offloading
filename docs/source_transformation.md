@@ -33,7 +33,7 @@ During this transformation, `sotoc` generates function arguments for all variabl
 
 !!! example
     === "Original Code"
-        ``` c
+        ``` c linenums="1"
         # pragma omp declare target
         int n = 10240;
         # pragma omp end declare target
@@ -48,7 +48,7 @@ During this transformation, `sotoc` generates function arguments for all variabl
         }
         ```
     === "Transformed Code"
-        ``` c
+        ``` c linenums="1"
         int n = 10240;
         void __omp_ofld_b73b_saxpy_l4 (int n, float *y, float *__sotoc_var_a, float *x) {
             float a = *__sotoc_var_a;
