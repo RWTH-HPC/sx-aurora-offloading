@@ -31,6 +31,35 @@ During this transformation, `sotoc` generates function arguments for all variabl
     have their `static`-keyword removed.
     This will probably break some code, but there is currently no better workaround available.
 
+!!! example
+    === "Original Code"
+        ``` c
+        # pragma omp declare target
+        int n = 10240;
+        # pragma omp end declare target
+        void saxpy () {
+            float a = 42.0f; float b = 23.0f; float *x, *y;
+            // Allocate and init x , y ...
+            # pragma omp target map (to: x[0:n], a) map(tofrom: y[0:n])
+            # pragma omp parallel for
+            for (int i = 0; i < n; ++i) {
+                y[i] = a * x[i] + y[i];
+            }
+        }
+        ```
+    === "Transformed Code"
+        ``` c
+        int n = 10240;
+        void __omp_ofld_b73b_saxpy_l4 (int n, float *y, float *__sotoc_var_a, float *x) {
+            float a = *__sotoc_var_a;
+            # pragma omp parallel for
+                for (int i = 0; i < n; ++i) {
+                    y[i] = a * x[i] + y[i];
+                }
+            *__sotoc_var_a = a;
+        }
+        ```
+
 ## Testing
 The tool comes with a regression test suite using `llvm-lit`.
 If the CMake option `SOTOC_ENABLE_TESTS` is set to `ON`, The tests can be run with:
