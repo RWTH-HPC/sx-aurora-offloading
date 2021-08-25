@@ -37,6 +37,9 @@ extra:
 
 In the documents variables are inserted by adding e.g., `{{ link.llvm }}` or `{{ version.rpm }}`.
 
+- **Attention**: `{% raw %}` and `{% endraw %}` have to be used to encapsulate segments,
+ in which no replacements should be performed. (e.g., Code blocks with `{{}}` in one line)
+
 ## Special syntax
 ### Admonitions
 Admonitions are coloured blocks of text:
