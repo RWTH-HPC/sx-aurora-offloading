@@ -3,5 +3,6 @@
   "indexInFolders": true,
   "linkSuffix": ".md",
   "mainPageInRoot": true,
-  "mainPageName": "index"
+  "mainPageName": "index",
+  "filesFilter": [".cpp", ".c", ".hpp", ".h"]
 }

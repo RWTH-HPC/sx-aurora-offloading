@@ -3,7 +3,6 @@
 
 
 
-* **file [main.md](../Files/main_8md.md#file-main.md)** 
 * **dir [src](../Files/dir_68267d1309a1af8e8297ef4c3efbcdba.md#dir-src)** 
     * **file [src/Debug.h](../Files/Debug_8h.md#file-debug.h)** <br>This file defines a debug macro for sotoc. 
     * **file [src/DeclResolver.cpp](../Files/DeclResolver_8cpp.md#file-declresolver.cpp)** <br>This file implements the class [DeclResolver](../Classes/classDeclResolver.md). 
