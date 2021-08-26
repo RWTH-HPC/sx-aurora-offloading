@@ -40,6 +40,11 @@ plugins:
   - search
   - git-revision-date
   - macros
+  - doxygen:
+    packages:
+      - doxygen:
+          url: https://github.com/RWTH-HPC/llvm-project.git --branch aurora-offloading-prototype
+          config: clang/tools/sotoc/Doxyfile
 nav:
   - Introduction: "index.md"
   - Installation: "install.md"

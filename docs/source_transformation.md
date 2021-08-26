@@ -1,13 +1,13 @@
-# Source Transformation with `sotoc`
+# Source Transformation with sotoc
 
-The source transformation tool `sotoc` is now part of the [llvm-project]({{ link.llvm }})
+The source transformation tool sotoc is now part of the [llvm-project]({{ link.llvm }})
 repository (under `clang/tools/sotoc`) and is build automatically with Clang.
 Please see [Installation](install.md) for installation or build instructions.
 
 ## Overview
-`sotoc` itself is invoked during compilation by the wrapper tool (see [Build Wrapper](build_wrapper.md)),
+sotoc itself is invoked during compilation by the wrapper tool (see [Build Wrapper](build_wrapper.md)),
 which itself is called by the Clang driver instead of the actual target compiler.
-`sotoc` itself only needs to be invoked directly during development and testing.
+sotoc itself only needs to be invoked directly during development and testing.
 
 The tool can be invoked (both by the wrapper tools and during testing) by the following command line:
 
@@ -18,12 +18,12 @@ sotoc input.c -- <clang command line>
 Where `<clang command line>` contains all command line options that Clang uses to compile the target code.
 This has, at least, to include `-fopenmp` but **does not include** the `-fopenmp-targets` option (passing the `-fopenmp-targets` option will result in an error).
 
-When invoked, `sotoc` searches for all variables, function, and type declarations in the input file that are either annotated by a directive, `#!c #pragma omp declare target`,
+When invoked, sotoc searches for all variables, function, and type declarations in the input file that are either annotated by a directive, `#!c #pragma omp declare target`,
 or are referenced in a target region or another function required on the target.
 It then copies them into the output source file.
-`sotoc` also searches for all target regions in the input file and transforms them into functions,
+sotoc also searches for all target regions in the input file and transforms them into functions,
 so the region's code can be called independently of its original context.
-During this transformation, `sotoc` generates function arguments for all variables captured by the region and generates code to copy those variables into the scope of the new function.
+During this transformation, sotoc generates function arguments for all variables captured by the region and generates code to copy those variables into the scope of the new function.
 
 !!! warning
     To work around limitations of the LLVM/Clang offloading infrastructure,

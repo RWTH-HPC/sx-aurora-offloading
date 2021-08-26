@@ -88,10 +88,10 @@ Points to the include directory containing the headers for `libelf.so` (required
   The default option for `-fopenmp-nec-compiler=` (defaults to `ncc`).
 
 - `SOTOC_DEBUG_OUTPUT`
-  Enables debug output for `sotoc` (when the env-var `SOTOC_DEBUG=1` is set).
+  Enables debug output for sotoc (when the env-var `SOTOC_DEBUG=1` is set).
 
 - `SOTOC_ENABLE_TESTS`
-  Enables the test suite for `sotoc` (can be called with make `check-sotoc`).
+  Enables the test suite for sotoc (can be called with make `check-sotoc`).
 
 - `SOTOC_LLVM_LIT_EXECUTABLE`
   The `llvm-lit` executable required for testing.

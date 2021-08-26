@@ -1,5 +1,5 @@
 # SX-Aurora Offloading
-This repository contains the documentation for `sotoc` and the SX-Aurora TSUBASA OpenMP Offloading toolchain.
+This repository contains the documentation for sotoc and the SX-Aurora TSUBASA OpenMP Offloading toolchain.
 
 ## How to update the documentation?
 To update the existing text simply add your modifications to the corresponding MarkDown file in the `docs` directory.
