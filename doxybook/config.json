@@ -1,0 +1,8 @@
+{
+  "baseUrl": "",
+  "indexInFolders": false,
+  "linkSuffix": "/",
+  "mainPageInRoot": true,
+  "mainPageName": "index",
+  "foldersToGenerate": ["classes", "files"]
+}

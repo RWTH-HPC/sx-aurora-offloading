@@ -51,9 +51,13 @@ nav:
     - Install Helpers: "internal/install_helpers.md"
     - Design: "internal/design.md"
     - Target Code Generation: "internal/codegen.md"
+    - Doxygen:
+      - Classes: "internal/doxygen/index_classes.md"
+      - Files: "internal/doxygen/index_files.md"
   - Publications: "publications.md"
 extra:
   link:
     llvm: %%llvm%%
+    doxy: %%url%%/doxygen
   version:
     rpm: 1.8.0

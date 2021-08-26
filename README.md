@@ -40,6 +40,14 @@ In the documents variables are inserted by adding e.g., `{{ link.llvm }}` or `{{
 - **Attention**: `{% raw %}` and `{% endraw %}` have to be used to encapsulate segments,
  in which no replacements should be performed. (e.g., Code blocks with `{{}}` in one line)
 
+## How to add Doxygen?
+Adding Doxygen has to be done manually, using [doxybook2](https://github.com/matusnovak/doxybook2/).
+After downloading the software and building the Doxygen XML run:
+
+``` shell
+ ./doxybook2 --input doxygen/xml --output docs/internal/doxygen --config config.json --templates template
+```
+With the config and template folder are located in the doxybook directory.
 ## Special syntax
 ### Admonitions
 Admonitions are coloured blocks of text:
