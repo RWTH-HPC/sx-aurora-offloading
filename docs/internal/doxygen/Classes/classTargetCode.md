@@ -11,13 +11,13 @@ A collection of all code from the input file that needs to be copied to the targ
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[TargetCode](Classes/classTargetCode/#function-targetcode)**(clang::Rewriter & TargetCodeRewriter) |
-| bool | **[addCodeFragment](Classes/classTargetCode/#function-addcodefragment)**(std::shared_ptr< [TargetCodeFragment](Classes/classTargetCodeFragment/) > Frag, bool PushFront =false)<br>Add a piece of code from the input file to this collection.  |
-| bool | **[addCodeFragmentFront](Classes/classTargetCode/#function-addcodefragmentfront)**(std::shared_ptr< [TargetCodeFragment](Classes/classTargetCodeFragment/) > Fag)<br>See [addCodeFragment](Classes/classTargetCode/#function-addcodefragment).  |
-| void | **[generateCode](Classes/classTargetCode/#function-generatecode)**(llvm::raw_ostream & Out)<br>Generate target code from all fragments and system headers added to this collection.  |
-| TargetCodeFragmentDeque::const_iterator | **[getCodeFragmentsBegin](Classes/classTargetCode/#function-getcodefragmentsbegin)**()<br>Get an iterate over all code fragments in this collection.  |
-| TargetCodeFragmentDeque::const_iterator | **[getCodeFragmentsEnd](Classes/classTargetCode/#function-getcodefragmentsend)**()<br>See [getCodeFragmentsBegin](Classes/classTargetCode/#function-getcodefragmentsbegin).  |
-| void | **[addHeader](Classes/classTargetCode/#function-addheader)**(const std::string & Header)<br>Add a header file to be included by the target code.  |
+| | **[TargetCode](Classes/classTargetCode.md#function-targetcode)**(clang::Rewriter & TargetCodeRewriter) |
+| bool | **[addCodeFragment](Classes/classTargetCode.md#function-addcodefragment)**(std::shared_ptr< [TargetCodeFragment](Classes/classTargetCodeFragment.md) > Frag, bool PushFront =false)<br>Add a piece of code from the input file to this collection.  |
+| bool | **[addCodeFragmentFront](Classes/classTargetCode.md#function-addcodefragmentfront)**(std::shared_ptr< [TargetCodeFragment](Classes/classTargetCodeFragment.md) > Fag)<br>See [addCodeFragment](Classes/classTargetCode.md#function-addcodefragment).  |
+| void | **[generateCode](Classes/classTargetCode.md#function-generatecode)**(llvm::raw_ostream & Out)<br>Generate target code from all fragments and system headers added to this collection.  |
+| TargetCodeFragmentDeque::const_iterator | **[getCodeFragmentsBegin](Classes/classTargetCode.md#function-getcodefragmentsbegin)**()<br>Get an iterate over all code fragments in this collection.  |
+| TargetCodeFragmentDeque::const_iterator | **[getCodeFragmentsEnd](Classes/classTargetCode.md#function-getcodefragmentsend)**()<br>See [getCodeFragmentsBegin](Classes/classTargetCode.md#function-getcodefragmentsbegin).  |
+| void | **[addHeader](Classes/classTargetCode.md#function-addheader)**(const std::string & Header)<br>Add a header file to be included by the target code.  |
 
 ## Public Functions Documentation
 
@@ -52,7 +52,7 @@ bool addCodeFragmentFront(
 )
 ```
 
-See [addCodeFragment](Classes/classTargetCode/#function-addcodefragment). 
+See [addCodeFragment](Classes/classTargetCode.md#function-addcodefragment). 
 
 ### function generateCode
 
@@ -78,7 +78,7 @@ Get an iterate over all code fragments in this collection.
 inline TargetCodeFragmentDeque::const_iterator getCodeFragmentsEnd()
 ```
 
-See [getCodeFragmentsBegin](Classes/classTargetCode/#function-getcodefragmentsbegin). 
+See [getCodeFragmentsBegin](Classes/classTargetCode.md#function-getcodefragmentsbegin). 
 
 ### function addHeader
 

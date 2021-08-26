@@ -10,8 +10,8 @@ Inherits from ASTConsumer
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[TargetRegionTransformer](Classes/classTargetRegionTransformer/#function-targetregiontransformer)**([TargetCode](Classes/classTargetCode/) & Code, clang::Rewriter & TargetCodeRewriter) |
-| void | **[HandleTranslationUnit](Classes/classTargetRegionTransformer/#function-handletranslationunit)**(clang::ASTContext & Context) |
+| | **[TargetRegionTransformer](Classes/classTargetRegionTransformer.md#function-targetregiontransformer)**([TargetCode](Classes/classTargetCode.md) & Code, clang::Rewriter & TargetCodeRewriter) |
+| void | **[HandleTranslationUnit](Classes/classTargetRegionTransformer.md#function-handletranslationunit)**(clang::ASTContext & Context) |
 
 ## Public Functions Documentation
 

@@ -1,8 +1,5 @@
 # Target Code Generation
 
-!!! danger
-    This page is for internal and development use only.
-
 The general process to the target code generation is as follows:
 
 1. The code's AST is processed with `RecursiveASTVisitor`s (`clang/tools/sotoc/Visitors.{h,cpp}`)

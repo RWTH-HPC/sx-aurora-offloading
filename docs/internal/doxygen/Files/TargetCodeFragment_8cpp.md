@@ -1,21 +1,21 @@
 # src/TargetCodeFragment.cpp
 
-This file implements the classes [TargetCodeDecl](Classes/classTargetCodeDecl/) and [TargetCodeRegion](Classes/classTargetCodeRegion/). 
+This file implements the classes [TargetCodeDecl](Classes/classTargetCodeDecl.md) and [TargetCodeRegion](Classes/classTargetCodeRegion.md). 
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[TargetRegionPrinterHelper](Classes/classTargetRegionPrinterHelper/)**  |
+| class | **[TargetRegionPrinterHelper](Classes/classTargetRegionPrinterHelper.md)**  |
 
 ## Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| bool | **[hasRegionCompoundStmt](Files/TargetCodeFragment_8cpp/#function-hasregioncompoundstmt)**(const clang::Stmt * S) |
-| bool | **[hasRegionOMPStmt](Files/TargetCodeFragment_8cpp/#function-hasregionompstmt)**(const clang::Stmt * S) |
-| clang::SourceLocation | **[getOMPStmtSourceLocEnd](Files/TargetCodeFragment_8cpp/#function-getompstmtsourcelocend)**(const clang::Stmt * S) |
-| clang::SourceLocation | **[findPreviousToken](Files/TargetCodeFragment_8cpp/#function-findprevioustoken)**(clang::SourceLocation Loc, clang::SourceManager & SM, const clang::LangOptions & LO) |
+| bool | **[hasRegionCompoundStmt](Files/TargetCodeFragment_8cpp.md#function-hasregioncompoundstmt)**(const clang::Stmt * S) |
+| bool | **[hasRegionOMPStmt](Files/TargetCodeFragment_8cpp.md#function-hasregionompstmt)**(const clang::Stmt * S) |
+| clang::SourceLocation | **[getOMPStmtSourceLocEnd](Files/TargetCodeFragment_8cpp.md#function-getompstmtsourcelocend)**(const clang::Stmt * S) |
+| clang::SourceLocation | **[findPreviousToken](Files/TargetCodeFragment_8cpp.md#function-findprevioustoken)**(clang::SourceLocation Loc, clang::SourceManager & SM, const clang::LangOptions & LO) |
 
 
 ## Functions Documentation

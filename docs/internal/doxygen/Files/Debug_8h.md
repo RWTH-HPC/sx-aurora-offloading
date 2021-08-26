@@ -6,8 +6,8 @@ This file defines a debug macro for sotoc.
 
 |                | Name           |
 | -------------- | -------------- |
-|  | **[DEBUGP](Files/Debug_8h/#define-debugp)**(...)  |
-|  | **[DEBUGPDECL](Files/Debug_8h/#define-debugpdecl)**(...)  |
+|  | **[DEBUGP](Files/Debug_8h.md#define-debugp)**(...)  |
+|  | **[DEBUGPDECL](Files/Debug_8h.md#define-debugpdecl)**(...)  |
 
 
 

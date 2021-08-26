@@ -13,9 +13,9 @@ Inherits from clang::RecursiveASTVisitor< FindLoopStmtVisitor >
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[FindLoopStmtVisitor](Classes/classFindLoopStmtVisitor/#function-findloopstmtvisitor)**() |
-| bool | **[VisitStmt](Classes/classFindLoopStmtVisitor/#function-visitstmt)**(clang::Stmt * S) |
-| std::unordered_set< clang::VarDecl * > * | **[getVarSet](Classes/classFindLoopStmtVisitor/#function-getvarset)**() |
+| | **[FindLoopStmtVisitor](Classes/classFindLoopStmtVisitor.md#function-findloopstmtvisitor)**() |
+| bool | **[VisitStmt](Classes/classFindLoopStmtVisitor.md#function-visitstmt)**(clang::Stmt * S) |
+| std::unordered_set< clang::VarDecl * > * | **[getVarSet](Classes/classFindLoopStmtVisitor.md#function-getvarset)**() |
 
 ## Public Functions Documentation
 

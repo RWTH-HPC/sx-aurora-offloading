@@ -13,14 +13,14 @@ Inherits from clang::RecursiveASTVisitor< DiscoverFunctionsInDeclVisitor >
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[DiscoverFunctionsInDeclVisitor](Classes/classDiscoverFunctionsInDeclVisitor/#function-discoverfunctionsindeclvisitor)**([FunctionDeclResolver](Classes/classFunctionDeclResolver/) & Functions) |
-| bool | **[VisitExpr](Classes/classDiscoverFunctionsInDeclVisitor/#function-visitexpr)**(clang::Expr * E) |
+| | **[DiscoverFunctionsInDeclVisitor](Classes/classDiscoverFunctionsInDeclVisitor.md#function-discoverfunctionsindeclvisitor)**([FunctionDeclResolver](Classes/classFunctionDeclResolver.md) & Functions) |
+| bool | **[VisitExpr](Classes/classDiscoverFunctionsInDeclVisitor.md#function-visitexpr)**(clang::Expr * E) |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[__pad0__](Classes/classDiscoverFunctionsInDeclVisitor/#variable-__pad0__)**  |
+| | **[__pad0__](Classes/classDiscoverFunctionsInDeclVisitor.md#variable-__pad0__)**  |
 
 ## Detailed Description
 

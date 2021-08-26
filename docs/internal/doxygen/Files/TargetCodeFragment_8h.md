@@ -6,15 +6,15 @@
 
 | Name           |
 | -------------- |
-| **[clang](Namespaces/namespaceclang/)**  |
+| **[clang](Namespaces/namespaceclang.md)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[TargetCodeFragment](Classes/classTargetCodeFragment/)** <br>An abstract base class for all fragments of the original code (except header includes) that need to be copied to our generated source code.  |
-| class | **[TargetCodeRegion](Classes/classTargetCodeRegion/)** <br>Represents one target region.  |
-| class | **[TargetCodeDecl](Classes/classTargetCodeDecl/)** <br>This class represents a declaration, i.e.  |
+| class | **[TargetCodeFragment](Classes/classTargetCodeFragment.md)** <br>An abstract base class for all fragments of the original code (except header includes) that need to be copied to our generated source code.  |
+| class | **[TargetCodeRegion](Classes/classTargetCodeRegion.md)** <br>Represents one target region.  |
+| class | **[TargetCodeDecl](Classes/classTargetCodeDecl.md)** <br>This class represents a declaration, i.e.  |
 
 
 

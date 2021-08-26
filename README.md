@@ -45,7 +45,7 @@ Adding Doxygen has to be done manually, using [doxybook2](https://github.com/mat
 After downloading the software and building the Doxygen XML run:
 
 ``` shell
- ./doxybook2 --input doxygen/xml --output docs/internal/doxygen --config config.json --templates template
+ doxybook2 --input doxygen/xml --output docs/internal/doxygen/ --config doxybook/config.json --templates doxybook/template
 ```
 With the config and template folder are located in the doxybook directory.
 ## Special syntax

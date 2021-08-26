@@ -1,19 +1,19 @@
 # src/Visitors.cpp
 
-This file implements the classes [DiscoverTypesInDeclVisitor](Classes/classDiscoverTypesInDeclVisitor/) and [FindTargetCodeVisitor](Classes/classFindTargetCodeVisitor/). 
+This file implements the classes [DiscoverTypesInDeclVisitor](Classes/classDiscoverTypesInDeclVisitor.md) and [FindTargetCodeVisitor](Classes/classFindTargetCodeVisitor.md). 
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[CollectOMPClauseParamsVarsVisitor](Classes/classCollectOMPClauseParamsVarsVisitor/)**  |
-| class | **[CollectOMPClauseParamsVisitor](Classes/classCollectOMPClauseParamsVisitor/)**  |
+| class | **[CollectOMPClauseParamsVarsVisitor](Classes/classCollectOMPClauseParamsVarsVisitor.md)**  |
+| class | **[CollectOMPClauseParamsVisitor](Classes/classCollectOMPClauseParamsVisitor.md)**  |
 
 ## Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| bool | **[stmtNeedsSemicolon](Files/Visitors_8cpp/#function-stmtneedssemicolon)**(const clang::Stmt * S) |
+| bool | **[stmtNeedsSemicolon](Files/Visitors_8cpp.md#function-stmtneedssemicolon)**(const clang::Stmt * S) |
 
 
 ## Functions Documentation

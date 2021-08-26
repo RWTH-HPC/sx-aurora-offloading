@@ -1,8 +1,7 @@
 {
   "baseUrl": "",
-  "indexInFolders": false,
-  "linkSuffix": "/",
+  "indexInFolders": true,
+  "linkSuffix": ".md",
   "mainPageInRoot": true,
-  "mainPageName": "index",
-  "foldersToGenerate": ["classes", "files"]
+  "mainPageName": "index"
 }

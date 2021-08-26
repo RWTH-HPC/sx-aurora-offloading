@@ -11,31 +11,31 @@ Represents a variable captured by a target region.  [More...](#detailed-descript
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[shape_const_kind_iterator](Classes/classTargetRegionVariable_1_1shape__const__kind__iterator/)** <br>Iterator which acts as a filter over std::vector<TargetRegionVariableShape>::const_iterator (the base_iter) which only passes on [TargetRegionVariableShape](Classes/classTargetRegionVariableShape/) of the kind specified in [Kind]().  |
+| class | **[shape_const_kind_iterator](Classes/classTargetRegionVariable_1_1shape__const__kind__iterator.md)** <br>Iterator which acts as a filter over std::vector<TargetRegionVariableShape>::const_iterator (the base_iter) which only passes on [TargetRegionVariableShape](Classes/classTargetRegionVariableShape.md) of the kind specified in [Kind]().  |
 
 ## Public Types
 
 |                | Name           |
 | -------------- | -------------- |
-| using std::vector< [TargetRegionVariableShape](Classes/classTargetRegionVariableShape/) >::const_iterator | **[shape_const_iterator](Classes/classTargetRegionVariable/#using-shape_const_iterator)** <br>Iterator of all shapes of this variable.  |
-| using llvm::iterator_range< [shape_const_iterator](Classes/classTargetRegionVariable/#using-shape_const_iterator) > | **[shape_const_range](Classes/classTargetRegionVariable/#using-shape_const_range)** <br>Range over all shapes of this variable.  |
-| using llvm::iterator_range< [shape_const_kind_iterator](Classes/classTargetRegionVariable_1_1shape__const__kind__iterator/) > | **[shape_const_kind_range](Classes/classTargetRegionVariable/#using-shape_const_kind_range)** <br>Range over all shapes of a certain kind of this variable.  |
+| using std::vector< [TargetRegionVariableShape](Classes/classTargetRegionVariableShape.md) >::const_iterator | **[shape_const_iterator](Classes/classTargetRegionVariable.md#using-shape_const_iterator)** <br>Iterator of all shapes of this variable.  |
+| using llvm::iterator_range< [shape_const_iterator](Classes/classTargetRegionVariable.md#using-shape_const_iterator) > | **[shape_const_range](Classes/classTargetRegionVariable.md#using-shape_const_range)** <br>Range over all shapes of this variable.  |
+| using llvm::iterator_range< [shape_const_kind_iterator](Classes/classTargetRegionVariable_1_1shape__const__kind__iterator.md) > | **[shape_const_kind_range](Classes/classTargetRegionVariable.md#using-shape_const_kind_range)** <br>Range over all shapes of a certain kind of this variable.  |
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| llvm::StringRef | **[name](Classes/classTargetRegionVariable/#function-name)**() const<br>The name of the variable.  |
-| llvm::StringRef | **[baseTypeName](Classes/classTargetRegionVariable/#function-basetypename)**() const<br>The name of the base type (stripped of all qualifiers).  |
-| clang::VarDecl * | **[getDecl](Classes/classTargetRegionVariable/#function-getdecl)**() const<br>The Decl node of the variable.  |
-| bool | **[containsArray](Classes/classTargetRegionVariable/#function-containsarray)**() const<br>Whether this variable's type contains an array or not.  |
-| bool | **[containsPointer](Classes/classTargetRegionVariable/#function-containspointer)**() const<br>Whether this variable's type contains a pointer or not.  |
-| bool | **[passedByPointer](Classes/classTargetRegionVariable/#function-passedbypointer)**() const<br>Returns true if this variable is passed by pointer.  |
-| llvm::Optional< clang::Expr * > | **[arrayLowerBound](Classes/classTargetRegionVariable/#function-arraylowerbound)**() const<br>The lower bound of an array slice in the first dimension.  |
-| bool | **[operator==](Classes/classTargetRegionVariable/#function-operator==)**(const [TargetRegionVariable](Classes/classTargetRegionVariable/) & Other) const |
-| [shape_const_range](Classes/classTargetRegionVariable/#using-shape_const_range) | **[shapes](Classes/classTargetRegionVariable/#function-shapes)**() const<br>Gives a range over the shape of all dimensions.  |
-| [shape_const_kind_range](Classes/classTargetRegionVariable/#using-shape_const_kind_range) | **[variableArrayShapes](Classes/classTargetRegionVariable/#function-variablearrayshapes)**() const<br>Gives a range over those shape dimensions which are variable arrays.  |
-| | **[TargetRegionVariable](Classes/classTargetRegionVariable/#function-targetregionvariable)**(const clang::CapturedStmt::Capture * Capture, const std::map< clang::VarDecl *, clang::Expr * > & MappingLowerBounds) |
+| llvm::StringRef | **[name](Classes/classTargetRegionVariable.md#function-name)**() const<br>The name of the variable.  |
+| llvm::StringRef | **[baseTypeName](Classes/classTargetRegionVariable.md#function-basetypename)**() const<br>The name of the base type (stripped of all qualifiers).  |
+| clang::VarDecl * | **[getDecl](Classes/classTargetRegionVariable.md#function-getdecl)**() const<br>The Decl node of the variable.  |
+| bool | **[containsArray](Classes/classTargetRegionVariable.md#function-containsarray)**() const<br>Whether this variable's type contains an array or not.  |
+| bool | **[containsPointer](Classes/classTargetRegionVariable.md#function-containspointer)**() const<br>Whether this variable's type contains a pointer or not.  |
+| bool | **[passedByPointer](Classes/classTargetRegionVariable.md#function-passedbypointer)**() const<br>Returns true if this variable is passed by pointer.  |
+| llvm::Optional< clang::Expr * > | **[arrayLowerBound](Classes/classTargetRegionVariable.md#function-arraylowerbound)**() const<br>The lower bound of an array slice in the first dimension.  |
+| bool | **[operator==](Classes/classTargetRegionVariable.md#function-operator==)**(const [TargetRegionVariable](Classes/classTargetRegionVariable.md) & Other) const |
+| [shape_const_range](Classes/classTargetRegionVariable.md#using-shape_const_range) | **[shapes](Classes/classTargetRegionVariable.md#function-shapes)**() const<br>Gives a range over the shape of all dimensions.  |
+| [shape_const_kind_range](Classes/classTargetRegionVariable.md#using-shape_const_kind_range) | **[variableArrayShapes](Classes/classTargetRegionVariable.md#function-variablearrayshapes)**() const<br>Gives a range over those shape dimensions which are variable arrays.  |
+| | **[TargetRegionVariable](Classes/classTargetRegionVariable.md#function-targetregionvariable)**(const clang::CapturedStmt::Capture * Capture, const std::map< clang::VarDecl *, clang::Expr * > & MappingLowerBounds) |
 
 ## Detailed Description
 
@@ -109,7 +109,7 @@ Whether this variable's type contains an array or not.
 
 **Return**: true if an array is contained, false otherwise 
 
-Check if the shape of a [TargetRegionVariable](Classes/classTargetRegionVariable/) contains an array.
+Check if the shape of a [TargetRegionVariable](Classes/classTargetRegionVariable.md) contains an array.
 
 
 ### function containsPointer
@@ -122,7 +122,7 @@ Whether this variable's type contains a pointer or not.
 
 **Return**: true if a pointer is contained, false otherwise 
 
-Check if the shape of a [TargetRegionVariable](Classes/classTargetRegionVariable/) contains an pointer.
+Check if the shape of a [TargetRegionVariable](Classes/classTargetRegionVariable.md) contains an pointer.
 
 
 ### function passedByPointer

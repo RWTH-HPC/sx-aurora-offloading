@@ -6,29 +6,29 @@ This file implements sotoc, a clang to to enable outlining of OpenMP target regi
 
 | Name           |
 | -------------- |
-| **[clang::tooling](Namespaces/namespaceclang_1_1tooling/)**  |
-| **[llvm](Namespaces/namespacellvm/)**  |
+| **[clang::tooling](Namespaces/namespaceclang_1_1tooling.md)**  |
+| **[llvm](Namespaces/namespacellvm.md)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[TargetRegionTransformer](Classes/classTargetRegionTransformer/)**  |
-| class | **[SourceTransformAction](Classes/classSourceTransformAction/)**  |
+| class | **[TargetRegionTransformer](Classes/classTargetRegionTransformer.md)**  |
+| class | **[SourceTransformAction](Classes/classSourceTransformAction.md)**  |
 
 ## Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| llvm::cl::OptionCategory | **[SotocCategory](Files/main_8cpp/#function-sotoccategory)**("sotoc options" ) |
-| llvm::cl::extrahelp | **[MoreHelp](Files/main_8cpp/#function-morehelp)**("\nExtracts code in OpenMP target regions from source file and ""generates target function code" ) |
-| int | **[main](Files/main_8cpp/#function-main)**(int argc, const char ** argv) |
+| llvm::cl::OptionCategory | **[SotocCategory](Files/main_8cpp.md#function-sotoccategory)**("sotoc options" ) |
+| llvm::cl::extrahelp | **[MoreHelp](Files/main_8cpp.md#function-morehelp)**("\nExtracts code in OpenMP target regions from source file and ""generates target function code" ) |
+| int | **[main](Files/main_8cpp.md#function-main)**(int argc, const char ** argv) |
 
 ## Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| int | **[SotocDebugLevel](Files/main_8cpp/#variable-sotocdebuglevel)**  |
+| int | **[SotocDebugLevel](Files/main_8cpp.md#variable-sotocdebuglevel)**  |
 
 
 ## Functions Documentation

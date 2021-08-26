@@ -1,33 +1,33 @@
 # src/DeclResolver.h
 
-This file implements the class [DeclResolver](Classes/classDeclResolver/) which is used to record and order types and functions in the input code that are required by the target regions. 
+This file implements the class [DeclResolver](Classes/classDeclResolver.md) which is used to record and order types and functions in the input code that are required by the target regions. 
 
 ## Namespaces
 
 | Name           |
 | -------------- |
-| **[clang](Namespaces/namespaceclang/)**  |
+| **[clang](Namespaces/namespaceclang.md)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| struct | **[DeclInfo](Classes/structDeclInfo/)** <br>Records information to resolve a single declaration, including if its declared in a system header and other declaration that this declaration depends on.  |
-| class | **[DeclResolver](Classes/classDeclResolver/)** <br>Records, orders and finds the dependencies of Decls (TypeDecls or FunctionDecls)  |
-| class | **[TypeDeclResolver](Classes/classTypeDeclResolver/)** <br>Implements [DeclResolver]() for types (typedefs, structs enums) used in target regions.  |
-| class | **[FunctionDeclResolver](Classes/classFunctionDeclResolver/)** <br>Implements [DeclResolver]() for functions used in target regions.  |
+| struct | **[DeclInfo](Classes/structDeclInfo.md)** <br>Records information to resolve a single declaration, including if its declared in a system header and other declaration that this declaration depends on.  |
+| class | **[DeclResolver](Classes/classDeclResolver.md)** <br>Records, orders and finds the dependencies of Decls (TypeDecls or FunctionDecls)  |
+| class | **[TypeDeclResolver](Classes/classTypeDeclResolver.md)** <br>Implements [DeclResolver]() for types (typedefs, structs enums) used in target regions.  |
+| class | **[FunctionDeclResolver](Classes/classFunctionDeclResolver.md)** <br>Implements [DeclResolver]() for functions used in target regions.  |
 
 ## Types
 
 |                | Name           |
 | -------------- | -------------- |
-| using std::map< clang::Decl *, [DeclInfo](Classes/structDeclInfo/) > | **[DeclMap](Files/DeclResolver_8h/#using-declmap)**  |
+| using std::map< clang::Decl *, [DeclInfo](Classes/structDeclInfo.md) > | **[DeclMap](Files/DeclResolver_8h.md#using-declmap)**  |
 
 ## Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| llvm::Optional< std::string > | **[getSystemHeaderForDecl](Files/DeclResolver_8h/#function-getsystemheaderfordecl)**(const clang::Decl * D) |
+| llvm::Optional< std::string > | **[getSystemHeaderForDecl](Files/DeclResolver_8h.md#function-getsystemheaderfordecl)**(const clang::Decl * D) |
 
 ## Types Documentation
 

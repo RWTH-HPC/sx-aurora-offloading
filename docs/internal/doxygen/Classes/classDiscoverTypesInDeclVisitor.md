@@ -13,16 +13,16 @@ Inherits from clang::RecursiveASTVisitor< DiscoverTypesInDeclVisitor >
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[DiscoverTypesInDeclVisitor](Classes/classDiscoverTypesInDeclVisitor/#function-discovertypesindeclvisitor)**([TypeDeclResolver](Classes/classTypeDeclResolver/) & Types) |
-| bool | **[VisitDecl](Classes/classDiscoverTypesInDeclVisitor/#function-visitdecl)**(clang::Decl * D) |
-| bool | **[VisitExpr](Classes/classDiscoverTypesInDeclVisitor/#function-visitexpr)**(clang::Expr * D) |
-| bool | **[VisitType](Classes/classDiscoverTypesInDeclVisitor/#function-visittype)**(clang::Type * T) |
+| | **[DiscoverTypesInDeclVisitor](Classes/classDiscoverTypesInDeclVisitor.md#function-discovertypesindeclvisitor)**([TypeDeclResolver](Classes/classTypeDeclResolver.md) & Types) |
+| bool | **[VisitDecl](Classes/classDiscoverTypesInDeclVisitor.md#function-visitdecl)**(clang::Decl * D) |
+| bool | **[VisitExpr](Classes/classDiscoverTypesInDeclVisitor.md#function-visitexpr)**(clang::Expr * D) |
+| bool | **[VisitType](Classes/classDiscoverTypesInDeclVisitor.md#function-visittype)**(clang::Type * T) |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[__pad0__](Classes/classDiscoverTypesInDeclVisitor/#variable-__pad0__)**  |
+| | **[__pad0__](Classes/classDiscoverTypesInDeclVisitor.md#variable-__pad0__)**  |
 
 ## Detailed Description
 
