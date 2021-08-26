@@ -6,7 +6,6 @@ before_script:
 test:
   stage: test
   script:
-    - git clone --branch aurora-offloading-prototype https://github.com/RWTH-HPC/llvm-project.git tmp/llvm
     - sed -i 's,%%url%%,https://hpc-projects.pages.git-ce.rwth-aachen.de/nec-rwth/sx-aurora-offloading,g' mkdocs.yml
     - sed -i 's,%%llvm%%,https://github.com/rwth-hpc/llvm-project,g' mkdocs.yml
     - sed -i 's,%%edit%%,https://git-ce.rwth-aachen.de/hpc-projects/nec-rwth/sx-aurora-offloading/-/edit/master/docs,g' mkdocs.yml
@@ -20,7 +19,6 @@ test:
 pages:
   stage: deploy
   script:
-    - git clone --branch aurora-offloading-prototype https://github.com/RWTH-HPC/llvm-project.git tmp/llvm
     - sed -i 's,%%url%%,https://hpc-projects.pages.git-ce.rwth-aachen.de/nec-rwth/sx-aurora-offloading,g' mkdocs.yml
     - sed -i 's,%%llvm%%,https://github.com/rwth-hpc/llvm-project,g' mkdocs.yml
     - sed -i 's,%%edit%%,https://git-ce.rwth-aachen.de/hpc-projects/nec-rwth/sx-aurora-offloading/-/edit/master/docs,g' mkdocs.yml

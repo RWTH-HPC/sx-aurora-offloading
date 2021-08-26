@@ -40,11 +40,6 @@ plugins:
   - search
   - git-revision-date
   - macros
-  - doxygen:
-      packages:
-        - doxygen:
-            url: tmp/llvm
-            config: clang/tools/sotoc/Doxyfile
 nav:
   - Introduction: "index.md"
   - Installation: "install.md"

@@ -8,5 +8,3 @@ mkdocs-git-revision-date-plugin
 mkdocs-macros-plugin
 # Pygments
 Pygments
-# Doxygen
-git+https://github.com/pieterdavid/mkdocs-doxygen-plugin.git#egg=mkdocs-doxygen-plugin
