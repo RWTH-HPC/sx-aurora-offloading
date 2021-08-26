@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['capture',['Capture',['../classTargetRegionVariable.html#ae240dc105eb830d61b9e9ddbc860cc99',1,'TargetRegionVariable']]],
+  ['captured_5fvars_5fconst_5fiterator',['captured_vars_const_iterator',['../classTargetCodeRegion.html#ac9d93aafb9891edfbb1f471366857e59',1,'TargetCodeRegion']]],
+  ['captured_5fvars_5fconst_5frange',['captured_vars_const_range',['../classTargetCodeRegion.html#abb42c35fe8e37666e9a82606c11a12df',1,'TargetCodeRegion']]],
+  ['capturedlowerbounds',['CapturedLowerBounds',['../classTargetCodeRegion.html#a8ee9a19e6872c8d338710491fb21b001',1,'TargetCodeRegion']]],
+  ['capturedstmtnode',['CapturedStmtNode',['../classTargetCodeRegion.html#aa7a934fa5303080e9026c7c0adcc85eb',1,'TargetCodeRegion']]],
+  ['capturedvars',['capturedVars',['../classTargetCodeRegion.html#ab21b9b320b247fc499ed4e4aabb24083',1,'TargetCodeRegion::capturedVars()'],['../classTargetCodeRegion.html#a6d55ce612b56d31dd69f6c3a509d1838',1,'TargetCodeRegion::CapturedVars()']]],
+  ['clang',['clang',['../namespaceclang.html',1,'']]],
+  ['classof',['classof',['../classTargetCodeFragment.html#a6e29181f3e721df87a09e51102fd19f3',1,'TargetCodeFragment::classof()'],['../classTargetCodeRegion.html#acfa4542e297749d53144e1018e219ca6',1,'TargetCodeRegion::classof()'],['../classTargetCodeDecl.html#a46e5fbb85b8e83c1afe4c032bac40d51',1,'TargetCodeDecl::classof()']]],
+  ['clauseparam',['clauseparam',['../TargetCode_8h.html#a7090cf7018886829b4242268377325d3',1,'TargetCode.h']]],
+  ['clauseparamcounter',['ClauseParamCounter',['../classOmpPragma.html#af57fef5c67a8430d4e792466dd91ad72',1,'OmpPragma::ClauseParamCounter()'],['../OmpPragma_8cpp.html#ae4e39092150b0dc593880570a4017f8d',1,'ClauseParamCounter():&#160;OmpPragma.cpp']]],
+  ['clauses',['Clauses',['../classOmpPragma.html#ad2e6af7419c01e688b82af6e8fd1dc13',1,'OmpPragma']]],
+  ['codefragments',['CodeFragments',['../classTargetCode.html#aaaf851dfbc3796ae2af85aec57632d23',1,'TargetCode']]],
+  ['constantarray',['ConstantArray',['../classTargetRegionVariableShape.html#aba2e3b9cdb9b2f831f3580d473d9fb45a1dcc6375562e3e2f0e3e32f3fc4f38c6',1,'TargetRegionVariableShape']]],
+  ['constantdimensionexpr',['ConstantDimensionExpr',['../classTargetRegionVariableShape.html#a3db4c2ea27409cc4adbed397209ad4a4',1,'TargetRegionVariableShape']]],
+  ['containsarray',['containsArray',['../classTargetRegionVariable.html#a7bb02b285f0b41939910ba3836aab21c',1,'TargetRegionVariable']]],
+  ['containspointer',['containsPointer',['../classTargetRegionVariable.html#a9b566d18fd3a28945e66470ea95a981b',1,'TargetRegionVariable']]],
+  ['context',['Context',['../classTargetCodeFragment.html#ab1fb51a8a45579ad7ea5b186f6d957d9',1,'TargetCodeFragment::Context()'],['../classFindTargetCodeVisitor.html#a63be8d6e234530d77e7c20f38761345e',1,'FindTargetCodeVisitor::Context()']]]
+];
