@@ -17,6 +17,12 @@ Inherits from clang::RecursiveASTVisitor< FindDeclRefExprVisitor >
 | bool | **[VisitStmt](../Classes/classFindDeclRefExprVisitor.md#function-visitstmt)**(clang::Stmt * S) |
 | std::unordered_set< clang::VarDecl * > * | **[getVarSet](../Classes/classFindDeclRefExprVisitor.md#function-getvarset)**() |
 
+## Private Attributes
+
+|                | Name           |
+| -------------- | -------------- |
+| std::unordered_set< clang::VarDecl * > | **[VarSet](../Classes/classFindDeclRefExprVisitor.md#variable-varset)**  |
+
 ## Public Functions Documentation
 
 ### function FindDeclRefExprVisitor
@@ -39,6 +45,15 @@ bool VisitStmt(
 
 ```cpp
 inline std::unordered_set< clang::VarDecl * > * getVarSet()
+```
+
+
+## Private Attributes Documentation
+
+### variable VarSet
+
+```cpp
+std::unordered_set< clang::VarDecl * > VarSet;
 ```
 
 

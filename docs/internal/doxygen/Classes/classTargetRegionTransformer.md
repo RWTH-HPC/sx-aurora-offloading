@@ -13,6 +13,13 @@ Inherits from ASTConsumer
 | | **[TargetRegionTransformer](../Classes/classTargetRegionTransformer.md#function-targetregiontransformer)**([TargetCode](../Classes/classTargetCode.md) & Code, clang::Rewriter & TargetCodeRewriter) |
 | void | **[HandleTranslationUnit](../Classes/classTargetRegionTransformer.md#function-handletranslationunit)**(clang::ASTContext & Context) |
 
+## Private Attributes
+
+|                | Name           |
+| -------------- | -------------- |
+| [TargetCode](../Classes/classTargetCode.md) & | **[Code](../Classes/classTargetRegionTransformer.md#variable-code)**  |
+| clang::Rewriter & | **[TargetCodeRewriter](../Classes/classTargetRegionTransformer.md#variable-targetcoderewriter)**  |
+
 ## Public Functions Documentation
 
 ### function TargetRegionTransformer
@@ -31,6 +38,22 @@ inline TargetRegionTransformer(
 inline void HandleTranslationUnit(
     clang::ASTContext & Context
 )
+```
+
+
+## Private Attributes Documentation
+
+### variable Code
+
+```cpp
+TargetCode & Code;
+```
+
+
+### variable TargetCodeRewriter
+
+```cpp
+clang::Rewriter & TargetCodeRewriter;
 ```
 
 

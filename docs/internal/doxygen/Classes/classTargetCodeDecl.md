@@ -19,6 +19,12 @@ Inherits from [TargetCodeFragment](../Classes/classTargetCodeFragment.md)
 | virtual clang::SourceRange | **[getRealRange](../Classes/classTargetCodeDecl.md#function-getrealrange)**() override<br>Get the source range of the fragment.  |
 | virtual clang::SourceRange | **[getSpellingRange](../Classes/classTargetCodeDecl.md#function-getspellingrange)**() override<br>Get the spelling source range.  |
 
+## Private Attributes
+
+|                | Name           |
+| -------------- | -------------- |
+| clang::Decl * | **[DeclNode](../Classes/classTargetCodeDecl.md#variable-declnode)** <br>The AST node for the declaration.  |
+
 ## Additional inherited members
 
 **Public Types inherited from [TargetCodeFragment](../Classes/classTargetCodeFragment.md)**
@@ -121,4 +127,14 @@ Get the spelling source range.
 
 That is the range without macro expansions. 
 
+
+## Private Attributes Documentation
+
+### variable DeclNode
+
+```cpp
+clang::Decl * DeclNode;
+```
+
+The AST node for the declaration. 
 

@@ -13,6 +13,12 @@ Inherits from PrinterHelper
 | | **[TargetRegionPrinterHelper](../Classes/classTargetRegionPrinterHelper.md#function-targetregionprinterhelper)**(clang::PrintingPolicy PP) |
 | bool | **[handledStmt](../Classes/classTargetRegionPrinterHelper.md#function-handledstmt)**(clang::Stmt * E, llvm::raw_ostream & OS) |
 
+## Private Attributes
+
+|                | Name           |
+| -------------- | -------------- |
+| clang::PrintingPolicy | **[PP](../Classes/classTargetRegionPrinterHelper.md#variable-pp)**  |
+
 ## Public Functions Documentation
 
 ### function TargetRegionPrinterHelper
@@ -31,6 +37,15 @@ inline bool handledStmt(
     clang::Stmt * E,
     llvm::raw_ostream & OS
 )
+```
+
+
+## Private Attributes Documentation
+
+### variable PP
+
+```cpp
+clang::PrintingPolicy PP;
 ```
 
 

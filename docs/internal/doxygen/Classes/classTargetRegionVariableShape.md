@@ -29,6 +29,14 @@ Describes the shape, i.e.  [More...](#detailed-description)
 | | **[TargetRegionVariableShape](../Classes/classTargetRegionVariableShape.md#function-targetregionvariableshape)**(const clang::VariableArrayType * Array, unsigned int DimIndex)<br>Construct a shape for a variable array dimension.  |
 | | **[TargetRegionVariableShape](../Classes/classTargetRegionVariableShape.md#function-targetregionvariableshape)**(const clang::ConstantArrayType * Array)<br>Construct a shape for a constant array dimension.  |
 
+## Private Attributes
+
+|                | Name           |
+| -------------- | -------------- |
+| unsigned int | **[VariableDimensionIndex](../Classes/classTargetRegionVariableShape.md#variable-variabledimensionindex)**  |
+| std::string | **[ConstantDimensionExpr](../Classes/classTargetRegionVariableShape.md#variable-constantdimensionexpr)**  |
+| [ShapeKind](../Classes/classTargetRegionVariableShape.md#enum-shapekind) | **[Kind](../Classes/classTargetRegionVariableShape.md#variable-kind)**  |
+
 ## Detailed Description
 
 ```cpp
@@ -144,4 +152,27 @@ inline TargetRegionVariableShape(
 ```
 
 Construct a shape for a constant array dimension. 
+
+## Private Attributes Documentation
+
+### variable VariableDimensionIndex
+
+```cpp
+unsigned int VariableDimensionIndex;
+```
+
+
+### variable ConstantDimensionExpr
+
+```cpp
+std::string ConstantDimensionExpr;
+```
+
+
+### variable Kind
+
+```cpp
+ShapeKind Kind;
+```
+
 

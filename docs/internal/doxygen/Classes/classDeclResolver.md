@@ -24,6 +24,21 @@ Inherited by [FunctionDeclResolver](../Classes/classFunctionDeclResolver.md), [T
 | virtual void | **[runOwnVisitor](../Classes/classDeclResolver.md#function-runownvisitor)**(clang::Decl * D, std::function< void(clang::Decl *Dep)> Fn) =0<br>With this function, the resolver runs a visitor on the declaration added to find and add all declarations that the added declaration depends on and adds them to the resolver.  |
 | virtual void | **[findDependDecls](../Classes/classDeclResolver.md#function-finddependdecls)**(clang::Decl * D, std::unordered_set< clang::Decl * > & UnresolvedDecls)<br>This function uses a visitor to find references to other declarations in the declaration being added.  |
 
+## Private Functions
+
+|                | Name           |
+| -------------- | -------------- |
+| void | **[topoSort](../Classes/classDeclResolver.md#function-toposort)**(std::stack< clang::Decl * > & q)<br>This functions does a topological sorting on the dependency graph of all Decls recorded into this object by calling [addDecl](../Classes/classDeclResolver.md#function-adddecl).  |
+| void | **[topoSortUtil](../Classes/classDeclResolver.md#function-toposortutil)**(std::stack< clang::Decl * > & q, std::map< clang::Decl *, bool > & visited, clang::Decl * D)<br>Helper function for [topoSort](../Classes/classDeclResolver.md#function-toposort), to do an recursive DFS.  |
+
+## Private Attributes
+
+|                | Name           |
+| -------------- | -------------- |
+| [DeclMap](../Files/DeclResolver_8h.md#using-declmap) | **[AllDecls](../Classes/classDeclResolver.md#variable-alldecls)** <br>Records all declarations added to the resolver.  |
+| std::set< clang::Decl * > | **[NonDependentDecls](../Classes/classDeclResolver.md#variable-nondependentdecls)** <br>All declarations which do not depend on other declarations.  |
+| std::set< std::string > | **[RequiredSystemHeaders](../Classes/classDeclResolver.md#variable-requiredsystemheaders)** <br>When a declaration is inside a system header, that header is recorded here instead of the declaratoin.  |
+
 ## Public Functions Documentation
 
 ### function ~DeclResolver
@@ -101,4 +116,62 @@ This function uses a visitor to find references to other declarations in the dec
 
 If the declaration being added references other declarations outside the standard library, we need to add those declaration to the target code too. 
 
+
+## Private Functions Documentation
+
+### function topoSort
+
+```cpp
+void topoSort(
+    std::stack< clang::Decl * > & q
+)
+```
+
+This functions does a topological sorting on the dependency graph of all Decls recorded into this object by calling [addDecl](../Classes/classDeclResolver.md#function-adddecl). 
+
+**Parameters**: 
+
+  * **q** an queue where the ordered Decls are save to. 
+
+
+This method uses an DFS approach to be able to deal with possible cycles. 
+
+
+### function topoSortUtil
+
+```cpp
+void topoSortUtil(
+    std::stack< clang::Decl * > & q,
+    std::map< clang::Decl *, bool > & visited,
+    clang::Decl * D
+)
+```
+
+Helper function for [topoSort](../Classes/classDeclResolver.md#function-toposort), to do an recursive DFS. 
+
+## Private Attributes Documentation
+
+### variable AllDecls
+
+```cpp
+DeclMap AllDecls;
+```
+
+Records all declarations added to the resolver. 
+
+### variable NonDependentDecls
+
+```cpp
+std::set< clang::Decl * > NonDependentDecls;
+```
+
+All declarations which do not depend on other declarations. 
+
+### variable RequiredSystemHeaders
+
+```cpp
+std::set< std::string > RequiredSystemHeaders;
+```
+
+When a declaration is inside a system header, that header is recorded here instead of the declaratoin. 
 

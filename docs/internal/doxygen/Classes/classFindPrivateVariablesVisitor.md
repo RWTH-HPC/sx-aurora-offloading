@@ -17,6 +17,14 @@ Inherits from clang::RecursiveASTVisitor< FindPrivateVariablesVisitor >
 | bool | **[VisitExpr](../Classes/classFindPrivateVariablesVisitor.md#function-visitexpr)**(clang::Expr * E) |
 | std::set< clang::VarDecl * > & | **[getVarSet](../Classes/classFindPrivateVariablesVisitor.md#function-getvarset)**() |
 
+## Private Attributes
+
+|                | Name           |
+| -------------- | -------------- |
+| clang::SourceManager & | **[SM](../Classes/classFindPrivateVariablesVisitor.md#variable-sm)**  |
+| clang::SourceLocation | **[RegionTopSourceLocation](../Classes/classFindPrivateVariablesVisitor.md#variable-regiontopsourcelocation)**  |
+| std::set< clang::VarDecl * > | **[VarSet](../Classes/classFindPrivateVariablesVisitor.md#variable-varset)**  |
+
 ## Public Functions Documentation
 
 ### function FindPrivateVariablesVisitor
@@ -42,6 +50,29 @@ bool VisitExpr(
 
 ```cpp
 inline std::set< clang::VarDecl * > & getVarSet()
+```
+
+
+## Private Attributes Documentation
+
+### variable SM
+
+```cpp
+clang::SourceManager & SM;
+```
+
+
+### variable RegionTopSourceLocation
+
+```cpp
+clang::SourceLocation RegionTopSourceLocation;
+```
+
+
+### variable VarSet
+
+```cpp
+std::set< clang::VarDecl * > VarSet;
 ```
 
 

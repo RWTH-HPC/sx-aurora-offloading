@@ -37,6 +37,24 @@ Represents a variable captured by a target region.  [More...](#detailed-descript
 | [shape_const_kind_range](../Classes/classTargetRegionVariable.md#using-shape_const_kind_range) | **[variableArrayShapes](../Classes/classTargetRegionVariable.md#function-variablearrayshapes)**() const<br>Gives a range over those shape dimensions which are variable arrays.  |
 | | **[TargetRegionVariable](../Classes/classTargetRegionVariable.md#function-targetregionvariable)**(const clang::CapturedStmt::Capture * Capture, const std::map< clang::VarDecl *, clang::Expr * > & MappingLowerBounds) |
 
+## Private Functions
+
+|                | Name           |
+| -------------- | -------------- |
+| void | **[determineShapes](../Classes/classTargetRegionVariable.md#function-determineshapes)**(clang::QualType T) |
+
+## Private Attributes
+
+|                | Name           |
+| -------------- | -------------- |
+| const clang::CapturedStmt::Capture * | **[Capture](../Classes/classTargetRegionVariable.md#variable-capture)**  |
+| clang::VarDecl * | **[Decl](../Classes/classTargetRegionVariable.md#variable-decl)**  |
+| std::string | **[VarName](../Classes/classTargetRegionVariable.md#variable-varname)**  |
+| std::string | **[BaseTypeName](../Classes/classTargetRegionVariable.md#variable-basetypename)** <br>This is the base type name, i.e.  |
+| std::vector< [TargetRegionVariableShape](../Classes/classTargetRegionVariableShape.md) > | **[Shapes](../Classes/classTargetRegionVariable.md#variable-shapes)**  |
+| unsigned int | **[NumVariableArrayDims](../Classes/classTargetRegionVariable.md#variable-numvariablearraydims)**  |
+| const std::map< clang::VarDecl *, clang::Expr * > & | **[OmpMappingLowerBound](../Classes/classTargetRegionVariable.md#variable-ompmappinglowerbound)**  |
+
 ## Detailed Description
 
 ```cpp
@@ -182,6 +200,72 @@ TargetRegionVariable(
     const clang::CapturedStmt::Capture * Capture,
     const std::map< clang::VarDecl *, clang::Expr * > & MappingLowerBounds
 )
+```
+
+
+## Private Functions Documentation
+
+### function determineShapes
+
+```cpp
+void determineShapes(
+    clang::QualType T
+)
+```
+
+
+## Private Attributes Documentation
+
+### variable Capture
+
+```cpp
+const clang::CapturedStmt::Capture * Capture;
+```
+
+
+### variable Decl
+
+```cpp
+clang::VarDecl * Decl;
+```
+
+
+### variable VarName
+
+```cpp
+std::string VarName;
+```
+
+
+### variable BaseTypeName
+
+```cpp
+std::string BaseTypeName;
+```
+
+This is the base type name, i.e. 
+
+the name of the type without pointer or array qualifiers. 
+
+
+### variable Shapes
+
+```cpp
+std::vector< TargetRegionVariableShape > Shapes;
+```
+
+
+### variable NumVariableArrayDims
+
+```cpp
+unsigned int NumVariableArrayDims;
+```
+
+
+### variable OmpMappingLowerBound
+
+```cpp
+const std::map< clang::VarDecl *, clang::Expr * > & OmpMappingLowerBound;
 ```
 
 

@@ -18,6 +18,26 @@ Inherits from clang::RecursiveASTVisitor< FindTargetCodeVisitor >
 | bool | **[VisitStmt](../Classes/classFindTargetCodeVisitor.md#function-visitstmt)**(clang::Stmt * S) |
 | bool | **[VisitDecl](../Classes/classFindTargetCodeVisitor.md#function-visitdecl)**(clang::Decl * D) |
 
+## Private Functions
+
+|                | Name           |
+| -------------- | -------------- |
+| bool | **[processTargetRegion](../Classes/classFindTargetCodeVisitor.md#function-processtargetregion)**(clang::OMPExecutableDirective * TargetDirective)<br>Extracts the necessary information about the target region from the AST, such as captured variables and relevant OpenMP clauses, and adds an [TargetCodeRegion](../Classes/classTargetCodeRegion.md) to the [TargetCode](../Classes/classTargetCode.md) instance.  |
+| void | **[addTargetRegionArgs](../Classes/classFindTargetCodeVisitor.md#function-addtargetregionargs)**(clang::CapturedStmt * S, clang::OMPExecutableDirective * TargetDirective, std::shared_ptr< [TargetCodeRegion](../Classes/classTargetCodeRegion.md) > TCR)<br>Finds and adds all variables required by the target regions as arguments to the generated function.  |
+
+## Private Attributes
+
+|                | Name           |
+| -------------- | -------------- |
+| clang::ASTContext & | **[Context](../Classes/classFindTargetCodeVisitor.md#variable-context)**  |
+| [TargetCode](../Classes/classTargetCode.md) & | **[TargetCodeInfo](../Classes/classFindTargetCodeVisitor.md#variable-targetcodeinfo)** <br>The collection where target regions and other code is added to.  |
+| [DiscoverTypesInDeclVisitor](../Classes/classDiscoverTypesInDeclVisitor.md) | **[DiscoverTypeVisitor](../Classes/classFindTargetCodeVisitor.md#variable-discovertypevisitor)** <br>A Visitor to find references to the types required by the target code.  |
+| [DiscoverFunctionsInDeclVisitor](../Classes/classDiscoverFunctionsInDeclVisitor.md) | **[DiscoverFunctionVisitor](../Classes/classFindTargetCodeVisitor.md#variable-discoverfunctionvisitor)** <br>A Visitor to find references to all functions required by the target code.  |
+| [FunctionDeclResolver](../Classes/classFunctionDeclResolver.md) & | **[Functions](../Classes/classFindTargetCodeVisitor.md#variable-functions)** <br>Collection of all functions referenced and required by target code (and referenced by other required functions).  |
+| [FindDeclRefExprVisitor](../Classes/classFindDeclRefExprVisitor.md) | **[FindDeclRefVisitor](../Classes/classFindTargetCodeVisitor.md#variable-finddeclrefvisitor)**  |
+| std::stack< clang::FunctionDecl * > | **[LastVisitedFuncDecl](../Classes/classFindTargetCodeVisitor.md#variable-lastvisitedfuncdecl)** <br>The last function the visitor traversed.  |
+| std::unordered_set< std::string > | **[FuncDeclWithoutBody](../Classes/classFindTargetCodeVisitor.md#variable-funcdeclwithoutbody)** <br>Function with 'omp declare target' pragma, for which the visitor has not yet found a body.  |
+
 ## Public Functions Documentation
 
 ### function FindTargetCodeVisitor
@@ -58,4 +78,95 @@ bool VisitDecl(
 )
 ```
 
+
+## Private Functions Documentation
+
+### function processTargetRegion
+
+```cpp
+bool processTargetRegion(
+    clang::OMPExecutableDirective * TargetDirective
+)
+```
+
+Extracts the necessary information about the target region from the AST, such as captured variables and relevant OpenMP clauses, and adds an [TargetCodeRegion](../Classes/classTargetCodeRegion.md) to the [TargetCode](../Classes/classTargetCode.md) instance. 
+
+### function addTargetRegionArgs
+
+```cpp
+void addTargetRegionArgs(
+    clang::CapturedStmt * S,
+    clang::OMPExecutableDirective * TargetDirective,
+    std::shared_ptr< TargetCodeRegion > TCR
+)
+```
+
+Finds and adds all variables required by the target regions as arguments to the generated function. 
+
+## Private Attributes Documentation
+
+### variable Context
+
+```cpp
+clang::ASTContext & Context;
+```
+
+
+### variable TargetCodeInfo
+
+```cpp
+TargetCode & TargetCodeInfo;
+```
+
+The collection where target regions and other code is added to. 
+
+### variable DiscoverTypeVisitor
+
+```cpp
+DiscoverTypesInDeclVisitor DiscoverTypeVisitor;
+```
+
+A Visitor to find references to the types required by the target code. 
+
+### variable DiscoverFunctionVisitor
+
+```cpp
+DiscoverFunctionsInDeclVisitor DiscoverFunctionVisitor;
+```
+
+A Visitor to find references to all functions required by the target code. 
+
+### variable Functions
+
+```cpp
+FunctionDeclResolver & Functions;
+```
+
+Collection of all functions referenced and required by target code (and referenced by other required functions). 
+
+### variable FindDeclRefVisitor
+
+```cpp
+FindDeclRefExprVisitor FindDeclRefVisitor;
+```
+
+
+### variable LastVisitedFuncDecl
+
+```cpp
+std::stack< clang::FunctionDecl * > LastVisitedFuncDecl;
+```
+
+The last function the visitor traversed. 
+
+This is stored to be able to later compute the function name for the target region. 
+
+
+### variable FuncDeclWithoutBody
+
+```cpp
+std::unordered_set< std::string > FuncDeclWithoutBody;
+```
+
+Function with 'omp declare target' pragma, for which the visitor has not yet found a body. 
 

@@ -19,6 +19,24 @@ A helper class to rewrite some "pragma omp" (mostly teams and similar combined c
 | bool | **[isReplaceable](../Classes/classOmpPragma.md#function-isreplaceable)**(clang::OMPExecutableDirective * Directive) |
 | bool | **[needsAdditionalPragma](../Classes/classOmpPragma.md#function-needsadditionalpragma)**(clang::OMPExecutableDirective * Directive) |
 
+## Private Functions
+
+|                | Name           |
+| -------------- | -------------- |
+| bool | **[isClausePrintable](../Classes/classOmpPragma.md#function-isclauseprintable)**(clang::OMPClause * Clause) |
+| void | **[rewriteParam](../Classes/classOmpPragma.md#function-rewriteparam)**(clang::OMPClause * Clause, std::string * In) |
+| void | **[addShared](../Classes/classOmpPragma.md#function-addshared)**(clang::OMPClause * Clause, std::string * In, llvm::raw_ostream & Out) |
+| void | **[printClauses](../Classes/classOmpPragma.md#function-printclauses)**(llvm::raw_ostream & Out) |
+
+## Private Attributes
+
+|                | Name           |
+| -------------- | -------------- |
+| clang::PrintingPolicy | **[PP](../Classes/classOmpPragma.md#variable-pp)**  |
+| llvm::ArrayRef< clang::OMPClause * > | **[Clauses](../Classes/classOmpPragma.md#variable-clauses)**  |
+| clang::OpenMPDirectiveKind | **[Kind](../Classes/classOmpPragma.md#variable-kind)**  |
+| unsigned int | **[ClauseParamCounter](../Classes/classOmpPragma.md#variable-clauseparamcounter)**  |
+
 ## Detailed Description
 
 ```cpp
@@ -95,6 +113,77 @@ static bool isReplaceable(
 static bool needsAdditionalPragma(
     clang::OMPExecutableDirective * Directive
 )
+```
+
+
+## Private Functions Documentation
+
+### function isClausePrintable
+
+```cpp
+bool isClausePrintable(
+    clang::OMPClause * Clause
+)
+```
+
+
+### function rewriteParam
+
+```cpp
+void rewriteParam(
+    clang::OMPClause * Clause,
+    std::string * In
+)
+```
+
+
+### function addShared
+
+```cpp
+void addShared(
+    clang::OMPClause * Clause,
+    std::string * In,
+    llvm::raw_ostream & Out
+)
+```
+
+
+### function printClauses
+
+```cpp
+void printClauses(
+    llvm::raw_ostream & Out
+)
+```
+
+
+## Private Attributes Documentation
+
+### variable PP
+
+```cpp
+clang::PrintingPolicy PP;
+```
+
+
+### variable Clauses
+
+```cpp
+llvm::ArrayRef< clang::OMPClause * > Clauses;
+```
+
+
+### variable Kind
+
+```cpp
+clang::OpenMPDirectiveKind Kind;
+```
+
+
+### variable ClauseParamCounter
+
+```cpp
+unsigned int ClauseParamCounter;
 ```
 
 

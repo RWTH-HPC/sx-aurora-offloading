@@ -13,6 +13,12 @@ Inherits from clang::RecursiveASTVisitor< CollectOMPClauseParamsVarsVisitor >
 | | **[CollectOMPClauseParamsVarsVisitor](../Classes/classCollectOMPClauseParamsVarsVisitor.md#function-collectompclauseparamsvarsvisitor)**(std::shared_ptr< [TargetCodeRegion](../Classes/classTargetCodeRegion.md) > & TCR) |
 | bool | **[VisitStmt](../Classes/classCollectOMPClauseParamsVarsVisitor.md#function-visitstmt)**(clang::Stmt * S) |
 
+## Private Attributes
+
+|                | Name           |
+| -------------- | -------------- |
+| std::shared_ptr< [TargetCodeRegion](../Classes/classTargetCodeRegion.md) > | **[TCR](../Classes/classCollectOMPClauseParamsVarsVisitor.md#variable-tcr)**  |
+
 ## Public Functions Documentation
 
 ### function CollectOMPClauseParamsVarsVisitor
@@ -30,6 +36,15 @@ inline CollectOMPClauseParamsVarsVisitor(
 inline bool VisitStmt(
     clang::Stmt * S
 )
+```
+
+
+## Private Attributes Documentation
+
+### variable TCR
+
+```cpp
+std::shared_ptr< TargetCodeRegion > TCR;
 ```
 
 

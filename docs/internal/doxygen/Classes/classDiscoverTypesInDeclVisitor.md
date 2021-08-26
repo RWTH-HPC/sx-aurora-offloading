@@ -18,11 +18,23 @@ Inherits from clang::RecursiveASTVisitor< DiscoverTypesInDeclVisitor >
 | bool | **[VisitExpr](../Classes/classDiscoverTypesInDeclVisitor.md#function-visitexpr)**(clang::Expr * D) |
 | bool | **[VisitType](../Classes/classDiscoverTypesInDeclVisitor.md#function-visittype)**(clang::Type * T) |
 
+## Private Functions
+
+|                | Name           |
+| -------------- | -------------- |
+| void | **[processType](../Classes/classDiscoverTypesInDeclVisitor.md#function-processtype)**(const clang::Type * D)<br>Retrieves the declaration of the type found and passes it on.  |
+
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
 | | **[__pad0__](../Classes/classDiscoverTypesInDeclVisitor.md#variable-__pad0__)**  |
+
+## Private Attributes
+
+|                | Name           |
+| -------------- | -------------- |
+| std::function< void(clang::TypeDecl *)> | **[OnEachTypeRef](../Classes/classDiscoverTypesInDeclVisitor.md#variable-oneachtyperef)** <br>Function run on the declaration of each type found by the visitor.  |
 
 ## Detailed Description
 
@@ -72,6 +84,18 @@ bool VisitType(
 ```
 
 
+## Private Functions Documentation
+
+### function processType
+
+```cpp
+void processType(
+    const clang::Type * D
+)
+```
+
+Retrieves the declaration of the type found and passes it on. 
+
 ## Public Attributes Documentation
 
 ### variable __pad0__
@@ -80,4 +104,14 @@ bool VisitType(
 __pad0__;
 ```
 
+
+## Private Attributes Documentation
+
+### variable OnEachTypeRef
+
+```cpp
+std::function< void(clang::TypeDecl *)> OnEachTypeRef;
+```
+
+Function run on the declaration of each type found by the visitor. 
 

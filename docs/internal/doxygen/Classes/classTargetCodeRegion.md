@@ -52,6 +52,18 @@ Inherits from [TargetCodeFragment](../Classes/classTargetCodeFragment.md)
 | -------------- | -------------- |
 | std::map< clang::VarDecl *, clang::Expr * > | **[CapturedLowerBounds](../Classes/classTargetCodeRegion.md#variable-capturedlowerbounds)** <br>Lower bounds of mapped array slices (if lower then 0).  |
 
+## Private Attributes
+
+|                | Name           |
+| -------------- | -------------- |
+| clang::CapturedStmt * | **[CapturedStmtNode](../Classes/classTargetCodeRegion.md#variable-capturedstmtnode)** <br>The AST node for the captured statement of the target region.  |
+| clang::OMPExecutableDirective * | **[TargetDirective](../Classes/classTargetCodeRegion.md#variable-targetdirective)** <br>AST node for the target directive.  |
+| clang::FunctionDecl * | **[ParentFunctionDecl](../Classes/classTargetCodeRegion.md#variable-parentfunctiondecl)** <br>Declaration of the function this region is declared in.  |
+| std::vector< [TargetRegionVariable](../Classes/classTargetRegionVariable.md) > | **[CapturedVars](../Classes/classTargetCodeRegion.md#variable-capturedvars)** <br>All variable captured by this target region.  |
+| std::vector< clang::OMPClause * > | **[OMPClauses](../Classes/classTargetCodeRegion.md#variable-ompclauses)** <br>All omp clauses relevant to the execution of the region.  |
+| std::vector< clang::VarDecl * > | **[OMPClausesParams](../Classes/classTargetCodeRegion.md#variable-ompclausesparams)** <br>The variables which are parameters for top level OpenMP clauses.  |
+| std::set< clang::VarDecl * > | **[PrivateVars](../Classes/classTargetCodeRegion.md#variable-privatevars)** <br>All private variables in a Target Region i.e.  |
+
 ## Additional inherited members
 
 **Public Types inherited from [TargetCodeFragment](../Classes/classTargetCodeFragment.md)**
@@ -344,5 +356,75 @@ std::map< clang::VarDecl *, clang::Expr * > CapturedLowerBounds;
 Lower bounds of mapped array slices (if lower then 0). 
 
 If the captured variable is an array, of which only a slice is mapped (by a map() clause), the incoming pointer argument will need to be shifted to the right if the lower bound of that slice is not 0. If this is the case, the lower bound is saved into this map. 
+
+
+## Private Attributes Documentation
+
+### variable CapturedStmtNode
+
+```cpp
+clang::CapturedStmt * CapturedStmtNode;
+```
+
+The AST node for the captured statement of the target region. 
+
+### variable TargetDirective
+
+```cpp
+clang::OMPExecutableDirective * TargetDirective;
+```
+
+AST node for the target directive. 
+
+### variable ParentFunctionDecl
+
+```cpp
+clang::FunctionDecl * ParentFunctionDecl;
+```
+
+Declaration of the function this region is declared in. 
+
+Necessary to compose the function name of this region in the generated code. 
+
+
+### variable CapturedVars
+
+```cpp
+std::vector< TargetRegionVariable > CapturedVars;
+```
+
+All variable captured by this target region. 
+
+We will need to generated pointers to them as arguments to the generated functions and copy the variables into scope. 
+
+
+### variable OMPClauses
+
+```cpp
+std::vector< clang::OMPClause * > OMPClauses;
+```
+
+All omp clauses relevant to the execution of the region. 
+
+### variable OMPClausesParams
+
+```cpp
+std::vector< clang::VarDecl * > OMPClausesParams;
+```
+
+The variables which are parameters for top level OpenMP clauses. 
+
+These are not captured but still needs passed as (first private) arguments to the target region. 
+
+
+### variable PrivateVars
+
+```cpp
+std::set< clang::VarDecl * > PrivateVars;
+```
+
+All private variables in a Target Region i.e. 
+
+all variables that are not passed as arguments into the region. For these, we need to generate declarations inside the target region. 
 
 

@@ -16,6 +16,12 @@ Inherits from clang::RecursiveASTVisitor< FindArraySectionVisitor >
 | | **[FindArraySectionVisitor](../Classes/classFindArraySectionVisitor.md#function-findarraysectionvisitor)**(std::map< clang::VarDecl *, clang::Expr * > & LowerBoundsMap) |
 | bool | **[VisitExpr](../Classes/classFindArraySectionVisitor.md#function-visitexpr)**(clang::Expr * E) |
 
+## Private Attributes
+
+|                | Name           |
+| -------------- | -------------- |
+| std::map< clang::VarDecl *, clang::Expr * > & | **[LowerBoundsMap](../Classes/classFindArraySectionVisitor.md#variable-lowerboundsmap)**  |
+
 ## Public Functions Documentation
 
 ### function FindArraySectionVisitor
@@ -33,6 +39,15 @@ inline FindArraySectionVisitor(
 bool VisitExpr(
     clang::Expr * E
 )
+```
+
+
+## Private Attributes Documentation
+
+### variable LowerBoundsMap
+
+```cpp
+std::map< clang::VarDecl *, clang::Expr * > & LowerBoundsMap;
 ```
 
 

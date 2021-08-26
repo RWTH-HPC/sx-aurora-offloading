@@ -31,6 +31,14 @@ Iterator which acts as a filter over std::vector<TargetRegionVariableShape>::con
 | [reference](../Classes/classTargetRegionVariable_1_1shape__const__kind__iterator.md#using-reference) | **[operator*](../Classes/classTargetRegionVariable_1_1shape__const__kind__iterator.md#function-operator*)**() const |
 | [pointer](../Classes/classTargetRegionVariable_1_1shape__const__kind__iterator.md#using-pointer) | **[operator->](../Classes/classTargetRegionVariable_1_1shape__const__kind__iterator.md#function-operator->)**() |
 
+## Private Attributes
+
+|                | Name           |
+| -------------- | -------------- |
+| [base_iter](../Classes/classTargetRegionVariable_1_1shape__const__kind__iterator.md#using-base_iter) | **[It](../Classes/classTargetRegionVariable_1_1shape__const__kind__iterator.md#variable-it)**  |
+| [base_iter](../Classes/classTargetRegionVariable_1_1shape__const__kind__iterator.md#using-base_iter) | **[End](../Classes/classTargetRegionVariable_1_1shape__const__kind__iterator.md#variable-end)**  |
+| [TargetRegionVariableShape::ShapeKind](../Classes/classTargetRegionVariableShape.md#enum-shapekind) | **[Kind](../Classes/classTargetRegionVariable_1_1shape__const__kind__iterator.md#variable-kind)**  |
+
 ## Friends
 
 |                | Name           |
@@ -154,6 +162,29 @@ inline reference operator*() const
 
 ```cpp
 inline pointer operator->()
+```
+
+
+## Private Attributes Documentation
+
+### variable It
+
+```cpp
+base_iter It;
+```
+
+
+### variable End
+
+```cpp
+base_iter End;
+```
+
+
+### variable Kind
+
+```cpp
+TargetRegionVariableShape::ShapeKind Kind;
 ```
 
 

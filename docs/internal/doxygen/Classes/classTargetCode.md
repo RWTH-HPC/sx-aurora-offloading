@@ -19,6 +19,25 @@ A collection of all code from the input file that needs to be copied to the targ
 | TargetCodeFragmentDeque::const_iterator | **[getCodeFragmentsEnd](../Classes/classTargetCode.md#function-getcodefragmentsend)**()<br>See [getCodeFragmentsBegin](../Classes/classTargetCode.md#function-getcodefragmentsbegin).  |
 | void | **[addHeader](../Classes/classTargetCode.md#function-addheader)**(const std::string & Header)<br>Add a header file to be included by the target code.  |
 
+## Private Functions
+
+|                | Name           |
+| -------------- | -------------- |
+| void | **[generateVariableDecl](../Classes/classTargetCode.md#function-generatevariabledecl)**(const [TargetRegionVariable](../Classes/classTargetRegionVariable.md) & Var, llvm::raw_ostream & Out)<br>Generate the variable declaration of a transferred variable.  |
+| void | **[generateFunctionPrologue](../Classes/classTargetCode.md#function-generatefunctionprologue)**([TargetCodeRegion](../Classes/classTargetCodeRegion.md) * TCR, llvm::raw_ostream & Out)<br>Generates a function prologue for a target region.  |
+| void | **[generateFunctionEpilogue](../Classes/classTargetCode.md#function-generatefunctionepilogue)**([TargetCodeRegion](../Classes/classTargetCodeRegion.md) * TCR, llvm::raw_ostream & Out)<br>Generates a function epilogue for a target region.  |
+| std::string | **[generateFunctionName](../Classes/classTargetCode.md#function-generatefunctionname)**([TargetCodeRegion](../Classes/classTargetCodeRegion.md) * TCR)<br>Generate a function name for a target region.  |
+| void | **[generateArgument](../Classes/classTargetCode.md#function-generateargument)**(const [TargetRegionVariable](../Classes/classTargetRegionVariable.md) & Aarg, llvm::raw_ostream & Out) |
+
+## Private Attributes
+
+|                | Name           |
+| -------------- | -------------- |
+| [TargetCodeFragmentDeque](../Files/TargetCode_8h.md#using-targetcodefragmentdeque) | **[CodeFragments](../Classes/classTargetCode.md#variable-codefragments)** <br>Collection of all code locations that need to be copied.  |
+| std::set< std::string > | **[SystemHeaders](../Classes/classTargetCode.md#variable-systemheaders)** <br>Header files which will also be present on the target.  |
+| clang::Rewriter & | **[TargetCodeRewriter](../Classes/classTargetCode.md#variable-targetcoderewriter)**  |
+| clang::SourceManager & | **[SM](../Classes/classTargetCode.md#variable-sm)**  |
+
 ## Public Functions Documentation
 
 ### function TargetCode
@@ -89,4 +108,109 @@ inline void addHeader(
 ```
 
 Add a header file to be included by the target code. 
+
+## Private Functions Documentation
+
+### function generateVariableDecl
+
+```cpp
+void generateVariableDecl(
+    const TargetRegionVariable & Var,
+    llvm::raw_ostream & Out
+)
+```
+
+Generate the variable declaration of a transferred variable. 
+
+**Parameters**: 
+
+  * **Var** The variable for which to print the declaration 
+  * **Out** The output stream to which to write the variable declaration 
+
+
+Generate the variable declaration (including setting the variable to the proper value) of a transferred variable and print it to the specified output stream. 
+
+
+### function generateFunctionPrologue
+
+```cpp
+void generateFunctionPrologue(
+    TargetCodeRegion * TCR,
+    llvm::raw_ostream & Out
+)
+```
+
+Generates a function prologue for a target region. 
+
+This prologue consists of a function declaration and code to copy local variables into scope. 
+
+
+### function generateFunctionEpilogue
+
+```cpp
+void generateFunctionEpilogue(
+    TargetCodeRegion * TCR,
+    llvm::raw_ostream & Out
+)
+```
+
+Generates a function epilogue for a target region. 
+
+This prologue consists of a code to copy variables from the local scope back. 
+
+
+### function generateFunctionName
+
+```cpp
+std::string generateFunctionName(
+    TargetCodeRegion * TCR
+)
+```
+
+Generate a function name for a target region. 
+
+### function generateArgument
+
+```cpp
+void generateArgument(
+    const TargetRegionVariable & Aarg,
+    llvm::raw_ostream & Out
+)
+```
+
+
+## Private Attributes Documentation
+
+### variable CodeFragments
+
+```cpp
+TargetCodeFragmentDeque CodeFragments;
+```
+
+Collection of all code locations that need to be copied. 
+
+### variable SystemHeaders
+
+```cpp
+std::set< std::string > SystemHeaders;
+```
+
+Header files which will also be present on the target. 
+
+Instead of copying the code declarations in them, we can simply add #include directives for these headers to the target code. 
+
+
+### variable TargetCodeRewriter
+
+```cpp
+clang::Rewriter & TargetCodeRewriter;
+```
+
+
+### variable SM
+
+```cpp
+clang::SourceManager & SM;
+```
+
 

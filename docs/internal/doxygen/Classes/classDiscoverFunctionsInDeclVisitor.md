@@ -22,6 +22,12 @@ Inherits from clang::RecursiveASTVisitor< DiscoverFunctionsInDeclVisitor >
 | -------------- | -------------- |
 | | **[__pad0__](../Classes/classDiscoverFunctionsInDeclVisitor.md#variable-__pad0__)**  |
 
+## Private Attributes
+
+|                | Name           |
+| -------------- | -------------- |
+| std::function< void(clang::FunctionDecl *)> | **[OnEachFuncRef](../Classes/classDiscoverFunctionsInDeclVisitor.md#variable-oneachfuncref)**  |
+
 ## Detailed Description
 
 ```cpp
@@ -58,6 +64,15 @@ bool VisitExpr(
 
 ```cpp
 __pad0__;
+```
+
+
+## Private Attributes Documentation
+
+### variable OnEachFuncRef
+
+```cpp
+std::function< void(clang::FunctionDecl *)> OnEachFuncRef;
 ```
 
 
