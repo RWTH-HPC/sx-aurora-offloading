@@ -44,7 +44,7 @@ plugins:
       tryclone: yes
       packages:
         - doxygen:
-            url: https://github.com/RWTH-HPC/llvm-project.git --branch aurora-offloading-prototype
+            url: --branch aurora-offloading-prototype https://github.com/RWTH-HPC/llvm-project.git
             config: clang/tools/sotoc/Doxyfile
 nav:
   - Introduction: "index.md"
