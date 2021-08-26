@@ -17,6 +17,15 @@
 | {{child.kind}} | **[{{last(stripNamespace(child.name))}}]({{child.url}})** {% if existsIn(child, "brief") %}<br>{{child.brief}}{% endif %} |
 {% endfor %}
 {% endif -%}
+{%- if existsIn(base, "privateClasses") -%}
+**Private Classes inherited from [{{base.name}}]({{base.url}})**
+
+|                | Name           |
+| -------------- | -------------- |
+{% for child in base.privateClasses -%}
+| {{child.kind}} | **[{{last(stripNamespace(child.name))}}]({{child.url}})** {% if existsIn(child, "brief") %}<br>{{child.brief}}{% endif %} |
+{% endfor %}
+{% endif -%}
 {%- if existsIn(base, "publicTypes") -%}
 **Public Types inherited from [{{base.name}}]({{base.url}})**
 
@@ -41,6 +50,24 @@ template <{% for param in child.templateParams -%}
 |                | Name           |
 | -------------- | -------------- |
 {% for child in base.protectedTypes -%}
+| {% if existsIn(child, "templateParams") -%}
+template <{% for param in child.templateParams -%}
+{{param.typePlain}} {{param.name}}{% if existsIn(param, "defvalPlain") %} ={{param.defvalPlain}}{% endif -%}
+{% if not loop.is_last %},{% endif -%}
+{% endfor %}\> <br>{% endif -%}
+{{child.kind}}{% if child.kind == "enum" and child.strong %} class{% endif %}{% if existsIn(child, "type") %} {{child.type}} {% endif -%}| **[{{child.name}}]({{child.url}})** {% if child.kind == "enum" %}{ {% for enumvalue in child.enumvalues -%}
+{{enumvalue.name}}{% if existsIn(enumvalue, "initializer") %} {{enumvalue.initializer}}{% endif -%}
+{% if not loop.is_last %}, {% endif %}{% endfor -%}
+ }{% endif -%}
+{% if existsIn(child, "brief") %}<br>{{child.brief}}{% endif %} |
+{% endfor %}
+{% endif -%}
+{%- if existsIn(base, "privateTypes") -%}
+**Private Types inherited from [{{base.name}}]({{base.url}})**
+
+|                | Name           |
+| -------------- | -------------- |
+{% for child in base.privateTypes -%}
 | {% if existsIn(child, "templateParams") -%}
 template <{% for param in child.templateParams -%}
 {{param.typePlain}} {{param.name}}{% if existsIn(param, "defvalPlain") %} ={{param.defvalPlain}}{% endif -%}
@@ -83,6 +110,30 @@ template <{% for param in child.templateParams -%}
 |                | Name           |
 | -------------- | -------------- |
 {% for child in base.protectedSlots -%}
+| {% if existsIn(child, "templateParams") -%}
+template <{% for param in child.templateParams -%}
+{{param.typePlain}} {{param.name}}{% if existsIn(param, "defvalPlain") %} ={{param.defvalPlain}}{% endif -%}
+{% if not loop.is_last %},{% endif -%}
+{% endfor %}\> <br>{% endif -%}
+{% if child.virtual %}virtual {% endif -%}
+{% if existsIn(child, "type") %}{{child.type}} {% endif -%}
+| **[{{child.name}}]({{child.url}})**({% for param in child.params -%}
+{{param.type}} {{param.name}}{% if existsIn(param, "defval") %} ={{param.defval}}{% endif -%}
+{% if not loop.is_last %}, {% endif -%}
+{% endfor %}){% if child.const %} const{% endif -%}
+{% if child.override %} override{% endif -%}
+{% if child.default %} =default{% endif -%}
+{% if child.deleted %} =deleted{% endif -%}
+{% if child.pureVirtual %} =0{% endif -%}
+ {% if existsIn(child, "brief") %}<br>{{child.brief}}{% endif %} |
+{% endfor %}
+{% endif -%}
+{%- if existsIn(base, "privateSlots") -%}
+**Private Slots inherited from [{{base.name}}]({{base.url}})**
+
+|                | Name           |
+| -------------- | -------------- |
+{% for child in base.privateSlots -%}
 | {% if existsIn(child, "templateParams") -%}
 template <{% for param in child.templateParams -%}
 {{param.typePlain}} {{param.name}}{% if existsIn(param, "defvalPlain") %} ={{param.defvalPlain}}{% endif -%}
@@ -149,6 +200,30 @@ template <{% for param in child.templateParams -%}
  {% if existsIn(child, "brief") %}<br>{{child.brief}}{% endif %} |
 {% endfor %}
 {% endif -%}
+{%- if existsIn(base, "privateSignals") -%}
+**Private Signals inherited from [{{base.name}}]({{base.url}})**
+
+|                | Name           |
+| -------------- | -------------- |
+{% for child in base.privateSignals -%}
+| {% if existsIn(child, "templateParams") -%}
+template <{% for param in child.templateParams -%}
+{{param.typePlain}} {{param.name}}{% if existsIn(param, "defvalPlain") %} ={{param.defvalPlain}}{% endif -%}
+{% if not loop.is_last %},{% endif -%}
+{% endfor %}\> <br>{% endif -%}
+{% if child.virtual %}virtual {% endif -%}
+{% if existsIn(child, "type") %}{{child.type}} {% endif -%}
+| **[{{child.name}}]({{child.url}})**({% for param in child.params -%}
+{{param.type}} {{param.name}}{% if existsIn(param, "defval") %} ={{param.defval}}{% endif -%}
+{% if not loop.is_last %}, {% endif -%}
+{% endfor %}){% if child.const %} const{% endif -%}
+{% if child.override %} override{% endif -%}
+{% if child.default %} =default{% endif -%}
+{% if child.deleted %} =deleted{% endif -%}
+{% if child.pureVirtual %} =0{% endif -%}
+ {% if existsIn(child, "brief") %}<br>{{child.brief}}{% endif %} |
+{% endfor %}
+{% endif -%}
 {%- if existsIn(base, "publicEvents") -%}
 **Public Events inherited from [{{base.name}}]({{base.url}})**
 
@@ -179,6 +254,30 @@ template <{% for param in child.templateParams -%}
 |                | Name           |
 | -------------- | -------------- |
 {% for child in base.protectedEvents -%}
+| {% if existsIn(child, "templateParams") -%}
+template <{% for param in child.templateParams -%}
+{{param.typePlain}} {{param.name}}{% if existsIn(param, "defvalPlain") %} ={{param.defvalPlain}}{% endif -%}
+{% if not loop.is_last %},{% endif -%}
+{% endfor %}\> <br>{% endif -%}
+{% if child.virtual %}virtual {% endif -%}
+{% if existsIn(child, "type") %}{{child.type}} {% endif -%}
+| **[{{child.name}}]({{child.url}})**({% for param in child.params -%}
+{{param.type}} {{param.name}}{% if existsIn(param, "defval") %} ={{param.defval}}{% endif -%}
+{% if not loop.is_last %}, {% endif -%}
+{% endfor %}){% if child.const %} const{% endif -%}
+{% if child.override %} override{% endif -%}
+{% if child.default %} =default{% endif -%}
+{% if child.deleted %} =deleted{% endif -%}
+{% if child.pureVirtual %} =0{% endif -%}
+ {% if existsIn(child, "brief") %}<br>{{child.brief}}{% endif %} |
+{% endfor %}
+{% endif -%}
+{%- if existsIn(base, "privateEvents") -%}
+**Private Events inherited from [{{base.name}}]({{base.url}})**
+
+|                | Name           |
+| -------------- | -------------- |
+{% for child in base.privateEvents -%}
 | {% if existsIn(child, "templateParams") -%}
 template <{% for param in child.templateParams -%}
 {{param.typePlain}} {{param.name}}{% if existsIn(param, "defvalPlain") %} ={{param.defvalPlain}}{% endif -%}
@@ -245,6 +344,30 @@ template <{% for param in child.templateParams -%}
  {% if existsIn(child, "brief") %}<br>{{child.brief}}{% endif %} |
 {% endfor %}
 {% endif -%}
+{%- if existsIn(base, "privateFunctions") -%}
+**Private Functions inherited from [{{base.name}}]({{base.url}})**
+
+|                | Name           |
+| -------------- | -------------- |
+{% for child in base.privateFunctions -%}
+| {% if existsIn(child, "templateParams") -%}
+template <{% for param in child.templateParams -%}
+{{param.typePlain}} {{param.name}}{% if existsIn(param, "defvalPlain") %} ={{param.defvalPlain}}{% endif -%}
+{% if not loop.is_last %},{% endif -%}
+{% endfor %}\> <br>{% endif -%}
+{% if child.virtual %}virtual {% endif -%}
+{% if existsIn(child, "type") %}{{child.type}} {% endif -%}
+| **[{{child.name}}]({{child.url}})**({% for param in child.params -%}
+{{param.type}} {{param.name}}{% if existsIn(param, "defval") %} ={{param.defval}}{% endif -%}
+{% if not loop.is_last %}, {% endif -%}
+{% endfor %}){% if child.const %} const{% endif -%}
+{% if child.override %} override{% endif -%}
+{% if child.default %} =default{% endif -%}
+{% if child.deleted %} =deleted{% endif -%}
+{% if child.pureVirtual %} =0{% endif -%}
+ {% if existsIn(child, "brief") %}<br>{{child.brief}}{% endif %} |
+{% endfor %}
+{% endif -%}
 {%- if existsIn(base, "publicProperties") -%}
 **Public Properties inherited from [{{base.name}}]({{base.url}})**
 
@@ -265,6 +388,16 @@ template <{% for param in child.templateParams -%}
 | **[{{child.name}}]({{child.url}})** {% if existsIn(child, "brief") %}<br>{{child.brief}}{% endif %} |
 {% endfor %}
 {% endif -%}
+{%- if existsIn(base, "privateProperties") -%}
+**Private Properties inherited from [{{base.name}}]({{base.url}})**
+
+|                | Name           |
+| -------------- | -------------- |
+{% for child in base.privateProperties -%}
+| {% if existsIn(child, "type") %}{{child.type}} {% endif -%}
+| **[{{child.name}}]({{child.url}})** {% if existsIn(child, "brief") %}<br>{{child.brief}}{% endif %} |
+{% endfor %}
+{% endif -%}
 {%- if existsIn(base, "publicAttributes") -%}
 **Public Attributes inherited from [{{base.name}}]({{base.url}})**
 
@@ -281,6 +414,16 @@ template <{% for param in child.templateParams -%}
 |                | Name           |
 | -------------- | -------------- |
 {% for child in base.protectedAttributes -%}
+| {% if existsIn(child, "type") %}{{child.type}} {% endif -%}
+| **[{{child.name}}]({{child.url}})** {% if existsIn(child, "brief") %}<br>{{child.brief}}{% endif %} |
+{% endfor %}
+{% endif -%}
+{%- if existsIn(base, "privateAttributes") -%}
+**Private Attributes inherited from [{{base.name}}]({{base.url}})**
+
+|                | Name           |
+| -------------- | -------------- |
+{% for child in base.privateAttributes -%}
 | {% if existsIn(child, "type") %}{{child.type}} {% endif -%}
 | **[{{child.name}}]({{child.url}})** {% if existsIn(child, "brief") %}<br>{{child.brief}}{% endif %} |
 {% endfor %}

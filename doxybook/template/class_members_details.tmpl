@@ -12,6 +12,13 @@
 {{ render("member_details", child) }}
 {% endfor %}{% endif -%}
 
+{% if exists("privateTypes") %}## Private Types Documentation
+
+{% for child in privateTypes %}### {{child.kind}} {{child.name}}
+
+{{ render("member_details", child) }}
+{% endfor %}{% endif -%}
+
 {% if exists("publicSlots") %}## Public Slots Documentation
 
 {% for child in publicSlots %}### {{child.kind}} {{child.name}}
@@ -22,6 +29,13 @@
 {% if exists("protectedSlots") %}## Protected Slots Documentation
 
 {% for child in protectedSlots %}### {{child.kind}} {{child.name}}
+
+{{ render("member_details", child) }}
+{% endfor %}{% endif -%}
+
+{% if exists("privateSlots") %}## Private Slots Documentation
+
+{% for child in privateSlots %}### {{child.kind}} {{child.name}}
 
 {{ render("member_details", child) }}
 {% endfor %}{% endif -%}
@@ -40,6 +54,13 @@
 {{ render("member_details", child) }}
 {% endfor %}{% endif -%}
 
+{% if exists("privateSignals") %}## Private Signals Documentation
+
+{% for child in privateSignals %}### {{child.kind}} {{child.name}}
+
+{{ render("member_details", child) }}
+{% endfor %}{% endif -%}
+
 {% if exists("publicEvents") %}## Public Events Documentation
 
 {% for child in publicEvents %}### {{child.kind}} {{child.name}}
@@ -50,6 +71,13 @@
 {% if exists("protectedEvents") %}## Protected Events Documentation
 
 {% for child in protectedEvents %}### {{child.kind}} {{child.name}}
+
+{{ render("member_details", child) }}
+{% endfor %}{% endif -%}
+
+{% if exists("privateEvents") %}## Private Events Documentation
+
+{% for child in privateEvents %}### {{child.kind}} {{child.name}}
 
 {{ render("member_details", child) }}
 {% endfor %}{% endif -%}
@@ -68,6 +96,13 @@
 {{ render("member_details", child) }}
 {% endfor %}{% endif -%}
 
+{% if exists("privateFunctions") %}## Private Functions Documentation
+
+{% for child in privateFunctions %}### {{child.kind}} {{child.name}}
+
+{{ render("member_details", child) }}
+{% endfor %}{% endif -%}
+
 {% if exists("publicProperties") %}## Public Property Documentation
 
 {% for child in publicProperties %}### {{child.kind}} {{child.name}}
@@ -82,6 +117,13 @@
 {{ render("member_details", child) }}
 {% endfor %}{% endif -%}
 
+{% if exists("privateProperties") %}## Private Property Documentation
+
+{% for child in privateProperties %}### {{child.kind}} {{child.name}}
+
+{{ render("member_details", child) }}
+{% endfor %}{% endif -%}
+
 {% if exists("publicAttributes") %}## Public Attributes Documentation
 
 {% for child in publicAttributes %}### {{child.kind}} {{child.name}}
@@ -92,6 +134,13 @@
 {% if exists("protectedAttributes") %}## Protected Attributes Documentation
 
 {% for child in protectedAttributes %}### {{child.kind}} {{child.name}}
+
+{{ render("member_details", child) }}
+{% endfor %}{% endif -%}
+
+{% if exists("privateAttributes") %}## Private Attributes Documentation
+
+{% for child in privateAttributes %}### {{child.kind}} {{child.name}}
 
 {{ render("member_details", child) }}
 {% endfor %}{% endif -%}
