@@ -1,4 +1,6 @@
 # Basic Structure and Design
+!!! danger "Attention"
+    This page is for internal and development use only.
 
 ## Libomptarget
 Libomptarget provides the offloading implementation for the target devices via plugins.
