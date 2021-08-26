@@ -51,8 +51,7 @@ nav:
     - Install Helpers: "internal/install_helpers.md"
     - Design: "internal/design.md"
     - Target Code Generation: "internal/codegen.md"
-    - Doxygen:
-      - Main Page: "internal/doxygen/index.md"
+    - Sotoc Doxygen:
       - Classes: "internal/doxygen/Classes/index_classes.md"
       - Files: "internal/doxygen/Files/index_files.md"
   - Publications: "publications.md"
