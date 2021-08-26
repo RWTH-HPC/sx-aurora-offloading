@@ -10,8 +10,8 @@ Inherits from ASTFrontendAction
 
 |                | Name           |
 | -------------- | -------------- |
-| void | **[EndSourceFileAction](Classes/classSourceTransformAction.md#function-endsourcefileaction)**() override |
-| std::unique_ptr< clang::ASTConsumer > | **[CreateASTConsumer](Classes/classSourceTransformAction.md#function-createastconsumer)**(clang::CompilerInstance & CI, clang::StringRef ) |
+| void | **[EndSourceFileAction](../Classes/classSourceTransformAction.md#function-endsourcefileaction)**() override |
+| std::unique_ptr< clang::ASTConsumer > | **[CreateASTConsumer](../Classes/classSourceTransformAction.md#function-createastconsumer)**(clang::CompilerInstance & CI, clang::StringRef ) |
 
 ## Public Functions Documentation
 

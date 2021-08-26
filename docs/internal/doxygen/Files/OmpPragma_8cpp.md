@@ -1,12 +1,12 @@
 # src/OmpPragma.cpp
 
-This file implements the class [OmpPragma](Classes/classOmpPragma.md), which is used to generate repla- cement pragmas for teams and team combined constructs. 
+This file implements the class [OmpPragma](../Classes/classOmpPragma.md), which is used to generate repla- cement pragmas for teams and team combined constructs. 
 
 ## Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| int | **[ClauseParamCounter](Files/OmpPragma_8cpp.md#variable-clauseparamcounter)**  |
+| int | **[ClauseParamCounter](../Files/OmpPragma_8cpp.md#variable-clauseparamcounter)**  |
 
 
 

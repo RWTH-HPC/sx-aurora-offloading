@@ -1,6 +1,6 @@
 # src/TargetRegionVariable.cpp
 
-This file implements the class [TargetRegionVariable](Classes/classTargetRegionVariable.md). 
+This file implements the class [TargetRegionVariable](../Classes/classTargetRegionVariable.md). 
 
 
 

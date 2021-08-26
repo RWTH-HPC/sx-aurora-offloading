@@ -10,8 +10,8 @@ Inherits from clang::RecursiveASTVisitor< CollectOMPClauseParamsVarsVisitor >
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[CollectOMPClauseParamsVarsVisitor](Classes/classCollectOMPClauseParamsVarsVisitor.md#function-collectompclauseparamsvarsvisitor)**(std::shared_ptr< [TargetCodeRegion](Classes/classTargetCodeRegion.md) > & TCR) |
-| bool | **[VisitStmt](Classes/classCollectOMPClauseParamsVarsVisitor.md#function-visitstmt)**(clang::Stmt * S) |
+| | **[CollectOMPClauseParamsVarsVisitor](../Classes/classCollectOMPClauseParamsVarsVisitor.md#function-collectompclauseparamsvarsvisitor)**(std::shared_ptr< [TargetCodeRegion](../Classes/classTargetCodeRegion.md) > & TCR) |
+| bool | **[VisitStmt](../Classes/classCollectOMPClauseParamsVarsVisitor.md#function-visitstmt)**(clang::Stmt * S) |
 
 ## Public Functions Documentation
 

@@ -10,8 +10,8 @@ Inherits from PrinterHelper
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[TargetRegionPrinterHelper](Classes/classTargetRegionPrinterHelper.md#function-targetregionprinterhelper)**(clang::PrintingPolicy PP) |
-| bool | **[handledStmt](Classes/classTargetRegionPrinterHelper.md#function-handledstmt)**(clang::Stmt * E, llvm::raw_ostream & OS) |
+| | **[TargetRegionPrinterHelper](../Classes/classTargetRegionPrinterHelper.md#function-targetregionprinterhelper)**(clang::PrintingPolicy PP) |
+| bool | **[handledStmt](../Classes/classTargetRegionPrinterHelper.md#function-handledstmt)**(clang::Stmt * E, llvm::raw_ostream & OS) |
 
 ## Public Functions Documentation
 

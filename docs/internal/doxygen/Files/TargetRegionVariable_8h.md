@@ -6,15 +6,15 @@
 
 | Name           |
 | -------------- |
-| **[clang](Namespaces/namespaceclang.md)**  |
+| **[clang](../Namespaces/namespaceclang.md)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[TargetRegionVariableShape](Classes/classTargetRegionVariableShape.md)** <br>Describes the shape, i.e.  |
-| class | **[TargetRegionVariable](Classes/classTargetRegionVariable.md)** <br>Represents a variable captured by a target region.  |
-| class | **[TargetRegionVariable::shape_const_kind_iterator](Classes/classTargetRegionVariable_1_1shape__const__kind__iterator.md)** <br>Iterator which acts as a filter over std::vector<TargetRegionVariableShape>::const_iterator (the base_iter) which only passes on [TargetRegionVariableShape](Classes/classTargetRegionVariableShape.md) of the kind specified in [Kind]().  |
+| class | **[TargetRegionVariableShape](../Classes/classTargetRegionVariableShape.md)** <br>Describes the shape, i.e.  |
+| class | **[TargetRegionVariable](../Classes/classTargetRegionVariable.md)** <br>Represents a variable captured by a target region.  |
+| class | **[TargetRegionVariable::shape_const_kind_iterator](../Classes/classTargetRegionVariable_1_1shape__const__kind__iterator.md)** <br>Iterator which acts as a filter over std::vector<TargetRegionVariableShape>::const_iterator (the base_iter) which only passes on [TargetRegionVariableShape](../Classes/classTargetRegionVariableShape.md) of the kind specified in [Kind]().  |
 
 
 

@@ -6,19 +6,19 @@
 
 | Name           |
 | -------------- |
-| **[clang](Namespaces/namespaceclang.md)**  |
+| **[clang](../Namespaces/namespaceclang.md)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[DiscoverTypesInDeclVisitor](Classes/classDiscoverTypesInDeclVisitor.md)** <br>Traverses (parts of) the AST to find DeclRefExpr that refer to types that need to be present for that part of the AST to compile correctly.  |
-| class | **[DiscoverFunctionsInDeclVisitor](Classes/classDiscoverFunctionsInDeclVisitor.md)** <br>Traverses (parts of) the AST to find DeclRefExpr that refer to functions that need to be present for that part of the AST to compile correctly.  |
-| class | **[FindDeclRefExprVisitor](Classes/classFindDeclRefExprVisitor.md)**  |
-| class | **[FindLoopStmtVisitor](Classes/classFindLoopStmtVisitor.md)**  |
-| class | **[FindTargetCodeVisitor](Classes/classFindTargetCodeVisitor.md)** <br>Traverses the AST to find target and process target regions and function and variables that are annotated by an 'omp declare target' target pragma.  |
-| class | **[FindArraySectionVisitor](Classes/classFindArraySectionVisitor.md)**  |
-| class | **[FindPrivateVariablesVisitor](Classes/classFindPrivateVariablesVisitor.md)**  |
+| class | **[DiscoverTypesInDeclVisitor](../Classes/classDiscoverTypesInDeclVisitor.md)** <br>Traverses (parts of) the AST to find DeclRefExpr that refer to types that need to be present for that part of the AST to compile correctly.  |
+| class | **[DiscoverFunctionsInDeclVisitor](../Classes/classDiscoverFunctionsInDeclVisitor.md)** <br>Traverses (parts of) the AST to find DeclRefExpr that refer to functions that need to be present for that part of the AST to compile correctly.  |
+| class | **[FindDeclRefExprVisitor](../Classes/classFindDeclRefExprVisitor.md)**  |
+| class | **[FindLoopStmtVisitor](../Classes/classFindLoopStmtVisitor.md)**  |
+| class | **[FindTargetCodeVisitor](../Classes/classFindTargetCodeVisitor.md)** <br>Traverses the AST to find target and process target regions and function and variables that are annotated by an 'omp declare target' target pragma.  |
+| class | **[FindArraySectionVisitor](../Classes/classFindArraySectionVisitor.md)**  |
+| class | **[FindPrivateVariablesVisitor](../Classes/classFindPrivateVariablesVisitor.md)**  |
 
 
 

@@ -1,14 +1,14 @@
 # src/DeclResolver.cpp
 
-This file implements the class [DeclResolver](Classes/classDeclResolver.md). 
+This file implements the class [DeclResolver](../Classes/classDeclResolver.md). 
 
 ## Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| bool | **[isHeaderOpenMPHeader](Files/DeclResolver_8cpp.md#function-isheaderopenmpheader)**(llvm::StringRef header_path) |
-| bool | **[isDeclInOpenMPHeader](Files/DeclResolver_8cpp.md#function-isdeclinopenmpheader)**(clang::Decl * D) |
-| llvm::Optional< std::string > | **[getSystemHeaderForDecl](Files/DeclResolver_8cpp.md#function-getsystemheaderfordecl)**(clang::Decl * D) |
+| bool | **[isHeaderOpenMPHeader](../Files/DeclResolver_8cpp.md#function-isheaderopenmpheader)**(llvm::StringRef header_path) |
+| bool | **[isDeclInOpenMPHeader](../Files/DeclResolver_8cpp.md#function-isdeclinopenmpheader)**(clang::Decl * D) |
+| llvm::Optional< std::string > | **[getSystemHeaderForDecl](../Files/DeclResolver_8cpp.md#function-getsystemheaderfordecl)**(clang::Decl * D) |
 
 
 ## Functions Documentation

@@ -53,8 +53,8 @@ nav:
     - Target Code Generation: "internal/codegen.md"
     - Doxygen:
       - Main Page: "internal/doxygen/index.md"
-      - Classes: "internal/doxygen/index_classes.md"
-      - Files: "internal/doxygen/index_files.md"
+      - Classes: "internal/doxygen/Classes/index_classes.md"
+      - Files: "internal/doxygen/Files/index_files.md"
   - Publications: "publications.md"
 extra:
   link:

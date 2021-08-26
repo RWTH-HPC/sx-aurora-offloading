@@ -13,8 +13,8 @@ Inherits from clang::RecursiveASTVisitor< FindArraySectionVisitor >
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[FindArraySectionVisitor](Classes/classFindArraySectionVisitor.md#function-findarraysectionvisitor)**(std::map< clang::VarDecl *, clang::Expr * > & LowerBoundsMap) |
-| bool | **[VisitExpr](Classes/classFindArraySectionVisitor.md#function-visitexpr)**(clang::Expr * E) |
+| | **[FindArraySectionVisitor](../Classes/classFindArraySectionVisitor.md#function-findarraysectionvisitor)**(std::map< clang::VarDecl *, clang::Expr * > & LowerBoundsMap) |
+| bool | **[VisitExpr](../Classes/classFindArraySectionVisitor.md#function-visitexpr)**(clang::Expr * E) |
 
 ## Public Functions Documentation
 

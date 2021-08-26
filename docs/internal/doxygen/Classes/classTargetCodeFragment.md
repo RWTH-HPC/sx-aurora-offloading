@@ -7,45 +7,45 @@ An abstract base class for all fragments of the original code (except header inc
 
 `#include <TargetCodeFragment.h>`
 
-Inherited by [TargetCodeDecl](Classes/classTargetCodeDecl.md), [TargetCodeRegion](Classes/classTargetCodeRegion.md)
+Inherited by [TargetCodeDecl](../Classes/classTargetCodeDecl.md), [TargetCodeRegion](../Classes/classTargetCodeRegion.md)
 
 ## Public Types
 
 |                | Name           |
 | -------------- | -------------- |
-| enum| **[TargetCodeFragmentKind](Classes/classTargetCodeFragment.md#enum-targetcodefragmentkind)** { TCFK_TargetCodeFragment, TCFK_TargetCodeRegion, TCFK_TargetCodeDecl}<br>Enum for LLVMs RTTI.  |
+| enum| **[TargetCodeFragmentKind](../Classes/classTargetCodeFragment.md#enum-targetcodefragmentkind)** { TCFK_TargetCodeFragment, TCFK_TargetCodeRegion, TCFK_TargetCodeDecl}<br>Enum for LLVMs RTTI.  |
 
 ## Public Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| [TargetCodeFragmentKind](Classes/classTargetCodeFragment.md#enum-targetcodefragmentkind) | **[getKind](Classes/classTargetCodeFragment.md#function-getkind)**() const<br>Accessor for LLVMs RTTI.  |
-| | **[TargetCodeFragment](Classes/classTargetCodeFragment.md#function-targetcodefragment)**(clang::ASTContext & Context, [TargetCodeFragmentKind](Classes/classTargetCodeFragment.md#enum-targetcodefragmentkind) Kind) |
-| virtual | **[~TargetCodeFragment](Classes/classTargetCodeFragment.md#function-~targetcodefragment)**() =0 |
-| virtual std::string | **[PrintPretty](Classes/classTargetCodeFragment.md#function-printpretty)**() =0<br>Tries to use Clang's PrettyPrinter when possible (this is currently only for target regions).  |
-| virtual clang::SourceRange | **[getRealRange](Classes/classTargetCodeFragment.md#function-getrealrange)**() =0<br>Get the source range of the fragment.  |
-| virtual clang::SourceRange | **[getInnerRange](Classes/classTargetCodeFragment.md#function-getinnerrange)**()<br>Gets the 'inner' source range.  |
-| virtual clang::SourceRange | **[getSpellingRange](Classes/classTargetCodeFragment.md#function-getspellingrange)**() =0<br>Get the spelling source range.  |
-| clang::OpenMPDirectiveKind | **[getTargetCodeKind](Classes/classTargetCodeFragment.md#function-gettargetcodekind)**()<br>Accessor to TargetCodeKind.  |
-| const clang::LangOptions & | **[GetLangOpts](Classes/classTargetCodeFragment.md#function-getlangopts)**()<br>Accessor to lang opts of the current context.  |
-| clang::PrintingPolicy | **[getPP](Classes/classTargetCodeFragment.md#function-getpp)**() |
-| bool | **[classof](Classes/classTargetCodeFragment.md#function-classof)**(const [TargetCodeFragment](Classes/classTargetCodeFragment.md) * TCF) |
+| [TargetCodeFragmentKind](../Classes/classTargetCodeFragment.md#enum-targetcodefragmentkind) | **[getKind](../Classes/classTargetCodeFragment.md#function-getkind)**() const<br>Accessor for LLVMs RTTI.  |
+| | **[TargetCodeFragment](../Classes/classTargetCodeFragment.md#function-targetcodefragment)**(clang::ASTContext & Context, [TargetCodeFragmentKind](../Classes/classTargetCodeFragment.md#enum-targetcodefragmentkind) Kind) |
+| virtual | **[~TargetCodeFragment](../Classes/classTargetCodeFragment.md#function-~targetcodefragment)**() =0 |
+| virtual std::string | **[PrintPretty](../Classes/classTargetCodeFragment.md#function-printpretty)**() =0<br>Tries to use Clang's PrettyPrinter when possible (this is currently only for target regions).  |
+| virtual clang::SourceRange | **[getRealRange](../Classes/classTargetCodeFragment.md#function-getrealrange)**() =0<br>Get the source range of the fragment.  |
+| virtual clang::SourceRange | **[getInnerRange](../Classes/classTargetCodeFragment.md#function-getinnerrange)**()<br>Gets the 'inner' source range.  |
+| virtual clang::SourceRange | **[getSpellingRange](../Classes/classTargetCodeFragment.md#function-getspellingrange)**() =0<br>Get the spelling source range.  |
+| clang::OpenMPDirectiveKind | **[getTargetCodeKind](../Classes/classTargetCodeFragment.md#function-gettargetcodekind)**()<br>Accessor to TargetCodeKind.  |
+| const clang::LangOptions & | **[GetLangOpts](../Classes/classTargetCodeFragment.md#function-getlangopts)**()<br>Accessor to lang opts of the current context.  |
+| clang::PrintingPolicy | **[getPP](../Classes/classTargetCodeFragment.md#function-getpp)**() |
+| bool | **[classof](../Classes/classTargetCodeFragment.md#function-classof)**(const [TargetCodeFragment](../Classes/classTargetCodeFragment.md) * TCF) |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| bool | **[NeedsSemicolon](Classes/classTargetCodeFragment.md#variable-needssemicolon)** <br>Does the source code generation need to add a semicolon to this fragment.  |
-| clang::OpenMPDirectiveKind | **[TargetCodeKind](Classes/classTargetCodeFragment.md#variable-targetcodekind)** <br>What kind of code are we copying.  |
-| bool | **[HasExtraBraces](Classes/classTargetCodeFragment.md#variable-hasextrabraces)**  |
+| bool | **[NeedsSemicolon](../Classes/classTargetCodeFragment.md#variable-needssemicolon)** <br>Does the source code generation need to add a semicolon to this fragment.  |
+| clang::OpenMPDirectiveKind | **[TargetCodeKind](../Classes/classTargetCodeFragment.md#variable-targetcodekind)** <br>What kind of code are we copying.  |
+| bool | **[HasExtraBraces](../Classes/classTargetCodeFragment.md#variable-hasextrabraces)**  |
 
 ## Protected Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| const [TargetCodeFragmentKind](Classes/classTargetCodeFragment.md#enum-targetcodefragmentkind) | **[Kind](Classes/classTargetCodeFragment.md#variable-kind)** <br>Variable for LLVMs RTTI.  |
-| clang::ASTContext & | **[Context](Classes/classTargetCodeFragment.md#variable-context)**  |
-| clang::PrintingPolicy | **[PP](Classes/classTargetCodeFragment.md#variable-pp)**  |
+| const [TargetCodeFragmentKind](../Classes/classTargetCodeFragment.md#enum-targetcodefragmentkind) | **[Kind](../Classes/classTargetCodeFragment.md#variable-kind)** <br>Variable for LLVMs RTTI.  |
+| clang::ASTContext & | **[Context](../Classes/classTargetCodeFragment.md#variable-context)**  |
+| clang::PrintingPolicy | **[PP](../Classes/classTargetCodeFragment.md#variable-pp)**  |
 
 ## Detailed Description
 
@@ -106,7 +106,7 @@ virtual std::string PrintPretty() =0
 
 Tries to use Clang's PrettyPrinter when possible (this is currently only for target regions). 
 
-**Reimplemented by**: [TargetCodeRegion::PrintPretty](Classes/classTargetCodeRegion.md#function-printpretty), [TargetCodeDecl::PrintPretty](Classes/classTargetCodeDecl.md#function-printpretty)
+**Reimplemented by**: [TargetCodeRegion::PrintPretty](../Classes/classTargetCodeRegion.md#function-printpretty), [TargetCodeDecl::PrintPretty](../Classes/classTargetCodeDecl.md#function-printpretty)
 
 
 ### function getRealRange
@@ -117,7 +117,7 @@ virtual clang::SourceRange getRealRange() =0
 
 Get the source range of the fragment. 
 
-**Reimplemented by**: [TargetCodeRegion::getRealRange](Classes/classTargetCodeRegion.md#function-getrealrange), [TargetCodeDecl::getRealRange](Classes/classTargetCodeDecl.md#function-getrealrange)
+**Reimplemented by**: [TargetCodeRegion::getRealRange](../Classes/classTargetCodeRegion.md#function-getrealrange), [TargetCodeDecl::getRealRange](../Classes/classTargetCodeDecl.md#function-getrealrange)
 
 
 ### function getInnerRange
@@ -128,7 +128,7 @@ inline virtual clang::SourceRange getInnerRange()
 
 Gets the 'inner' source range. 
 
-**Reimplemented by**: [TargetCodeRegion::getInnerRange](Classes/classTargetCodeRegion.md#function-getinnerrange)
+**Reimplemented by**: [TargetCodeRegion::getInnerRange](../Classes/classTargetCodeRegion.md#function-getinnerrange)
 
 
 This can differ for target regions from the source range. 
@@ -142,7 +142,7 @@ virtual clang::SourceRange getSpellingRange() =0
 
 Get the spelling source range. 
 
-**Reimplemented by**: [TargetCodeRegion::getSpellingRange](Classes/classTargetCodeRegion.md#function-getspellingrange), [TargetCodeDecl::getSpellingRange](Classes/classTargetCodeDecl.md#function-getspellingrange)
+**Reimplemented by**: [TargetCodeRegion::getSpellingRange](../Classes/classTargetCodeRegion.md#function-getspellingrange), [TargetCodeDecl::getSpellingRange](../Classes/classTargetCodeDecl.md#function-getspellingrange)
 
 
 That is the range without macro expansions. 

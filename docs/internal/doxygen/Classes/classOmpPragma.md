@@ -11,13 +11,13 @@ A helper class to rewrite some "pragma omp" (mostly teams and similar combined c
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[OmpPragma](Classes/classOmpPragma.md#function-omppragma)**([TargetCodeRegion](Classes/classTargetCodeRegion.md) * TCR) |
-| | **[OmpPragma](Classes/classOmpPragma.md#function-omppragma)**(clang::OMPExecutableDirective * Directive, clang::PrintingPolicy PP) |
-| bool | **[needsStructuredBlock](Classes/classOmpPragma.md#function-needsstructuredblock)**()<br>Returns true if the omp pragma encapsulated, needs to be followed by a structured block (i.e.  |
-| void | **[printReplacement](Classes/classOmpPragma.md#function-printreplacement)**(llvm::raw_ostream & Out)<br>Prints a replacement omp pragma for the encapsulated pragma onto `Out`.  |
-| void | **[printAddition](Classes/classOmpPragma.md#function-printaddition)**(llvm::raw_ostream & Out) |
-| bool | **[isReplaceable](Classes/classOmpPragma.md#function-isreplaceable)**(clang::OMPExecutableDirective * Directive) |
-| bool | **[needsAdditionalPragma](Classes/classOmpPragma.md#function-needsadditionalpragma)**(clang::OMPExecutableDirective * Directive) |
+| | **[OmpPragma](../Classes/classOmpPragma.md#function-omppragma)**([TargetCodeRegion](../Classes/classTargetCodeRegion.md) * TCR) |
+| | **[OmpPragma](../Classes/classOmpPragma.md#function-omppragma)**(clang::OMPExecutableDirective * Directive, clang::PrintingPolicy PP) |
+| bool | **[needsStructuredBlock](../Classes/classOmpPragma.md#function-needsstructuredblock)**()<br>Returns true if the omp pragma encapsulated, needs to be followed by a structured block (i.e.  |
+| void | **[printReplacement](../Classes/classOmpPragma.md#function-printreplacement)**(llvm::raw_ostream & Out)<br>Prints a replacement omp pragma for the encapsulated pragma onto `Out`.  |
+| void | **[printAddition](../Classes/classOmpPragma.md#function-printaddition)**(llvm::raw_ostream & Out) |
+| bool | **[isReplaceable](../Classes/classOmpPragma.md#function-isreplaceable)**(clang::OMPExecutableDirective * Directive) |
+| bool | **[needsAdditionalPragma](../Classes/classOmpPragma.md#function-needsadditionalpragma)**(clang::OMPExecutableDirective * Directive) |
 
 ## Detailed Description
 

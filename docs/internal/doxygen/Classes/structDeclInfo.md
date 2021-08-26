@@ -11,15 +11,15 @@ Records information to resolve a single declaration, including if its declared i
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[DeclInfo](Classes/structDeclInfo.md#function-declinfo)**(clang::Decl * D, bool isFromSysHeader) |
+| | **[DeclInfo](../Classes/structDeclInfo.md#function-declinfo)**(clang::Decl * D, bool isFromSysHeader) |
 
 ## Public Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| const clang::Decl * | **[Decl](Classes/structDeclInfo.md#variable-decl)** <br>The declarations AST node itself.  |
-| std::set< clang::Decl * > | **[DeclDependencies](Classes/structDeclInfo.md#variable-decldependencies)** <br>All other declaration on which this declaration depends.  |
-| bool | **[IsFromSystemHeader](Classes/structDeclInfo.md#variable-isfromsystemheader)**  |
+| const clang::Decl * | **[Decl](../Classes/structDeclInfo.md#variable-decl)** <br>The declarations AST node itself.  |
+| std::set< clang::Decl * > | **[DeclDependencies](../Classes/structDeclInfo.md#variable-decldependencies)** <br>All other declaration on which this declaration depends.  |
+| bool | **[IsFromSystemHeader](../Classes/structDeclInfo.md#variable-isfromsystemheader)**  |
 
 ## Public Functions Documentation
 

@@ -6,7 +6,7 @@
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[OmpPragma](Classes/classOmpPragma.md)** <br>A helper class to rewrite some "pragma omp" (mostly teams and similar combined constructs), which are not supported by sotoc.  |
+| class | **[OmpPragma](../Classes/classOmpPragma.md)** <br>A helper class to rewrite some "pragma omp" (mostly teams and similar combined constructs), which are not supported by sotoc.  |
 
 
 

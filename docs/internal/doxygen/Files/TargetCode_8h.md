@@ -6,25 +6,25 @@
 
 | Name           |
 | -------------- |
-| **[clang](Namespaces/namespaceclang.md)**  |
+| **[clang](../Namespaces/namespaceclang.md)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[TargetCode](Classes/classTargetCode.md)** <br>A collection of all code from the input file that needs to be copied to the target source file.  |
+| class | **[TargetCode](../Classes/classTargetCode.md)** <br>A collection of all code from the input file that needs to be copied to the target source file.  |
 
 ## Types
 
 |                | Name           |
 | -------------- | -------------- |
-| using std::deque< std::shared_ptr< [TargetCodeFragment](Classes/classTargetCodeFragment.md) >> | **[TargetCodeFragmentDeque](Files/TargetCode_8h.md#using-targetcodefragmentdeque)**  |
+| using std::deque< std::shared_ptr< [TargetCodeFragment](../Classes/classTargetCodeFragment.md) >> | **[TargetCodeFragmentDeque](../Files/TargetCode_8h.md#using-targetcodefragmentdeque)**  |
 
 ## Attributes
 
 |                | Name           |
 | -------------- | -------------- |
-| int | **[clauseparam](Files/TargetCode_8h.md#variable-clauseparam)**  |
+| int | **[clauseparam](../Files/TargetCode_8h.md#variable-clauseparam)**  |
 
 ## Types Documentation
 
