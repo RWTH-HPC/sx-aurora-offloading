@@ -73,7 +73,7 @@ There are the following difference points between the ported version of GDB for 
     In this mode, instruction execution is held until the preceding instructions have completed.
     As the result, GDB shows the precise state when HW exception occurs.
 
-A full list of differences con be found [here](https://www.hpc.nec/documents/veos/en/gdb/Difference_Points_GDB.htm){target=_blank}.
+A full list of differences can be found [here](https://www.hpc.nec/documents/veos/en/gdb/Difference_Points_GDB.htm){target=_blank}.
 
 ## Helpers
 ### Delay Target Code Execution
