@@ -1,6 +1,6 @@
 # Source Transformation with sotoc
 
-The source transformation tool sotoc is now part of the [llvm-project]({{ link.llvm }})
+The source transformation tool sotoc is now part of the [llvm-project]({{ link.llvm }}){target=_blank}
 repository (under `clang/tools/sotoc`) and is build automatically with Clang.
 Please see [Installation](install.md) for installation or build instructions.
 

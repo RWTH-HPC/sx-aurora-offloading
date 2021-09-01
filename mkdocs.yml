@@ -29,6 +29,7 @@ theme:
 markdown_extensions:
   - admonition
   - abbr
+  - attr_list
   - pymdownx.tabbed
   - pymdownx.snippets
   - pymdownx.highlight
@@ -58,6 +59,5 @@ nav:
 extra:
   link:
     llvm: %%llvm%%
-    doxy: %%url%%/doxygen
   version:
     rpm: 1.8.0

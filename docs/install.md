@@ -16,19 +16,19 @@ NEC provides LLVM including our OpenMP offloading implementation as package in a
       ```
 
 === "Install from YUM Repository"
-    1. Add the `https://sx-aurora.com/repos/llvm/x86_64/` yum repository to your `/etc/yum.repo.d` (consult [How to add a Yum repository](https://www.redhat.com/sysadmin/add-yum-repository#manually-set-up-a-respository) by Red Hat)
+    1. Add the `https://sx-aurora.com/repos/llvm/x86_64/` yum repository to your `/etc/yum.repo.d` (consult [How to add a Yum repository](https://www.redhat.com/sysadmin/add-yum-repository#manually-set-up-a-respository){target=_blank} by Red Hat)
     2. Install `llvm-ve-rv-{{ version.rpm }}`
       ``` shell
       sudo yum install llvm-ve-rv-{{ version.rpm }}
       ```
 
 ## Building the Project
-This project now comes as a single [llvm-project]({{ link.llvm }}) repository,
+This project now comes as a single [llvm-project]({{ link.llvm }}){target=_blank} repository,
 forked from LLVM's upstream repository.
 All components can be checked out from a single source and built,
-closely following the [Clang build instructions](https://Clang.llvm.org/get_started.html).
+closely following the [Clang build instructions](https://Clang.llvm.org/get_started.html){target=_blank}.
 
-To build the project, first check out the [llvm-project]({{ link.llvm }}) repository and
+To build the project, first check out the [llvm-project]({{ link.llvm }}){target=_blank} repository and
 switch to the `aurora-offloading-prototype` branch before configuring the project with CMake.
 
 ### Configure with CMake
