@@ -35,7 +35,7 @@ There are the following difference points between the ported version of GDB for 
 
 1. GDB internally executes `ve_exec` command with `--traceme` option in order to execute VE program.
 
-2. VE_NODE_NUMBER environment variable can be used to specify VE node to execute VE program.
+2. `VE_NODE_NUMBER` environment variable can be used to specify VE node to execute VE program.
    If the environment variable is not set, VE program is executed on VE node 0.
 
 3. Only local debugging is supported. Remote debugging using GDB server or GDB stub is not supported.
@@ -44,7 +44,7 @@ There are the following difference points between the ported version of GDB for 
 
 5. GDB can not deal with thread-local variables correctly, because DWARF information about them is invalid.
 
-6. The following commands don't show information for VE side but show for VH(Vector Host) side using procfs of it.
+6. The following commands don't show information for VE side but show for VH side using procfs of it.
    ```
     info proc
     info proc all
@@ -67,8 +67,7 @@ There are the following difference points between the ported version of GDB for 
 9. `call` command can be used to invoke a function of a VE program. But, if stack area beyond page boundary
    is required, `call` command fails due to access error.
 
-12. Instruction Counter (IC) will be far from the address which causes a HW exception when the program is
-    stopped by the HW exception.
+10. IC will be far from the address which causes a HW exception when the program is stopped by the HW exception.
     `advance off` mode can be set in order to check the precise state when HW exception occurs.
     In this mode, instruction execution is held until the preceding instructions have completed.
     As the result, GDB shows the precise state when HW exception occurs.
