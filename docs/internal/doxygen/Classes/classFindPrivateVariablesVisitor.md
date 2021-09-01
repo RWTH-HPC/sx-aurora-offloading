@@ -29,7 +29,7 @@ Inherits from clang::RecursiveASTVisitor< FindPrivateVariablesVisitor >
 
 ### function FindPrivateVariablesVisitor
 
-```cpp
+```cpp linenums="1"
 inline FindPrivateVariablesVisitor(
     clang::SourceLocation TopSourceLocation,
     clang::SourceManager & SM
@@ -39,7 +39,7 @@ inline FindPrivateVariablesVisitor(
 
 ### function VisitExpr
 
-```cpp
+```cpp linenums="1"
 bool VisitExpr(
     clang::Expr * E
 )
@@ -48,7 +48,7 @@ bool VisitExpr(
 
 ### function getVarSet
 
-```cpp
+```cpp linenums="1"
 inline std::set< clang::VarDecl * > & getVarSet()
 ```
 
@@ -57,21 +57,21 @@ inline std::set< clang::VarDecl * > & getVarSet()
 
 ### variable SM
 
-```cpp
+```cpp linenums="1"
 clang::SourceManager & SM;
 ```
 
 
 ### variable RegionTopSourceLocation
 
-```cpp
+```cpp linenums="1"
 clang::SourceLocation RegionTopSourceLocation;
 ```
 
 
 ### variable VarSet
 
-```cpp
+```cpp linenums="1"
 std::set< clang::VarDecl * > VarSet;
 ```
 

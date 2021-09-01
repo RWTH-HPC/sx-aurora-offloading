@@ -56,19 +56,19 @@ Inherits from [DeclResolver](../Classes/classDeclResolver.md)
 
 ## Detailed Description
 
-```cpp
+```cpp linenums="1"
 class FunctionDeclResolver;
 ```
 
-Implements [DeclResolver]() for functions used in target regions. 
+Implements [DeclResolver]() for functions used in target regions.
 
-Does also search for additional types in the functions found and adds them to a [TypeDeclResolver](../Classes/classTypeDeclResolver.md) instance. 
+Does also search for additional types in the functions found and adds them to a [TypeDeclResolver](../Classes/classTypeDeclResolver.md) instance.
 
 ## Public Functions Documentation
 
 ### function FunctionDeclResolver
 
-```cpp
+```cpp linenums="1"
 inline FunctionDeclResolver(
     TypeDeclResolver & Types
 )
@@ -79,28 +79,28 @@ inline FunctionDeclResolver(
 
 ### function runOwnVisitor
 
-```cpp
+```cpp linenums="1"
 virtual void runOwnVisitor(
     clang::Decl * D,
     std::function< void(clang::Decl *Dep)> Fn
 ) override
 ```
 
-With this function, the resolver runs a visitor on the declaration added to find and add all declarations that the added declaration depends on and adds them to the resolver. 
+With this function, the resolver runs a visitor on the declaration added to find and add all declarations that the added declaration depends on and adds them to the resolver.
 
 **Reimplements**: [DeclResolver::runOwnVisitor](../Classes/classDeclResolver.md#function-runownvisitor)
 
 
 ### function findDependDecls
 
-```cpp
+```cpp linenums="1"
 virtual void findDependDecls(
     clang::Decl * D,
     std::unordered_set< clang::Decl * > & UnresolvedDecls
 ) override
 ```
 
-Overrides [DeclResolver::findDependDecls]() to also find types required by this function. 
+Overrides [DeclResolver::findDependDecls]() to also find types required by this function.
 
 **Reimplements**: [DeclResolver::findDependDecls](../Classes/classDeclResolver.md#function-finddependdecls)
 
@@ -109,7 +109,7 @@ Overrides [DeclResolver::findDependDecls]() to also find types required by this 
 
 ### variable Types
 
-```cpp
+```cpp linenums="1"
 TypeDeclResolver & Types;
 ```
 

@@ -1,6 +1,6 @@
 # src/TargetCodeFragment.cpp
 
-This file implements the classes [TargetCodeDecl](../Classes/classTargetCodeDecl.md) and [TargetCodeRegion](../Classes/classTargetCodeRegion.md). 
+This file implements the classes [TargetCodeDecl](../Classes/classTargetCodeDecl.md) and [TargetCodeRegion](../Classes/classTargetCodeRegion.md).
 
 ## Classes
 
@@ -22,7 +22,7 @@ This file implements the classes [TargetCodeDecl](../Classes/classTargetCodeDecl
 
 ### function hasRegionCompoundStmt
 
-```cpp
+```cpp linenums="1"
 static bool hasRegionCompoundStmt(
     const clang::Stmt * S
 )
@@ -31,7 +31,7 @@ static bool hasRegionCompoundStmt(
 
 ### function hasRegionOMPStmt
 
-```cpp
+```cpp linenums="1"
 static bool hasRegionOMPStmt(
     const clang::Stmt * S
 )
@@ -40,7 +40,7 @@ static bool hasRegionOMPStmt(
 
 ### function getOMPStmtSourceLocEnd
 
-```cpp
+```cpp linenums="1"
 static clang::SourceLocation getOMPStmtSourceLocEnd(
     const clang::Stmt * S
 )
@@ -49,7 +49,7 @@ static clang::SourceLocation getOMPStmtSourceLocEnd(
 
 ### function findPreviousToken
 
-```cpp
+```cpp linenums="1"
 static clang::SourceLocation findPreviousToken(
     clang::SourceLocation Loc,
     clang::SourceManager & SM,
@@ -61,7 +61,7 @@ static clang::SourceLocation findPreviousToken(
 
 
 ## Source code
-```cpp
+```cpp linenums="1"
 //===-- sotoc/src/TargetCodeFragment.cpp ---------------------------------===//
 //
 //                     The LLVM Compiler Infrastructure

@@ -39,13 +39,13 @@ Describes the shape, i.e.  [More...](#detailed-description)
 
 ## Detailed Description
 
-```cpp
+```cpp linenums="1"
 class TargetRegionVariableShape;
 ```
 
-Describes the shape, i.e. 
+Describes the shape, i.e.
 
-a variable dimension of constant or variable size, or a pointer. We collect this information for every parameter of a target region function because the pretty printer does not support the output format for variable and types (e.g. it prints 'int (*)[SIZE] a' instead of 'int (*) a[SIZE]'), so we print this manually in [TargetCode.cpp](../Files/TargetCode_8cpp.md#file-targetcode.cpp). For this we need every pointer indirection and array dimension which each is saved as shapes for that variable. 
+a variable dimension of constant or variable size, or a pointer. We collect this information for every parameter of a target region function because the pretty printer does not support the output format for variable and types (e.g. it prints 'int (*)[SIZE] a' instead of 'int (*) a[SIZE]'), so we print this manually in [TargetCode.cpp](../Files/TargetCode_8cpp.md#file-targetcode.cpp). For this we need every pointer indirection and array dimension which each is saved as shapes for that variable.
 
 ## Public Types Documentation
 
@@ -65,113 +65,113 @@ a variable dimension of constant or variable size, or a pointer. We collect this
 
 ### function getKind
 
-```cpp
+```cpp linenums="1"
 inline ShapeKind getKind() const
 ```
 
 
 ### function isVariableArray
 
-```cpp
+```cpp linenums="1"
 inline bool isVariableArray() const
 ```
 
 
 ### function isConstantArray
 
-```cpp
+```cpp linenums="1"
 inline bool isConstantArray() const
 ```
 
 
 ### function isArray
 
-```cpp
+```cpp linenums="1"
 inline bool isArray() const
 ```
 
 
 ### function isPointer
 
-```cpp
+```cpp linenums="1"
 inline bool isPointer() const
 ```
 
 
 ### function getVariableDimensionIndex
 
-```cpp
+```cpp linenums="1"
 inline unsigned int getVariableDimensionIndex() const
 ```
 
-If the shape is a variable array, return the array dimension index, (used for generating __sotoc_vla_dimX_ parameters in which the host signals the array's size). 
+If the shape is a variable array, return the array dimension index, (used for generating __sotoc_vla_dimX_ parameters in which the host signals the array's size).
 
 ### function getConstantDimensionExpr
 
-```cpp
+```cpp linenums="1"
 inline llvm::StringRef getConstantDimensionExpr() const
 ```
 
-If the shape is a constant array, it returns the rendered expression for the constant size. 
+If the shape is a constant array, it returns the rendered expression for the constant size.
 
 ### function TargetRegionVariableShape
 
-```cpp
+```cpp linenums="1"
 inline TargetRegionVariableShape()
 ```
 
-Construct a pointer shape by default. 
+Construct a pointer shape by default.
 
 ### function TargetRegionVariableShape
 
-```cpp
+```cpp linenums="1"
 inline TargetRegionVariableShape(
     const clang::ParenType * Paren
 )
 ```
 
-Construct a parentheses shape. 
+Construct a parentheses shape.
 
 ### function TargetRegionVariableShape
 
-```cpp
+```cpp linenums="1"
 inline TargetRegionVariableShape(
     const clang::VariableArrayType * Array,
     unsigned int DimIndex
 )
 ```
 
-Construct a shape for a variable array dimension. 
+Construct a shape for a variable array dimension.
 
 ### function TargetRegionVariableShape
 
-```cpp
+```cpp linenums="1"
 inline TargetRegionVariableShape(
     const clang::ConstantArrayType * Array
 )
 ```
 
-Construct a shape for a constant array dimension. 
+Construct a shape for a constant array dimension.
 
 ## Private Attributes Documentation
 
 ### variable VariableDimensionIndex
 
-```cpp
+```cpp linenums="1"
 unsigned int VariableDimensionIndex;
 ```
 
 
 ### variable ConstantDimensionExpr
 
-```cpp
+```cpp linenums="1"
 std::string ConstantDimensionExpr;
 ```
 
 
 ### variable Kind
 
-```cpp
+```cpp linenums="1"
 ShapeKind Kind;
 ```
 

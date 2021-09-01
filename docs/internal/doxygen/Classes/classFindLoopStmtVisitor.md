@@ -27,14 +27,14 @@ Inherits from clang::RecursiveASTVisitor< FindLoopStmtVisitor >
 
 ### function FindLoopStmtVisitor
 
-```cpp
+```cpp linenums="1"
 inline FindLoopStmtVisitor()
 ```
 
 
 ### function VisitStmt
 
-```cpp
+```cpp linenums="1"
 bool VisitStmt(
     clang::Stmt * S
 )
@@ -43,7 +43,7 @@ bool VisitStmt(
 
 ### function getVarSet
 
-```cpp
+```cpp linenums="1"
 inline std::unordered_set< clang::VarDecl * > * getVarSet()
 ```
 
@@ -52,7 +52,7 @@ inline std::unordered_set< clang::VarDecl * > * getVarSet()
 
 ### variable FindDeclRefVisitor
 
-```cpp
+```cpp linenums="1"
 FindDeclRefExprVisitor FindDeclRefVisitor;
 ```
 

@@ -26,7 +26,7 @@ Inherits from clang::RecursiveASTVisitor< FindArraySectionVisitor >
 
 ### function FindArraySectionVisitor
 
-```cpp
+```cpp linenums="1"
 inline FindArraySectionVisitor(
     std::map< clang::VarDecl *, clang::Expr * > & LowerBoundsMap
 )
@@ -35,7 +35,7 @@ inline FindArraySectionVisitor(
 
 ### function VisitExpr
 
-```cpp
+```cpp linenums="1"
 bool VisitExpr(
     clang::Expr * E
 )
@@ -46,7 +46,7 @@ bool VisitExpr(
 
 ### variable LowerBoundsMap
 
-```cpp
+```cpp linenums="1"
 std::map< clang::VarDecl *, clang::Expr * > & LowerBoundsMap;
 ```
 

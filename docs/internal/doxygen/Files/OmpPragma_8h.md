@@ -12,7 +12,7 @@
 
 
 ## Source code
-```cpp
+```cpp linenums="1"
 //===-- sotoc/src/OmpPragma.h ---------------------------------------------===//
 //
 //                     The LLVM Compiler Infrastructure

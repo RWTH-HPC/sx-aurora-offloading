@@ -1,6 +1,6 @@
 # src/Debug.h
 
-This file defines a debug macro for sotoc. 
+This file defines a debug macro for sotoc.
 
 ## Defines
 
@@ -16,7 +16,7 @@ This file defines a debug macro for sotoc.
 
 ### define DEBUGP
 
-```cpp
+```cpp linenums="1"
 #define DEBUGP(
     ...
 )
@@ -26,7 +26,7 @@ This file defines a debug macro for sotoc.
 
 ### define DEBUGPDECL
 
-```cpp
+```cpp linenums="1"
 #define DEBUGPDECL(
     ...
 )
@@ -35,7 +35,7 @@ This file defines a debug macro for sotoc.
 
 
 ## Source code
-```cpp
+```cpp linenums="1"
 //===-- sotoc/src/main.cpp ------------------------------------------------===//
 //
 //                     The LLVM Compiler Infrastructure

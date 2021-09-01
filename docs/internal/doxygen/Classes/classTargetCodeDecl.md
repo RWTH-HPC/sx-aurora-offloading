@@ -64,19 +64,19 @@ Inherits from [TargetCodeFragment](../Classes/classTargetCodeFragment.md)
 
 ## Detailed Description
 
-```cpp
+```cpp linenums="1"
 class TargetCodeDecl;
 ```
 
-This class represents a declaration, i.e. 
+This class represents a declaration, i.e.
 
-a function, global varialbe, or type declaration that need to be copied from the input source code to the generated source code. 
+a function, global varialbe, or type declaration that need to be copied from the input source code to the generated source code.
 
 ## Public Functions Documentation
 
 ### function classof
 
-```cpp
+```cpp linenums="1"
 static inline bool classof(
     const TargetCodeFragment * TCF
 )
@@ -85,7 +85,7 @@ static inline bool classof(
 
 ### function TargetCodeDecl
 
-```cpp
+```cpp linenums="1"
 inline TargetCodeDecl(
     clang::Decl * Node
 )
@@ -94,47 +94,47 @@ inline TargetCodeDecl(
 
 ### function PrintPretty
 
-```cpp
+```cpp linenums="1"
 virtual std::string PrintPretty() override
 ```
 
-Tries to use Clang's PrettyPrinter when possible (this is currently only for target regions). 
+Tries to use Clang's PrettyPrinter when possible (this is currently only for target regions).
 
 **Reimplements**: [TargetCodeFragment::PrintPretty](../Classes/classTargetCodeFragment.md#function-printpretty)
 
 
 ### function getRealRange
 
-```cpp
+```cpp linenums="1"
 virtual clang::SourceRange getRealRange() override
 ```
 
-Get the source range of the fragment. 
+Get the source range of the fragment.
 
 **Reimplements**: [TargetCodeFragment::getRealRange](../Classes/classTargetCodeFragment.md#function-getrealrange)
 
 
 ### function getSpellingRange
 
-```cpp
+```cpp linenums="1"
 virtual clang::SourceRange getSpellingRange() override
 ```
 
-Get the spelling source range. 
+Get the spelling source range.
 
 **Reimplements**: [TargetCodeFragment::getSpellingRange](../Classes/classTargetCodeFragment.md#function-getspellingrange)
 
 
-That is the range without macro expansions. 
+That is the range without macro expansions.
 
 
 ## Private Attributes Documentation
 
 ### variable DeclNode
 
-```cpp
+```cpp linenums="1"
 clang::Decl * DeclNode;
 ```
 
-The AST node for the declaration. 
+The AST node for the declaration.
 

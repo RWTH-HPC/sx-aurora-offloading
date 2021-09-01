@@ -23,7 +23,7 @@ Inherits from clang::RecursiveASTVisitor< CollectOMPClauseParamsVarsVisitor >
 
 ### function CollectOMPClauseParamsVarsVisitor
 
-```cpp
+```cpp linenums="1"
 inline CollectOMPClauseParamsVarsVisitor(
     std::shared_ptr< TargetCodeRegion > & TCR
 )
@@ -32,7 +32,7 @@ inline CollectOMPClauseParamsVarsVisitor(
 
 ### function VisitStmt
 
-```cpp
+```cpp linenums="1"
 inline bool VisitStmt(
     clang::Stmt * S
 )
@@ -43,7 +43,7 @@ inline bool VisitStmt(
 
 ### variable TCR
 
-```cpp
+```cpp linenums="1"
 std::shared_ptr< TargetCodeRegion > TCR;
 ```
 

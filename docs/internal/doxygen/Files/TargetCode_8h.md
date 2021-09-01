@@ -30,7 +30,7 @@
 
 ### using TargetCodeFragmentDeque
 
-```cpp
+```cpp linenums="1"
 using TargetCodeFragmentDeque =  std::deque<std::shared_ptr<TargetCodeFragment>>;
 ```
 
@@ -41,14 +41,14 @@ using TargetCodeFragmentDeque =  std::deque<std::shared_ptr<TargetCodeFragment>>
 
 ### variable clauseparam
 
-```cpp
+```cpp linenums="1"
 int clauseparam;
 ```
 
 
 
 ## Source code
-```cpp
+```cpp linenums="1"
 //===-- sotoc/src/TargetCode.h --------------------------------------------===//
 //
 //                     The LLVM Compiler Infrastructure

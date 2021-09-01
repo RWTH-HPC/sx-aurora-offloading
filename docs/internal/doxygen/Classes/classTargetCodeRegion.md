@@ -2,7 +2,7 @@
 
 
 
-Represents one target region. 
+Represents one target region.
 
 
 `#include <TargetCodeFragment.h>`
@@ -104,42 +104,42 @@ Inherits from [TargetCodeFragment](../Classes/classTargetCodeFragment.md)
 
 ### using captured_vars_const_iterator
 
-```cpp
+```cpp linenums="1"
 using TargetCodeRegion::captured_vars_const_iterator =  std::vector<TargetRegionVariable>::const_iterator;
 ```
 
 
 ### using captured_vars_const_range
 
-```cpp
+```cpp linenums="1"
 using TargetCodeRegion::captured_vars_const_range =  llvm::iterator_range<captured_vars_const_iterator>;
 ```
 
 
 ### using private_vars_const_iterator
 
-```cpp
+```cpp linenums="1"
 using TargetCodeRegion::private_vars_const_iterator =  std::set<clang::VarDecl *>::const_iterator;
 ```
 
 
 ### using private_vars_const_range
 
-```cpp
+```cpp linenums="1"
 using TargetCodeRegion::private_vars_const_range =  llvm::iterator_range<private_vars_const_iterator>;
 ```
 
 
 ### using ompclauses_params_const_iterator
 
-```cpp
+```cpp linenums="1"
 using TargetCodeRegion::ompclauses_params_const_iterator =  std::vector<clang::VarDecl *>::const_iterator;
 ```
 
 
 ### using ompclauses_params_const_range
 
-```cpp
+```cpp linenums="1"
 using TargetCodeRegion::ompclauses_params_const_range =  llvm::iterator_range<ompclauses_params_const_iterator>;
 ```
 
@@ -148,7 +148,7 @@ using TargetCodeRegion::ompclauses_params_const_range =  llvm::iterator_range<om
 
 ### function classof
 
-```cpp
+```cpp linenums="1"
 static inline bool classof(
     const TargetCodeFragment * TCF
 )
@@ -157,7 +157,7 @@ static inline bool classof(
 
 ### function TargetCodeRegion
 
-```cpp
+```cpp linenums="1"
 inline TargetCodeRegion(
     clang::CapturedStmt * CapturedStmtNode,
     clang::OMPExecutableDirective * TargetDirective,
@@ -169,262 +169,262 @@ inline TargetCodeRegion(
 
 ### function addCapture
 
-```cpp
+```cpp linenums="1"
 void addCapture(
     const clang::CapturedStmt::Capture * Capture
 )
 ```
 
-Add a captured variable of the target region. 
+Add a captured variable of the target region.
 
-This will automatically create and save a [TargetRegionVariable](../Classes/classTargetRegionVariable.md) which holds all information to generate parameters for the generated target region function. 
+This will automatically create and save a [TargetRegionVariable](../Classes/classTargetRegionVariable.md) which holds all information to generate parameters for the generated target region function.
 
 
 ### function getCapturedVarsBegin
 
-```cpp
+```cpp linenums="1"
 inline captured_vars_const_iterator getCapturedVarsBegin()
 ```
 
 
 ### function getCapturedVarsEnd
 
-```cpp
+```cpp linenums="1"
 inline captured_vars_const_iterator getCapturedVarsEnd()
 ```
 
 
 ### function capturedVars
 
-```cpp
+```cpp linenums="1"
 inline captured_vars_const_range capturedVars()
 ```
 
 
 ### function addOMPClause
 
-```cpp
+```cpp linenums="1"
 void addOMPClause(
     clang::OMPClause * Clause
 )
 ```
 
-Adds a (top level) OpenMP clause for the target region. 
+Adds a (top level) OpenMP clause for the target region.
 
-These clauses are later used to determine which OpenMP #pragma needs to be generated at the top level of the target region function. 
+These clauses are later used to determine which OpenMP #pragma needs to be generated at the top level of the target region function.
 
 
 ### function getOMPClauses
 
-```cpp
+```cpp linenums="1"
 inline const std::vector< clang::OMPClause * > & getOMPClauses() const
 ```
 
 
 ### function setPrivateVars
 
-```cpp
+```cpp linenums="1"
 inline void setPrivateVars(
     const std::set< clang::VarDecl * > & VarSet
 )
 ```
 
-Sets the private variables of this target region. 
+Sets the private variables of this target region.
 
 ### function privateVars
 
-```cpp
+```cpp linenums="1"
 inline private_vars_const_range privateVars()
 ```
 
-Returns a range over the private variables of this region. 
+Returns a range over the private variables of this region.
 
 ### function ompClausesParams
 
-```cpp
+```cpp linenums="1"
 inline ompclauses_params_const_range ompClausesParams()
 ```
 
-Returns a range over the parameters to the top level OpenMP clauses. 
+Returns a range over the parameters to the top level OpenMP clauses.
 
 ### function addOMPClauseParam
 
-```cpp
+```cpp linenums="1"
 void addOMPClauseParam(
     clang::VarDecl * Param
 )
 ```
 
-Adds a parameter of a top level OpenMP clause to the target regions function as a function parameter. 
+Adds a parameter of a top level OpenMP clause to the target regions function as a function parameter.
 
 ### function hasCombineConstruct
 
-```cpp
+```cpp linenums="1"
 inline bool hasCombineConstruct()
 ```
 
 
 ### function PrintPretty
 
-```cpp
+```cpp linenums="1"
 virtual std::string PrintPretty() override
 ```
 
-Tries to use Clang's PrettyPrinter when possible (this is currently only for target regions). 
+Tries to use Clang's PrettyPrinter when possible (this is currently only for target regions).
 
 **Reimplements**: [TargetCodeFragment::PrintPretty](../Classes/classTargetCodeFragment.md#function-printpretty)
 
 
 ### function getRealRange
 
-```cpp
+```cpp linenums="1"
 virtual clang::SourceRange getRealRange() override
 ```
 
-Get the source range of the fragment. 
+Get the source range of the fragment.
 
 **Reimplements**: [TargetCodeFragment::getRealRange](../Classes/classTargetCodeFragment.md#function-getrealrange)
 
 
 ### function getInnerRange
 
-```cpp
+```cpp linenums="1"
 virtual clang::SourceRange getInnerRange() override
 ```
 
-Gets the 'inner' source range. 
+Gets the 'inner' source range.
 
 **Reimplements**: [TargetCodeFragment::getInnerRange](../Classes/classTargetCodeFragment.md#function-getinnerrange)
 
 
-This can differ for target regions from the source range. 
+This can differ for target regions from the source range.
 
 
 ### function getSpellingRange
 
-```cpp
+```cpp linenums="1"
 virtual clang::SourceRange getSpellingRange() override
 ```
 
-Get the spelling source range. 
+Get the spelling source range.
 
 **Reimplements**: [TargetCodeFragment::getSpellingRange](../Classes/classTargetCodeFragment.md#function-getspellingrange)
 
 
-That is the range without macro expansions. 
+That is the range without macro expansions.
 
 
 ### function getStartLoc
 
-```cpp
+```cpp linenums="1"
 clang::SourceLocation getStartLoc()
 ```
 
-Returns a source location at the start of a pragma in the captured statment. 
+Returns a source location at the start of a pragma in the captured statment.
 
 ### function getEndLoc
 
-```cpp
+```cpp linenums="1"
 clang::SourceLocation getEndLoc()
 ```
 
 
 ### function getParentFuncName
 
-```cpp
+```cpp linenums="1"
 const std::string getParentFuncName()
 ```
 
-Returns the name of the function in which the target region is declared. 
+Returns the name of the function in which the target region is declared.
 
 ### function getTargetDirectiveLocation
 
-```cpp
+```cpp linenums="1"
 clang::SourceLocation getTargetDirectiveLocation()
 ```
 
-Returns the SourceLocation for the target directive (we need the source location of the first pragma of the target region to compose the name of the function generated for that region) 
+Returns the SourceLocation for the target directive (we need the source location of the first pragma of the target region to compose the name of the function generated for that region)
 
 ## Public Attributes Documentation
 
 ### variable CapturedLowerBounds
 
-```cpp
+```cpp linenums="1"
 std::map< clang::VarDecl *, clang::Expr * > CapturedLowerBounds;
 ```
 
-Lower bounds of mapped array slices (if lower then 0). 
+Lower bounds of mapped array slices (if lower then 0).
 
-If the captured variable is an array, of which only a slice is mapped (by a map() clause), the incoming pointer argument will need to be shifted to the right if the lower bound of that slice is not 0. If this is the case, the lower bound is saved into this map. 
+If the captured variable is an array, of which only a slice is mapped (by a map() clause), the incoming pointer argument will need to be shifted to the right if the lower bound of that slice is not 0. If this is the case, the lower bound is saved into this map.
 
 
 ## Private Attributes Documentation
 
 ### variable CapturedStmtNode
 
-```cpp
+```cpp linenums="1"
 clang::CapturedStmt * CapturedStmtNode;
 ```
 
-The AST node for the captured statement of the target region. 
+The AST node for the captured statement of the target region.
 
 ### variable TargetDirective
 
-```cpp
+```cpp linenums="1"
 clang::OMPExecutableDirective * TargetDirective;
 ```
 
-AST node for the target directive. 
+AST node for the target directive.
 
 ### variable ParentFunctionDecl
 
-```cpp
+```cpp linenums="1"
 clang::FunctionDecl * ParentFunctionDecl;
 ```
 
-Declaration of the function this region is declared in. 
+Declaration of the function this region is declared in.
 
-Necessary to compose the function name of this region in the generated code. 
+Necessary to compose the function name of this region in the generated code.
 
 
 ### variable CapturedVars
 
-```cpp
+```cpp linenums="1"
 std::vector< TargetRegionVariable > CapturedVars;
 ```
 
-All variable captured by this target region. 
+All variable captured by this target region.
 
-We will need to generated pointers to them as arguments to the generated functions and copy the variables into scope. 
+We will need to generated pointers to them as arguments to the generated functions and copy the variables into scope.
 
 
 ### variable OMPClauses
 
-```cpp
+```cpp linenums="1"
 std::vector< clang::OMPClause * > OMPClauses;
 ```
 
-All omp clauses relevant to the execution of the region. 
+All omp clauses relevant to the execution of the region.
 
 ### variable OMPClausesParams
 
-```cpp
+```cpp linenums="1"
 std::vector< clang::VarDecl * > OMPClausesParams;
 ```
 
-The variables which are parameters for top level OpenMP clauses. 
+The variables which are parameters for top level OpenMP clauses.
 
-These are not captured but still needs passed as (first private) arguments to the target region. 
+These are not captured but still needs passed as (first private) arguments to the target region.
 
 
 ### variable PrivateVars
 
-```cpp
+```cpp linenums="1"
 std::set< clang::VarDecl * > PrivateVars;
 ```
 
-All private variables in a Target Region i.e. 
+All private variables in a Target Region i.e.
 
-all variables that are not passed as arguments into the region. For these, we need to generate declarations inside the target region. 
+all variables that are not passed as arguments into the region. For these, we need to generate declarations inside the target region.
 
 

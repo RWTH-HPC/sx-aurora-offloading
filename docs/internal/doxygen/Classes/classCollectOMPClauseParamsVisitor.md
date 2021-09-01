@@ -24,7 +24,7 @@ Inherits from clang::RecursiveASTVisitor< CollectOMPClauseParamsVisitor >
 
 ### function CollectOMPClauseParamsVisitor
 
-```cpp
+```cpp linenums="1"
 inline CollectOMPClauseParamsVisitor(
     std::shared_ptr< TargetCodeRegion > & TCR
 )
@@ -33,7 +33,7 @@ inline CollectOMPClauseParamsVisitor(
 
 ### function VisitStmt
 
-```cpp
+```cpp linenums="1"
 inline bool VisitStmt(
     clang::Stmt * S
 )
@@ -44,14 +44,14 @@ inline bool VisitStmt(
 
 ### variable VarsVisitor
 
-```cpp
+```cpp linenums="1"
 CollectOMPClauseParamsVarsVisitor VarsVisitor;
 ```
 
 
 ### variable InExplicitCast
 
-```cpp
+```cpp linenums="1"
 bool InExplicitCast;
 ```
 

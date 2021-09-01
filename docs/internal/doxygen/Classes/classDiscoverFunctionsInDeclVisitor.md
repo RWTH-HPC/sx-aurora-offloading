@@ -30,19 +30,19 @@ Inherits from clang::RecursiveASTVisitor< DiscoverFunctionsInDeclVisitor >
 
 ## Detailed Description
 
-```cpp
+```cpp linenums="1"
 class DiscoverFunctionsInDeclVisitor;
 ```
 
-Traverses (parts of) the AST to find DeclRefExpr that refer to functions that need to be present for that part of the AST to compile correctly. 
+Traverses (parts of) the AST to find DeclRefExpr that refer to functions that need to be present for that part of the AST to compile correctly.
 
-This way functions declared and defined in the same compilation unit do not need to be annotated by the 'omp declare target' pragma. The Visitor is not only used to search through target regions, but also through the found functions themselves and through functions that are annotated with the 'omp declare target' pragma, to find all necessary dependencies recursively. 
+This way functions declared and defined in the same compilation unit do not need to be annotated by the 'omp declare target' pragma. The Visitor is not only used to search through target regions, but also through the found functions themselves and through functions that are annotated with the 'omp declare target' pragma, to find all necessary dependencies recursively.
 
 ## Public Functions Documentation
 
 ### function DiscoverFunctionsInDeclVisitor
 
-```cpp
+```cpp linenums="1"
 DiscoverFunctionsInDeclVisitor(
     FunctionDeclResolver & Functions
 )
@@ -51,7 +51,7 @@ DiscoverFunctionsInDeclVisitor(
 
 ### function VisitExpr
 
-```cpp
+```cpp linenums="1"
 bool VisitExpr(
     clang::Expr * E
 )
@@ -62,7 +62,7 @@ bool VisitExpr(
 
 ### variable __pad0__
 
-```cpp
+```cpp linenums="1"
 __pad0__;
 ```
 
@@ -71,7 +71,7 @@ __pad0__;
 
 ### variable OnEachFuncRef
 
-```cpp
+```cpp linenums="1"
 std::function< void(clang::FunctionDecl *)> OnEachFuncRef;
 ```
 

@@ -24,17 +24,17 @@ Inherits from ASTFrontendAction
 
 ### function EndSourceFileAction
 
-```cpp
+```cpp linenums="1"
 inline void EndSourceFileAction() override
 ```
 
 
 ### function CreateASTConsumer
 
-```cpp
+```cpp linenums="1"
 inline std::unique_ptr< clang::ASTConsumer > CreateASTConsumer(
     clang::CompilerInstance & CI,
-    clang::StringRef 
+    clang::StringRef
 )
 ```
 
@@ -43,14 +43,14 @@ inline std::unique_ptr< clang::ASTConsumer > CreateASTConsumer(
 
 ### variable TargetCodeRewriter
 
-```cpp
+```cpp linenums="1"
 clang::Rewriter TargetCodeRewriter;
 ```
 
 
 ### variable Code
 
-```cpp
+```cpp linenums="1"
 TargetCode * Code;
 ```
 

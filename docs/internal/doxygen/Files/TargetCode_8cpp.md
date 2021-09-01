@@ -1,12 +1,12 @@
 # src/TargetCode.cpp
 
-This file implements the class [TargetCode](../Classes/classTargetCode.md), which can be used to add code fragments and to generate new code (i.e., for outlining OpenMP target region) from these fragments. 
+This file implements the class [TargetCode](../Classes/classTargetCode.md), which can be used to add code fragments and to generate new code (i.e., for outlining OpenMP target region) from these fragments.
 
 
 
 
 ## Source code
-```cpp
+```cpp linenums="1"
 //===-- sotoc/src/TargetCode ------------------------ ---------------------===//
 //
 //                     The LLVM Compiler Infrastructure

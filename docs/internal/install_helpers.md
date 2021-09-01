@@ -3,7 +3,7 @@
     This page is for internal and development use only.
 
 ## Installation Script
-``` shell
+``` shell linenums="1"
 #!/bin/bash
 set -e
 
@@ -42,7 +42,7 @@ cmake -DCMAKE_C_COMPILER=clang \
 !!! NOTE
     Don't forget to set `$MODULEPATH`
 
-``` shell
+``` shell linenums="1"
 #%Module1.0#####################################################################
 ###
 ### clang-dev

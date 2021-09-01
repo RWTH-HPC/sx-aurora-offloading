@@ -38,19 +38,19 @@ Inherits from clang::RecursiveASTVisitor< DiscoverTypesInDeclVisitor >
 
 ## Detailed Description
 
-```cpp
+```cpp linenums="1"
 class DiscoverTypesInDeclVisitor;
 ```
 
-Traverses (parts of) the AST to find DeclRefExpr that refer to types that need to be present for that part of the AST to compile correctly. 
+Traverses (parts of) the AST to find DeclRefExpr that refer to types that need to be present for that part of the AST to compile correctly.
 
-The visitor is not only used to search through target regions and functions, but also through type declarations themselves, in order to also find types that the already found types depend on to compile. 
+The visitor is not only used to search through target regions and functions, but also through type declarations themselves, in order to also find types that the already found types depend on to compile.
 
 ## Public Functions Documentation
 
 ### function DiscoverTypesInDeclVisitor
 
-```cpp
+```cpp linenums="1"
 DiscoverTypesInDeclVisitor(
     TypeDeclResolver & Types
 )
@@ -59,7 +59,7 @@ DiscoverTypesInDeclVisitor(
 
 ### function VisitDecl
 
-```cpp
+```cpp linenums="1"
 bool VisitDecl(
     clang::Decl * D
 )
@@ -68,7 +68,7 @@ bool VisitDecl(
 
 ### function VisitExpr
 
-```cpp
+```cpp linenums="1"
 bool VisitExpr(
     clang::Expr * D
 )
@@ -77,7 +77,7 @@ bool VisitExpr(
 
 ### function VisitType
 
-```cpp
+```cpp linenums="1"
 bool VisitType(
     clang::Type * T
 )
@@ -88,19 +88,19 @@ bool VisitType(
 
 ### function processType
 
-```cpp
+```cpp linenums="1"
 void processType(
     const clang::Type * D
 )
 ```
 
-Retrieves the declaration of the type found and passes it on. 
+Retrieves the declaration of the type found and passes it on.
 
 ## Public Attributes Documentation
 
 ### variable __pad0__
 
-```cpp
+```cpp linenums="1"
 __pad0__;
 ```
 
@@ -109,9 +109,9 @@ __pad0__;
 
 ### variable OnEachTypeRef
 
-```cpp
+```cpp linenums="1"
 std::function< void(clang::TypeDecl *)> OnEachTypeRef;
 ```
 
-Function run on the declaration of each type found by the visitor. 
+Function run on the declaration of each type found by the visitor.
 

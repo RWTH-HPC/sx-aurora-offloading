@@ -1,6 +1,6 @@
 # src/Visitors.cpp
 
-This file implements the classes [DiscoverTypesInDeclVisitor](../Classes/classDiscoverTypesInDeclVisitor.md) and [FindTargetCodeVisitor](../Classes/classFindTargetCodeVisitor.md). 
+This file implements the classes [DiscoverTypesInDeclVisitor](../Classes/classDiscoverTypesInDeclVisitor.md) and [FindTargetCodeVisitor](../Classes/classFindTargetCodeVisitor.md).
 
 ## Classes
 
@@ -20,7 +20,7 @@ This file implements the classes [DiscoverTypesInDeclVisitor](../Classes/classDi
 
 ### function stmtNeedsSemicolon
 
-```cpp
+```cpp linenums="1"
 static bool stmtNeedsSemicolon(
     const clang::Stmt * S
 )
@@ -30,7 +30,7 @@ static bool stmtNeedsSemicolon(
 
 
 ## Source code
-```cpp
+```cpp linenums="1"
 //===-- sotoc/src/Visitor.cpp ---------------------------------------------===//
 //
 //                     The LLVM Compiler Infrastructure

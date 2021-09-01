@@ -1,6 +1,6 @@
 # src/OmpPragma.cpp
 
-This file implements the class [OmpPragma](../Classes/classOmpPragma.md), which is used to generate repla- cement pragmas for teams and team combined constructs. 
+This file implements the class [OmpPragma](../Classes/classOmpPragma.md), which is used to generate repla- cement pragmas for teams and team combined constructs.
 
 ## Attributes
 
@@ -14,14 +14,14 @@ This file implements the class [OmpPragma](../Classes/classOmpPragma.md), which 
 
 ### variable ClauseParamCounter
 
-```cpp
+```cpp linenums="1"
 int ClauseParamCounter = -1;
 ```
 
 
 
 ## Source code
-```cpp
+```cpp linenums="1"
 //===-- sotoc/src/TargetCode ------------------------ ---------------------===//
 //
 //                     The LLVM Compiler Infrastructure
@@ -393,7 +393,7 @@ if (Clause->getClauseKind() == clang::OpenMPClauseKind::OMPC_num_threads) {
   llvm::raw_string_ostream Default(DefaultString);
   clang::OMPClausePrinter RedPrinter(Red, PP);
   clang::OMPClausePrinter DefaultPrinter(Default, PP);
-  
+
   for (auto CD: Clauses) {
     if (CD->getClauseKind() == clang::OpenMPClauseKind::OMPC_default) {
       DefaultPrinter.Visit(CD);
@@ -409,7 +409,7 @@ if (Clause->getClauseKind() == clang::OpenMPClauseKind::OMPC_num_threads) {
             size_t redp = RedString.find(":")+1;
             size_t paramlength_red = RedString.length()-redp-1;
             std::string param_red = RedString.substr(redp,paramlength_red);
-    
+
         In->append("," + param_red);
         return;
           }

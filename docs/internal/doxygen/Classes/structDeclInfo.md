@@ -2,7 +2,7 @@
 
 
 
-Records information to resolve a single declaration, including if its declared in a system header and other declaration that this declaration depends on. 
+Records information to resolve a single declaration, including if its declared in a system header and other declaration that this declaration depends on.
 
 
 `#include <DeclResolver.h>`
@@ -25,7 +25,7 @@ Records information to resolve a single declaration, including if its declared i
 
 ### function DeclInfo
 
-```cpp
+```cpp linenums="1"
 inline DeclInfo(
     clang::Decl * D,
     bool isFromSysHeader
@@ -37,23 +37,23 @@ inline DeclInfo(
 
 ### variable Decl
 
-```cpp
+```cpp linenums="1"
 const clang::Decl * Decl;
 ```
 
-The declarations AST node itself. 
+The declarations AST node itself.
 
 ### variable DeclDependencies
 
-```cpp
+```cpp linenums="1"
 std::set< clang::Decl * > DeclDependencies;
 ```
 
-All other declaration on which this declaration depends. 
+All other declaration on which this declaration depends.
 
 ### variable IsFromSystemHeader
 
-```cpp
+```cpp linenums="1"
 bool IsFromSystemHeader;
 ```
 

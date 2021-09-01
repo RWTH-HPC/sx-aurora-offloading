@@ -6,7 +6,7 @@
 
 
 ## Source code
-```cpp
+```cpp linenums="1"
 sotoc - Source Transformation for OpenMP Code (suggestions for a better name are greatly appreciated) {#mainpage}
 =====================================================================================================
 

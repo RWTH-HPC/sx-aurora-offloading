@@ -49,13 +49,13 @@ Inherited by [TargetCodeDecl](../Classes/classTargetCodeDecl.md), [TargetCodeReg
 
 ## Detailed Description
 
-```cpp
+```cpp linenums="1"
 class TargetCodeFragment;
 ```
 
-An abstract base class for all fragments of the original code (except header includes) that need to be copied to our generated source code. 
+An abstract base class for all fragments of the original code (except header includes) that need to be copied to our generated source code.
 
-This includes target regions as well as functions, global variables and types used by target regions (as far as we can detect that) as well as functions and variables that are flagged with the 'omp declare target' pragma. 
+This includes target regions as well as functions, global variables and types used by target regions (as far as we can detect that) as well as functions and variables that are flagged with the 'omp declare target' pragma.
 
 ## Public Types Documentation
 
@@ -69,21 +69,21 @@ This includes target regions as well as functions, global variables and types us
 
 
 
-Enum for LLVMs RTTI. 
+Enum for LLVMs RTTI.
 
 ## Public Functions Documentation
 
 ### function getKind
 
-```cpp
+```cpp linenums="1"
 inline TargetCodeFragmentKind getKind() const
 ```
 
-Accessor for LLVMs RTTI. 
+Accessor for LLVMs RTTI.
 
 ### function TargetCodeFragment
 
-```cpp
+```cpp linenums="1"
 inline TargetCodeFragment(
     clang::ASTContext & Context,
     TargetCodeFragmentKind Kind
@@ -93,87 +93,87 @@ inline TargetCodeFragment(
 
 ### function ~TargetCodeFragment
 
-```cpp
+```cpp linenums="1"
 virtual ~TargetCodeFragment() =0
 ```
 
 
 ### function PrintPretty
 
-```cpp
+```cpp linenums="1"
 virtual std::string PrintPretty() =0
 ```
 
-Tries to use Clang's PrettyPrinter when possible (this is currently only for target regions). 
+Tries to use Clang's PrettyPrinter when possible (this is currently only for target regions).
 
 **Reimplemented by**: [TargetCodeRegion::PrintPretty](../Classes/classTargetCodeRegion.md#function-printpretty), [TargetCodeDecl::PrintPretty](../Classes/classTargetCodeDecl.md#function-printpretty)
 
 
 ### function getRealRange
 
-```cpp
+```cpp linenums="1"
 virtual clang::SourceRange getRealRange() =0
 ```
 
-Get the source range of the fragment. 
+Get the source range of the fragment.
 
 **Reimplemented by**: [TargetCodeRegion::getRealRange](../Classes/classTargetCodeRegion.md#function-getrealrange), [TargetCodeDecl::getRealRange](../Classes/classTargetCodeDecl.md#function-getrealrange)
 
 
 ### function getInnerRange
 
-```cpp
+```cpp linenums="1"
 inline virtual clang::SourceRange getInnerRange()
 ```
 
-Gets the 'inner' source range. 
+Gets the 'inner' source range.
 
 **Reimplemented by**: [TargetCodeRegion::getInnerRange](../Classes/classTargetCodeRegion.md#function-getinnerrange)
 
 
-This can differ for target regions from the source range. 
+This can differ for target regions from the source range.
 
 
 ### function getSpellingRange
 
-```cpp
+```cpp linenums="1"
 virtual clang::SourceRange getSpellingRange() =0
 ```
 
-Get the spelling source range. 
+Get the spelling source range.
 
 **Reimplemented by**: [TargetCodeRegion::getSpellingRange](../Classes/classTargetCodeRegion.md#function-getspellingrange), [TargetCodeDecl::getSpellingRange](../Classes/classTargetCodeDecl.md#function-getspellingrange)
 
 
-That is the range without macro expansions. 
+That is the range without macro expansions.
 
 
 ### function getTargetCodeKind
 
-```cpp
+```cpp linenums="1"
 inline clang::OpenMPDirectiveKind getTargetCodeKind()
 ```
 
-Accessor to TargetCodeKind. 
+Accessor to TargetCodeKind.
 
 ### function GetLangOpts
 
-```cpp
+```cpp linenums="1"
 inline const clang::LangOptions & GetLangOpts()
 ```
 
-Accessor to lang opts of the current context. 
+Accessor to lang opts of the current context.
 
 ### function getPP
 
-```cpp
+```cpp linenums="1"
 inline clang::PrintingPolicy getPP()
 ```
 
 
 ### function classof
 
-```cpp
+```cpp linenums="1"
 static inline bool classof(
     const TargetCodeFragment * TCF
 )
@@ -184,26 +184,26 @@ static inline bool classof(
 
 ### variable NeedsSemicolon
 
-```cpp
+```cpp linenums="1"
 bool NeedsSemicolon;
 ```
 
-Does the source code generation need to add a semicolon to this fragment. 
+Does the source code generation need to add a semicolon to this fragment.
 
 ### variable TargetCodeKind
 
-```cpp
+```cpp linenums="1"
 clang::OpenMPDirectiveKind TargetCodeKind;
 ```
 
-What kind of code are we copying. 
+What kind of code are we copying.
 
-TODO: this can create problems with non annotated function? 
+TODO: this can create problems with non annotated function?
 
 
 ### variable HasExtraBraces
 
-```cpp
+```cpp linenums="1"
 bool HasExtraBraces;
 ```
 
@@ -212,22 +212,22 @@ bool HasExtraBraces;
 
 ### variable Kind
 
-```cpp
+```cpp linenums="1"
 const TargetCodeFragmentKind Kind;
 ```
 
-Variable for LLVMs RTTI. 
+Variable for LLVMs RTTI.
 
 ### variable Context
 
-```cpp
+```cpp linenums="1"
 clang::ASTContext & Context;
 ```
 
 
 ### variable PP
 
-```cpp
+```cpp linenums="1"
 clang::PrintingPolicy PP;
 ```
 

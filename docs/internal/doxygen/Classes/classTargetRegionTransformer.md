@@ -24,7 +24,7 @@ Inherits from ASTConsumer
 
 ### function TargetRegionTransformer
 
-```cpp
+```cpp linenums="1"
 inline TargetRegionTransformer(
     TargetCode & Code,
     clang::Rewriter & TargetCodeRewriter
@@ -34,7 +34,7 @@ inline TargetRegionTransformer(
 
 ### function HandleTranslationUnit
 
-```cpp
+```cpp linenums="1"
 inline void HandleTranslationUnit(
     clang::ASTContext & Context
 )
@@ -45,14 +45,14 @@ inline void HandleTranslationUnit(
 
 ### variable Code
 
-```cpp
+```cpp linenums="1"
 TargetCode & Code;
 ```
 
 
 ### variable TargetCodeRewriter
 
-```cpp
+```cpp linenums="1"
 clang::Rewriter & TargetCodeRewriter;
 ```
 

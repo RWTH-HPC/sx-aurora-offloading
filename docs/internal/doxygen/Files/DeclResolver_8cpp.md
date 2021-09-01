@@ -1,6 +1,6 @@
 # src/DeclResolver.cpp
 
-This file implements the class [DeclResolver](../Classes/classDeclResolver.md). 
+This file implements the class [DeclResolver](../Classes/classDeclResolver.md).
 
 ## Functions
 
@@ -15,7 +15,7 @@ This file implements the class [DeclResolver](../Classes/classDeclResolver.md).
 
 ### function isHeaderOpenMPHeader
 
-```cpp
+```cpp linenums="1"
 static bool isHeaderOpenMPHeader(
     llvm::StringRef header_path
 )
@@ -24,7 +24,7 @@ static bool isHeaderOpenMPHeader(
 
 ### function isDeclInOpenMPHeader
 
-```cpp
+```cpp linenums="1"
 static bool isDeclInOpenMPHeader(
     clang::Decl * D
 )
@@ -33,7 +33,7 @@ static bool isDeclInOpenMPHeader(
 
 ### function getSystemHeaderForDecl
 
-```cpp
+```cpp linenums="1"
 static llvm::Optional< std::string > getSystemHeaderForDecl(
     clang::Decl * D
 )
@@ -43,7 +43,7 @@ static llvm::Optional< std::string > getSystemHeaderForDecl(
 
 
 ## Source code
-```cpp
+```cpp linenums="1"
 //===-- sotoc/src/TargetDeclResolver.cpp ----------------------------------===//
 //
 //                     The LLVM Compiler Infrastructure

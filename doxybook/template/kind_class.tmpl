@@ -25,7 +25,7 @@
 
 {% if hasDetails %}## Detailed Description
 
-```cpp{% if exists("templateParams") %}
+```cpp linenums="1"{% if exists("templateParams") %}
 template <{% for param in templateParams %}{{param.typePlain}} {{param.name}}{% if existsIn(param, "defvalPlain") %} ={{param.defvalPlain}}{% endif %}{% if not loop.is_last %},
 {% endif %}{% endfor %}>{% endif %}
 {% if kind == "interface" %}class{% else %}{{kind}}{% endif %} {{name}};

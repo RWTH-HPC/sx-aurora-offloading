@@ -2,7 +2,7 @@
 
 
 
-Records, orders and finds the dependencies of Decls (TypeDecls or FunctionDecls) 
+Records, orders and finds the dependencies of Decls (TypeDecls or FunctionDecls)
 
 
 `#include <DeclResolver.h>`
@@ -43,103 +43,103 @@ Inherited by [FunctionDeclResolver](../Classes/classFunctionDeclResolver.md), [T
 
 ### function ~DeclResolver
 
-```cpp
+```cpp linenums="1"
 virtual ~DeclResolver() =0
 ```
 
 
 ### function addDecl
 
-```cpp
+```cpp linenums="1"
 void addDecl(
     clang::Decl * D
 )
 ```
 
-Records a Decl and automatically adds all Decls that this Decl depends on. 
+Records a Decl and automatically adds all Decls that this Decl depends on.
 
-**Parameters**: 
+**Parameters**:
 
-  * **D** the Decl to be added to the resolver. 
+  * **D** the Decl to be added to the resolver.
 
 
 ### function orderAndAddFragments
 
-```cpp
+```cpp linenums="1"
 void orderAndAddFragments(
     TargetCode & TC
 )
 ```
 
-Creates a [TargetCodeFragment](../Classes/classTargetCodeFragment.md) for each recorded Decl and adds them to the [TargetCode](../Classes/classTargetCode.md) object in the correct order. 
+Creates a [TargetCodeFragment](../Classes/classTargetCodeFragment.md) for each recorded Decl and adds them to the [TargetCode](../Classes/classTargetCode.md) object in the correct order.
 
-**Parameters**: 
+**Parameters**:
 
-  * **TC** the [TargetCode](../Classes/classTargetCode.md) object, the fragments will be added to. 
+  * **TC** the [TargetCode](../Classes/classTargetCode.md) object, the fragments will be added to.
 
 
 ## Protected Functions Documentation
 
 ### function runOwnVisitor
 
-```cpp
+```cpp linenums="1"
 virtual void runOwnVisitor(
     clang::Decl * D,
     std::function< void(clang::Decl *Dep)> Fn
 ) =0
 ```
 
-With this function, the resolver runs a visitor on the declaration added to find and add all declarations that the added declaration depends on and adds them to the resolver. 
+With this function, the resolver runs a visitor on the declaration added to find and add all declarations that the added declaration depends on and adds them to the resolver.
 
 **Reimplemented by**: [TypeDeclResolver::runOwnVisitor](../Classes/classTypeDeclResolver.md#function-runownvisitor), [FunctionDeclResolver::runOwnVisitor](../Classes/classFunctionDeclResolver.md#function-runownvisitor)
 
 
 ### function findDependDecls
 
-```cpp
+```cpp linenums="1"
 virtual void findDependDecls(
     clang::Decl * D,
     std::unordered_set< clang::Decl * > & UnresolvedDecls
 )
 ```
 
-This function uses a visitor to find references to other declarations in the declaration being added. 
+This function uses a visitor to find references to other declarations in the declaration being added.
 
-**Parameters**: 
+**Parameters**:
 
-  * **D** the declaration that was added via [addDecl](../Classes/classDeclResolver.md#function-adddecl). 
-  * **UnresolvedDecls** a set of declarations which D depends on and which are currently unresolved. 
+  * **D** the declaration that was added via [addDecl](../Classes/classDeclResolver.md#function-adddecl).
+  * **UnresolvedDecls** a set of declarations which D depends on and which are currently unresolved.
 
 
 **Reimplemented by**: [FunctionDeclResolver::findDependDecls](../Classes/classFunctionDeclResolver.md#function-finddependdecls)
 
 
-If the declaration being added references other declarations outside the standard library, we need to add those declaration to the target code too. 
+If the declaration being added references other declarations outside the standard library, we need to add those declaration to the target code too.
 
 
 ## Private Functions Documentation
 
 ### function topoSort
 
-```cpp
+```cpp linenums="1"
 void topoSort(
     std::stack< clang::Decl * > & q
 )
 ```
 
-This functions does a topological sorting on the dependency graph of all Decls recorded into this object by calling [addDecl](../Classes/classDeclResolver.md#function-adddecl). 
+This functions does a topological sorting on the dependency graph of all Decls recorded into this object by calling [addDecl](../Classes/classDeclResolver.md#function-adddecl).
 
-**Parameters**: 
+**Parameters**:
 
-  * **q** an queue where the ordered Decls are save to. 
+  * **q** an queue where the ordered Decls are save to.
 
 
-This method uses an DFS approach to be able to deal with possible cycles. 
+This method uses an DFS approach to be able to deal with possible cycles.
 
 
 ### function topoSortUtil
 
-```cpp
+```cpp linenums="1"
 void topoSortUtil(
     std::stack< clang::Decl * > & q,
     std::map< clang::Decl *, bool > & visited,
@@ -147,31 +147,31 @@ void topoSortUtil(
 )
 ```
 
-Helper function for [topoSort](../Classes/classDeclResolver.md#function-toposort), to do an recursive DFS. 
+Helper function for [topoSort](../Classes/classDeclResolver.md#function-toposort), to do an recursive DFS.
 
 ## Private Attributes Documentation
 
 ### variable AllDecls
 
-```cpp
+```cpp linenums="1"
 DeclMap AllDecls;
 ```
 
-Records all declarations added to the resolver. 
+Records all declarations added to the resolver.
 
 ### variable NonDependentDecls
 
-```cpp
+```cpp linenums="1"
 std::set< clang::Decl * > NonDependentDecls;
 ```
 
-All declarations which do not depend on other declarations. 
+All declarations which do not depend on other declarations.
 
 ### variable RequiredSystemHeaders
 
-```cpp
+```cpp linenums="1"
 std::set< std::string > RequiredSystemHeaders;
 ```
 
-When a declaration is inside a system header, that header is recorded here instead of the declaratoin. 
+When a declaration is inside a system header, that header is recorded here instead of the declaratoin.
 

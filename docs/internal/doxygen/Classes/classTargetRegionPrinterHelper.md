@@ -23,7 +23,7 @@ Inherits from PrinterHelper
 
 ### function TargetRegionPrinterHelper
 
-```cpp
+```cpp linenums="1"
 inline TargetRegionPrinterHelper(
     clang::PrintingPolicy PP
 )
@@ -32,7 +32,7 @@ inline TargetRegionPrinterHelper(
 
 ### function handledStmt
 
-```cpp
+```cpp linenums="1"
 inline bool handledStmt(
     clang::Stmt * E,
     llvm::raw_ostream & OS
@@ -44,7 +44,7 @@ inline bool handledStmt(
 
 ### variable PP
 
-```cpp
+```cpp linenums="1"
 clang::PrintingPolicy PP;
 ```
 
