@@ -46,6 +46,7 @@ nav:
   - Installation: "install.md"
   - Usage: "usage.md"
   - Debugging: "debugging.md"
+  - Performance Analysis: "perf.md"
   - Source Transformation: "source_transformation.md"
   - Build Wrapper: "build_wrapper.md"
   - Technical and Internal Documentation:

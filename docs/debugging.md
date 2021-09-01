@@ -1,5 +1,4 @@
 # Debugging
-
 For debugging purposes NEC provides a number of helpful tools.
 
 ## Libomptarget
@@ -10,20 +9,6 @@ If the debug-version of libomptarget was build, `LIBOMPTARGET_DEBUG=1` can be us
 
 ## log4crc
 See [Debugging with log4crc](https://sx-aurora.github.io/posts/Debugging-with-log4crc/){target=_blank} by Erich Focht
-
-## `PROGINF`
-`PROGINF` provides program execution analysis information throughout the execution of program.
-To use `PROGINF` compile your C code using `ncc`. The `PROGINF`-library is linked by default.
-When setting `VE_PROGINF` to `YES` or `DETAIL` at runtime, additional information will be displayed.
-For additional information see the [`PROGINF` and `FTRACE` users guide](https://www.hpc.nec/documents/sdk/pdfs/g2at03e-PROGINF_FTRACE_User_Guide_en.pdf){target=_blank}.
-
-## `FTRACE`
-`FTRACE` is used to obtain performance information such as the CPU usage and vectorization
-aspect of each function in a program, as well as user regions.
-To use `FTRACE` compile your C code using `ncc` with the `-ftrace` flag.
-When executing, a `ftrace.out.*` file is generated, which can be viewed using `#!shell ftrace -f ftrace.out.*`.
-For additional information see the [`PROGINF` and `FTRACE` users guide](https://www.hpc.nec/documents/sdk/pdfs/g2at03e-PROGINF_FTRACE_User_Guide_en.pdf){target=_blank}
-and the [NEC `FTRACE` Viewer users guide](https://www.hpc.nec/documents/sdk/pdfs/g2at01e-NEC_Ftrace_Viewer_User_Guide_en.pdf){target=_blank}.
 
 ## NEC Parallel Debugger
 The NEC parallel debugger can be invoked from within the eclipse IDE.
