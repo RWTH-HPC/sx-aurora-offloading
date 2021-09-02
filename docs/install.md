@@ -29,10 +29,10 @@ All components can be checked out from a single source and built,
 closely following the [Clang build instructions](https://Clang.llvm.org/get_started.html){target=_blank}.
 
 To build the project, first check out the [llvm-project]({{ link.llvm }}){target=_blank} repository and
-switch to the `aurora-offloading-prototype` branch before configuring the project with CMake.
+switch to the `aurora-offloading` branch before configuring the project with CMake.
 
 ### Configure with CMake
-After checking out the `aurora-offloading-prototype` branch,
+After checking out the `aurora-offloading` branch,
 change the working directory to `llvm-project/llvm` and run CMake with, at least,
 the following CMake variables:
 
