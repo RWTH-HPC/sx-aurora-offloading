@@ -21,7 +21,7 @@ Inherited by [TargetCodeDecl](../Classes/classTargetCodeDecl.md), [TargetCodeReg
 | -------------- | -------------- |
 | [TargetCodeFragmentKind](../Classes/classTargetCodeFragment.md#enum-targetcodefragmentkind) | **[getKind](../Classes/classTargetCodeFragment.md#function-getkind)**() const<br>Accessor for LLVMs RTTI.  |
 | | **[TargetCodeFragment](../Classes/classTargetCodeFragment.md#function-targetcodefragment)**(clang::ASTContext & Context, [TargetCodeFragmentKind](../Classes/classTargetCodeFragment.md#enum-targetcodefragmentkind) Kind) |
-| virtual | **[~TargetCodeFragment](../Classes/classTargetCodeFragment.md#function-~targetcodefragment)**() =0 |
+| virtual | **[~TargetCodeFragment](../Classes/classTargetCodeFragment.md#function-~targetcodefragment)**() =0<br>Destroy the Target Code Fragment:: Target Code Fragment object.  |
 | virtual std::string | **[PrintPretty](../Classes/classTargetCodeFragment.md#function-printpretty)**() =0<br>Tries to use Clang's PrettyPrinter when possible (this is currently only for target regions).  |
 | virtual clang::SourceRange | **[getRealRange](../Classes/classTargetCodeFragment.md#function-getrealrange)**() =0<br>Get the source range of the fragment.  |
 | virtual clang::SourceRange | **[getInnerRange](../Classes/classTargetCodeFragment.md#function-getinnerrange)**()<br>Gets the 'inner' source range.  |
@@ -53,9 +53,9 @@ Inherited by [TargetCodeDecl](../Classes/classTargetCodeDecl.md), [TargetCodeReg
 class TargetCodeFragment;
 ```
 
-An abstract base class for all fragments of the original code (except header includes) that need to be copied to our generated source code.
+An abstract base class for all fragments of the original code (except header includes) that need to be copied to our generated source code. 
 
-This includes target regions as well as functions, global variables and types used by target regions (as far as we can detect that) as well as functions and variables that are flagged with the 'omp declare target' pragma.
+This includes target regions as well as functions, global variables and types used by target regions (as far as we can detect that) as well as functions and variables that are flagged with the 'omp declare target' pragma. 
 
 ## Public Types Documentation
 
@@ -69,7 +69,7 @@ This includes target regions as well as functions, global variables and types us
 
 
 
-Enum for LLVMs RTTI.
+Enum for LLVMs RTTI. 
 
 ## Public Functions Documentation
 
@@ -79,7 +79,7 @@ Enum for LLVMs RTTI.
 inline TargetCodeFragmentKind getKind() const
 ```
 
-Accessor for LLVMs RTTI.
+Accessor for LLVMs RTTI. 
 
 ### function TargetCodeFragment
 
@@ -97,6 +97,7 @@ inline TargetCodeFragment(
 virtual ~TargetCodeFragment() =0
 ```
 
+Destroy the Target Code Fragment:: Target Code Fragment object. 
 
 ### function PrintPretty
 
@@ -104,7 +105,7 @@ virtual ~TargetCodeFragment() =0
 virtual std::string PrintPretty() =0
 ```
 
-Tries to use Clang's PrettyPrinter when possible (this is currently only for target regions).
+Tries to use Clang's PrettyPrinter when possible (this is currently only for target regions). 
 
 **Reimplemented by**: [TargetCodeRegion::PrintPretty](../Classes/classTargetCodeRegion.md#function-printpretty), [TargetCodeDecl::PrintPretty](../Classes/classTargetCodeDecl.md#function-printpretty)
 
@@ -115,7 +116,7 @@ Tries to use Clang's PrettyPrinter when possible (this is currently only for tar
 virtual clang::SourceRange getRealRange() =0
 ```
 
-Get the source range of the fragment.
+Get the source range of the fragment. 
 
 **Reimplemented by**: [TargetCodeRegion::getRealRange](../Classes/classTargetCodeRegion.md#function-getrealrange), [TargetCodeDecl::getRealRange](../Classes/classTargetCodeDecl.md#function-getrealrange)
 
@@ -126,12 +127,12 @@ Get the source range of the fragment.
 inline virtual clang::SourceRange getInnerRange()
 ```
 
-Gets the 'inner' source range.
+Gets the 'inner' source range. 
 
 **Reimplemented by**: [TargetCodeRegion::getInnerRange](../Classes/classTargetCodeRegion.md#function-getinnerrange)
 
 
-This can differ for target regions from the source range.
+This can differ for target regions from the source range. 
 
 
 ### function getSpellingRange
@@ -140,12 +141,12 @@ This can differ for target regions from the source range.
 virtual clang::SourceRange getSpellingRange() =0
 ```
 
-Get the spelling source range.
+Get the spelling source range. 
 
 **Reimplemented by**: [TargetCodeRegion::getSpellingRange](../Classes/classTargetCodeRegion.md#function-getspellingrange), [TargetCodeDecl::getSpellingRange](../Classes/classTargetCodeDecl.md#function-getspellingrange)
 
 
-That is the range without macro expansions.
+That is the range without macro expansions. 
 
 
 ### function getTargetCodeKind
@@ -154,7 +155,7 @@ That is the range without macro expansions.
 inline clang::OpenMPDirectiveKind getTargetCodeKind()
 ```
 
-Accessor to TargetCodeKind.
+Accessor to TargetCodeKind. 
 
 ### function GetLangOpts
 
@@ -162,7 +163,7 @@ Accessor to TargetCodeKind.
 inline const clang::LangOptions & GetLangOpts()
 ```
 
-Accessor to lang opts of the current context.
+Accessor to lang opts of the current context. 
 
 ### function getPP
 
@@ -188,7 +189,7 @@ static inline bool classof(
 bool NeedsSemicolon;
 ```
 
-Does the source code generation need to add a semicolon to this fragment.
+Does the source code generation need to add a semicolon to this fragment. 
 
 ### variable TargetCodeKind
 
@@ -196,9 +197,9 @@ Does the source code generation need to add a semicolon to this fragment.
 clang::OpenMPDirectiveKind TargetCodeKind;
 ```
 
-What kind of code are we copying.
+What kind of code are we copying. 
 
-TODO: this can create problems with non annotated function?
+TODO: this can create problems with non annotated function? 
 
 
 ### variable HasExtraBraces
@@ -216,7 +217,7 @@ bool HasExtraBraces;
 const TargetCodeFragmentKind Kind;
 ```
 
-Variable for LLVMs RTTI.
+Variable for LLVMs RTTI. 
 
 ### variable Context
 
@@ -230,5 +231,6 @@ clang::ASTContext & Context;
 ```cpp linenums="1"
 clang::PrintingPolicy PP;
 ```
+
 
 

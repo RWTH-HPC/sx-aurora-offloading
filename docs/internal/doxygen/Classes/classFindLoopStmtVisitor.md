@@ -14,7 +14,7 @@ Inherits from clang::RecursiveASTVisitor< FindLoopStmtVisitor >
 |                | Name           |
 | -------------- | -------------- |
 | | **[FindLoopStmtVisitor](../Classes/classFindLoopStmtVisitor.md#function-findloopstmtvisitor)**() |
-| bool | **[VisitStmt](../Classes/classFindLoopStmtVisitor.md#function-visitstmt)**(clang::Stmt * S) |
+| bool | **[VisitStmt](../Classes/classFindLoopStmtVisitor.md#function-visitstmt)**(clang::Stmt * S)<br>Visit function for statements.  |
 | std::unordered_set< clang::VarDecl * > * | **[getVarSet](../Classes/classFindLoopStmtVisitor.md#function-getvarset)**() |
 
 ## Private Attributes
@@ -40,6 +40,15 @@ bool VisitStmt(
 )
 ```
 
+Visit function for statements. 
+
+**Parameters**: 
+
+  * **S** Given statement 
+
+
+Statement Visitor for the [FindLoopStmtVisitor](../Classes/classFindLoopStmtVisitor.md)
+
 
 ### function getVarSet
 
@@ -55,5 +64,6 @@ inline std::unordered_set< clang::VarDecl * > * getVarSet()
 ```cpp linenums="1"
 FindDeclRefExprVisitor FindDeclRefVisitor;
 ```
+
 
 

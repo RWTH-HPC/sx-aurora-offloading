@@ -34,7 +34,7 @@ inline void EndSourceFileAction() override
 ```cpp linenums="1"
 inline std::unique_ptr< clang::ASTConsumer > CreateASTConsumer(
     clang::CompilerInstance & CI,
-    clang::StringRef
+    clang::StringRef 
 )
 ```
 
@@ -53,5 +53,6 @@ clang::Rewriter TargetCodeRewriter;
 ```cpp linenums="1"
 TargetCode * Code;
 ```
+
 
 

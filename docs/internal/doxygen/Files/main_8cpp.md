@@ -1,6 +1,6 @@
 # src/main.cpp
 
-This file implements sotoc, a clang to to enable outlining of OpenMP target region, which can be used by different compiler.
+This file implements sotoc, a clang to to enable outlining of OpenMP target region, which can be used by different compiler. 
 
 ## Namespaces
 
@@ -37,7 +37,7 @@ This file implements sotoc, a clang to to enable outlining of OpenMP target regi
 
 ```cpp linenums="1"
 static llvm::cl::OptionCategory SotocCategory(
-    "sotoc options"
+    "sotoc options" 
 )
 ```
 
@@ -46,7 +46,7 @@ static llvm::cl::OptionCategory SotocCategory(
 
 ```cpp linenums="1"
 static llvm::cl::extrahelp MoreHelp(
-    "\nExtracts code in OpenMP target regions from source file and ""generates target function code"
+    "\nExtracts code in OpenMP target regions from source file and ""generates target function code" 
 )
 ```
 

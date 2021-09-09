@@ -34,6 +34,7 @@
 
 #include <map>
 #include <vector>
+#include "llvm/ADT/StringExtras.h"
 
 namespace clang {
 class Expr;
@@ -77,7 +78,7 @@ public:
       : VariableDimensionIndex(DimIndex), Kind(ShapeKind::VariableArray){};
   TargetRegionVariableShape(const clang::ConstantArrayType *Array)
       : Kind(ShapeKind::ConstantArray) {
-    ConstantDimensionExpr = Array->getSize().toString(10, false);
+    ConstantDimensionExpr = toString(Array->getSize(), 10, false);
   }
 };
 

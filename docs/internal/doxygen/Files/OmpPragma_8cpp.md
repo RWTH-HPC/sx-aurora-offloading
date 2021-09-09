@@ -1,6 +1,6 @@
 # src/OmpPragma.cpp
 
-This file implements the class [OmpPragma](../Classes/classOmpPragma.md), which is used to generate repla- cement pragmas for teams and team combined constructs.
+This file implements the class [OmpPragma](../Classes/classOmpPragma.md), which is used to generate repla- cement pragmas for teams and team combined constructs. 
 
 ## Attributes
 
@@ -40,7 +40,6 @@ int ClauseParamCounter = -1;
 int ClauseParamCounter = -1;
 
 void OmpPragma::printReplacement(llvm::raw_ostream &Out) {
-
   switch (Kind) {
   case clang::OpenMPDirectiveKind::OMPD_target_parallel: {
     Out << "  #pragma omp parallel ";
@@ -78,6 +77,7 @@ void OmpPragma::printReplacement(llvm::raw_ostream &Out) {
   printClauses(Out);
 }
 
+//TODO: Do we need this?
 void OmpPragma::printAddition(llvm::raw_ostream &Out) {
   Out << "  #pragma _NEC ivdep ";
 }
@@ -94,7 +94,8 @@ bool OmpPragma::isReplaceable(clang::OMPExecutableDirective *Directive) {
   return false;
 }
 
-bool OmpPragma::needsAdditionalPragma(clang::OMPExecutableDirective *Directive) {
+bool OmpPragma::needsAdditionalPragma(
+    clang::OMPExecutableDirective *Directive) {
   if (llvm::isa<clang::OMPForSimdDirective>(Directive) ||
       llvm::isa<clang::OMPParallelForSimdDirective>(Directive) ||
       llvm::isa<clang::OMPSimdDirective>(Directive) ||
@@ -152,7 +153,8 @@ bool OmpPragma::isClausePrintable(clang::OMPClause *Clause) {
     default:
       return false;
     case clang::OpenMPClauseKind::OMPC_if:
-      clang::OMPIfClause* IC = llvm::dyn_cast_or_null<clang::OMPIfClause>(Clause);
+      clang::OMPIfClause *IC =
+          llvm::dyn_cast_or_null<clang::OMPIfClause>(Clause);
       if ((IC->getNameModifier()) == clang::OpenMPDirectiveKind::OMPD_target) {
         return false;
       } else {
@@ -179,7 +181,8 @@ bool OmpPragma::isClausePrintable(clang::OMPClause *Clause) {
     default:
       return false;
     case clang::OpenMPClauseKind::OMPC_if:
-      clang::OMPIfClause* IC = llvm::dyn_cast_or_null<clang::OMPIfClause>(Clause);
+      clang::OMPIfClause *IC =
+          llvm::dyn_cast_or_null<clang::OMPIfClause>(Clause);
       if ((IC->getNameModifier()) == clang::OpenMPDirectiveKind::OMPD_target) {
         return false;
       } else {
@@ -209,7 +212,8 @@ bool OmpPragma::isClausePrintable(clang::OMPClause *Clause) {
     default:
       return false;
     case clang::OpenMPClauseKind::OMPC_if:
-      clang::OMPIfClause* IC = llvm::dyn_cast_or_null<clang::OMPIfClause>(Clause);
+      clang::OMPIfClause *IC =
+          llvm::dyn_cast_or_null<clang::OMPIfClause>(Clause);
       if ((IC->getNameModifier()) == clang::OpenMPDirectiveKind::OMPD_target) {
         return false;
       } else {
@@ -241,7 +245,7 @@ bool OmpPragma::isClausePrintable(clang::OMPClause *Clause) {
     case clang::OpenMPClauseKind::OMPC_firstprivate:
     case clang::OpenMPClauseKind::OMPC_shared:
     case clang::OpenMPClauseKind::OMPC_reduction:
-    // case clang::OpenMPClauseKind::OMPC_thread_limit:
+    case clang::OpenMPClauseKind::OMPC_thread_limit:
     case clang::OpenMPClauseKind::OMPC_lastprivate:
     case clang::OpenMPClauseKind::OMPC_collapse:
     case clang::OpenMPClauseKind::OMPC_dist_schedule:
@@ -265,18 +269,19 @@ bool OmpPragma::isClausePrintable(clang::OMPClause *Clause) {
     case clang::OpenMPClauseKind::OMPC_shared:
     case clang::OpenMPClauseKind::OMPC_reduction:
     case clang::OpenMPClauseKind::OMPC_schedule:
-    // case clang::OpenMPClauseKind::OMPC_thread_limit:
+    case clang::OpenMPClauseKind::OMPC_thread_limit:
       return true;
     default:
       return false;
     case clang::OpenMPClauseKind::OMPC_if:
-      clang::OMPIfClause* IC = llvm::dyn_cast_or_null<clang::OMPIfClause>(Clause);
+      clang::OMPIfClause *IC =
+          llvm::dyn_cast_or_null<clang::OMPIfClause>(Clause);
       if ((IC->getNameModifier()) == clang::OpenMPDirectiveKind::OMPD_target) {
         return false;
       } else {
         return true;
       }
-   }
+    }
   }
   case clang::OpenMPDirectiveKind::OMPD_teams_distribute_parallel_for_simd:
   case clang::OpenMPDirectiveKind::
@@ -298,12 +303,13 @@ bool OmpPragma::isClausePrintable(clang::OMPClause *Clause) {
     case clang::OpenMPClauseKind::OMPC_aligned:
     case clang::OpenMPClauseKind::OMPC_safelen:
     case clang::OpenMPClauseKind::OMPC_simdlen:
-    // case clang::OpenMPClauseKind::OMPC_thread_limit:
+    case clang::OpenMPClauseKind::OMPC_thread_limit:
       return true;
     default:
       return false;
     case clang::OpenMPClauseKind::OMPC_if:
-      clang::OMPIfClause* IC = llvm::dyn_cast_or_null<clang::OMPIfClause>(Clause);
+      clang::OMPIfClause *IC =
+          llvm::dyn_cast_or_null<clang::OMPIfClause>(Clause);
       if ((IC->getNameModifier()) == clang::OpenMPDirectiveKind::OMPD_target) {
         return false;
       } else {
@@ -320,7 +326,7 @@ bool OmpPragma::isClausePrintable(clang::OMPClause *Clause) {
     case clang::OpenMPClauseKind::OMPC_firstprivate:
     case clang::OpenMPClauseKind::OMPC_shared:
     case clang::OpenMPClauseKind::OMPC_reduction:
-    // case clang::OpenMPClauseKind::OMPC_thread_limit:
+    case clang::OpenMPClauseKind::OMPC_thread_limit:
     case clang::OpenMPClauseKind::OMPC_lastprivate:
     case clang::OpenMPClauseKind::OMPC_collapse:
     case clang::OpenMPClauseKind::OMPC_dist_schedule:
@@ -332,7 +338,8 @@ bool OmpPragma::isClausePrintable(clang::OMPClause *Clause) {
     default:
       return false;
     case clang::OpenMPClauseKind::OMPC_if:
-      clang::OMPIfClause* IC = llvm::dyn_cast_or_null<clang::OMPIfClause>(Clause);
+      clang::OMPIfClause *IC =
+          llvm::dyn_cast_or_null<clang::OMPIfClause>(Clause);
       if ((IC->getNameModifier()) == clang::OpenMPDirectiveKind::OMPD_target) {
         return false;
       } else {
@@ -351,6 +358,11 @@ void OmpPragma::printClauses(llvm::raw_ostream &Out) {
   llvm::raw_string_ostream In(InString);
   clang::OMPClausePrinter Printer(In, PP);
 
+  bool numThreads = 0;
+  std::string numThreadsParam;
+  bool threadLimit = 0;
+  std::string threadLimitParam;
+
   for (auto C : Clauses) {
     // Only print clauses that are both printable (for us) and are actually in
     // the users code (is explicit)
@@ -358,27 +370,44 @@ void OmpPragma::printClauses(llvm::raw_ostream &Out) {
       Printer.Visit(C);
 
       In.str();
-      size_t inp = InString.find("(")+1;
-      size_t paramlength = InString.length()-inp-1;
-      std::string param = InString.substr(inp,paramlength);
-      InString.erase(inp,paramlength);
+      size_t inp = InString.find("(") + 1;
+      size_t paramlength = InString.length() - inp - 1;
+      std::string param = InString.substr(inp, paramlength);
+      InString.erase(inp, paramlength);
 
-      rewriteParam(C, &param);
-      Out << InString.insert(inp,param) << " ";
-//      addShared(C, &param, Out);
+      if (C->getClauseKind() == clang::OpenMPClauseKind::OMPC_num_threads) {
+        rewriteParam(&param);
+        numThreadsParam = param;
+        numThreads = true;
+      } else if (C->getClauseKind() ==
+                 clang::OpenMPClauseKind::OMPC_thread_limit) {
+        rewriteParam(&param);
+        threadLimitParam = param;
+        threadLimit = true;
+      } else {
+        Out << InString.insert(inp, param) << " ";
+      }
+
       InString.clear();
     }
   }
+
+  if (numThreads && threadLimit) {
+    Out << "num_threads((" << numThreadsParam << " < " << threadLimitParam
+        << ") ? " << numThreadsParam << " : " << threadLimitParam << ") ";
+  } else if (numThreads && !threadLimit) {
+    Out << "num_threads(" << numThreadsParam << ") ";
+  } else if (!numThreads && threadLimit) {
+    Out << "num_threads(" << threadLimitParam << ") ";
+  }
 }
 
-void OmpPragma::rewriteParam(clang::OMPClause *Clause,std::string *In) {
-
-if (Clause->getClauseKind() == clang::OpenMPClauseKind::OMPC_num_threads) {
+void OmpPragma::rewriteParam(std::string *In) {
   bool isNumerical = true;
 
   for (auto i : *In) {
     if (!isdigit(i)) {
-    isNumerical = false;
+      isNumerical = false;
     }
   }
 
@@ -386,51 +415,6 @@ if (Clause->getClauseKind() == clang::OpenMPClauseKind::OMPC_num_threads) {
     *In = "__sotoc_clause_param_" + std::to_string(ClauseParamCounter);
     ClauseParamCounter++;
   }
-}/* else if (Clause->getClauseKind() == clang::OpenMPClauseKind::OMPC_shared) {
-  std::string RedString;
-  std::string DefaultString;
-  llvm::raw_string_ostream Red(RedString);
-  llvm::raw_string_ostream Default(DefaultString);
-  clang::OMPClausePrinter RedPrinter(Red, PP);
-  clang::OMPClausePrinter DefaultPrinter(Default, PP);
-
-  for (auto CD: Clauses) {
-    if (CD->getClauseKind() == clang::OpenMPClauseKind::OMPC_default) {
-      DefaultPrinter.Visit(CD);
-      Default.str();
-      size_t defaultp = DefaultString.find("(")+1;
-      size_t paramlength_default = DefaultString.length()-defaultp-1;
-      std::string param_default = DefaultString.substr(defaultp,paramlength_default);
-      if (!param_default.compare(std::string("none"))) {
-        for (auto CR: Clauses) {
-          if (CR->getClauseKind() == clang::OpenMPClauseKind::OMPC_reduction){
-        RedPrinter.Visit(CR);
-            Red.str();
-            size_t redp = RedString.find(":")+1;
-            size_t paramlength_red = RedString.length()-redp-1;
-            std::string param_red = RedString.substr(redp,paramlength_red);
-
-        In->append("," + param_red);
-        return;
-          }
-   //     }
-   //   }
-   // }
-  }
-}*/
-}
-
-void OmpPragma::addShared(clang::OMPClause *Clause, std::string *In, llvm::raw_ostream &Out) {
-if (Clause->getClauseKind() == clang::OpenMPClauseKind::OMPC_reduction) {
-  for (auto CS: Clauses) {
-    if (CS->getClauseKind() == clang::OpenMPClauseKind::OMPC_shared){
-      return;
-    }
-  }
-  size_t sharedp = In->find(":")+1;
-  size_t length = In->length()-sharedp-1;
-  Out << "shared(" << In->substr(sharedp,length) << ")";
-}
 }
 
 bool OmpPragma::needsStructuredBlock() {

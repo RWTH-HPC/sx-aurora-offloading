@@ -15,9 +15,9 @@ Inherits from [TargetCodeFragment](../Classes/classTargetCodeFragment.md)
 | -------------- | -------------- |
 | bool | **[classof](../Classes/classTargetCodeDecl.md#function-classof)**(const [TargetCodeFragment](../Classes/classTargetCodeFragment.md) * TCF) |
 | | **[TargetCodeDecl](../Classes/classTargetCodeDecl.md#function-targetcodedecl)**(clang::Decl * Node) |
-| virtual std::string | **[PrintPretty](../Classes/classTargetCodeDecl.md#function-printpretty)**() override<br>Tries to use Clang's PrettyPrinter when possible (this is currently only for target regions).  |
-| virtual clang::SourceRange | **[getRealRange](../Classes/classTargetCodeDecl.md#function-getrealrange)**() override<br>Get the source range of the fragment.  |
-| virtual clang::SourceRange | **[getSpellingRange](../Classes/classTargetCodeDecl.md#function-getspellingrange)**() override<br>Get the spelling source range.  |
+| virtual std::string | **[PrintPretty](../Classes/classTargetCodeDecl.md#function-printpretty)**() override<br>Do pretty printing.  |
+| virtual clang::SourceRange | **[getRealRange](../Classes/classTargetCodeDecl.md#function-getrealrange)**() override<br>Get source range.  |
+| virtual clang::SourceRange | **[getSpellingRange](../Classes/classTargetCodeDecl.md#function-getspellingrange)**() override<br>Get spelling range.  |
 
 ## Private Attributes
 
@@ -39,7 +39,7 @@ Inherits from [TargetCodeFragment](../Classes/classTargetCodeFragment.md)
 | -------------- | -------------- |
 | [TargetCodeFragmentKind](../Classes/classTargetCodeFragment.md#enum-targetcodefragmentkind) | **[getKind](../Classes/classTargetCodeFragment.md#function-getkind)**() const<br>Accessor for LLVMs RTTI.  |
 | | **[TargetCodeFragment](../Classes/classTargetCodeFragment.md#function-targetcodefragment)**(clang::ASTContext & Context, [TargetCodeFragmentKind](../Classes/classTargetCodeFragment.md#enum-targetcodefragmentkind) Kind) |
-| virtual | **[~TargetCodeFragment](../Classes/classTargetCodeFragment.md#function-~targetcodefragment)**() =0 |
+| virtual | **[~TargetCodeFragment](../Classes/classTargetCodeFragment.md#function-~targetcodefragment)**() =0<br>Destroy the Target Code Fragment:: Target Code Fragment object.  |
 | virtual clang::SourceRange | **[getInnerRange](../Classes/classTargetCodeFragment.md#function-getinnerrange)**()<br>Gets the 'inner' source range.  |
 | clang::OpenMPDirectiveKind | **[getTargetCodeKind](../Classes/classTargetCodeFragment.md#function-gettargetcodekind)**()<br>Accessor to TargetCodeKind.  |
 | const clang::LangOptions & | **[GetLangOpts](../Classes/classTargetCodeFragment.md#function-getlangopts)**()<br>Accessor to lang opts of the current context.  |
@@ -68,9 +68,9 @@ Inherits from [TargetCodeFragment](../Classes/classTargetCodeFragment.md)
 class TargetCodeDecl;
 ```
 
-This class represents a declaration, i.e.
+This class represents a declaration, i.e. 
 
-a function, global varialbe, or type declaration that need to be copied from the input source code to the generated source code.
+a function, global varialbe, or type declaration that need to be copied from the input source code to the generated source code. 
 
 ## Public Functions Documentation
 
@@ -98,7 +98,9 @@ inline TargetCodeDecl(
 virtual std::string PrintPretty() override
 ```
 
-Tries to use Clang's PrettyPrinter when possible (this is currently only for target regions).
+Do pretty printing. 
+
+**Return**: std::string Pretty output 
 
 **Reimplements**: [TargetCodeFragment::PrintPretty](../Classes/classTargetCodeFragment.md#function-printpretty)
 
@@ -109,7 +111,9 @@ Tries to use Clang's PrettyPrinter when possible (this is currently only for tar
 virtual clang::SourceRange getRealRange() override
 ```
 
-Get the source range of the fragment.
+Get source range. 
+
+**Return**: clang::SourceRange 
 
 **Reimplements**: [TargetCodeFragment::getRealRange](../Classes/classTargetCodeFragment.md#function-getrealrange)
 
@@ -120,12 +124,11 @@ Get the source range of the fragment.
 virtual clang::SourceRange getSpellingRange() override
 ```
 
-Get the spelling source range.
+Get spelling range. 
+
+**Return**: clang::SourceRange 
 
 **Reimplements**: [TargetCodeFragment::getSpellingRange](../Classes/classTargetCodeFragment.md#function-getspellingrange)
-
-
-That is the range without macro expansions.
 
 
 ## Private Attributes Documentation
@@ -136,5 +139,6 @@ That is the range without macro expansions.
 clang::Decl * DeclNode;
 ```
 
-The AST node for the declaration.
+The AST node for the declaration. 
+
 

@@ -2,7 +2,7 @@
 
 
 
-A collection of all code from the input file that needs to be copied to the target source file.
+A collection of all code from the input file that needs to be copied to the target source file. 
 
 
 `#include <TargetCode.h>`
@@ -27,7 +27,7 @@ A collection of all code from the input file that needs to be copied to the targ
 | void | **[generateFunctionPrologue](../Classes/classTargetCode.md#function-generatefunctionprologue)**([TargetCodeRegion](../Classes/classTargetCodeRegion.md) * TCR, llvm::raw_ostream & Out)<br>Generates a function prologue for a target region.  |
 | void | **[generateFunctionEpilogue](../Classes/classTargetCode.md#function-generatefunctionepilogue)**([TargetCodeRegion](../Classes/classTargetCodeRegion.md) * TCR, llvm::raw_ostream & Out)<br>Generates a function epilogue for a target region.  |
 | std::string | **[generateFunctionName](../Classes/classTargetCode.md#function-generatefunctionname)**([TargetCodeRegion](../Classes/classTargetCodeRegion.md) * TCR)<br>Generate a function name for a target region.  |
-| void | **[generateArgument](../Classes/classTargetCode.md#function-generateargument)**(const [TargetRegionVariable](../Classes/classTargetRegionVariable.md) & Aarg, llvm::raw_ostream & Out) |
+| void | **[generateArgument](../Classes/classTargetCode.md#function-generateargument)**(const [TargetRegionVariable](../Classes/classTargetRegionVariable.md) & Aarg, llvm::raw_ostream & Out)<br>Generate function arguments.  |
 
 ## Private Attributes
 
@@ -58,9 +58,19 @@ bool addCodeFragment(
 )
 ```
 
-Add a piece of code from the input file to this collection.
+Add a piece of code from the input file to this collection. 
+
+**Parameters**: 
+
+  * **Frag** Target code fragment to add 
+  * **PushFront** Whether to push it to the front or the back 
+
+
+Adds a code fragment.
 
 This function uses the fragments source location to check wether it was already added and where in the list of code fragments to add it.
+
+Adds a [TargetCodeFragment](../Classes/classTargetCodeFragment.md) to Target Code
 
 
 ### function addCodeFragmentFront
@@ -71,7 +81,7 @@ bool addCodeFragmentFront(
 )
 ```
 
-See [addCodeFragment](../Classes/classTargetCode.md#function-addcodefragment).
+See [addCodeFragment](../Classes/classTargetCode.md#function-addcodefragment). 
 
 ### function generateCode
 
@@ -81,7 +91,17 @@ void generateCode(
 )
 ```
 
-Generate target code from all fragments and system headers added to this collection.
+Generate target code from all fragments and system headers added to this collection. 
+
+**Parameters**: 
+
+  * **Out** Out stream 
+
+
+Generate target code.
+
+Generates the actual target code
+
 
 ### function getCodeFragmentsBegin
 
@@ -89,7 +109,7 @@ Generate target code from all fragments and system headers added to this collect
 inline TargetCodeFragmentDeque::const_iterator getCodeFragmentsBegin()
 ```
 
-Get an iterate over all code fragments in this collection.
+Get an iterate over all code fragments in this collection. 
 
 ### function getCodeFragmentsEnd
 
@@ -97,7 +117,7 @@ Get an iterate over all code fragments in this collection.
 inline TargetCodeFragmentDeque::const_iterator getCodeFragmentsEnd()
 ```
 
-See [getCodeFragmentsBegin](../Classes/classTargetCode.md#function-getcodefragmentsbegin).
+See [getCodeFragmentsBegin](../Classes/classTargetCode.md#function-getcodefragmentsbegin). 
 
 ### function addHeader
 
@@ -107,7 +127,7 @@ inline void addHeader(
 )
 ```
 
-Add a header file to be included by the target code.
+Add a header file to be included by the target code. 
 
 ## Private Functions Documentation
 
@@ -120,12 +140,12 @@ void generateVariableDecl(
 )
 ```
 
-Generate the variable declaration of a transferred variable.
+Generate the variable declaration of a transferred variable. 
 
-**Parameters**:
+**Parameters**: 
 
-  * **Var** The variable for which to print the declaration
-  * **Out** The output stream to which to write the variable declaration
+  * **Var** The variable for which to print the declaration 
+  * **Out** The output stream to which to write the variable declaration 
 
 
 Generate the variable declaration (including setting the variable to the proper value) of a transferred variable and print it to the specified output stream.
@@ -140,9 +160,19 @@ void generateFunctionPrologue(
 )
 ```
 
-Generates a function prologue for a target region.
+Generates a function prologue for a target region. 
+
+**Parameters**: 
+
+  * **TCR** Code region 
+  * **Out** Out stream 
+
+
+Generate function prologue.
 
 This prologue consists of a function declaration and code to copy local variables into scope.
+
+Generates everything that comes before the actual target code, like the function head, local variables and helper functions.
 
 
 ### function generateFunctionEpilogue
@@ -154,9 +184,19 @@ void generateFunctionEpilogue(
 )
 ```
 
-Generates a function epilogue for a target region.
+Generates a function epilogue for a target region. 
+
+**Parameters**: 
+
+  * **TCR** Target code 
+  * **Out** Out stream 
+
+
+Generate function epilogue.
 
 This prologue consists of a code to copy variables from the local scope back.
+
+Generates everything that comes after the actual target code, like '}' and scalar copies.
 
 
 ### function generateFunctionName
@@ -167,7 +207,17 @@ std::string generateFunctionName(
 )
 ```
 
-Generate a function name for a target region.
+Generate a function name for a target region. 
+
+**Parameters**: 
+
+  * **TCR** Target code region 
+
+
+**Return**: std::string Function name 
+
+Generates function name.
+
 
 ### function generateArgument
 
@@ -178,6 +228,16 @@ void generateArgument(
 )
 ```
 
+Generate function arguments. 
+
+**Parameters**: 
+
+  * **Arg** Argument 
+  * **Out** Out stream 
+
+
+Generates the argument list for the target function.
+
 
 ## Private Attributes Documentation
 
@@ -187,7 +247,7 @@ void generateArgument(
 TargetCodeFragmentDeque CodeFragments;
 ```
 
-Collection of all code locations that need to be copied.
+Collection of all code locations that need to be copied. 
 
 ### variable SystemHeaders
 
@@ -195,9 +255,9 @@ Collection of all code locations that need to be copied.
 std::set< std::string > SystemHeaders;
 ```
 
-Header files which will also be present on the target.
+Header files which will also be present on the target. 
 
-Instead of copying the code declarations in them, we can simply add #include directives for these headers to the target code.
+Instead of copying the code declarations in them, we can simply add #include directives for these headers to the target code. 
 
 
 ### variable TargetCodeRewriter
@@ -212,5 +272,6 @@ clang::Rewriter & TargetCodeRewriter;
 ```cpp linenums="1"
 clang::SourceManager & SM;
 ```
+
 
 

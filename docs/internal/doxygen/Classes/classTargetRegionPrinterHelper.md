@@ -2,7 +2,7 @@
 
 
 
-
+Print Helper Class. 
 
 Inherits from PrinterHelper
 
@@ -10,8 +10,8 @@ Inherits from PrinterHelper
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[TargetRegionPrinterHelper](../Classes/classTargetRegionPrinterHelper.md#function-targetregionprinterhelper)**(clang::PrintingPolicy PP) |
-| bool | **[handledStmt](../Classes/classTargetRegionPrinterHelper.md#function-handledstmt)**(clang::Stmt * E, llvm::raw_ostream & OS) |
+| | **[TargetRegionPrinterHelper](../Classes/classTargetRegionPrinterHelper.md#function-targetregionprinterhelper)**(clang::PrintingPolicy PP)<br>Construct a new Target Region Printer Helper object.  |
+| bool | **[handledStmt](../Classes/classTargetRegionPrinterHelper.md#function-handledstmt)**(clang::Stmt * E, llvm::raw_ostream & OS)<br>Handle Statement.  |
 
 ## Private Attributes
 
@@ -29,6 +29,12 @@ inline TargetRegionPrinterHelper(
 )
 ```
 
+Construct a new Target Region Printer Helper object. 
+
+**Parameters**: 
+
+  * **PP** 
+
 
 ### function handledStmt
 
@@ -39,6 +45,13 @@ inline bool handledStmt(
 )
 ```
 
+Handle Statement. 
+
+**Parameters**: 
+
+  * **E** Statement 
+  * **OS** Out stream 
+
 
 ## Private Attributes Documentation
 
@@ -47,5 +60,6 @@ inline bool handledStmt(
 ```cpp linenums="1"
 clang::PrintingPolicy PP;
 ```
+
 
 

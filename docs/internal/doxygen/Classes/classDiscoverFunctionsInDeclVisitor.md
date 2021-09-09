@@ -13,8 +13,8 @@ Inherits from clang::RecursiveASTVisitor< DiscoverFunctionsInDeclVisitor >
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[DiscoverFunctionsInDeclVisitor](../Classes/classDiscoverFunctionsInDeclVisitor.md#function-discoverfunctionsindeclvisitor)**([FunctionDeclResolver](../Classes/classFunctionDeclResolver.md) & Functions) |
-| bool | **[VisitExpr](../Classes/classDiscoverFunctionsInDeclVisitor.md#function-visitexpr)**(clang::Expr * E) |
+| | **[DiscoverFunctionsInDeclVisitor](../Classes/classDiscoverFunctionsInDeclVisitor.md#function-discoverfunctionsindeclvisitor)**([FunctionDeclResolver](../Classes/classFunctionDeclResolver.md) & Functions)<br>Construct a new Discover Functions In Decl Visitor:: Discover Functions In Decl Visitor object.  |
+| bool | **[VisitExpr](../Classes/classDiscoverFunctionsInDeclVisitor.md#function-visitexpr)**(clang::Expr * E)<br>Visit function for Expressions.  |
 
 ## Public Attributes
 
@@ -34,9 +34,9 @@ Inherits from clang::RecursiveASTVisitor< DiscoverFunctionsInDeclVisitor >
 class DiscoverFunctionsInDeclVisitor;
 ```
 
-Traverses (parts of) the AST to find DeclRefExpr that refer to functions that need to be present for that part of the AST to compile correctly.
+Traverses (parts of) the AST to find DeclRefExpr that refer to functions that need to be present for that part of the AST to compile correctly. 
 
-This way functions declared and defined in the same compilation unit do not need to be annotated by the 'omp declare target' pragma. The Visitor is not only used to search through target regions, but also through the found functions themselves and through functions that are annotated with the 'omp declare target' pragma, to find all necessary dependencies recursively.
+This way functions declared and defined in the same compilation unit do not need to be annotated by the 'omp declare target' pragma. The Visitor is not only used to search through target regions, but also through the found functions themselves and through functions that are annotated with the 'omp declare target' pragma, to find all necessary dependencies recursively. 
 
 ## Public Functions Documentation
 
@@ -48,6 +48,12 @@ DiscoverFunctionsInDeclVisitor(
 )
 ```
 
+Construct a new Discover Functions In Decl Visitor:: Discover Functions In Decl Visitor object. 
+
+**Parameters**: 
+
+  * **Functions** 
+
 
 ### function VisitExpr
 
@@ -56,6 +62,15 @@ bool VisitExpr(
     clang::Expr * E
 )
 ```
+
+Visit function for Expressions. 
+
+**Parameters**: 
+
+  * **E** Given expression 
+
+
+Expression Visitor in [DiscoverFunctionsInDeclVisitor](../Classes/classDiscoverFunctionsInDeclVisitor.md)
 
 
 ## Public Attributes Documentation
@@ -74,5 +89,6 @@ __pad0__;
 ```cpp linenums="1"
 std::function< void(clang::FunctionDecl *)> OnEachFuncRef;
 ```
+
 
 

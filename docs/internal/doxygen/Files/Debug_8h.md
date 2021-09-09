@@ -1,6 +1,6 @@
 # src/Debug.h
 
-This file defines a debug macro for sotoc.
+This file defines a debug macro for sotoc. 
 
 ## Defines
 

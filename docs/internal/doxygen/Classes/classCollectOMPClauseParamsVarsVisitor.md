@@ -2,7 +2,7 @@
 
 
 
-
+OMP clause visitor. 
 
 Inherits from clang::RecursiveASTVisitor< CollectOMPClauseParamsVarsVisitor >
 
@@ -46,5 +46,6 @@ inline bool VisitStmt(
 ```cpp linenums="1"
 std::shared_ptr< TargetCodeRegion > TCR;
 ```
+
 
 

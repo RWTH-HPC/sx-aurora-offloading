@@ -60,9 +60,9 @@ Inherits from [DeclResolver](../Classes/classDeclResolver.md)
 class FunctionDeclResolver;
 ```
 
-Implements [DeclResolver]() for functions used in target regions.
+Implements [DeclResolver]() for functions used in target regions. 
 
-Does also search for additional types in the functions found and adds them to a [TypeDeclResolver](../Classes/classTypeDeclResolver.md) instance.
+Does also search for additional types in the functions found and adds them to a [TypeDeclResolver](../Classes/classTypeDeclResolver.md) instance. 
 
 ## Public Functions Documentation
 
@@ -86,7 +86,7 @@ virtual void runOwnVisitor(
 ) override
 ```
 
-With this function, the resolver runs a visitor on the declaration added to find and add all declarations that the added declaration depends on and adds them to the resolver.
+With this function, the resolver runs a visitor on the declaration added to find and add all declarations that the added declaration depends on and adds them to the resolver. 
 
 **Reimplements**: [DeclResolver::runOwnVisitor](../Classes/classDeclResolver.md#function-runownvisitor)
 
@@ -100,7 +100,7 @@ virtual void findDependDecls(
 ) override
 ```
 
-Overrides [DeclResolver::findDependDecls]() to also find types required by this function.
+Overrides [DeclResolver::findDependDecls]() to also find types required by this function. 
 
 **Reimplements**: [DeclResolver::findDependDecls](../Classes/classDeclResolver.md#function-finddependdecls)
 
@@ -112,5 +112,6 @@ Overrides [DeclResolver::findDependDecls]() to also find types required by this 
 ```cpp linenums="1"
 TypeDeclResolver & Types;
 ```
+
 
 

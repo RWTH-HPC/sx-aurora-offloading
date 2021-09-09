@@ -3,7 +3,7 @@
 
 
 
-* **page [sotoc - Source Transformation for OpenMP Code (suggestions for a better name are greatly appreciated)](../)** 
+* **page [sotoc - Source Transformation for OpenMP Code](../)** 
 
 
 

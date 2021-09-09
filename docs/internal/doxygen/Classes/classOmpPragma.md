@@ -16,17 +16,16 @@ A helper class to rewrite some "pragma omp" (mostly teams and similar combined c
 | bool | **[needsStructuredBlock](../Classes/classOmpPragma.md#function-needsstructuredblock)**()<br>Returns true if the omp pragma encapsulated, needs to be followed by a structured block (i.e.  |
 | void | **[printReplacement](../Classes/classOmpPragma.md#function-printreplacement)**(llvm::raw_ostream & Out)<br>Prints a replacement omp pragma for the encapsulated pragma onto `Out`.  |
 | void | **[printAddition](../Classes/classOmpPragma.md#function-printaddition)**(llvm::raw_ostream & Out) |
-| bool | **[isReplaceable](../Classes/classOmpPragma.md#function-isreplaceable)**(clang::OMPExecutableDirective * Directive) |
-| bool | **[needsAdditionalPragma](../Classes/classOmpPragma.md#function-needsadditionalpragma)**(clang::OMPExecutableDirective * Directive) |
+| bool | **[isReplaceable](../Classes/classOmpPragma.md#function-isreplaceable)**(clang::OMPExecutableDirective * Directive)<br>Determines whether a pragma is replacable.  |
+| bool | **[needsAdditionalPragma](../Classes/classOmpPragma.md#function-needsadditionalpragma)**(clang::OMPExecutableDirective * Directive)<br>Determines whether a additional pragma is needed.  |
 
 ## Private Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| bool | **[isClausePrintable](../Classes/classOmpPragma.md#function-isclauseprintable)**(clang::OMPClause * Clause) |
-| void | **[rewriteParam](../Classes/classOmpPragma.md#function-rewriteparam)**(clang::OMPClause * Clause, std::string * In) |
-| void | **[addShared](../Classes/classOmpPragma.md#function-addshared)**(clang::OMPClause * Clause, std::string * In, llvm::raw_ostream & Out) |
-| void | **[printClauses](../Classes/classOmpPragma.md#function-printclauses)**(llvm::raw_ostream & Out) |
+| bool | **[isClausePrintable](../Classes/classOmpPragma.md#function-isclauseprintable)**(clang::OMPClause * Clause)<br>Determine whether a clause is printable.  |
+| void | **[rewriteParam](../Classes/classOmpPragma.md#function-rewriteparam)**(std::string * In)<br>Rewrite clause parameters.  |
+| void | **[printClauses](../Classes/classOmpPragma.md#function-printclauses)**(llvm::raw_ostream & Out)<br>Print OMP Clauses.  |
 
 ## Private Attributes
 
@@ -43,9 +42,9 @@ A helper class to rewrite some "pragma omp" (mostly teams and similar combined c
 class OmpPragma;
 ```
 
-A helper class to rewrite some "pragma omp" (mostly teams and similar combined constructs), which are not supported by sotoc.
+A helper class to rewrite some "pragma omp" (mostly teams and similar combined constructs), which are not supported by sotoc. 
 
-We currently only support one team to be run on the target because ncc does not support 'freestanding' teams. So we need to remove teams and distribute constructs from the generated target code. But teams constructs can also appear in combined constructs. These combined constructs cannot simply be removed, they must be replace by "non-team" equivalents to preserve correctness. This class provides helper functions that finds a suitable replacement for omp pragmas that contain teams constructs. It is used during code generation: The omp pragma of each target region that is declared as part of a combined construct and each pragma found during pretty printing is encapsulated by an object of this class which is then used to generate a replacement.
+We currently only support one team to be run on the target because ncc does not support 'freestanding' teams. So we need to remove teams and distribute constructs from the generated target code. But teams constructs can also appear in combined constructs. These combined constructs cannot simply be removed, they must be replace by "non-team" equivalents to preserve correctness. This class provides helper functions that finds a suitable replacement for omp pragmas that contain teams constructs. It is used during code generation: The omp pragma of each target region that is declared as part of a combined construct and each pragma found during pretty printing is encapsulated by an object of this class which is then used to generate a replacement. 
 
 ## Public Functions Documentation
 
@@ -74,7 +73,13 @@ inline OmpPragma(
 bool needsStructuredBlock()
 ```
 
-Returns true if the omp pragma encapsulated, needs to be followed by a structured block (i.e.
+Returns true if the omp pragma encapsulated, needs to be followed by a structured block (i.e. 
+
+**Return**: true If a structured block is needed 
+
+false If no structured block is needed 
+
+Determines whether a structured block is needed for a pragma.
 
 {...}).
 
@@ -87,7 +92,17 @@ void printReplacement(
 )
 ```
 
-Prints a replacement omp pragma for the encapsulated pragma onto `Out`.
+Prints a replacement omp pragma for the encapsulated pragma onto `Out`. 
+
+**Parameters**: 
+
+  * **Out** Out stream 
+
+
+Print replacement pragmas.
+
+In some cases we have to modify the printed pragma. If we have a combined constructs with target, remove target because we are already running on the target device. If we have a combined construct with teams, remove teams because the runtime can decide to spawn only a single team. If we have a simd, we prepend `#pragma _NEC ivdep` to indicate no dependencies.
+
 
 ### function printAddition
 
@@ -106,6 +121,16 @@ static bool isReplaceable(
 )
 ```
 
+Determines whether a pragma is replacable. 
+
+**Parameters**: 
+
+  * **Directive** Given Directive 
+
+
+**Return**: true If the directive is replacable 
+
+false If the directive is not replacable 
 
 ### function needsAdditionalPragma
 
@@ -115,6 +140,16 @@ static bool needsAdditionalPragma(
 )
 ```
 
+Determines whether a additional pragma is needed. 
+
+**Parameters**: 
+
+  * **Directive** given directive 
+
+
+**Return**: true Directive needs an additional pragma 
+
+false Directive does not need an additional pragma 
 
 ## Private Functions Documentation
 
@@ -126,26 +161,36 @@ bool isClausePrintable(
 )
 ```
 
+Determine whether a clause is printable. 
+
+**Parameters**: 
+
+  * **Clause** Clause to check 
+
+
+**Return**: true If the clause is printable 
+
+false If the clause is not printable 
+
+Checks for a clause the clause kind and determines which clauses are printable.
+
 
 ### function rewriteParam
 
 ```cpp linenums="1"
 void rewriteParam(
-    clang::OMPClause * Clause,
     std::string * In
 )
 ```
 
+Rewrite clause parameters. 
 
-### function addShared
+**Parameters**: 
 
-```cpp linenums="1"
-void addShared(
-    clang::OMPClause * Clause,
-    std::string * In,
-    llvm::raw_ostream & Out
-)
-```
+  * **In** Parameter as string (everything in brackets) 
+
+
+Rewrites OMP clause parameters if they are variables to replace the variable name with the one we will use as the function argument.
 
 
 ### function printClauses
@@ -155,6 +200,12 @@ void printClauses(
     llvm::raw_ostream & Out
 )
 ```
+
+Print OMP Clauses. 
+
+**Parameters**: 
+
+  * **Out** Out stream 
 
 
 ## Private Attributes Documentation
@@ -185,5 +236,6 @@ clang::OpenMPDirectiveKind Kind;
 ```cpp linenums="1"
 unsigned int ClauseParamCounter;
 ```
+
 
 

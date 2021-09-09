@@ -13,10 +13,10 @@ Inherits from clang::RecursiveASTVisitor< DiscoverTypesInDeclVisitor >
 
 |                | Name           |
 | -------------- | -------------- |
-| | **[DiscoverTypesInDeclVisitor](../Classes/classDiscoverTypesInDeclVisitor.md#function-discovertypesindeclvisitor)**([TypeDeclResolver](../Classes/classTypeDeclResolver.md) & Types) |
-| bool | **[VisitDecl](../Classes/classDiscoverTypesInDeclVisitor.md#function-visitdecl)**(clang::Decl * D) |
-| bool | **[VisitExpr](../Classes/classDiscoverTypesInDeclVisitor.md#function-visitexpr)**(clang::Expr * D) |
-| bool | **[VisitType](../Classes/classDiscoverTypesInDeclVisitor.md#function-visittype)**(clang::Type * T) |
+| | **[DiscoverTypesInDeclVisitor](../Classes/classDiscoverTypesInDeclVisitor.md#function-discovertypesindeclvisitor)**([TypeDeclResolver](../Classes/classTypeDeclResolver.md) & Types)<br>Construct a new Discover Types In Decl Visitor:: Discover Types In Decl Visitor object.  |
+| bool | **[VisitDecl](../Classes/classDiscoverTypesInDeclVisitor.md#function-visitdecl)**(clang::Decl * D)<br>Visit function for declaration.  |
+| bool | **[VisitExpr](../Classes/classDiscoverTypesInDeclVisitor.md#function-visitexpr)**(clang::Expr * D)<br>Visit function for expressions.  |
+| bool | **[VisitType](../Classes/classDiscoverTypesInDeclVisitor.md#function-visittype)**(clang::Type * T)<br>Visit function for types.  |
 
 ## Private Functions
 
@@ -42,9 +42,9 @@ Inherits from clang::RecursiveASTVisitor< DiscoverTypesInDeclVisitor >
 class DiscoverTypesInDeclVisitor;
 ```
 
-Traverses (parts of) the AST to find DeclRefExpr that refer to types that need to be present for that part of the AST to compile correctly.
+Traverses (parts of) the AST to find DeclRefExpr that refer to types that need to be present for that part of the AST to compile correctly. 
 
-The visitor is not only used to search through target regions and functions, but also through type declarations themselves, in order to also find types that the already found types depend on to compile.
+The visitor is not only used to search through target regions and functions, but also through type declarations themselves, in order to also find types that the already found types depend on to compile. 
 
 ## Public Functions Documentation
 
@@ -56,6 +56,12 @@ DiscoverTypesInDeclVisitor(
 )
 ```
 
+Construct a new Discover Types In Decl Visitor:: Discover Types In Decl Visitor object. 
+
+**Parameters**: 
+
+  * **Types** 
+
 
 ### function VisitDecl
 
@@ -64,6 +70,15 @@ bool VisitDecl(
     clang::Decl * D
 )
 ```
+
+Visit function for declaration. 
+
+**Parameters**: 
+
+  * **D** Given declaration 
+
+
+Declaration Visitor for the [DiscoverTypesInDeclVisitor](../Classes/classDiscoverTypesInDeclVisitor.md)
 
 
 ### function VisitExpr
@@ -74,6 +89,15 @@ bool VisitExpr(
 )
 ```
 
+Visit function for expressions. 
+
+**Parameters**: 
+
+  * **E** Given expression 
+
+
+Expression Visitor for [DiscoverTypesInDeclVisitor](../Classes/classDiscoverTypesInDeclVisitor.md)
+
 
 ### function VisitType
 
@@ -82,6 +106,15 @@ bool VisitType(
     clang::Type * T
 )
 ```
+
+Visit function for types. 
+
+**Parameters**: 
+
+  * **T** Given Type 
+
+
+Type Visitor for [DiscoverTypesInDeclVisitor](../Classes/classDiscoverTypesInDeclVisitor.md)
 
 
 ## Private Functions Documentation
@@ -94,7 +127,17 @@ void processType(
 )
 ```
 
-Retrieves the declaration of the type found and passes it on.
+Retrieves the declaration of the type found and passes it on. 
+
+**Parameters**: 
+
+  * **TP** 
+
+
+Processing function for types.
+
+Processes types found by the [DiscoverTypesInDeclVisitor](../Classes/classDiscoverTypesInDeclVisitor.md)
+
 
 ## Public Attributes Documentation
 
@@ -113,5 +156,6 @@ __pad0__;
 std::function< void(clang::TypeDecl *)> OnEachTypeRef;
 ```
 
-Function run on the declaration of each type found by the visitor.
+Function run on the declaration of each type found by the visitor. 
+
 

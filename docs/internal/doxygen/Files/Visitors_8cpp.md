@@ -1,19 +1,19 @@
 # src/Visitors.cpp
 
-This file implements the classes [DiscoverTypesInDeclVisitor](../Classes/classDiscoverTypesInDeclVisitor.md) and [FindTargetCodeVisitor](../Classes/classFindTargetCodeVisitor.md).
+This file implements the classes [DiscoverTypesInDeclVisitor](../Classes/classDiscoverTypesInDeclVisitor.md) and [FindTargetCodeVisitor](../Classes/classFindTargetCodeVisitor.md). 
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[CollectOMPClauseParamsVarsVisitor](../Classes/classCollectOMPClauseParamsVarsVisitor.md)**  |
-| class | **[CollectOMPClauseParamsVisitor](../Classes/classCollectOMPClauseParamsVisitor.md)**  |
+| class | **[CollectOMPClauseParamsVarsVisitor](../Classes/classCollectOMPClauseParamsVarsVisitor.md)** <br>OMP clause visitor.  |
+| class | **[CollectOMPClauseParamsVisitor](../Classes/classCollectOMPClauseParamsVisitor.md)** <br>OMP clause parameter visitor.  |
 
 ## Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| bool | **[stmtNeedsSemicolon](../Files/Visitors_8cpp.md#function-stmtneedssemicolon)**(const clang::Stmt * S) |
+| bool | **[stmtNeedsSemicolon](../Files/Visitors_8cpp.md#function-stmtneedssemicolon)**(const clang::Stmt * S)<br>Determine whether a statement needs a semicolon.  |
 
 
 ## Functions Documentation
@@ -26,6 +26,16 @@ static bool stmtNeedsSemicolon(
 )
 ```
 
+Determine whether a statement needs a semicolon. 
+
+**Parameters**: 
+
+  * **S** Statement to check 
+
+
+**Return**: true If a semicolon is needed 
+
+false If no semicolon is needed 
 
 
 
@@ -277,7 +287,6 @@ bool FindLoopStmtVisitor::VisitStmt(clang::Stmt *S) {
   }
   return true;
 }
-
 
 bool FindDeclRefExprVisitor::VisitStmt(clang::Stmt *S) {
   if (auto DRE = llvm::dyn_cast<clang::DeclRefExpr>(S)) {

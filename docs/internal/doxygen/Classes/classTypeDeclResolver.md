@@ -2,7 +2,7 @@
 
 
 
-Implements [DeclResolver]() for types (typedefs, structs enums) used in target regions.
+Implements [DeclResolver]() for types (typedefs, structs enums) used in target regions. 
 
 
 `#include <DeclResolver.h>`
@@ -58,8 +58,9 @@ virtual void runOwnVisitor(
 ) override
 ```
 
-With this function, the resolver runs a visitor on the declaration added to find and add all declarations that the added declaration depends on and adds them to the resolver.
+With this function, the resolver runs a visitor on the declaration added to find and add all declarations that the added declaration depends on and adds them to the resolver. 
 
 **Reimplements**: [DeclResolver::runOwnVisitor](../Classes/classDeclResolver.md#function-runownvisitor)
+
 
 

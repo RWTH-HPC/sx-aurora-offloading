@@ -2,7 +2,7 @@
 
 
 
-Iterator which acts as a filter over std::vector<TargetRegionVariableShape>::const_iterator (the base_iter) which only passes on [TargetRegionVariableShape](../Classes/classTargetRegionVariableShape.md) of the kind specified in [Kind]().
+Iterator which acts as a filter over std::vector<TargetRegionVariableShape>::const_iterator (the base_iter) which only passes on [TargetRegionVariableShape](../Classes/classTargetRegionVariableShape.md) of the kind specified in [Kind](). 
 
 
 `#include <TargetRegionVariable.h>`
@@ -115,9 +115,9 @@ inline explicit shape_const_kind_iterator(
 )
 ```
 
-Explicitly constructs an iterator from the base_iter- Both the start and end of the iterator will be set to the same paramter `I`.
+Explicitly constructs an iterator from the base_iter- Both the start and end of the iterator will be set to the same paramter `I`. 
 
-Use this to construct an end() iterator from std::vector<>::cend().
+Use this to construct an end() iterator from std::vector<>::cend(). 
 
 
 ### function shape_const_kind_iterator
@@ -130,9 +130,9 @@ inline explicit shape_const_kind_iterator(
 )
 ```
 
-Explicitly constructs an iterator from cbegin() and cend() of base_iter.
+Explicitly constructs an iterator from cbegin() and cend() of base_iter. 
 
-Use this to construct a begin() from std::vector<>::cbegin() and std::vector<>::cend(). The iterator needs to operate on the base_iter at construction to ensure that a non-empty vector which does not contain elements of the right [Kind](../Classes/classTargetRegionVariable_1_1shape__const__kind__iterator.md#variable-kind) is handled correctly.
+Use this to construct a begin() from std::vector<>::cbegin() and std::vector<>::cend(). The iterator needs to operate on the base_iter at construction to ensure that a non-empty vector which does not contain elements of the right [Kind](../Classes/classTargetRegionVariable_1_1shape__const__kind__iterator.md#variable-kind) is handled correctly. 
 
 
 ### function operator++
@@ -146,7 +146,7 @@ inline shape_const_kind_iterator & operator++()
 
 ```cpp linenums="1"
 inline shape_const_kind_iterator operator++(
-    int
+    int 
 )
 ```
 
@@ -210,5 +210,6 @@ friend bool operator!=(
     shape_const_kind_iterator Y
 );
 ```
+
 
 

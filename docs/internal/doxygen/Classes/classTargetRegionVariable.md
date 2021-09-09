@@ -35,13 +35,13 @@ Represents a variable captured by a target region.  [More...](#detailed-descript
 | bool | **[operator==](../Classes/classTargetRegionVariable.md#function-operator==)**(const [TargetRegionVariable](../Classes/classTargetRegionVariable.md) & Other) const |
 | [shape_const_range](../Classes/classTargetRegionVariable.md#using-shape_const_range) | **[shapes](../Classes/classTargetRegionVariable.md#function-shapes)**() const<br>Gives a range over the shape of all dimensions.  |
 | [shape_const_kind_range](../Classes/classTargetRegionVariable.md#using-shape_const_kind_range) | **[variableArrayShapes](../Classes/classTargetRegionVariable.md#function-variablearrayshapes)**() const<br>Gives a range over those shape dimensions which are variable arrays.  |
-| | **[TargetRegionVariable](../Classes/classTargetRegionVariable.md#function-targetregionvariable)**(const clang::CapturedStmt::Capture * Capture, const std::map< clang::VarDecl *, clang::Expr * > & MappingLowerBounds) |
+| | **[TargetRegionVariable](../Classes/classTargetRegionVariable.md#function-targetregionvariable)**(const clang::CapturedStmt::Capture * Capture, const std::map< clang::VarDecl *, clang::Expr * > & MappingLowerBounds)<br>Construct a new Target Region Variable:: Target Region Variable object.  |
 
 ## Private Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| void | **[determineShapes](../Classes/classTargetRegionVariable.md#function-determineshapes)**(clang::QualType T) |
+| void | **[determineShapes](../Classes/classTargetRegionVariable.md#function-determineshapes)**(clang::QualType T)<br>Determine variable shape.  |
 
 ## Private Attributes
 
@@ -61,9 +61,9 @@ Represents a variable captured by a target region.  [More...](#detailed-descript
 class TargetRegionVariable;
 ```
 
-Represents a variable captured by a target region.
+Represents a variable captured by a target region. 
 
-This class is an abstraction that provides information on how the variable is passed to the target region, whether it is a slice or array and how it's dimensionality is declared
+This class is an abstraction that provides information on how the variable is passed to the target region, whether it is a slice or array and how it's dimensionality is declared 
 
 ## Public Types Documentation
 
@@ -73,7 +73,7 @@ This class is an abstraction that provides information on how the variable is pa
 using TargetRegionVariable::shape_const_iterator =  std::vector<TargetRegionVariableShape>::const_iterator;
 ```
 
-Iterator of all shapes of this variable.
+Iterator of all shapes of this variable. 
 
 ### using shape_const_range
 
@@ -81,7 +81,7 @@ Iterator of all shapes of this variable.
 using TargetRegionVariable::shape_const_range =  llvm::iterator_range<shape_const_iterator>;
 ```
 
-Range over all shapes of this variable.
+Range over all shapes of this variable. 
 
 ### using shape_const_kind_range
 
@@ -89,7 +89,7 @@ Range over all shapes of this variable.
 using TargetRegionVariable::shape_const_kind_range =  llvm::iterator_range<shape_const_kind_iterator>;
 ```
 
-Range over all shapes of a certain kind of this variable.
+Range over all shapes of a certain kind of this variable. 
 
 ## Public Functions Documentation
 
@@ -99,7 +99,7 @@ Range over all shapes of a certain kind of this variable.
 inline llvm::StringRef name() const
 ```
 
-The name of the variable.
+The name of the variable. 
 
 ### function baseTypeName
 
@@ -107,7 +107,7 @@ The name of the variable.
 inline llvm::StringRef baseTypeName() const
 ```
 
-The name of the base type (stripped of all qualifiers).
+The name of the base type (stripped of all qualifiers). 
 
 ### function getDecl
 
@@ -115,7 +115,7 @@ The name of the base type (stripped of all qualifiers).
 inline clang::VarDecl * getDecl() const
 ```
 
-The Decl node of the variable.
+The Decl node of the variable. 
 
 ### function containsArray
 
@@ -123,9 +123,9 @@ The Decl node of the variable.
 bool containsArray() const
 ```
 
-Whether this variable's type contains an array or not.
+Whether this variable's type contains an array or not. 
 
-**Return**: true if an array is contained, false otherwise
+**Return**: true if an array is contained, false otherwise 
 
 Check if the shape of a [TargetRegionVariable](../Classes/classTargetRegionVariable.md) contains an array.
 
@@ -136,9 +136,9 @@ Check if the shape of a [TargetRegionVariable](../Classes/classTargetRegionVaria
 bool containsPointer() const
 ```
 
-Whether this variable's type contains a pointer or not.
+Whether this variable's type contains a pointer or not. 
 
-**Return**: true if a pointer is contained, false otherwise
+**Return**: true if a pointer is contained, false otherwise 
 
 Check if the shape of a [TargetRegionVariable](../Classes/classTargetRegionVariable.md) contains an pointer.
 
@@ -149,7 +149,13 @@ Check if the shape of a [TargetRegionVariable](../Classes/classTargetRegionVaria
 bool passedByPointer() const
 ```
 
-Returns true if this variable is passed by pointer.
+Returns true if this variable is passed by pointer. 
+
+**Return**: true If a variable is passed by pointer 
+
+false If a variable is not passed by pointer 
+
+Determines whether a variable is passed by pointer.
 
 This is the case for shared and first-private variables scalars and for arrays. Note that pointer types are generally passed by value and we do not generate an additional * for it.
 
@@ -160,7 +166,11 @@ This is the case for shared and first-private variables scalars and for arrays. 
 llvm::Optional< clang::Expr * > arrayLowerBound() const
 ```
 
-The lower bound of an array slice in the first dimension.
+The lower bound of an array slice in the first dimension. 
+
+**Return**: llvm::Optional<clang::Expr *> Lower bound 
+
+Finds the lower bound of an array.
 
 All other dimension can be ignored because libomptarget only transfers continuous data. In case of a scalar (or an array which is mapped completly in the first dimension) this returns 0.
 
@@ -180,7 +190,7 @@ inline bool operator==(
 inline shape_const_range shapes() const
 ```
 
-Gives a range over the shape of all dimensions.
+Gives a range over the shape of all dimensions. 
 
 ### function variableArrayShapes
 
@@ -188,9 +198,9 @@ Gives a range over the shape of all dimensions.
 inline shape_const_kind_range variableArrayShapes() const
 ```
 
-Gives a range over those shape dimensions which are variable arrays.
+Gives a range over those shape dimensions which are variable arrays. 
 
-This is called while generating the functions argument for variable array sizes.
+This is called while generating the functions argument for variable array sizes. 
 
 
 ### function TargetRegionVariable
@@ -202,6 +212,13 @@ TargetRegionVariable(
 )
 ```
 
+Construct a new Target Region Variable:: Target Region Variable object. 
+
+**Parameters**: 
+
+  * **Capture** 
+  * **MappingLowerBounds** 
+
 
 ## Private Functions Documentation
 
@@ -212,6 +229,15 @@ void determineShapes(
     clang::QualType T
 )
 ```
+
+Determine variable shape. 
+
+**Parameters**: 
+
+  * **T** Type 
+
+
+Determines the shape of a varable by resolving its type.
 
 
 ## Private Attributes Documentation
@@ -243,9 +269,9 @@ std::string VarName;
 std::string BaseTypeName;
 ```
 
-This is the base type name, i.e.
+This is the base type name, i.e. 
 
-the name of the type without pointer or array qualifiers.
+the name of the type without pointer or array qualifiers. 
 
 
 ### variable Shapes
@@ -267,5 +293,6 @@ unsigned int NumVariableArrayDims;
 ```cpp linenums="1"
 const std::map< clang::VarDecl *, clang::Expr * > & OmpMappingLowerBound;
 ```
+
 
 

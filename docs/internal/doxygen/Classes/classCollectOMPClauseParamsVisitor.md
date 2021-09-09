@@ -2,7 +2,7 @@
 
 
 
-
+OMP clause parameter visitor. 
 
 Inherits from clang::RecursiveASTVisitor< CollectOMPClauseParamsVisitor >
 
@@ -54,5 +54,6 @@ CollectOMPClauseParamsVarsVisitor VarsVisitor;
 ```cpp linenums="1"
 bool InExplicitCast;
 ```
+
 
 

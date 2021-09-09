@@ -2,7 +2,7 @@
 
 
 
-Represents one target region.
+Represents one target region. 
 
 
 `#include <TargetCodeFragment.h>`
@@ -37,12 +37,12 @@ Inherits from [TargetCodeFragment](../Classes/classTargetCodeFragment.md)
 | [ompclauses_params_const_range](../Classes/classTargetCodeRegion.md#using-ompclauses_params_const_range) | **[ompClausesParams](../Classes/classTargetCodeRegion.md#function-ompclausesparams)**()<br>Returns a range over the parameters to the top level OpenMP clauses.  |
 | void | **[addOMPClauseParam](../Classes/classTargetCodeRegion.md#function-addompclauseparam)**(clang::VarDecl * Param)<br>Adds a parameter of a top level OpenMP clause to the target regions function as a function parameter.  |
 | bool | **[hasCombineConstruct](../Classes/classTargetCodeRegion.md#function-hascombineconstruct)**() |
-| virtual std::string | **[PrintPretty](../Classes/classTargetCodeRegion.md#function-printpretty)**() override<br>Tries to use Clang's PrettyPrinter when possible (this is currently only for target regions).  |
-| virtual clang::SourceRange | **[getRealRange](../Classes/classTargetCodeRegion.md#function-getrealrange)**() override<br>Get the source range of the fragment.  |
-| virtual clang::SourceRange | **[getInnerRange](../Classes/classTargetCodeRegion.md#function-getinnerrange)**() override<br>Gets the 'inner' source range.  |
-| virtual clang::SourceRange | **[getSpellingRange](../Classes/classTargetCodeRegion.md#function-getspellingrange)**() override<br>Get the spelling source range.  |
-| clang::SourceLocation | **[getStartLoc](../Classes/classTargetCodeRegion.md#function-getstartloc)**()<br>Returns a source location at the start of a pragma in the captured statment.  |
-| clang::SourceLocation | **[getEndLoc](../Classes/classTargetCodeRegion.md#function-getendloc)**() |
+| virtual std::string | **[PrintPretty](../Classes/classTargetCodeRegion.md#function-printpretty)**() override<br>Do pretty printing in order to resolve Macros.  |
+| virtual clang::SourceRange | **[getRealRange](../Classes/classTargetCodeRegion.md#function-getrealrange)**() override<br>Get source range.  |
+| virtual clang::SourceRange | **[getInnerRange](../Classes/classTargetCodeRegion.md#function-getinnerrange)**() override<br>Get inner range.  |
+| virtual clang::SourceRange | **[getSpellingRange](../Classes/classTargetCodeRegion.md#function-getspellingrange)**() override<br>Get spelling range.  |
+| clang::SourceLocation | **[getStartLoc](../Classes/classTargetCodeRegion.md#function-getstartloc)**()<br>Returns a source location at the start of a pragma in the captured statement.  |
+| clang::SourceLocation | **[getEndLoc](../Classes/classTargetCodeRegion.md#function-getendloc)**()<br>Get end location.  |
 | const std::string | **[getParentFuncName](../Classes/classTargetCodeRegion.md#function-getparentfuncname)**()<br>Returns the name of the function in which the target region is declared.  |
 | clang::SourceLocation | **[getTargetDirectiveLocation](../Classes/classTargetCodeRegion.md#function-gettargetdirectivelocation)**()<br>Returns the SourceLocation for the target directive (we need the source location of the first pragma of the target region to compose the name of the function generated for that region)  |
 
@@ -78,7 +78,7 @@ Inherits from [TargetCodeFragment](../Classes/classTargetCodeFragment.md)
 | -------------- | -------------- |
 | [TargetCodeFragmentKind](../Classes/classTargetCodeFragment.md#enum-targetcodefragmentkind) | **[getKind](../Classes/classTargetCodeFragment.md#function-getkind)**() const<br>Accessor for LLVMs RTTI.  |
 | | **[TargetCodeFragment](../Classes/classTargetCodeFragment.md#function-targetcodefragment)**(clang::ASTContext & Context, [TargetCodeFragmentKind](../Classes/classTargetCodeFragment.md#enum-targetcodefragmentkind) Kind) |
-| virtual | **[~TargetCodeFragment](../Classes/classTargetCodeFragment.md#function-~targetcodefragment)**() =0 |
+| virtual | **[~TargetCodeFragment](../Classes/classTargetCodeFragment.md#function-~targetcodefragment)**() =0<br>Destroy the Target Code Fragment:: Target Code Fragment object.  |
 | clang::OpenMPDirectiveKind | **[getTargetCodeKind](../Classes/classTargetCodeFragment.md#function-gettargetcodekind)**()<br>Accessor to TargetCodeKind.  |
 | const clang::LangOptions & | **[GetLangOpts](../Classes/classTargetCodeFragment.md#function-getlangopts)**()<br>Accessor to lang opts of the current context.  |
 | clang::PrintingPolicy | **[getPP](../Classes/classTargetCodeFragment.md#function-getpp)**() |
@@ -175,7 +175,16 @@ void addCapture(
 )
 ```
 
-Add a captured variable of the target region.
+Add a captured variable of the target region. 
+
+**Parameters**: 
+
+  * **Capture** Captures element 
+
+
+Add capture.
+
+This will automatically create and save a [TargetRegionVariable](../Classes/classTargetRegionVariable.md) which holds all information to generate parameters for the generated target region function.
 
 This will automatically create and save a [TargetRegionVariable](../Classes/classTargetRegionVariable.md) which holds all information to generate parameters for the generated target region function.
 
@@ -209,9 +218,18 @@ void addOMPClause(
 )
 ```
 
-Adds a (top level) OpenMP clause for the target region.
+Adds a (top level) OpenMP clause for the target region. 
+
+**Parameters**: 
+
+  * **Clause** OMP Clause 
+
+
+Add OMP clauses.
 
 These clauses are later used to determine which OpenMP #pragma needs to be generated at the top level of the target region function.
+
+Adds a (top level) OpenMP clause for the target region. These clauses are later used to determine which OpenMP #pragma needs to be generated at the top level of the target region function.
 
 
 ### function getOMPClauses
@@ -229,7 +247,7 @@ inline void setPrivateVars(
 )
 ```
 
-Sets the private variables of this target region.
+Sets the private variables of this target region. 
 
 ### function privateVars
 
@@ -237,7 +255,7 @@ Sets the private variables of this target region.
 inline private_vars_const_range privateVars()
 ```
 
-Returns a range over the private variables of this region.
+Returns a range over the private variables of this region. 
 
 ### function ompClausesParams
 
@@ -245,7 +263,7 @@ Returns a range over the private variables of this region.
 inline ompclauses_params_const_range ompClausesParams()
 ```
 
-Returns a range over the parameters to the top level OpenMP clauses.
+Returns a range over the parameters to the top level OpenMP clauses. 
 
 ### function addOMPClauseParam
 
@@ -255,7 +273,17 @@ void addOMPClauseParam(
 )
 ```
 
-Adds a parameter of a top level OpenMP clause to the target regions function as a function parameter.
+Adds a parameter of a top level OpenMP clause to the target regions function as a function parameter. 
+
+**Parameters**: 
+
+  * **Param** Parameter 
+
+
+Add OMP clause parameters.
+
+Adds OMP clause paramenters to a [TargetCodeRegion](../Classes/classTargetCodeRegion.md)
+
 
 ### function hasCombineConstruct
 
@@ -270,7 +298,9 @@ inline bool hasCombineConstruct()
 virtual std::string PrintPretty() override
 ```
 
-Tries to use Clang's PrettyPrinter when possible (this is currently only for target regions).
+Do pretty printing in order to resolve Macros. 
+
+**Return**: std::string Pretty output 
 
 **Reimplements**: [TargetCodeFragment::PrintPretty](../Classes/classTargetCodeFragment.md#function-printpretty)
 
@@ -281,7 +311,9 @@ Tries to use Clang's PrettyPrinter when possible (this is currently only for tar
 virtual clang::SourceRange getRealRange() override
 ```
 
-Get the source range of the fragment.
+Get source range. 
+
+**Return**: clang::SourceRange 
 
 **Reimplements**: [TargetCodeFragment::getRealRange](../Classes/classTargetCodeFragment.md#function-getrealrange)
 
@@ -292,12 +324,11 @@ Get the source range of the fragment.
 virtual clang::SourceRange getInnerRange() override
 ```
 
-Gets the 'inner' source range.
+Get inner range. 
+
+**Return**: clang::SourceRange 
 
 **Reimplements**: [TargetCodeFragment::getInnerRange](../Classes/classTargetCodeFragment.md#function-getinnerrange)
-
-
-This can differ for target regions from the source range.
 
 
 ### function getSpellingRange
@@ -306,12 +337,11 @@ This can differ for target regions from the source range.
 virtual clang::SourceRange getSpellingRange() override
 ```
 
-Get the spelling source range.
+Get spelling range. 
+
+**Return**: clang::SourceRange 
 
 **Reimplements**: [TargetCodeFragment::getSpellingRange](../Classes/classTargetCodeFragment.md#function-getspellingrange)
-
-
-That is the range without macro expansions.
 
 
 ### function getStartLoc
@@ -320,7 +350,9 @@ That is the range without macro expansions.
 clang::SourceLocation getStartLoc()
 ```
 
-Returns a source location at the start of a pragma in the captured statment.
+Returns a source location at the start of a pragma in the captured statement. 
+
+**Return**: clang::SourceLocation Start location 
 
 ### function getEndLoc
 
@@ -328,6 +360,9 @@ Returns a source location at the start of a pragma in the captured statment.
 clang::SourceLocation getEndLoc()
 ```
 
+Get end location. 
+
+**Return**: clang::SourceLocation End location 
 
 ### function getParentFuncName
 
@@ -335,7 +370,9 @@ clang::SourceLocation getEndLoc()
 const std::string getParentFuncName()
 ```
 
-Returns the name of the function in which the target region is declared.
+Returns the name of the function in which the target region is declared. 
+
+**Return**: const std::string 
 
 ### function getTargetDirectiveLocation
 
@@ -343,7 +380,14 @@ Returns the name of the function in which the target region is declared.
 clang::SourceLocation getTargetDirectiveLocation()
 ```
 
+Returns the SourceLocation for the target directive (we need the source location of the first pragma of the target region to compose the name of the function generated for that region) 
+
+**Return**: clang::SourceLocation Location 
+
+Get target directive location.
+
 Returns the SourceLocation for the target directive (we need the source location of the first pragma of the target region to compose the name of the function generated for that region)
+
 
 ## Public Attributes Documentation
 
@@ -353,9 +397,9 @@ Returns the SourceLocation for the target directive (we need the source location
 std::map< clang::VarDecl *, clang::Expr * > CapturedLowerBounds;
 ```
 
-Lower bounds of mapped array slices (if lower then 0).
+Lower bounds of mapped array slices (if lower then 0). 
 
-If the captured variable is an array, of which only a slice is mapped (by a map() clause), the incoming pointer argument will need to be shifted to the right if the lower bound of that slice is not 0. If this is the case, the lower bound is saved into this map.
+If the captured variable is an array, of which only a slice is mapped (by a map() clause), the incoming pointer argument will need to be shifted to the right if the lower bound of that slice is not 0. If this is the case, the lower bound is saved into this map. 
 
 
 ## Private Attributes Documentation
@@ -366,7 +410,7 @@ If the captured variable is an array, of which only a slice is mapped (by a map(
 clang::CapturedStmt * CapturedStmtNode;
 ```
 
-The AST node for the captured statement of the target region.
+The AST node for the captured statement of the target region. 
 
 ### variable TargetDirective
 
@@ -374,7 +418,7 @@ The AST node for the captured statement of the target region.
 clang::OMPExecutableDirective * TargetDirective;
 ```
 
-AST node for the target directive.
+AST node for the target directive. 
 
 ### variable ParentFunctionDecl
 
@@ -382,9 +426,9 @@ AST node for the target directive.
 clang::FunctionDecl * ParentFunctionDecl;
 ```
 
-Declaration of the function this region is declared in.
+Declaration of the function this region is declared in. 
 
-Necessary to compose the function name of this region in the generated code.
+Necessary to compose the function name of this region in the generated code. 
 
 
 ### variable CapturedVars
@@ -393,9 +437,9 @@ Necessary to compose the function name of this region in the generated code.
 std::vector< TargetRegionVariable > CapturedVars;
 ```
 
-All variable captured by this target region.
+All variable captured by this target region. 
 
-We will need to generated pointers to them as arguments to the generated functions and copy the variables into scope.
+We will need to generated pointers to them as arguments to the generated functions and copy the variables into scope. 
 
 
 ### variable OMPClauses
@@ -404,7 +448,7 @@ We will need to generated pointers to them as arguments to the generated functio
 std::vector< clang::OMPClause * > OMPClauses;
 ```
 
-All omp clauses relevant to the execution of the region.
+All omp clauses relevant to the execution of the region. 
 
 ### variable OMPClausesParams
 
@@ -412,9 +456,9 @@ All omp clauses relevant to the execution of the region.
 std::vector< clang::VarDecl * > OMPClausesParams;
 ```
 
-The variables which are parameters for top level OpenMP clauses.
+The variables which are parameters for top level OpenMP clauses. 
 
-These are not captured but still needs passed as (first private) arguments to the target region.
+These are not captured but still needs passed as (first private) arguments to the target region. 
 
 
 ### variable PrivateVars
@@ -423,8 +467,9 @@ These are not captured but still needs passed as (first private) arguments to th
 std::set< clang::VarDecl * > PrivateVars;
 ```
 
-All private variables in a Target Region i.e.
+All private variables in a Target Region i.e. 
 
-all variables that are not passed as arguments into the region. For these, we need to generate declarations inside the target region.
+all variables that are not passed as arguments into the region. For these, we need to generate declarations inside the target region. 
+
 
 

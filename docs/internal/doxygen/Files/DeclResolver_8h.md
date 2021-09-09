@@ -1,6 +1,6 @@
 # src/DeclResolver.h
 
-This file implements the class [DeclResolver](../Classes/classDeclResolver.md) which is used to record and order types and functions in the input code that are required by the target regions.
+This file implements the class [DeclResolver](../Classes/classDeclResolver.md) which is used to record and order types and functions in the input code that are required by the target regions. 
 
 ## Namespaces
 

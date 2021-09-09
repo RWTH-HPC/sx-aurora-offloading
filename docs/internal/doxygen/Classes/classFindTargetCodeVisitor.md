@@ -2,7 +2,7 @@
 
 
 
-Traverses the AST to find target and process target regions and function and variables that are annotated by an 'omp declare target' target pragma.
+Traverses the AST to find target and process target regions and function and variables that are annotated by an 'omp declare target' target pragma. 
 
 
 `#include <Visitors.h>`
@@ -14,9 +14,9 @@ Inherits from clang::RecursiveASTVisitor< FindTargetCodeVisitor >
 |                | Name           |
 | -------------- | -------------- |
 | | **[FindTargetCodeVisitor](../Classes/classFindTargetCodeVisitor.md#function-findtargetcodevisitor)**([TargetCode](../Classes/classTargetCode.md) & Code, [TypeDeclResolver](../Classes/classTypeDeclResolver.md) & Types, [FunctionDeclResolver](../Classes/classFunctionDeclResolver.md) & Functions, clang::ASTContext & Context) |
-| bool | **[TraverseDecl](../Classes/classFindTargetCodeVisitor.md#function-traversedecl)**(clang::Decl * D) |
-| bool | **[VisitStmt](../Classes/classFindTargetCodeVisitor.md#function-visitstmt)**(clang::Stmt * S) |
-| bool | **[VisitDecl](../Classes/classFindTargetCodeVisitor.md#function-visitdecl)**(clang::Decl * D) |
+| bool | **[TraverseDecl](../Classes/classFindTargetCodeVisitor.md#function-traversedecl)**(clang::Decl * D)<br>Traverse declarations.  |
+| bool | **[VisitStmt](../Classes/classFindTargetCodeVisitor.md#function-visitstmt)**(clang::Stmt * S)<br>Visit function for statements.  |
+| bool | **[VisitDecl](../Classes/classFindTargetCodeVisitor.md#function-visitdecl)**(clang::Decl * D)<br>Visit function for declarations.  |
 
 ## Private Functions
 
@@ -60,6 +60,16 @@ bool TraverseDecl(
 )
 ```
 
+Traverse declarations. 
+
+**Parameters**: 
+
+  * **D** Declaration to traverse 
+
+
+**Return**: true While traversing 
+
+false If NULL 
 
 ### function VisitStmt
 
@@ -69,6 +79,15 @@ bool VisitStmt(
 )
 ```
 
+Visit function for statements. 
+
+**Parameters**: 
+
+  * **S** Given statement 
+
+
+Statement visitor in the [FindTargetCodeVisitor](../Classes/classFindTargetCodeVisitor.md).
+
 
 ### function VisitDecl
 
@@ -77,6 +96,15 @@ bool VisitDecl(
     clang::Decl * D
 )
 ```
+
+Visit function for declarations. 
+
+**Parameters**: 
+
+  * **D** Given declaration 
+
+
+Declaration Visitor in the [FindTargetCodeVisitor](../Classes/classFindTargetCodeVisitor.md)
 
 
 ## Private Functions Documentation
@@ -89,7 +117,15 @@ bool processTargetRegion(
 )
 ```
 
-Extracts the necessary information about the target region from the AST, such as captured variables and relevant OpenMP clauses, and adds an [TargetCodeRegion](../Classes/classTargetCodeRegion.md) to the [TargetCode](../Classes/classTargetCode.md) instance.
+Extracts the necessary information about the target region from the AST, such as captured variables and relevant OpenMP clauses, and adds an [TargetCodeRegion](../Classes/classTargetCodeRegion.md) to the [TargetCode](../Classes/classTargetCode.md) instance. 
+
+**Parameters**: 
+
+  * **TargetDirective** Target directive 
+
+
+Process the target region.
+
 
 ### function addTargetRegionArgs
 
@@ -101,7 +137,17 @@ void addTargetRegionArgs(
 )
 ```
 
-Finds and adds all variables required by the target regions as arguments to the generated function.
+Finds and adds all variables required by the target regions as arguments to the generated function. 
+
+**Parameters**: 
+
+  * **S** 
+  * **TargetDirective** 
+  * **TCR** 
+
+
+Add target region arguments.
+
 
 ## Private Attributes Documentation
 
@@ -118,7 +164,7 @@ clang::ASTContext & Context;
 TargetCode & TargetCodeInfo;
 ```
 
-The collection where target regions and other code is added to.
+The collection where target regions and other code is added to. 
 
 ### variable DiscoverTypeVisitor
 
@@ -126,7 +172,7 @@ The collection where target regions and other code is added to.
 DiscoverTypesInDeclVisitor DiscoverTypeVisitor;
 ```
 
-A Visitor to find references to the types required by the target code.
+A Visitor to find references to the types required by the target code. 
 
 ### variable DiscoverFunctionVisitor
 
@@ -134,7 +180,7 @@ A Visitor to find references to the types required by the target code.
 DiscoverFunctionsInDeclVisitor DiscoverFunctionVisitor;
 ```
 
-A Visitor to find references to all functions required by the target code.
+A Visitor to find references to all functions required by the target code. 
 
 ### variable Functions
 
@@ -142,7 +188,7 @@ A Visitor to find references to all functions required by the target code.
 FunctionDeclResolver & Functions;
 ```
 
-Collection of all functions referenced and required by target code (and referenced by other required functions).
+Collection of all functions referenced and required by target code (and referenced by other required functions). 
 
 ### variable FindDeclRefVisitor
 
@@ -157,9 +203,9 @@ FindDeclRefExprVisitor FindDeclRefVisitor;
 std::stack< clang::FunctionDecl * > LastVisitedFuncDecl;
 ```
 
-The last function the visitor traversed.
+The last function the visitor traversed. 
 
-This is stored to be able to later compute the function name for the target region.
+This is stored to be able to later compute the function name for the target region. 
 
 
 ### variable FuncDeclWithoutBody
@@ -168,5 +214,6 @@ This is stored to be able to later compute the function name for the target regi
 std::unordered_set< std::string > FuncDeclWithoutBody;
 ```
 
-Function with 'omp declare target' pragma, for which the visitor has not yet found a body.
+Function with 'omp declare target' pragma, for which the visitor has not yet found a body. 
+
 

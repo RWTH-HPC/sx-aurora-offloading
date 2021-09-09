@@ -1,6 +1,6 @@
 # src/TargetCode.cpp
 
-This file implements the class [TargetCode](../Classes/classTargetCode.md), which can be used to add code fragments and to generate new code (i.e., for outlining OpenMP target region) from these fragments.
+This file implements the class [TargetCode](../Classes/classTargetCode.md), which can be used to add code fragments and to generate new code (i.e., for outlining OpenMP target region) from these fragments. 
 
 
 
@@ -60,6 +60,7 @@ bool TargetCode::addCodeFragment(std::shared_ptr<TargetCodeFragment> Frag,
   return true;
 }
 
+// TODO: Is this needed for something?
 bool TargetCode::addCodeFragmentFront(
     std::shared_ptr<TargetCodeFragment> Frag) {
   return addCodeFragment(Frag, true);
@@ -78,16 +79,21 @@ void TargetCode::generateCode(llvm::raw_ostream &Out) {
     }
     Out << "#include <" << Header << ">\n";
     if (Header.compare("unistd.h") == 0) {
-        unistd = true;
+      unistd = true;
     } else if (Header.compare("stdlib.h") == 0) {
-        stdlib = true;
+      stdlib = true;
     }
   }
 
-  if (!stdlib && std::atoi(llvm::sys::Process::GetEnv("NEC_TARGET_DELAY").getValueOr("0").c_str())) {
+  // Add extra libs for the debugging helper function
+  if (!stdlib && std::atoi(llvm::sys::Process::GetEnv("NEC_TARGET_DELAY")
+                               .getValueOr("0")
+                               .c_str())) {
     Out << "#include <stdlib.h>\n";
   }
-  if (!unistd && std::atoi(llvm::sys::Process::GetEnv("NEC_TARGET_DELAY").getValueOr("0").c_str())) {
+  if (!unistd && std::atoi(llvm::sys::Process::GetEnv("NEC_TARGET_DELAY")
+                               .getValueOr("0")
+                               .c_str())) {
     Out << "#include <unistd.h>\n";
   }
 
@@ -96,6 +102,7 @@ void TargetCode::generateCode(llvm::raw_ostream &Out) {
   // fails with the clang compiler. This still might cause problems, if
   // someone tries to include the omp.h header after the prolouge.
   Out << "#define omp_is_initial_device() 0\n";
+  Out << "#define omp_get_thread_limit() omp_get_num_threads()\n";
 
   for (auto i = CodeFragments.begin(), e = CodeFragments.end(); i != e; ++i) {
 
@@ -118,6 +125,7 @@ void TargetCode::generateCode(llvm::raw_ostream &Out) {
     Out << "\n";
   }
   Out << "#undef omp_is_initial_device\n";
+  Out << "#undef omp_get_thread_limit\n";
 }
 
 void TargetCode::generateArgument(const TargetRegionVariable &Arg,
@@ -217,8 +225,9 @@ void TargetCode::generateFunctionPrologue(TargetCodeRegion *TCR,
   for (auto &Var : TCR->capturedVars()) {
     if (!first) {
       Out << ", ";
+    } else {
+      first = false;
     }
-    first = false;
 
     if (Var.containsArray()) {
       for (auto &d : Var.variableArrayShapes()) {
@@ -226,9 +235,10 @@ void TargetCode::generateFunctionPrologue(TargetCodeRegion *TCR,
             << d.getVariableDimensionIndex() << "_" << Var.name() << ", ";
       }
     }
-    // Because arrays are passed by reference and (for our purposes) their type
-    // is 'void', the rest of their handling is the same as for scalars.
-    if (Var.containsArray()) {
+    // Because arrays (and nested pointers) are passed by reference and
+    // (for our purposes) their type is 'void', the rest of their handling
+    // is the same as for scalars.
+    if (Var.containsArray() || Var.containsPointer()) {
       Out << "void ";
     } else {
       // In cases where we get a first-private float, we want to recieve the
@@ -251,7 +261,8 @@ void TargetCode::generateFunctionPrologue(TargetCodeRegion *TCR,
 
   unsigned int clauseParam = 0;
   for (auto C : TCR->getOMPClauses()) {
-    if ((C->getClauseKind() == clang::OpenMPClauseKind::OMPC_num_threads) &&
+    if ((C->getClauseKind() == clang::OpenMPClauseKind::OMPC_num_threads ||
+         C->getClauseKind() == clang::OpenMPClauseKind::OMPC_thread_limit) &&
         !C->isImplicit()) {
       if (!first) {
         Out << ", ";
@@ -266,8 +277,11 @@ void TargetCode::generateFunctionPrologue(TargetCodeRegion *TCR,
   Out << ")\n{\n";
 
   // Target Delay
-  if (std::atoi(llvm::sys::Process::GetEnv("NEC_TARGET_DELAY").getValueOr("0").c_str())) {
-    Out << "sleep(atoi((getenv(\"NEC_TARGET_DELAY\") != NULL) ? getenv(\"NEC_TARGET_DELAY\") : \"0\"));\n";
+  if (std::atoi(llvm::sys::Process::GetEnv("NEC_TARGET_DELAY")
+                    .getValueOr("0")
+                    .c_str())) {
+    Out << "sleep(atoi((getenv(\"NEC_TARGET_DELAY\") != NULL) ? "
+           "getenv(\"NEC_TARGET_DELAY\") : \"0\"));\n";
   }
 
   // bring captured scalars into scope
@@ -329,7 +343,7 @@ void TargetCode::generateFunctionEpilogue(TargetCodeRegion *TCR,
     if (Var.passedByPointer() &&
         !Var.containsPointer() && !Var.containsArray()) {
       Out << "\n  *__sotoc_var_" << Var.name() << " = " << Var.name() << ";";
-    } else if (Var.containsPointer()){ // <- TODO: is this completely correct?
+    } else if (Var.containsPointer()){
       Out << "\n  __sotoc_var_" << Var.name() << " = " << Var.name() << ";";
     }
   }

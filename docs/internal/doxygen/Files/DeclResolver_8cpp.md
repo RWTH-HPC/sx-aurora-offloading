@@ -1,6 +1,6 @@
 # src/DeclResolver.cpp
 
-This file implements the class [DeclResolver](../Classes/classDeclResolver.md).
+This file implements the class [DeclResolver](../Classes/classDeclResolver.md). 
 
 ## Functions
 

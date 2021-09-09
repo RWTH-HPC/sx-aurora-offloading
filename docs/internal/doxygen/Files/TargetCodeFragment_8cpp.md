@@ -1,21 +1,21 @@
 # src/TargetCodeFragment.cpp
 
-This file implements the classes [TargetCodeDecl](../Classes/classTargetCodeDecl.md) and [TargetCodeRegion](../Classes/classTargetCodeRegion.md).
+This file implements the classes [TargetCodeDecl](../Classes/classTargetCodeDecl.md) and [TargetCodeRegion](../Classes/classTargetCodeRegion.md). 
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[TargetRegionPrinterHelper](../Classes/classTargetRegionPrinterHelper.md)**  |
+| class | **[TargetRegionPrinterHelper](../Classes/classTargetRegionPrinterHelper.md)** <br>Print Helper Class.  |
 
 ## Functions
 
 |                | Name           |
 | -------------- | -------------- |
-| bool | **[hasRegionCompoundStmt](../Files/TargetCodeFragment_8cpp.md#function-hasregioncompoundstmt)**(const clang::Stmt * S) |
-| bool | **[hasRegionOMPStmt](../Files/TargetCodeFragment_8cpp.md#function-hasregionompstmt)**(const clang::Stmt * S) |
-| clang::SourceLocation | **[getOMPStmtSourceLocEnd](../Files/TargetCodeFragment_8cpp.md#function-getompstmtsourcelocend)**(const clang::Stmt * S) |
-| clang::SourceLocation | **[findPreviousToken](../Files/TargetCodeFragment_8cpp.md#function-findprevioustoken)**(clang::SourceLocation Loc, clang::SourceManager & SM, const clang::LangOptions & LO) |
+| bool | **[hasRegionCompoundStmt](../Files/TargetCodeFragment_8cpp.md#function-hasregioncompoundstmt)**(const clang::Stmt * S)<br>Determine whether a region has a compound statement.  |
+| bool | **[hasRegionOMPStmt](../Files/TargetCodeFragment_8cpp.md#function-hasregionompstmt)**(const clang::Stmt * S)<br>Determine whether a region has a OMP statement.  |
+| clang::SourceLocation | **[getOMPStmtSourceLocEnd](../Files/TargetCodeFragment_8cpp.md#function-getompstmtsourcelocend)**(const clang::Stmt * S)<br>Get the end a OMP stmt source.  |
+| clang::SourceLocation | **[findPreviousToken](../Files/TargetCodeFragment_8cpp.md#function-findprevioustoken)**(clang::SourceLocation Loc, clang::SourceManager & SM, const clang::LangOptions & LO)<br>Find previous token.  |
 
 
 ## Functions Documentation
@@ -28,6 +28,16 @@ static bool hasRegionCompoundStmt(
 )
 ```
 
+Determine whether a region has a compound statement. 
+
+**Parameters**: 
+
+  * **S** Statement (region) 
+
+
+**Return**: true If the region has a compound statement 
+
+false If the region does not have a compound statement 
 
 ### function hasRegionOMPStmt
 
@@ -37,6 +47,16 @@ static bool hasRegionOMPStmt(
 )
 ```
 
+Determine whether a region has a OMP statement. 
+
+**Parameters**: 
+
+  * **S** Statement (region) 
+
+
+**Return**: true If the region has a OMP statement 
+
+false If the region does not have a OMP statement 
 
 ### function getOMPStmtSourceLocEnd
 
@@ -46,6 +66,14 @@ static clang::SourceLocation getOMPStmtSourceLocEnd(
 )
 ```
 
+Get the end a OMP stmt source. 
+
+**Parameters**: 
+
+  * **S** Statement 
+
+
+**Return**: clang::SourceLocation Location of the end 
 
 ### function findPreviousToken
 
@@ -57,6 +85,16 @@ static clang::SourceLocation findPreviousToken(
 )
 ```
 
+Find previous token. 
+
+**Parameters**: 
+
+  * **Loc** Source Location 
+  * **SM** Source Manager 
+  * **LO** Language options 
+
+
+**Return**: clang::SourceLocation Previous token 
 
 
 
@@ -150,7 +188,7 @@ static clang::SourceLocation getOMPStmtSourceLocEnd(const clang::Stmt *S) {
   return S->getEndLoc();
 }
 
-// TODO: Implement recursiv for an arbitrary depth?
+// TODO: Implement recursive for an arbitrary depth?
 static clang::SourceLocation findPreviousToken(clang::SourceLocation Loc,
                                                clang::SourceManager &SM,
                                                const clang::LangOptions &LO) {
@@ -179,7 +217,7 @@ clang::SourceLocation TargetCodeRegion::getStartLoc() {
 #if 0
     // This piece of code could be used to check if we start with a new scope.
     // However, the pretty printer destroys this again somehow...
-    // Since the extra scope does not realy hurt, i will leave it as it is for now.
+    // Since the extra scope does not really hurt, i will leave it as it is for now.
     clang::Token token;
     if(!(clang::Lexer::getRawToken(TokenBegin, token, SM, LO))) {
       if (token.is(clang::tok::l_brace)) {
@@ -212,7 +250,7 @@ clang::SourceLocation TargetCodeRegion::getEndLoc() {
   auto N = CapturedStmtNode;
   if (hasRegionCompoundStmt(N)) {
     return clang::Lexer::GetBeginningOfToken(N->getEndLoc(), SM, LO)
-        .getLocWithOffset(-1); // TODO: If I set this to"1" it works too. I
+        .getLocWithOffset(-1); // TODO: If I set this to "1" it works too. I
                                // think it was here to remove addition scope
                                // which i get with "printPretty". Does this
                                // need some fixing?
@@ -274,7 +312,6 @@ public:
 };
 
 std::string TargetCodeRegion::PrintPretty() {
-  // Do pretty printing in order to resolve Macros.
   // TODO: Is there a better approach (e.g., token or preprocessor based?)
   // One issue here: Addition braces (i.e., scope) in some cases.
   std::string PrettyStr = "";
