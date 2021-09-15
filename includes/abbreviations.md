@@ -1,6 +1,7 @@
 *[AST]: Abstract Syntax Tree
 *[AVEO]: Alternative Vector Engine Offloading
 *[ELF]: Executable and Linkable Format
+*[HPC]: High Performance Computing
 *[IC]: Instruction Counter
 *[OMP]: Open Multi-Processing
 *[OpenMP]: Open Multi-Processing
