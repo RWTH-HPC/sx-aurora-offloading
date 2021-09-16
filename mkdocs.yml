@@ -60,5 +60,8 @@ nav:
 extra:
   link:
     llvm: %%llvm%%
-  version:
-    rpm: 1.9.0
+  nec:
+    link:
+      llvm: https://github.com/sx-aurora-dev/llvm-project
+    rpm:
+      version: 1.9.0

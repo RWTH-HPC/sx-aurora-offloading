@@ -4,31 +4,32 @@ This page details, how to install or build all components for SX-Aurora offloadi
 
 ## Installing the Package
 NEC provides LLVM including our OpenMP offloading implementation as package in a YUM repository.
-The packaged version is build from the `hpce/stable` branch of the NEC [llvm-project](https://github.com/sx-aurora-dev/llvm-project) repository at the `llvm-ve-rv-{{ version.rpm }}` tag.
+The packaged version is build from the `hpce/stable` branch of the [NEC llvm-project repository]({{ nec.link.llvm }}){target=_blank} at the `llvm-ve-rv-{{ nec.rpm.version }}` tag.
 Thus, the included version of our OpenMP offloading implementation will not be at the latest state of development.
 However, further functionality and SX-Aurora specific fixes and extensions are included.
 
 === "Install from RPM"
-    1. Download `llvm-ve-rv-{{ version.rpm }}-{{ version.rpm }}-1.el8.x86_64.rpm`
+    1. Download `llvm-ve-rv-{{ nec.rpm.version }}-{{ nec.rpm.version }}-1.el8.x86_64.rpm`
       ``` shell
-      wget https://sx-aurora.com/repos/llvm/x86_64/llvm-ve-rv-{{ version.rpm }}-{{ version.rpm }}-1.el8.x86_64.rpm
+      wget https://sx-aurora.com/repos/llvm/x86_64/llvm-ve-rv-{{ nec.rpm.version }}-{{ nec.rpm.version }}-1.el8.x86_64.rpm
       ```
     2. Install RPM
       ``` shell
-      sudo yum install ./llvm-ve-rv-{{ version.rpm }}-{{ version.rpm }}-1.el8.x86_64.rpm
+      sudo yum install ./llvm-ve-rv-{{ nec.rpm.version }}-{{ nec.rpm.version }}-1.el8.x86_64.rpm
       ```
 
 === "Install from YUM Repository"
     1. Add the `https://sx-aurora.com/repos/llvm/x86_64/` yum repository to your `/etc/yum.repo.d` (consult [How to add a Yum repository](https://www.redhat.com/sysadmin/add-yum-repository#manually-set-up-a-respository){target=_blank} by Red Hat)
-    2. Install `llvm-ve-rv-{{ version.rpm }}`
+    2. Install `llvm-ve-rv-{{ nec.rpm.version }}`
       ``` shell
-      sudo yum install llvm-ve-rv-{{ version.rpm }}
+      sudo yum install llvm-ve-rv-{{ nec.rpm.version }}
       ```
 
 ??? note "Release Notes"
     Tag of hpce/stable branch with important fixes for omp target (both, native and sotoc).
 
-    #### Offloading options with omp target:
+    ### Offloading options with omp target:
+
     VH -\> VE (llvm-ve compiled device code)
 
     `clang -march=native -fopenmp -fopenmp-targets=ve-linux ...`
@@ -41,8 +42,10 @@ However, further functionality and SX-Aurora specific fixes and extensions are i
 
     `clang -target=ve-linux -fopenmp -fopenmp-targets=x86_64-pc-linux-gnu ...`
 
-    #### Other news:
+    ### Other news:
+
     RegionVectorizer diagnostics: enable with `-Rpass=rv`. This only applies to `-target ve-linux` compilations.
+
     The limitations from release 1.8.0 are gone, no need to use `-mvepacked` for intrinsics any more, also no need for `-fplugin=libRV.so`.
 
 ## Building the Project
