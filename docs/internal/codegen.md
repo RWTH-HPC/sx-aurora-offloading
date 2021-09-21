@@ -41,7 +41,7 @@ The target code is thereby transformed into a function with the mapped variables
 The Clang AST of a source file can be viewed using the following command:
 
 ``` shell
-clang -Xclang -ast-dump -fsyntax-only undeclared.c -fopenmp
+clang -Xclang -ast-dump -fsyntax-only -fopenmp code.c
 ```
 
 !!! info
