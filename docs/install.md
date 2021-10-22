@@ -48,6 +48,9 @@ However, further functionality and SX-Aurora specific fixes and extensions are i
 
     The limitations from release 1.8.0 are gone, no need to use `-mvepacked` for intrinsics any more, also no need for `-fplugin=libRV.so`.
 
+??? note "README"
+    --8<-- "https://raw.githubusercontent.com/sx-aurora-dev/llvm-project/develop/README-ve.md"
+
 ## Building the Project
 This project now comes as a single [llvm-project]({{ link.llvm }}){target=_blank} repository,
 forked from LLVM's upstream repository.
