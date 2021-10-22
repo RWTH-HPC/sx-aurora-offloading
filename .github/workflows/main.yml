@@ -26,6 +26,8 @@ jobs:
         run: "sed -i 's,%%llvm%%,https://github.com/rwth-hpc/llvm-project,g' mkdocs.yml"
       - name: Replace edit link in config
         run: "sed -i 's,%%edit%%,https://github.com/RWTH-HPC/sx-aurora-offloading/edit/master/docs,g' mkdocs.yml"
+      - name: "Get llvm-ve readme"
+        run: wget https://raw.githubusercontent.com/sx-aurora-dev/llvm-project/develop/README-ve.md -O includes/readme-ve.md
       - name: Deploy Page
         uses: mhausenblas/mkdocs-deploy-gh-pages@nomaterial
         env:

@@ -26,29 +26,6 @@ However, further functionality and SX-Aurora specific fixes and extensions are i
       ```
 
 ??? note "Release Notes"
-    Tag of hpce/stable branch with important fixes for omp target (both, native and sotoc).
-
-    ### Offloading options with omp target:
-
-    VH -\> VE (llvm-ve compiled device code)
-
-    `clang -march=native -fopenmp -fopenmp-targets=ve-linux ...`
-
-    VH -\> VE (ncc compiled device code)
-
-    `clang -march=native -fopenmp -fopenmp-targets=aurora-nec-veort ...`
-
-    VE -\> VH
-
-    `clang -target=ve-linux -fopenmp -fopenmp-targets=x86_64-pc-linux-gnu ...`
-
-    ### Other news:
-
-    RegionVectorizer diagnostics: enable with `-Rpass=rv`. This only applies to `-target ve-linux` compilations.
-
-    The limitations from release 1.8.0 are gone, no need to use `-mvepacked` for intrinsics any more, also no need for `-fplugin=libRV.so`.
-
-??? note "README"
     --8<-- "includes/readme-ve.md"
 
 ## Building the Project
