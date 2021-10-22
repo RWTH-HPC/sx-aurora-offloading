@@ -64,4 +64,4 @@ extra:
     link:
       llvm: https://github.com/sx-aurora-dev/llvm-project
     rpm:
-      version: 1.9.1
+      version: 1.9.0
