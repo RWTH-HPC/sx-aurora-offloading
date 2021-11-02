@@ -26,7 +26,7 @@ However, further functionality and SX-Aurora specific fixes and extensions are i
       ```
 
 ??? note "Release Notes"
-    --8<-- "includes/readme-ve.md"
+    --8<-- "includes/readme.md"
 
 ## Building the Project
 This project now comes as a single [llvm-project]({{ link.llvm }}){target=_blank} repository,
