@@ -117,18 +117,25 @@ Points to the include directory containing the headers for `libelf.so` (required
 ### Building the NEC packaged version
 To build the packaged version by NEC (e.g. if debug information is needed) some Makefiles are provided.
 To get those clone the `llvm-dev` repository.
+
 ```
 git clone https://github.com/sx-aurora-dev/llvm-dev.git -b hpce/develop
 ```
+
 The actual LLVM repository and all required submodules can be cloned by doing:
+
 ```
 LLVM_BUILD_TYPE=Debug BUILD_TYPE=Debug BRANCH=hpce/develop REPOS=https://github.com/sx-aurora-dev make clone
 ```
+
 For the build process cmake, ninja and clang are required.
+
 ```
 module purge && module load DEVELOP cmake ninja-build clang
 ```
-If necessary, some parameters can be adjusted in the `ve-linux-steps.make` file. Afterwards LLVM can be build by issuing the following command:
+
+Afterwards LLVM can be build by issuing the following command:
+
 ```
 LLVM_BUILD_TYPE=Debug BUILD_TYPE=Debug BRANCH=hpce/develop REPOS=https://github.com/sx-aurora-dev make install
 ```
