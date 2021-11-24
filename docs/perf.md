@@ -14,3 +14,4 @@ To use `FTRACE` compile your C code using `ncc` with the `-ftrace` flag.
 When executing, a `ftrace.out.*` file is generated, which can be viewed using `#!shell ftrace -f ftrace.out.*`.
 For additional information see the [`PROGINF` and `FTRACE` users guide](https://www.hpc.nec/documents/sdk/pdfs/g2at03e-PROGINF_FTRACE_User_Guide_en.pdf){target=_blank}
 and the [NEC `FTRACE` Viewer users guide](https://www.hpc.nec/documents/sdk/pdfs/g2at01e-NEC_Ftrace_Viewer_User_Guide_en.pdf){target=_blank}.
+To pass the `-ftrace` flag to `ncc` while using our OpenMP offloading implementation use the `-Xopenmp-target` clang flag as described in [Passing Arguments to the Target Compiler](usage.md#Passing-Arguments-to-the-Target-Compiler).
