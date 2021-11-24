@@ -15,10 +15,10 @@ supports VE as a target for LLVM.
 To compile a source file which contains target code for the VE
 architecture with `ncc` as target compiler, compile the source code with
 this project's Clang and set the OpenMP target triple to
-`aurora-nec-veort-unknown` e.g.
+`ve-sotoc` e.g.
 
 ``` shell
-clang -fopenmp -fopenmp-targets=aurora-nec-veort-unknown input.c
+clang -fopenmp -fopenmp-targets=ve-sotoc input.c
 ```
 
 More information can be found in the [Usage](usage.md) section.
