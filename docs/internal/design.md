@@ -35,7 +35,6 @@ objdump -s -j omp_offloading_entries a.out
 
 ## Clang integration
 The compilation pipeline is scheduled by the Clang driver (`clang/lib/Driver/`).
-Additionally, the target triple is defined there. The triple components are defined in `llvm/lib/Support/Triple.cpp` and `llvm/include/llvm/ADT/Triple.h`.
 The toolchains for the different architectures can be found in `clang/lib/Driver/ToolChains`.
 For the offloading pipeline, additional compile and link jobs are added to the usual compilation pipeline. Those will produce the target image.
 Afterwards the `clang-offload-wrapper` is used to wrap the image into the LLVM bitcode file, so it can be linked into the host binary.

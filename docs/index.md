@@ -7,10 +7,6 @@ interface to run the code on the VE. As compiler the target code, the
 project can work with NEC's `ncc` compiler or with a Clang compiler which
 supports VE as a target for LLVM.
 
-!!! important "New Target Triple"
-    As of December 2021 the new target triple for OpenMP offloading using `sotoc` is `ve-sotoc`.
-    The old target triple `aurora-nec-veort-unknown` will still be supported for the time being for legacy code compatibility.
-
 ## Usage
 To compile a source file which contains target code for the VE
 architecture with `ncc` as target compiler, compile the source code with
