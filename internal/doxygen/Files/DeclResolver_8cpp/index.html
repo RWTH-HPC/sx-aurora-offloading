@@ -1,0 +1,1154 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="High Performance Computing at RWTH Aachen University">
+      
+      
+        <link rel="canonical" href="https://rwth-hpc.github.io/sx-aurora-offloading/internal/doxygen/Files/DeclResolver_8cpp/">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>src/DeclResolver.cpp - SX-Aurora Offloading</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../../extra.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#srcdeclresolvercpp" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="SX-Aurora Offloading" class="md-header__button md-logo" aria-label="SX-Aurora Offloading" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SX-Aurora Offloading
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              src/DeclResolver.cpp
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/rwth-hpc/llvm-project/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="SX-Aurora Offloading" class="md-nav__button md-logo" aria-label="SX-Aurora Offloading" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    SX-Aurora Offloading
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/rwth-hpc/llvm-project/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../install/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../debugging/" class="md-nav__link">
+        Debugging
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../perf/" class="md-nav__link">
+        Performance Analysis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../source_transformation/" class="md-nav__link">
+        Source Transformation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../build_wrapper/" class="md-nav__link">
+        Build Wrapper
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Technical and Internal Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Technical and Internal Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Technical and Internal Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../install_helpers/" class="md-nav__link">
+        Install Helpers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../design/" class="md-nav__link">
+        Design
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../codegen/" class="md-nav__link">
+        Target Code Generation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_4" type="checkbox" id="__nav_8_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8_4">
+          Sotoc Doxygen
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Sotoc Doxygen" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_4">
+          <span class="md-nav__icon md-icon"></span>
+          Sotoc Doxygen
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/index_classes/" class="md-nav__link">
+        Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index_files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../publications/" class="md-nav__link">
+        Publications
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions-documentation" class="md-nav__link">
+    Functions Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-isheaderopenmpheader" class="md-nav__link">
+    function isHeaderOpenMPHeader
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-isdeclinopenmpheader" class="md-nav__link">
+    function isDeclInOpenMPHeader
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-getsystemheaderfordecl" class="md-nav__link">
+    function getSystemHeaderForDecl
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    Source code
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/RWTH-HPC/sx-aurora-offloading/edit/master/docs/internal/doxygen/Files/DeclResolver_8cpp.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="srcdeclresolvercpp">src/DeclResolver.cpp</h1>
+<p>This file implements the class <a href="../../Classes/classDeclResolver/">DeclResolver</a>. </p>
+<h2 id="functions">Functions</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td><strong><a href="./#function-isheaderopenmpheader">isHeaderOpenMPHeader</a></strong>(llvm::StringRef header_path)</td>
+</tr>
+<tr>
+<td>bool</td>
+<td><strong><a href="./#function-isdeclinopenmpheader">isDeclInOpenMPHeader</a></strong>(clang::Decl * D)</td>
+</tr>
+<tr>
+<td>llvm::Optional&lt; std::string &gt;</td>
+<td><strong><a href="./#function-getsystemheaderfordecl">getSystemHeaderForDecl</a></strong>(clang::Decl * D)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="functions-documentation">Functions Documentation</h2>
+<h3 id="function-isheaderopenmpheader">function isHeaderOpenMPHeader</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isHeaderOpenMPHeader</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">llvm</span><span class="o">::</span><span class="n">StringRef</span><span class="w"> </span><span class="n">header_path</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="function-isdeclinopenmpheader">function isDeclInOpenMPHeader</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isDeclInOpenMPHeader</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">D</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="function-getsystemheaderfordecl">function getSystemHeaderForDecl</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">llvm</span><span class="o">::</span><span class="n">Optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">getSystemHeaderForDecl</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">D</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<h2 id="source-code">Source code</h2>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">//===-- sotoc/src/TargetDeclResolver.cpp ----------------------------------===//</span>
+<span class="c1">//</span>
+<span class="c1">//                     The LLVM Compiler Infrastructure</span>
+<span class="c1">//</span>
+<span class="c1">// This file is distributed under the University of Illinois Open Source</span>
+<span class="c1">// License. See LICENSE.TXT for details.</span>
+<span class="c1">//</span>
+<span class="c1">//===----------------------------------------------------------------------===//</span>
+<span class="c1">//===----------------------------------------------------------------------===//</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;clang/AST/Decl.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Debug.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;DeclResolver.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TargetCode.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TargetCodeFragment.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Visitors.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;clang/Basic/SourceManager.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;clang/Basic/FileManager.h&quot;</span><span class="cp"></span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">isHeaderOpenMPHeader</span><span class="p">(</span><span class="n">llvm</span><span class="o">::</span><span class="n">StringRef</span><span class="w"> </span><span class="n">header_path</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">header_path</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="n">header_path</span><span class="p">.</span><span class="n">find_last_of</span><span class="p">(</span><span class="s">&quot;/</span><span class="se">\\</span><span class="s">&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;omp.h&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">isDeclInOpenMPHeader</span><span class="p">(</span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*</span><span class="n">D</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// if a Decl is exposed by omp.h, that means omp.h is somewhere on the include</span>
+<span class="w">  </span><span class="c1">// stack, we want to include omp.h and not copy any decl. This is an issue</span>
+<span class="w">  </span><span class="c1">// because omp.h may not be a system header</span>
+
+<span class="w">  </span><span class="n">clang</span><span class="o">::</span><span class="n">SourceManager</span><span class="w"> </span><span class="o">&amp;</span><span class="n">SM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">D</span><span class="o">-&gt;</span><span class="n">getASTContext</span><span class="p">().</span><span class="n">getSourceManager</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">IncludedFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SM</span><span class="p">.</span><span class="n">getFileID</span><span class="p">(</span><span class="n">D</span><span class="o">-&gt;</span><span class="n">getBeginLoc</span><span class="p">());</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">SLocEntry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SM</span><span class="p">.</span><span class="n">getSLocEntry</span><span class="p">(</span><span class="n">IncludedFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SLocEntry</span><span class="p">.</span><span class="n">isExpansion</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">IncludedFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SM</span><span class="p">.</span><span class="n">getFileID</span><span class="p">(</span><span class="n">SLocEntry</span><span class="p">.</span><span class="n">getExpansion</span><span class="p">().</span><span class="n">getSpellingLoc</span><span class="p">());</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">IncludingFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SM</span><span class="p">.</span><span class="n">getDecomposedIncludedLoc</span><span class="p">(</span><span class="n">IncludedFile</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">DEBUGPDECL</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Check if is in OpenMP header: &quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">IncludedFile</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">SM</span><span class="p">.</span><span class="n">getMainFileID</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isHeaderOpenMPHeader</span><span class="p">(</span><span class="n">SM</span><span class="p">.</span><span class="n">getFileEntryForID</span><span class="p">(</span><span class="n">IncludedFile</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">getName</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">IncludedFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IncludingFile</span><span class="p">.</span><span class="n">first</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">IncludingFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SM</span><span class="p">.</span><span class="n">getDecomposedIncludedLoc</span><span class="p">(</span><span class="n">IncludedFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">static</span><span class="w"> </span><span class="n">llvm</span><span class="o">::</span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getSystemHeaderForDecl</span><span class="p">(</span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*</span><span class="n">D</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">clang</span><span class="o">::</span><span class="n">SourceManager</span><span class="w"> </span><span class="o">&amp;</span><span class="n">SM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">D</span><span class="o">-&gt;</span><span class="n">getASTContext</span><span class="p">().</span><span class="n">getSourceManager</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">DEBUGPDECL</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Get system header for Decl: &quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">SM</span><span class="p">.</span><span class="n">isInSystemHeader</span><span class="p">(</span><span class="n">D</span><span class="o">-&gt;</span><span class="n">getBeginLoc</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">llvm</span><span class="o">::</span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// we dont want to include the original system header in which D was</span>
+<span class="w">  </span><span class="c1">// declared, but the system header which exposes D to the user&#39;s file</span>
+<span class="w">  </span><span class="c1">// (the last system header in the include stack)</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">IncludedFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SM</span><span class="p">.</span><span class="n">getFileID</span><span class="p">(</span><span class="n">D</span><span class="o">-&gt;</span><span class="n">getBeginLoc</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Fix for problems with math.h</span>
+<span class="w">  </span><span class="c1">// If our declaration is really a macro expansion, we need to find the actual</span>
+<span class="w">  </span><span class="c1">// spelling location first.</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">SLocEntry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SM</span><span class="p">.</span><span class="n">getSLocEntry</span><span class="p">(</span><span class="n">IncludedFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SLocEntry</span><span class="p">.</span><span class="n">isExpansion</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">IncludedFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SM</span><span class="p">.</span><span class="n">getFileID</span><span class="p">(</span><span class="n">SLocEntry</span><span class="p">.</span><span class="n">getExpansion</span><span class="p">().</span><span class="n">getSpellingLoc</span><span class="p">());</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">IncludingFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SM</span><span class="p">.</span><span class="n">getDecomposedIncludedLoc</span><span class="p">(</span><span class="n">IncludedFile</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">SM</span><span class="p">.</span><span class="n">isInSystemHeader</span><span class="p">(</span><span class="n">SM</span><span class="p">.</span><span class="n">getLocForStartOfFile</span><span class="p">(</span><span class="n">IncludingFile</span><span class="p">.</span><span class="n">first</span><span class="p">))</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">         </span><span class="o">!</span><span class="n">isHeaderOpenMPHeader</span><span class="p">(</span><span class="n">SM</span><span class="p">.</span><span class="n">getFileEntryForID</span><span class="p">(</span><span class="n">IncludingFile</span><span class="p">.</span><span class="n">first</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">getName</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">IncludedFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IncludingFile</span><span class="p">.</span><span class="n">first</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">IncludingFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SM</span><span class="p">.</span><span class="n">getDecomposedIncludedLoc</span><span class="p">(</span><span class="n">IncludedFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">llvm</span><span class="o">::</span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">SM</span><span class="p">.</span><span class="n">getFilename</span><span class="p">(</span><span class="n">SM</span><span class="p">.</span><span class="n">getLocForStartOfFile</span><span class="p">(</span><span class="n">IncludedFile</span><span class="p">))));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">DeclResolver</span><span class="o">::~</span><span class="n">DeclResolver</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">DeclResolver</span><span class="o">::</span><span class="n">addDecl</span><span class="p">(</span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*</span><span class="n">D</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">D</span><span class="o">-&gt;</span><span class="n">isImplicit</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">AllDecls</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">D</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// we have already resolved this Decl</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">DEBUGPDECL</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Add declaration to resolver: &quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="n">UnresolvedDecls</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">UnresolvedDecls</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">D</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">UnresolvedDecls</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">ResolveDeclIter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UnresolvedDecls</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*</span><span class="n">ResolveDecl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">ResolveDeclIter</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">Header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getSystemHeaderForDecl</span><span class="p">(</span><span class="n">ResolveDecl</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Header</span><span class="p">.</span><span class="n">hasValue</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// The Decl is inside a system header, so it does not depend on</span>
+<span class="w">      </span><span class="c1">// any other declaration. So we add the Decl and then we are</span>
+<span class="w">      </span><span class="c1">// finished</span>
+<span class="w">      </span><span class="n">AllDecls</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="n">ResolveDecl</span><span class="p">,</span><span class="w"> </span><span class="n">DeclInfo</span><span class="p">(</span><span class="n">ResolveDecl</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">)));</span><span class="w"></span>
+<span class="w">      </span><span class="n">RequiredSystemHeaders</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">Header</span><span class="p">.</span><span class="n">getValue</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">NonDependentDecls</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">ResolveDecl</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isDeclInOpenMPHeader</span><span class="p">(</span><span class="n">D</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// TODO: this is basically a workaround for omp.h decls to not get copied</span>
+<span class="w">      </span><span class="n">AllDecls</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="w"></span>
+<span class="w">          </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="n">ResolveDecl</span><span class="p">,</span><span class="w"> </span><span class="n">DeclInfo</span><span class="p">(</span><span class="n">ResolveDecl</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">)));</span><span class="w"></span>
+<span class="w">      </span><span class="n">RequiredSystemHeaders</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">&quot;include/omp.h&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">NonDependentDecls</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">ResolveDecl</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">      </span><span class="c1">// Add our decl if we haven&#39;t already</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">AllDecls</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">ResolveDecl</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">AllDecls</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="n">ResolveDecl</span><span class="p">,</span><span class="w"> </span><span class="n">DeclInfo</span><span class="p">(</span><span class="n">ResolveDecl</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">)));</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">      </span><span class="c1">// This Decl may have other Decls that is depends on.</span>
+<span class="w">      </span><span class="c1">// Add Decl if we haven&#39;t already</span>
+<span class="w">      </span><span class="n">findDependDecls</span><span class="p">(</span><span class="n">ResolveDecl</span><span class="p">,</span><span class="w"> </span><span class="n">UnresolvedDecls</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">UnresolvedDecls</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">ResolveDeclIter</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">DeclResolver</span><span class="o">::</span><span class="n">findDependDecls</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">UnresolvedDecls</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Construct a visitor which searches through the Decl D for references to</span>
+<span class="w">  </span><span class="c1">// other decls, because we need to add those too or our target code may not</span>
+<span class="w">  </span><span class="c1">// compile.</span>
+<span class="w">  </span><span class="n">runOwnVisitor</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">UnresolvedDecls</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">](</span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*</span><span class="n">Dep</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">AllDecls</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">Dep</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">DEBUGPDECL</span><span class="p">(</span><span class="n">Dep</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Found referred decl: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">UnresolvedDecls</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">Dep</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Fix for enums. TODO: find a better way to avoid duplicates</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">D</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">Dep</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">AllDecls</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">D</span><span class="p">).</span><span class="n">DeclDependencies</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">Dep</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">});</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">DeclResolver</span><span class="o">::</span><span class="n">topoSortUtil</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">stack</span><span class="o">&lt;</span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">q</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">visited</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                </span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*</span><span class="n">D</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">visited</span><span class="p">[</span><span class="n">D</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="nl">DepDecl</span> <span class="p">:</span><span class="w"> </span><span class="n">AllDecls</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">D</span><span class="p">).</span><span class="n">DeclDependencies</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">DepDecl</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">topoSortUtil</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="n">visited</span><span class="p">,</span><span class="w"> </span><span class="n">DepDecl</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">D</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">DeclResolver</span><span class="o">::</span><span class="n">topoSort</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">stack</span><span class="o">&lt;</span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">q</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Previously we used Kuhn&#39;s algorithm to make the topo sort. However,</span>
+<span class="w">  </span><span class="c1">// since we now also need to do the same thing for functions, and not just</span>
+<span class="w">  </span><span class="c1">// for types anymore, and functions can be forward-declared, we may need</span>
+<span class="w">  </span><span class="c1">// to deal with cycles in our dependency graph.</span>
+
+<span class="w">  </span><span class="c1">// the default constructor value for bool is &#39;false&#39; (TIL), so we can</span>
+<span class="w">  </span><span class="c1">// safely use operator[] on `visited`</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">visited</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="nl">DeclEntry</span> <span class="p">:</span><span class="w"> </span><span class="n">AllDecls</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">DeclEntry</span><span class="p">.</span><span class="n">first</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">topoSortUtil</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="n">visited</span><span class="p">,</span><span class="w"> </span><span class="n">DeclEntry</span><span class="p">.</span><span class="n">first</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">DeclResolver</span><span class="o">::</span><span class="n">orderAndAddFragments</span><span class="p">(</span><span class="n">TargetCode</span><span class="w"> </span><span class="o">&amp;</span><span class="n">TC</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="nl">Header</span> <span class="p">:</span><span class="w"> </span><span class="n">RequiredSystemHeaders</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">TC</span><span class="p">.</span><span class="n">addHeader</span><span class="p">(</span><span class="n">Header</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">stack</span><span class="o">&lt;</span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="n">orderStack</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">topoSort</span><span class="p">(</span><span class="n">orderStack</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">orderStack</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">AllDecls</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">orderStack</span><span class="p">.</span><span class="n">top</span><span class="p">()).</span><span class="n">IsFromSystemHeader</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">codeDecl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">TargetCodeDecl</span><span class="o">&gt;</span><span class="p">(</span><span class="n">orderStack</span><span class="p">.</span><span class="n">top</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">      </span><span class="n">DEBUGPDECL</span><span class="p">(</span><span class="n">orderStack</span><span class="p">.</span><span class="n">top</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Generating Fragment for Decl: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// TODO: this wont hurt but is not always necessary</span>
+<span class="w">      </span><span class="n">codeDecl</span><span class="o">-&gt;</span><span class="n">NeedsSemicolon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="kt">bool</span><span class="w"> </span><span class="n">added</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TC</span><span class="p">.</span><span class="n">addCodeFragmentFront</span><span class="p">(</span><span class="n">codeDecl</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">DEBUGP</span><span class="p">(</span><span class="s">&quot;Decl was a duplicate: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">!</span><span class="n">added</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">orderStack</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">TypeDeclResolver</span><span class="o">::</span><span class="n">runOwnVisitor</span><span class="p">(</span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*</span><span class="n">D</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                     </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*</span><span class="n">Dep</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Fn</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">DiscoverTypesInDeclVisitor</span><span class="w"> </span><span class="nf">Visitor</span><span class="p">(</span><span class="n">Fn</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">Visitor</span><span class="p">.</span><span class="n">TraverseDecl</span><span class="p">(</span><span class="n">D</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">FunctionDeclResolver</span><span class="o">::</span><span class="n">runOwnVisitor</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*</span><span class="n">Dep</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Fn</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">DEBUGPDECL</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Searching for referred decls in function &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">DiscoverFunctionsInDeclVisitor</span><span class="w"> </span><span class="nf">Visitor</span><span class="p">(</span><span class="n">Fn</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">Visitor</span><span class="p">.</span><span class="n">TraverseDecl</span><span class="p">(</span><span class="n">D</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">FunctionDeclResolver</span><span class="o">::</span><span class="n">findDependDecls</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">clang</span><span class="o">::</span><span class="n">Decl</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">UnresolvedDecls</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">DeclResolver</span><span class="o">::</span><span class="n">findDependDecls</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="n">UnresolvedDecls</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">DiscoverTypesInDeclVisitor</span><span class="w"> </span><span class="nf">TypesVisitor</span><span class="p">(</span><span class="n">Types</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">TypesVisitor</span><span class="p">.</span><span class="n">TraverseDecl</span><span class="p">(</span><span class="n">D</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2021-11-24
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 - High Performance Computing at RWTH Aachen University
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["search.suggest", "search.highlight", "navigation.top", "navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

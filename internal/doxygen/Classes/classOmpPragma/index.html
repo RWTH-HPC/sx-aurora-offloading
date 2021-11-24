@@ -1,0 +1,1007 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="High Performance Computing at RWTH Aachen University">
+      
+      
+        <link rel="canonical" href="https://rwth-hpc.github.io/sx-aurora-offloading/internal/doxygen/Classes/classOmpPragma/">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>OmpPragma - SX-Aurora Offloading</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../../extra.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#omppragma" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="SX-Aurora Offloading" class="md-header__button md-logo" aria-label="SX-Aurora Offloading" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SX-Aurora Offloading
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OmpPragma
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/rwth-hpc/llvm-project/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="SX-Aurora Offloading" class="md-nav__button md-logo" aria-label="SX-Aurora Offloading" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    SX-Aurora Offloading
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/rwth-hpc/llvm-project/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../install/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../debugging/" class="md-nav__link">
+        Debugging
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../perf/" class="md-nav__link">
+        Performance Analysis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../source_transformation/" class="md-nav__link">
+        Source Transformation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../build_wrapper/" class="md-nav__link">
+        Build Wrapper
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Technical and Internal Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Technical and Internal Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Technical and Internal Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../install_helpers/" class="md-nav__link">
+        Install Helpers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../design/" class="md-nav__link">
+        Design
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../codegen/" class="md-nav__link">
+        Target Code Generation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_4" type="checkbox" id="__nav_8_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8_4">
+          Sotoc Doxygen
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Sotoc Doxygen" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_4">
+          <span class="md-nav__icon md-icon"></span>
+          Sotoc Doxygen
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index_classes/" class="md-nav__link">
+        Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Files/index_files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../publications/" class="md-nav__link">
+        Publications
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#public-functions" class="md-nav__link">
+    Public Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#private-functions" class="md-nav__link">
+    Private Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#private-attributes" class="md-nav__link">
+    Private Attributes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-description" class="md-nav__link">
+    Detailed Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-functions-documentation" class="md-nav__link">
+    Public Functions Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Public Functions Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-omppragma" class="md-nav__link">
+    function OmpPragma
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-omppragma_1" class="md-nav__link">
+    function OmpPragma
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-needsstructuredblock" class="md-nav__link">
+    function needsStructuredBlock
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-printreplacement" class="md-nav__link">
+    function printReplacement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-printaddition" class="md-nav__link">
+    function printAddition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-isreplaceable" class="md-nav__link">
+    function isReplaceable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-needsadditionalpragma" class="md-nav__link">
+    function needsAdditionalPragma
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#private-functions-documentation" class="md-nav__link">
+    Private Functions Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Private Functions Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-isclauseprintable" class="md-nav__link">
+    function isClausePrintable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-rewriteparam" class="md-nav__link">
+    function rewriteParam
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-printclauses" class="md-nav__link">
+    function printClauses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#private-attributes-documentation" class="md-nav__link">
+    Private Attributes Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Private Attributes Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variable-pp" class="md-nav__link">
+    variable PP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-clauses" class="md-nav__link">
+    variable Clauses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-kind" class="md-nav__link">
+    variable Kind
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-clauseparamcounter" class="md-nav__link">
+    variable ClauseParamCounter
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/RWTH-HPC/sx-aurora-offloading/edit/master/docs/internal/doxygen/Classes/classOmpPragma.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="omppragma">OmpPragma</h1>
+<p>A helper class to rewrite some "pragma omp" (mostly teams and similar combined constructs), which are not supported by sotoc.  <a href="#detailed-description">More...</a></p>
+<p><code>#include &lt;OmpPragma.h&gt;</code></p>
+<h2 id="public-functions">Public Functions</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><strong><a href="./#function-omppragma">OmpPragma</a></strong>(<a href="../classTargetCodeRegion/">TargetCodeRegion</a> * TCR)</td>
+</tr>
+<tr>
+<td></td>
+<td><strong><a href="./#function-omppragma">OmpPragma</a></strong>(clang::OMPExecutableDirective * Directive, clang::PrintingPolicy PP)</td>
+</tr>
+<tr>
+<td>bool</td>
+<td><strong><a href="./#function-needsstructuredblock">needsStructuredBlock</a></strong>()<br>Returns true if the omp pragma encapsulated, needs to be followed by a structured block (i.e.</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="./#function-printreplacement">printReplacement</a></strong>(llvm::raw_ostream &amp; Out)<br>Prints a replacement omp pragma for the encapsulated pragma onto <code>Out</code>.</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="./#function-printaddition">printAddition</a></strong>(llvm::raw_ostream &amp; Out)</td>
+</tr>
+<tr>
+<td>bool</td>
+<td><strong><a href="./#function-isreplaceable">isReplaceable</a></strong>(clang::OMPExecutableDirective * Directive)<br>Determines whether a pragma is replacable.</td>
+</tr>
+<tr>
+<td>bool</td>
+<td><strong><a href="./#function-needsadditionalpragma">needsAdditionalPragma</a></strong>(clang::OMPExecutableDirective * Directive)<br>Determines whether a additional pragma is needed.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-functions">Private Functions</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td><strong><a href="./#function-isclauseprintable">isClausePrintable</a></strong>(clang::OMPClause * Clause)<br>Determine whether a clause is printable.</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="./#function-rewriteparam">rewriteParam</a></strong>(std::string * In)<br>Rewrite clause parameters.</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="./#function-printclauses">printClauses</a></strong>(llvm::raw_ostream &amp; Out)<br>Print OMP Clauses.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-attributes">Private Attributes</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clang::PrintingPolicy</td>
+<td><strong><a href="./#variable-pp">PP</a></strong></td>
+</tr>
+<tr>
+<td>llvm::ArrayRef&lt; clang::OMPClause * &gt;</td>
+<td><strong><a href="./#variable-clauses">Clauses</a></strong></td>
+</tr>
+<tr>
+<td>clang::OpenMPDirectiveKind</td>
+<td><strong><a href="./#variable-kind">Kind</a></strong></td>
+</tr>
+<tr>
+<td>unsigned int</td>
+<td><strong><a href="./#variable-clauseparamcounter">ClauseParamCounter</a></strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="detailed-description">Detailed Description</h2>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">OmpPragma</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>A helper class to rewrite some "pragma omp" (mostly teams and similar combined constructs), which are not supported by sotoc. </p>
+<p>We currently only support one team to be run on the target because ncc does not support 'freestanding' teams. So we need to remove teams and distribute constructs from the generated target code. But teams constructs can also appear in combined constructs. These combined constructs cannot simply be removed, they must be replace by "non-team" equivalents to preserve correctness. This class provides helper functions that finds a suitable replacement for omp pragmas that contain teams constructs. It is used during code generation: The omp pragma of each target region that is declared as part of a combined construct and each pragma found during pretty printing is encapsulated by an object of this class which is then used to generate a replacement. </p>
+<h2 id="public-functions-documentation">Public Functions Documentation</h2>
+<h3 id="function-omppragma">function OmpPragma</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">OmpPragma</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">TargetCodeRegion</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">TCR</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="function-omppragma_1">function OmpPragma</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">OmpPragma</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">clang</span><span class="o">::</span><span class="n">OMPExecutableDirective</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Directive</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">clang</span><span class="o">::</span><span class="n">PrintingPolicy</span><span class="w"> </span><span class="n">PP</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="function-needsstructuredblock">function needsStructuredBlock</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">needsStructuredBlock</span><span class="p">()</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Returns true if the omp pragma encapsulated, needs to be followed by a structured block (i.e. </p>
+<p><strong>Return</strong>: true If a structured block is needed </p>
+<p>false If no structured block is needed </p>
+<p>Determines whether a structured block is needed for a pragma.</p>
+<p>{...}).</p>
+<h3 id="function-printreplacement">function printReplacement</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">printReplacement</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">llvm</span><span class="o">::</span><span class="n">raw_ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Out</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Prints a replacement omp pragma for the encapsulated pragma onto <code>Out</code>. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>Out</strong> Out stream </li>
+</ul>
+<p>Print replacement pragmas.</p>
+<p>In some cases we have to modify the printed pragma. If we have a combined constructs with target, remove target because we are already running on the target device. If we have a combined construct with teams, remove teams because the runtime can decide to spawn only a single team. If we have a simd, we prepend <code>#pragma _NEC ivdep</code> to indicate no dependencies.</p>
+<h3 id="function-printaddition">function printAddition</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">printAddition</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">llvm</span><span class="o">::</span><span class="n">raw_ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Out</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="function-isreplaceable">function isReplaceable</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isReplaceable</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">clang</span><span class="o">::</span><span class="n">OMPExecutableDirective</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Directive</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Determines whether a pragma is replacable. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>Directive</strong> Given Directive </li>
+</ul>
+<p><strong>Return</strong>: true If the directive is replacable </p>
+<p>false If the directive is not replacable </p>
+<h3 id="function-needsadditionalpragma">function needsAdditionalPragma</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">needsAdditionalPragma</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">clang</span><span class="o">::</span><span class="n">OMPExecutableDirective</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Directive</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Determines whether a additional pragma is needed. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>Directive</strong> given directive </li>
+</ul>
+<p><strong>Return</strong>: true Directive needs an additional pragma </p>
+<p>false Directive does not need an additional pragma </p>
+<h2 id="private-functions-documentation">Private Functions Documentation</h2>
+<h3 id="function-isclauseprintable">function isClausePrintable</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">isClausePrintable</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">clang</span><span class="o">::</span><span class="n">OMPClause</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Clause</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Determine whether a clause is printable. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>Clause</strong> Clause to check </li>
+</ul>
+<p><strong>Return</strong>: true If the clause is printable </p>
+<p>false If the clause is not printable </p>
+<p>Checks for a clause the clause kind and determines which clauses are printable.</p>
+<h3 id="function-rewriteparam">function rewriteParam</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">rewriteParam</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">In</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Rewrite clause parameters. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>In</strong> Parameter as string (everything in brackets) </li>
+</ul>
+<p>Rewrites OMP clause parameters if they are variables to replace the variable name with the one we will use as the function argument.</p>
+<h3 id="function-printclauses">function printClauses</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">printClauses</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">llvm</span><span class="o">::</span><span class="n">raw_ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Out</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Print OMP Clauses. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>Out</strong> Out stream </li>
+</ul>
+<h2 id="private-attributes-documentation">Private Attributes Documentation</h2>
+<h3 id="variable-pp">variable PP</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">clang</span><span class="o">::</span><span class="n">PrintingPolicy</span><span class="w"> </span><span class="n">PP</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="variable-clauses">variable Clauses</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">llvm</span><span class="o">::</span><span class="n">ArrayRef</span><span class="o">&lt;</span><span class="w"> </span><span class="n">clang</span><span class="o">::</span><span class="n">OMPClause</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Clauses</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="variable-kind">variable Kind</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">clang</span><span class="o">::</span><span class="n">OpenMPDirectiveKind</span><span class="w"> </span><span class="n">Kind</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="variable-clauseparamcounter">variable ClauseParamCounter</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ClauseParamCounter</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2021-11-24
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 - High Performance Computing at RWTH Aachen University
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["search.suggest", "search.highlight", "navigation.top", "navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

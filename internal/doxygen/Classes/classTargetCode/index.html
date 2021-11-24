@@ -1,0 +1,1053 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="High Performance Computing at RWTH Aachen University">
+      
+      
+        <link rel="canonical" href="https://rwth-hpc.github.io/sx-aurora-offloading/internal/doxygen/Classes/classTargetCode/">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>TargetCode - SX-Aurora Offloading</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../../extra.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#targetcode" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="SX-Aurora Offloading" class="md-header__button md-logo" aria-label="SX-Aurora Offloading" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SX-Aurora Offloading
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TargetCode
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/rwth-hpc/llvm-project/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="SX-Aurora Offloading" class="md-nav__button md-logo" aria-label="SX-Aurora Offloading" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    SX-Aurora Offloading
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/rwth-hpc/llvm-project/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../install/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../debugging/" class="md-nav__link">
+        Debugging
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../perf/" class="md-nav__link">
+        Performance Analysis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../source_transformation/" class="md-nav__link">
+        Source Transformation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../build_wrapper/" class="md-nav__link">
+        Build Wrapper
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Technical and Internal Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Technical and Internal Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Technical and Internal Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../install_helpers/" class="md-nav__link">
+        Install Helpers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../design/" class="md-nav__link">
+        Design
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../codegen/" class="md-nav__link">
+        Target Code Generation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_4" type="checkbox" id="__nav_8_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8_4">
+          Sotoc Doxygen
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Sotoc Doxygen" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_4">
+          <span class="md-nav__icon md-icon"></span>
+          Sotoc Doxygen
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index_classes/" class="md-nav__link">
+        Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Files/index_files/" class="md-nav__link">
+        Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../publications/" class="md-nav__link">
+        Publications
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#public-functions" class="md-nav__link">
+    Public Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#private-functions" class="md-nav__link">
+    Private Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#private-attributes" class="md-nav__link">
+    Private Attributes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-functions-documentation" class="md-nav__link">
+    Public Functions Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Public Functions Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-targetcode" class="md-nav__link">
+    function TargetCode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-addcodefragment" class="md-nav__link">
+    function addCodeFragment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-addcodefragmentfront" class="md-nav__link">
+    function addCodeFragmentFront
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-generatecode" class="md-nav__link">
+    function generateCode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-getcodefragmentsbegin" class="md-nav__link">
+    function getCodeFragmentsBegin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-getcodefragmentsend" class="md-nav__link">
+    function getCodeFragmentsEnd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-addheader" class="md-nav__link">
+    function addHeader
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#private-functions-documentation" class="md-nav__link">
+    Private Functions Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Private Functions Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-generatevariabledecl" class="md-nav__link">
+    function generateVariableDecl
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-generatefunctionprologue" class="md-nav__link">
+    function generateFunctionPrologue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-generatefunctionepilogue" class="md-nav__link">
+    function generateFunctionEpilogue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-generatefunctionname" class="md-nav__link">
+    function generateFunctionName
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-generateargument" class="md-nav__link">
+    function generateArgument
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#private-attributes-documentation" class="md-nav__link">
+    Private Attributes Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Private Attributes Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variable-codefragments" class="md-nav__link">
+    variable CodeFragments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-systemheaders" class="md-nav__link">
+    variable SystemHeaders
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-targetcoderewriter" class="md-nav__link">
+    variable TargetCodeRewriter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-sm" class="md-nav__link">
+    variable SM
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/RWTH-HPC/sx-aurora-offloading/edit/master/docs/internal/doxygen/Classes/classTargetCode.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="targetcode">TargetCode</h1>
+<p>A collection of all code from the input file that needs to be copied to the target source file. </p>
+<p><code>#include &lt;TargetCode.h&gt;</code></p>
+<h2 id="public-functions">Public Functions</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><strong><a href="./#function-targetcode">TargetCode</a></strong>(clang::Rewriter &amp; TargetCodeRewriter)</td>
+</tr>
+<tr>
+<td>bool</td>
+<td><strong><a href="./#function-addcodefragment">addCodeFragment</a></strong>(std::shared_ptr&lt; <a href="../classTargetCodeFragment/">TargetCodeFragment</a> &gt; Frag, bool PushFront =false)<br>Add a piece of code from the input file to this collection.</td>
+</tr>
+<tr>
+<td>bool</td>
+<td><strong><a href="./#function-addcodefragmentfront">addCodeFragmentFront</a></strong>(std::shared_ptr&lt; <a href="../classTargetCodeFragment/">TargetCodeFragment</a> &gt; Fag)<br>See <a href="./#function-addcodefragment">addCodeFragment</a>.</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="./#function-generatecode">generateCode</a></strong>(llvm::raw_ostream &amp; Out)<br>Generate target code from all fragments and system headers added to this collection.</td>
+</tr>
+<tr>
+<td>TargetCodeFragmentDeque::const_iterator</td>
+<td><strong><a href="./#function-getcodefragmentsbegin">getCodeFragmentsBegin</a></strong>()<br>Get an iterate over all code fragments in this collection.</td>
+</tr>
+<tr>
+<td>TargetCodeFragmentDeque::const_iterator</td>
+<td><strong><a href="./#function-getcodefragmentsend">getCodeFragmentsEnd</a></strong>()<br>See <a href="./#function-getcodefragmentsbegin">getCodeFragmentsBegin</a>.</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="./#function-addheader">addHeader</a></strong>(const std::string &amp; Header)<br>Add a header file to be included by the target code.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-functions">Private Functions</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>void</td>
+<td><strong><a href="./#function-generatevariabledecl">generateVariableDecl</a></strong>(const <a href="../classTargetRegionVariable/">TargetRegionVariable</a> &amp; Var, llvm::raw_ostream &amp; Out)<br>Generate the variable declaration of a transferred variable.</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="./#function-generatefunctionprologue">generateFunctionPrologue</a></strong>(<a href="../classTargetCodeRegion/">TargetCodeRegion</a> * TCR, llvm::raw_ostream &amp; Out)<br>Generates a function prologue for a target region.</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="./#function-generatefunctionepilogue">generateFunctionEpilogue</a></strong>(<a href="../classTargetCodeRegion/">TargetCodeRegion</a> * TCR, llvm::raw_ostream &amp; Out)<br>Generates a function epilogue for a target region.</td>
+</tr>
+<tr>
+<td>std::string</td>
+<td><strong><a href="./#function-generatefunctionname">generateFunctionName</a></strong>(<a href="../classTargetCodeRegion/">TargetCodeRegion</a> * TCR)<br>Generate a function name for a target region.</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="./#function-generateargument">generateArgument</a></strong>(const <a href="../classTargetRegionVariable/">TargetRegionVariable</a> &amp; Aarg, llvm::raw_ostream &amp; Out)<br>Generate function arguments.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="private-attributes">Private Attributes</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../Files/TargetCode_8h/#using-targetcodefragmentdeque">TargetCodeFragmentDeque</a></td>
+<td><strong><a href="./#variable-codefragments">CodeFragments</a></strong> <br>Collection of all code locations that need to be copied.</td>
+</tr>
+<tr>
+<td>std::set&lt; std::string &gt;</td>
+<td><strong><a href="./#variable-systemheaders">SystemHeaders</a></strong> <br>Header files which will also be present on the target.</td>
+</tr>
+<tr>
+<td>clang::Rewriter &amp;</td>
+<td><strong><a href="./#variable-targetcoderewriter">TargetCodeRewriter</a></strong></td>
+</tr>
+<tr>
+<td>clang::SourceManager &amp;</td>
+<td><strong><a href="./#variable-sm">SM</a></strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-functions-documentation">Public Functions Documentation</h2>
+<h3 id="function-targetcode">function TargetCode</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">TargetCode</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">clang</span><span class="o">::</span><span class="n">Rewriter</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">TargetCodeRewriter</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="function-addcodefragment">function addCodeFragment</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">addCodeFragment</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">TargetCodeFragment</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Frag</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">PushFront</span><span class="w"> </span><span class="o">=</span><span class="nb">false</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Add a piece of code from the input file to this collection. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>Frag</strong> Target code fragment to add </li>
+<li><strong>PushFront</strong> Whether to push it to the front or the back </li>
+</ul>
+<p>Adds a code fragment.</p>
+<p>This function uses the fragments source location to check wether it was already added and where in the list of code fragments to add it.</p>
+<p>Adds a <a href="../classTargetCodeFragment/">TargetCodeFragment</a> to Target Code</p>
+<h3 id="function-addcodefragmentfront">function addCodeFragmentFront</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">addCodeFragmentFront</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">TargetCodeFragment</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Fag</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>See <a href="./#function-addcodefragment">addCodeFragment</a>. </p>
+<h3 id="function-generatecode">function generateCode</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">generateCode</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">llvm</span><span class="o">::</span><span class="n">raw_ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Out</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Generate target code from all fragments and system headers added to this collection. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>Out</strong> Out stream </li>
+</ul>
+<p>Generate target code.</p>
+<p>Generates the actual target code</p>
+<h3 id="function-getcodefragmentsbegin">function getCodeFragmentsBegin</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">TargetCodeFragmentDeque</span><span class="o">::</span><span class="n">const_iterator</span><span class="w"> </span><span class="n">getCodeFragmentsBegin</span><span class="p">()</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Get an iterate over all code fragments in this collection. </p>
+<h3 id="function-getcodefragmentsend">function getCodeFragmentsEnd</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">TargetCodeFragmentDeque</span><span class="o">::</span><span class="n">const_iterator</span><span class="w"> </span><span class="n">getCodeFragmentsEnd</span><span class="p">()</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>See <a href="./#function-getcodefragmentsbegin">getCodeFragmentsBegin</a>. </p>
+<h3 id="function-addheader">function addHeader</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">addHeader</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Header</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Add a header file to be included by the target code. </p>
+<h2 id="private-functions-documentation">Private Functions Documentation</h2>
+<h3 id="function-generatevariabledecl">function generateVariableDecl</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">generateVariableDecl</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TargetRegionVariable</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Var</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">llvm</span><span class="o">::</span><span class="n">raw_ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Out</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Generate the variable declaration of a transferred variable. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>Var</strong> The variable for which to print the declaration </li>
+<li><strong>Out</strong> The output stream to which to write the variable declaration </li>
+</ul>
+<p>Generate the variable declaration (including setting the variable to the proper value) of a transferred variable and print it to the specified output stream.</p>
+<h3 id="function-generatefunctionprologue">function generateFunctionPrologue</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">generateFunctionPrologue</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">TargetCodeRegion</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">TCR</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">llvm</span><span class="o">::</span><span class="n">raw_ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Out</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Generates a function prologue for a target region. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>TCR</strong> Code region </li>
+<li><strong>Out</strong> Out stream </li>
+</ul>
+<p>Generate function prologue.</p>
+<p>This prologue consists of a function declaration and code to copy local variables into scope.</p>
+<p>Generates everything that comes before the actual target code, like the function head, local variables and helper functions.</p>
+<h3 id="function-generatefunctionepilogue">function generateFunctionEpilogue</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">generateFunctionEpilogue</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">TargetCodeRegion</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">TCR</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">llvm</span><span class="o">::</span><span class="n">raw_ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Out</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Generates a function epilogue for a target region. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>TCR</strong> Target code </li>
+<li><strong>Out</strong> Out stream </li>
+</ul>
+<p>Generate function epilogue.</p>
+<p>This prologue consists of a code to copy variables from the local scope back.</p>
+<p>Generates everything that comes after the actual target code, like '}' and scalar copies.</p>
+<h3 id="function-generatefunctionname">function generateFunctionName</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">generateFunctionName</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">TargetCodeRegion</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">TCR</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Generate a function name for a target region. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>TCR</strong> Target code region </li>
+</ul>
+<p><strong>Return</strong>: std::string Function name </p>
+<p>Generates function name.</p>
+<h3 id="function-generateargument">function generateArgument</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">generateArgument</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TargetRegionVariable</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Aarg</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">llvm</span><span class="o">::</span><span class="n">raw_ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Out</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Generate function arguments. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>Arg</strong> Argument </li>
+<li><strong>Out</strong> Out stream </li>
+</ul>
+<p>Generates the argument list for the target function.</p>
+<h2 id="private-attributes-documentation">Private Attributes Documentation</h2>
+<h3 id="variable-codefragments">variable CodeFragments</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">TargetCodeFragmentDeque</span><span class="w"> </span><span class="n">CodeFragments</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Collection of all code locations that need to be copied. </p>
+<h3 id="variable-systemheaders">variable SystemHeaders</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">SystemHeaders</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<p>Header files which will also be present on the target. </p>
+<p>Instead of copying the code declarations in them, we can simply add #include directives for these headers to the target code. </p>
+<h3 id="variable-targetcoderewriter">variable TargetCodeRewriter</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">clang</span><span class="o">::</span><span class="n">Rewriter</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">TargetCodeRewriter</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="variable-sm">variable SM</h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">clang</span><span class="o">::</span><span class="n">SourceManager</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">SM</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2021-11-24
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 - High Performance Computing at RWTH Aachen University
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["search.suggest", "search.highlight", "navigation.top", "navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>
